@@ -1,0 +1,4 @@
+wal,wal,wal,wal
+wal,*,*,wal
+wal,*,*,wal
+wal,wal,wal,wal
