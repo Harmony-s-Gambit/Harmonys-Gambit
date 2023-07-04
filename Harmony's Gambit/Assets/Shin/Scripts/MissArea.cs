@@ -8,11 +8,11 @@ public class MissArea : MonoBehaviour
     {
         if (collision.CompareTag("NoteP1"))
         {
-            print("P1Miss");
+            //print("P1Miss");
         }
         else if (collision.CompareTag("NoteP2"))
         {
-            print("P2Miss");
+            //print("P2Miss");
         }
     }
 }

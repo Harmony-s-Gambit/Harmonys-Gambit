@@ -584,7 +584,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,6 +1240,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804491756}
   m_CullTransparentMesh: 1
+--- !u!1 &829601368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 829601369}
+  - component: {fileID: 829601370}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &829601369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829601368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1337062292}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &829601370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829601368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e378dcecb623ffe4999e51b370bb1dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectInfo:
+  - goPrefab: {fileID: 8884150408803529206, guid: 23be5ecaa458f854e90ed67b9bca03df, type: 3}
+    count: 30
+    tfPoolParent: {fileID: 1300561731}
+  - goPrefab: {fileID: 8884150408803529206, guid: dbafe827bd643c34d935a61d5e01b780, type: 3}
+    count: 30
+    tfPoolParent: {fileID: 1300561731}
 --- !u!1 &902491774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,7 +1553,7 @@ GameObject:
   - component: {fileID: 1023698878}
   - component: {fileID: 1023698877}
   m_Layer: 0
-  m_Name: SongTextReader
+  m_Name: BGMTextReader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2598,7 +2649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -87.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1300561732
@@ -2615,9 +2666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmListindex: 10
   _tfNoteAppearP1: {fileID: 2126513601}
-  _noteP1: {fileID: 8884150408803529206, guid: 23be5ecaa458f854e90ed67b9bca03df, type: 3}
   _tfNoteAppearP2: {fileID: 1344852693}
-  _noteP2: {fileID: 8884150408803529206, guid: dbafe827bd643c34d935a61d5e01b780, type: 3}
 --- !u!61 &1300561733
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2716,6 +2765,7 @@ Transform:
   - {fileID: 1938419425}
   - {fileID: 1529038438}
   - {fileID: 1023698878}
+  - {fileID: 829601369}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

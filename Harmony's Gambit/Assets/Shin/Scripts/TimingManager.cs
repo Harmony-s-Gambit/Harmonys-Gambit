@@ -42,14 +42,15 @@ public class TimingManager : MonoBehaviour
                 {
                     if (_timingBoxsP1[j].x <= t_notePosX && t_notePosX <= _timingBoxsP1[j].y)
                     {
-                        Destroy(boxNoteListP1[i]);
+                        ObjectPool.instance.noteQueueP1.Enqueue(boxNoteListP1[i].gameObject);
+                        boxNoteListP1[i].gameObject.SetActive(false);
                         boxNoteListP1.RemoveAt(i);
-                        print("P1" + j + key);
+                        //print("P1" + j + key);
                         return;
                     }
                 }
             }
-            print("P1Miss");
+            //print("P1Miss");
         }
         else
         {
@@ -60,14 +61,15 @@ public class TimingManager : MonoBehaviour
                 {
                     if (_timingBoxsP2[j].x <= t_notePosX && t_notePosX <= _timingBoxsP2[j].y)
                     {
-                        Destroy(boxNoteListP2[i]);
+                        ObjectPool.instance.noteQueueP1.Enqueue(boxNoteListP2[i].gameObject);
+                        boxNoteListP2[i].gameObject.SetActive(false);
                         boxNoteListP2.RemoveAt(i);
-                        print("P2" + j + key);
+                        //print("P2" + j + key);
                         return;
                     }
                 }
             }
-            print("P2Miss");
+            //print("P2Miss");
         }
     }
 }
