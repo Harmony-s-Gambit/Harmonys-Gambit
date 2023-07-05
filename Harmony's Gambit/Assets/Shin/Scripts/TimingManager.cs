@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimingManager : MonoBehaviour
 {
@@ -15,6 +16,18 @@ public class TimingManager : MonoBehaviour
     [SerializeField] RectTransform[] _timingRectP2;
     Vector2[] _timingBoxsP1;
     Vector2[] _timingBoxsP2;
+
+    bool _IsPassP1 = false;
+    bool _IsPassP2 = false;
+    int _keyInputNumP1 = 0;
+    int _keyInputNumP2 = 0;
+    private Queue<bool> _IsSuccess = new Queue<bool>();
+    private Queue<string> _whatKeyP1 = new Queue<string>();
+    private Queue<string> _whatKeyP2 = new Queue<string>();
+
+    [SerializeField] GameObject _successImage;
+    [SerializeField] GameObject _failureImage;
+    [SerializeField] GameObject _tfSofFImage;
 
     private void Start()
     {
@@ -42,15 +55,29 @@ public class TimingManager : MonoBehaviour
                 {
                     if (_timingBoxsP1[j].x <= t_notePosX && t_notePosX <= _timingBoxsP1[j].y)
                     {
-                        ObjectPool.instance.noteQueueP1.Enqueue(boxNoteListP1[i].gameObject);
-                        boxNoteListP1[i].gameObject.SetActive(false);
-                        boxNoteListP1.RemoveAt(i);
+                        //ObjectPool.instance.noteQueueP1.Enqueue(boxNoteListP1[i].gameObject);
+                        //boxNoteListP1[i].gameObject.SetActive(false);
+                        //boxNoteListP1.RemoveAt(i);
                         //print("P1" + j + key);
+
+                        if (_keyInputNumP1 == 0)
+                        {
+                            _whatKeyP1.Enqueue(key);
+                            //_IsPassP2 = true;
+                        }
+                        else
+                        {
+                            //_IsPassP2 = false;
+                        }
+                        _keyInputNumP1++;
+
+                        IsSuccessManage();
+
                         return;
                     }
                 }
             }
-            //print("P1Miss");
+            //print("P1Miss);
         }
         else
         {
@@ -61,15 +88,70 @@ public class TimingManager : MonoBehaviour
                 {
                     if (_timingBoxsP2[j].x <= t_notePosX && t_notePosX <= _timingBoxsP2[j].y)
                     {
-                        ObjectPool.instance.noteQueueP1.Enqueue(boxNoteListP2[i].gameObject);
-                        boxNoteListP2[i].gameObject.SetActive(false);
-                        boxNoteListP2.RemoveAt(i);
+                        //ObjectPool.instance.noteQueueP2.Enqueue(boxNoteListP2[i].gameObject);
+                        //boxNoteListP2[i].gameObject.SetActive(false);
+                        //boxNoteListP2.RemoveAt(i);
                         //print("P2" + j + key);
+
+                        if (_keyInputNumP2 == 0)
+                        {
+                            _whatKeyP2.Enqueue(key);
+                            //_IsPassP2 = true;
+                        }
+                        else
+                        {
+                            //_IsPassP2 = false;
+                        }
+                        _keyInputNumP2++;
+
+                        IsSuccessManage();
+
                         return;
                     }
                 }
             }
-            //print("P2Miss");
+            //print("P2Miss);
+        }
+    }
+
+    private void IsSuccessManage()
+    {
+        //print("P1" + _keyInputNumP1);
+        //print("P2" + _keyInputNumP2);
+        for (int i = 0; i < _IsSuccess.Count; i++)
+        {
+            _IsSuccess.Dequeue();
+        }
+
+        if (_keyInputNumP1 == 1 && _keyInputNumP2 == 1)
+        {
+            _IsSuccess.Enqueue(true);
+        }
+        else
+        {
+            _IsSuccess.Enqueue(false);
+        }
+    }
+
+    public void SuccessOrFailure()
+    {
+        _keyInputNumP1 = 0;
+        _keyInputNumP2 = 0;
+        if (_IsSuccess.Count != 0)
+        {
+            if (_IsSuccess.Dequeue())
+            {
+                Instantiate(_successImage, _tfSofFImage.transform.position, Quaternion.identity, this.transform);
+                print(_whatKeyP1.Dequeue() + _whatKeyP2.Dequeue());
+            }
+            else
+            {
+                Instantiate(_failureImage, _tfSofFImage.transform.position, Quaternion.identity, this.transform);
+            }
+        }
+        else
+        {
+            Instantiate(_failureImage, _tfSofFImage.transform.position, Quaternion.identity, this.transform);
         }
     }
 }

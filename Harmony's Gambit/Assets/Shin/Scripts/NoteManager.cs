@@ -9,10 +9,12 @@ public class NoteManager : MonoBehaviour
     double bpm = 0;
     double _currentTimeP1 = 0d;
     double _currentTimeP2 = 0d;
+    double _currentTimeIn = 0d;
     public int bgmListindex = 10;
 
     [SerializeField] Transform _tfNoteAppearP1;
     [SerializeField] Transform _tfNoteAppearP2;
+    [SerializeField] Transform _tfNoteAppearIn;
 
     TimingManager _timingManager;
 
@@ -28,6 +30,15 @@ public class NoteManager : MonoBehaviour
 
         if (bgmListindex < BGMTextReader.instance.BGMTextRead(bgmName).Count)
         {
+            _currentTimeIn += Time.deltaTime;
+            if (_currentTimeIn >= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm)
+            {
+                GameObject t_note = ObjectPool.instance.noteQueueIn.Dequeue();
+                t_note.transform.position = _tfNoteAppearIn.position;
+                t_note.SetActive(true);
+                _currentTimeIn -= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm;
+            }
+
             _currentTimeP1 += Time.deltaTime;
             if (_currentTimeP1 >= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm)
             {
@@ -36,7 +47,6 @@ public class NoteManager : MonoBehaviour
                 t_note.SetActive(true);
                 _timingManager.boxNoteListP1.Add(t_note);
                 _currentTimeP1 -= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm;
-                
             }
 
             _currentTimeP2 += Time.deltaTime;
@@ -50,8 +60,6 @@ public class NoteManager : MonoBehaviour
                 bgmListindex++;
             }
         }
-        
-        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -66,6 +74,11 @@ public class NoteManager : MonoBehaviour
         {
             _timingManager.boxNoteListP2.Remove(collision.gameObject);
             ObjectPool.instance.noteQueueP2.Enqueue(collision.gameObject);
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.CompareTag("NoteIn"))
+        {
+            ObjectPool.instance.noteQueueIn.Enqueue(collision.gameObject);
             collision.gameObject.SetActive(false);
         }
     }
