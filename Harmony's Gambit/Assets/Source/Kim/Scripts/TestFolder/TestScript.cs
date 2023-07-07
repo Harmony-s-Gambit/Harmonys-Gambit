@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    GameObject PManager;
+    GameObject PManager, EManager;
     // Start is called before the first frame update
     void Start()
     {
         PManager = GameObject.Find("PlayerManager");
+        EManager = GameObject.Find("EnemyManager");
     }
 
     // Update is called once per frame
@@ -52,7 +53,9 @@ public class TestScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            EManager.GetComponent<EnemyManager>().EnemyMovement();
             PManager.GetComponent<PlayerManager>().playerMovement();
+            EManager.GetComponent<EnemyManager>().EnemyAttack();
         }
     }
 }

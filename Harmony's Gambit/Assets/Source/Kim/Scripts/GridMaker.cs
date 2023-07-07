@@ -54,9 +54,10 @@ public class GridMaker : MonoBehaviour
         transform.position = new Vector2(-gridW/2 - 0.5f, -gridH/2 - 0.5f);
         GameObject PManager = (GameObject)Instantiate(Resources.Load("PlayerManager"));
         PManager.name = "PlayerManager";
+        GameObject EManager = (GameObject)Instantiate(Resources.Load("EnemyManager"));
+        EManager.name = "EnemyManager";
 
-
-
+        GameObject TestEnemy = (GameObject)Instantiate(Resources.Load("TestEnemy"));
         GameObject TestController = (GameObject)Instantiate(Resources.Load("Tester"));
     }
 

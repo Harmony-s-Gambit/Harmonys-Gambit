@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    List<GameObject> enemyArrary = new List<GameObject>();
+    List<GameObject> enemyArray = new List<GameObject>();
     private int EnemyCount = 0;
     // Start is called before the first frame update
     void Start()
@@ -21,19 +21,34 @@ public class EnemyManager : MonoBehaviour
     {
         if (EnemyCount != 100)
         {
-            enemyArrary.Add(Enemy);
+            enemyArray.Add(Enemy);
+            EnemyCount += 1;
         }
     }
     public void EnemyMovement()
     {
-        for(int i = 0; i < enemyArrary.Count; i++)
+        for(int i = 0; i < enemyArray.Count; i++)
         {
-            enemyArrary[i].GetComponent<EnemyStat>().MovementCheck();
+            enemyArray[i].GetComponent<EnemyStat>().MovementCheck();
         }
     }
 
     public void EnemyAttack()
     {
-
+        int i = 0;
+        while( i < EnemyCount)
+        {
+            if(enemyArray[i].GetComponent<EnemyStat>().HP <= 0)
+            {
+                GameObject DesEnemy = enemyArray[i];
+                enemyArray.Remove(enemyArray[i]);
+                EnemyCount--;
+            }
+            else
+            {
+                enemyArray[i].GetComponent<EnemyStat>().AttackCheck();
+                i++;
+            }
+        }
     }
 }

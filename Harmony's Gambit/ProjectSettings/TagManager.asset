@@ -7,6 +7,9 @@ TagManager:
   - NoteP1
   - NoteP2
   - NoteIn
+  - Enemy
+  - Wall
+  - Player2
   layers:
   - Default
   - TransparentFX

@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b28fe6cf11e74c4095c355eff4e1514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: 
   blockType: Ground
+  structure: {fileID: 0}
   occupyingCharacter: {fileID: 0}
   occupyingItem: {fileID: 0}
