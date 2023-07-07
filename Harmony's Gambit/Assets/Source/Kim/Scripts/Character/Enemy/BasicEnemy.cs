@@ -21,6 +21,7 @@ public class BasicEnemy : EnemyStat
 
     public override void MovementCheck()
     {
+        Debug.Log(HP);
         if (MoveTurn)
         {
             GameObject current = GameObject.Find(xPos + "_" + yPos);
@@ -78,13 +79,7 @@ public class BasicEnemy : EnemyStat
             {
                 GameObject PM = GameObject.Find("PlayerManager");
                 GameObject target = GameObject.Find((xPos + 1) + "_" + yPos);
-                if(target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player")
-                {
-                    PM.GetComponent<PlayerManager>().P1_HP -= 1;
-                }else if(target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player2")
-                {
-                    PM.GetComponent<PlayerManager>().P2_HP -= 1;
-                }else if(target.GetComponent<GridSlotInfo>().occupyingCharacter == null)
+                if (target.GetComponent<GridSlotInfo>().occupyingCharacter == null)
                 {
                     GameObject current = GameObject.Find(xPos + "_" + yPos);
                     current.GetComponent<GridSlotInfo>().occupyingCharacter = null;
@@ -92,25 +87,32 @@ public class BasicEnemy : EnemyStat
                     xPos += 1;
                     moveRight = false;
                 }
+                else if(target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player")
+                {
+                    PM.GetComponent<PlayerManager>().P1_HP -= 1;
+                }else if(target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player2")
+                {
+                    PM.GetComponent<PlayerManager>().P2_HP -= 1;
+                }
             }else
             {
                 GameObject PM = GameObject.Find("PlayerManager");
                 GameObject target = GameObject.Find((xPos - 1) + "_" + yPos);
-                if (target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player")
-                {
-                    PM.GetComponent<PlayerManager>().P1_HP -= 1;
-                }
-                else if (target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player2")
-                {
-                    PM.GetComponent<PlayerManager>().P2_HP -= 1;
-                }
-                else if (target.GetComponent<GridSlotInfo>().occupyingCharacter == null)
+                if (target.GetComponent<GridSlotInfo>().occupyingCharacter == null)
                 {
                     GameObject current = GameObject.Find(xPos + "_" + yPos);
                     current.GetComponent<GridSlotInfo>().occupyingCharacter = null;
                     target.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
                     xPos -= 1;
                     moveRight = true;
+                }
+                else if (target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player")
+                {
+                    PM.GetComponent<PlayerManager>().P1_HP -= 1;
+                }
+                else if (target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player2")
+                {
+                    PM.GetComponent<PlayerManager>().P2_HP -= 1;
                 }
             }
             Attack = false;

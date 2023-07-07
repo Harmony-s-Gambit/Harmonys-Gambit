@@ -6,7 +6,7 @@ public abstract class EnemyStat : MonoBehaviour
 {
     public int HP = 1;
     public int xPos, yPos;
-    public bool red, blue;
+    public bool red = true, blue = true;
     public abstract void MovementCheck();
 
     public abstract void AttackCheck();
