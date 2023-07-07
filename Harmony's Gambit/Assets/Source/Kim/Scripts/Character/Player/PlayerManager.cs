@@ -146,9 +146,9 @@ public class PlayerManager : MonoBehaviour
                     }
                 }else if(P1target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Enemy")
                 {
-                    Debug.Log("Attack");
                     if (P1target.GetComponent<GridSlotInfo>().occupyingCharacter.GetComponent<EnemyStat>().red)
                     {
+                        Debug.Log("Attack");
                         P1target.GetComponent<GridSlotInfo>().occupyingCharacter.GetComponent<EnemyStat>().HP -= 1;
                     }
                 }

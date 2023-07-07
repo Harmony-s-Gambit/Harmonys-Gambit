@@ -16,6 +16,8 @@ public class BasicEnemy : EnemyStat
         GameObject current = GameObject.Find(xPos + "_" + yPos);
         current.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
         gameObject.transform.position = current.transform.position;
+        red = true;
+        blue = true;
     }
     
 
@@ -86,6 +88,7 @@ public class BasicEnemy : EnemyStat
                     target.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
                     xPos += 1;
                     moveRight = false;
+                    gameObject.transform.Translate(1, 0, 0);
                 }
                 else if(target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player")
                 {
@@ -105,6 +108,7 @@ public class BasicEnemy : EnemyStat
                     target.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
                     xPos -= 1;
                     moveRight = true;
+                    gameObject.transform.Translate(-1, 0, 0);
                 }
                 else if (target.GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Player")
                 {

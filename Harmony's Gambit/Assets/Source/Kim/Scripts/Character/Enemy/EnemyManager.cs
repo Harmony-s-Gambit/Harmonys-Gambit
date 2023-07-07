@@ -43,6 +43,7 @@ public class EnemyManager : MonoBehaviour
                 GameObject DesEnemy = enemyArray[i];
                 enemyArray.Remove(enemyArray[i]);
                 EnemyCount--;
+                Destroy(DesEnemy);
             }
             else
             {
