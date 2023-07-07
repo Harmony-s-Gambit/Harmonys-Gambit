@@ -62,6 +62,10 @@ public class TimingManager : MonoBehaviour
 
                         if (_keyInputNumP1 == 0)
                         {
+                            for (int k = 0; k < _whatKeyP1.Count; k++)
+                            {
+                                _whatKeyP1.Dequeue();
+                            }
                             _whatKeyP1.Enqueue(key);
                             //_IsPassP2 = true;
                         }
@@ -95,6 +99,10 @@ public class TimingManager : MonoBehaviour
 
                         if (_keyInputNumP2 == 0)
                         {
+                            for (int k = 0; k < _whatKeyP2.Count; k++)
+                            {
+                                _whatKeyP2.Dequeue();
+                            }
                             _whatKeyP2.Enqueue(key);
                             //_IsPassP2 = true;
                         }
