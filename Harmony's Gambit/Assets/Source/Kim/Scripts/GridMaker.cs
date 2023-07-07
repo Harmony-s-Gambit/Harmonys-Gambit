@@ -11,8 +11,6 @@ public class GridMaker : MonoBehaviour
     void Start()
     {
         MakeGrid();
-        Instantiate(Resources.Load("Player"));
-        Instantiate(Resources.Load("FEnemy"));
     }
     private void MakeGrid()
     {
@@ -54,6 +52,12 @@ public class GridMaker : MonoBehaviour
         float gridW = cols * tileSize;
         float gridH = rows * tileSize;
         transform.position = new Vector2(-gridW/2 - 0.5f, -gridH/2 - 0.5f);
+        GameObject PManager = (GameObject)Instantiate(Resources.Load("PlayerManager"));
+        PManager.name = "PlayerManager";
+
+
+
+        GameObject TestController = (GameObject)Instantiate(Resources.Load("Tester"));
     }
 
     // Update is called once per frame
