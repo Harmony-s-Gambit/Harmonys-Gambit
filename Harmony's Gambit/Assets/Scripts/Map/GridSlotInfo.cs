@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridSlotInfo : MonoBehaviour
 {
     public string background;
-    public BlockType blockType;
+    public BLOCKTYPE blockType;
     public GameObject structure;
     public GameObject occupyingCharacter;
     public GameObject occupyingItem;

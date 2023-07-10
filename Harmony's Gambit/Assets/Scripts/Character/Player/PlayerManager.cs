@@ -18,18 +18,12 @@ public class PlayerManager : MonoBehaviour
     {
         //텍스트 파일을 읽어서 처음 위치 를 P1_x, P1_y, P2_x, P2_y에 저장하기
         //그 후 Find를 이용해서 해당 타일을 찾고 배치
-        P1_x = 1;
-        P2_x = 5;
-        P1_y = 2;
-        P2_y = 3;
+        P1_x = 1; P1_y = 2;
+        P2_x = 5; P2_y = 3;
         P1 = (GameObject)Instantiate(Resources.Load("Prefabs/Players/Player1"));
+        P1.GetComponent<Player>().SetXY(P1_x, P1_y);
         P2 = (GameObject)Instantiate(Resources.Load("Prefabs/Players/Player2"));
-        P1current = GameObject.Find(P1_x + "_" + P1_y);
-        P2current = GameObject.Find(P2_x + "_" + P2_y);
-        P1current.GetComponent<GridSlotInfo>().occupyingCharacter = P1;
-        P2current.GetComponent<GridSlotInfo>().occupyingCharacter = P2;
-        P1.transform.position = P1current.transform.position;
-        P2.transform.position = P2current.transform.position;
+        P2.GetComponent<Player>().SetXY(P2_x, P2_y);
     }
 
     // Update is called once per frame
@@ -39,67 +33,6 @@ public class PlayerManager : MonoBehaviour
         {
             GameOver = true;
             SceneManager.LoadScene("GameOver");
-        }
-    }
-
-
-
-    //direction 은 0:Up 1:Left 2:Down 3: Right 4: Miss
-    public void player1MoveTarget(int direction)
-    {
-        switch (direction) {
-            case 0:
-                P1target = GameObject.Find(P1_x + "_" + (P1_y + 1));
-                MoveP1 = true;
-                P1direction = 0;
-                break;
-            case 1:
-                P1target = GameObject.Find((P1_x - 1) + "_" + P1_y);
-                MoveP1 = true;
-                P1direction = 1;
-                break;
-            case 2:
-                P1target = GameObject.Find(P1_x + "_" + (P1_y - 1));
-                MoveP1 = true;
-                P1direction = 2;
-                break;
-            case 3:
-                P1target = GameObject.Find((P1_x + 1) + "_" + P1_y);
-                MoveP1 = true;
-                P1direction = 3;
-                break;
-            case 4:
-                MoveP1 = false;
-                break;
-        }
-    }
-    public void player2MoveTarget(int direction)
-    {
-        switch (direction)
-        {
-            case 0:
-                P2target = GameObject.Find(P2_x + "_" + (P2_y + 1));
-                MoveP2 = true;
-                P2direction = 0;
-                break;
-            case 1:
-                P2target = GameObject.Find((P2_x - 1) + "_" + P2_y);
-                MoveP2 = true;
-                P2direction = 1;
-                break;
-            case 2:
-                P2target = GameObject.Find(P2_x + "_" + (P2_y - 1));
-                MoveP2 = true;
-                P2direction = 2;
-                break;
-            case 3:
-                P2target = GameObject.Find((P2_x + 1) + "_" + P2_y);
-                MoveP2 = true;
-                P2direction = 3;
-                break;
-            case 4:
-                MoveP2 = false;
-                break;
         }
     }
 
