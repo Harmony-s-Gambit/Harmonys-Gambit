@@ -34,7 +34,9 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if(isRedValid ^ isBlueValid)
+                // 테스트 용
+                isRedValid = true; isBlueValid = true;
+                if (isRedValid ^ isBlueValid)
                 {
                     //둘중 한명만 성공
                 }
