@@ -31,8 +31,8 @@ public class MissArea : MonoBehaviour
         }
         else
         {
-            _timingManager.SuccessOrFailure();
             _gameManager.rhythm = true;
+            _timingManager.SuccessOrFailure();
         }
     }
 }
