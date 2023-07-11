@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bluePlayer = players[0].GetComponent<Player>();
-        redPlayer = players[1].GetComponent<Player>();
+        redPlayer = players[0].GetComponent<Player>();
+        bluePlayer = players[1].GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
                     {
                         //같은칸으로 혹은 붙어있는 상태에서 서로 충돌
                         isStunned = true;
+                        redPlayer.isMovedThisTurn = true;
+                        bluePlayer.isMovedThisTurn = true;
                     }
                     else
                     {
@@ -56,12 +58,23 @@ public class GameManager : MonoBehaviour
 
                         //이동일때
                         redPlayer.MoveManage();
+                        bluePlayer.MoveManage();
                     }
                 }
             }   
         
             //enemy move
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.GetComponent<Enemy>().isMovedThisTurn)
+                {
 
+                }
+                else
+                {
+                    enemy.GetComponent<Enemy>().MoveManage();
+                }
+            }
         }
 
         //isMovedThisTurn = false 로 초기화
