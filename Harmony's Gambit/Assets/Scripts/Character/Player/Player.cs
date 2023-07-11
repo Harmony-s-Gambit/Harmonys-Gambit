@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public DIRECTION direction;
     public GameObject player;
     public GameObject currentBlock;
+    public bool isMovedThisTurn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
         player.transform.position = currentBlock.transform.position;
     }
 
-    public GameObject GetNextDest(DIRECTION direction)
+    public GameObject GetNextDest()
     {
         GameObject destBlock = currentBlock;
         switch (direction)
@@ -61,9 +62,36 @@ public class Player : MonoBehaviour
 
     public void Move(GameObject nextDest)
     {
+        isMovedThisTurn = true;
         currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
         nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = player;
         currentBlock = nextDest;
         player.transform.position = currentBlock.transform.position;
     }
+
+    public bool MoveManage()
+    {
+        GameObject nextDest = GetNextDest();
+        if (isMovedThisTurn)
+        {
+            return false;
+        }
+        GameObject whosOnDest = nextDest.GetComponent<GridSlotInfo>().occupyingCharacter;
+        if (nextDest.GetComponent<GridSlotInfo>().blockType == BLOCKTYPE.WALL)
+        {
+            return false;
+        }
+        else if (whosOnDest == null)
+        {
+            Move(nextDest);
+            return true;
+        }
+        else
+        {
+
+        }
+
+        return true;
+    }
+    
 }

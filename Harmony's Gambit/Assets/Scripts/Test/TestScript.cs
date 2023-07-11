@@ -15,6 +15,7 @@ public class TestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.W))
         {
             PManager.GetComponent<PlayerManager>().player1MoveTarget(0);
@@ -57,5 +58,6 @@ public class TestScript : MonoBehaviour
             PManager.GetComponent<PlayerManager>().playerMovement();
             EManager.GetComponent<EnemyManager>().EnemyAttack();
         }
+        */
     }
 }

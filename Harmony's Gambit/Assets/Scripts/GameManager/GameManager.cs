@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> monsters = new List<GameObject>();
+    public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> players = new List<GameObject>();
     private Player redPlayer;
     private Player bluePlayer;
@@ -23,9 +23,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //player Move
+        
         if (rhythm)
         {
+            //player Move
             rhythm = false;
             if (isStunned)
             {
@@ -40,8 +41,8 @@ public class GameManager : MonoBehaviour
                 if (isRedValid && isBlueValid)
                 {
                     isRedValid = false; isBlueValid = false;
-                    GameObject redNextDest = redPlayer.GetNextDest(redPlayer.direction);
-                    GameObject blueNextDest = bluePlayer.GetNextDest(bluePlayer.direction);
+                    GameObject redNextDest = redPlayer.GetNextDest();
+                    GameObject blueNextDest = bluePlayer.GetNextDest();
                     if (redNextDest == blueNextDest || (redNextDest == bluePlayer.currentBlock && blueNextDest == redPlayer.currentBlock))
                     {
                         //같은칸으로 혹은 붙어있는 상태에서 서로 충돌
@@ -49,24 +50,30 @@ public class GameManager : MonoBehaviour
                     }
                     else
                     {
+                        //공격판정
 
-                        //여기부터 내일 다시
-                        GameObject whosOnDest = redNextDest.GetComponent<GridSlotInfo>().occupyingCharacter;
-                        if (redNextDest.GetComponent<GridSlotInfo>().blockType == BLOCKTYPE.WALL)
-                        {
-                            
-                        }
-                        else if( whosOnDest == null)
-                        {
-                            redPlayer.Move(redNextDest);
-                        }
-                        else if(whosOnDest == bluePlayer.player)
-                        {
+                        //공격일때
 
-                        }
+                        //이동일때
+                        redPlayer.MoveManage();
                     }
                 }
             }   
+        
+            //enemy move
+
         }
+
+        //isMovedThisTurn = false 로 초기화
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<Player>().isMovedThisTurn = false;
+        }
+
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<Enemy>().isMovedThisTurn = false;
+        }
+
     }
 }
