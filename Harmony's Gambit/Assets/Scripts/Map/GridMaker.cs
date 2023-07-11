@@ -57,8 +57,6 @@ public class GridMaker : MonoBehaviour
         GameObject EManager = (GameObject)Instantiate(Resources.Load("Prefabs/Enemies/EnemyManager"));
         EManager.name = "EnemyManager";
 
-        GameObject TestEnemy = (GameObject)Instantiate(Resources.Load("Prefabs/Test/Character/TestEnemy"));
-        GameObject TestController = (GameObject)Instantiate(Resources.Load("Prefabs/Test/Character/Tester"));
     }
 
     // Update is called once per frame

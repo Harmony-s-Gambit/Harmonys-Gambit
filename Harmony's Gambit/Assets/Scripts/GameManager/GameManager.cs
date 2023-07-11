@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                // 테스트 용
-                isRedValid = true; isBlueValid = true;
                 if (isRedValid ^ isBlueValid)
                 {
                     //둘중 한명만 성공
@@ -79,6 +77,7 @@ public class GameManager : MonoBehaviour
                     //공격일 때
 
                     //이동일 때
+                    Debug.Log("Here");
                     enemy.GetComponent<Enemy>().MoveManage();
                 }
             }

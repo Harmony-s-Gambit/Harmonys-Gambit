@@ -5,7 +5,6 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
-
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -60,6 +59,25 @@ public class Player : Character
         nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
         currentBlock = nextDest;
         gameObject.transform.position = currentBlock.transform.position;
+        switch (direction)
+        {
+            case DIRECTION.UP:
+                y = y + 1;
+                break;
+            case DIRECTION.LEFT:
+                x = x - 1;
+                break;
+            case DIRECTION.DOWN:
+                y = y - 1;
+                break;
+            case DIRECTION.RIGHT:
+                x = x + 1;
+                break;
+            case DIRECTION.STAY:
+                break;
+            default:
+                break;
+        }
     }
 
     public override bool MoveManage()
