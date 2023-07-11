@@ -175,19 +175,19 @@ public class TimingManager : MonoBehaviour
                 string key = _whatKeyP2.Dequeue();
                 if (key == "Up")
                 {
-                    _gameManager.redPlayer.direction = DIRECTION.UP;
+                    _gameManager.bluePlayer.direction = DIRECTION.UP;
                 }
                 if (key == "Left")
                 {
-                    _gameManager.redPlayer.direction = DIRECTION.LEFT;
+                    _gameManager.bluePlayer.direction = DIRECTION.LEFT;
                 }
                 if (key == "Down")
                 {
-                    _gameManager.redPlayer.direction = DIRECTION.DOWN;
+                    _gameManager.bluePlayer.direction = DIRECTION.DOWN;
                 }
                 if (key == "Right")
                 {
-                    _gameManager.redPlayer.direction = DIRECTION.RIGHT;
+                    _gameManager.bluePlayer.direction = DIRECTION.RIGHT;
                 }
             }
         }

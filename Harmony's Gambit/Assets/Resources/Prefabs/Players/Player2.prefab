@@ -119,6 +119,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee939b571a827d42bb3f51994c857ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 3
+  x: 0
+  y: 0
+  color: 1
+  direction: 0
+  character: {fileID: 0}
+  currentBlock: {fileID: 0}
+  isMovedThisTurn: 0
 --- !u!1 &6008149653214655620
 GameObject:
   m_ObjectHideFlags: 0

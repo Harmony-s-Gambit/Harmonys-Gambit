@@ -7,14 +7,13 @@ public class Player : Character
 {
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        character = gameObject;
-        GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(character);
+        GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         
     }
@@ -23,8 +22,8 @@ public class Player : Character
     {
         x = px; y = py;
         currentBlock = GameObject.Find(x + "_" + y);
-        currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = character;
-        character.transform.position = currentBlock.transform.position;
+        currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
+        gameObject.transform.position = currentBlock.transform.position;
     }
 
     public override GameObject GetNextDest()
@@ -58,9 +57,9 @@ public class Player : Character
     {
         isMovedThisTurn = true;
         currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
-        nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = character;
+        nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
         currentBlock = nextDest;
-        character.transform.position = currentBlock.transform.position;
+        gameObject.transform.position = currentBlock.transform.position;
     }
 
     public override bool MoveManage()

@@ -16,14 +16,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        redPlayer = players[0].GetComponent<Player>();
-        bluePlayer = players[1].GetComponent<Player>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        redPlayer = players[0].GetComponent<Player>();
+        bluePlayer = players[1].GetComponent<Player>();
         if (rhythm)
         {
             //player Move
@@ -72,6 +72,11 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
+                    //공격판정
+
+                    //공격일 때
+
+                    //이동일 때
                     enemy.GetComponent<Enemy>().MoveManage();
                 }
             }
