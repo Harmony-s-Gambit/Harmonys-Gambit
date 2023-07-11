@@ -119,6 +119,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee939b571a827d42bb3f51994c857ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 3
+  x: 0
+  y: 0
+  color: 0
+  direction: 0
+  character: {fileID: 0}
+  currentBlock: {fileID: 0}
+  isMovedThisTurn: 0
 --- !u!1 &4971621994006963804
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 4971621994006963804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4088315204084070972}
@@ -192,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 499284a3041fe254e982087c29ac256c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a472118a8afbaf347a62340d54ab1ff6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
