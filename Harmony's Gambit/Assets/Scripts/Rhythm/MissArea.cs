@@ -5,10 +5,12 @@ using UnityEngine;
 public class MissArea : MonoBehaviour
 {
     TimingManager _timingManager;
+    GameManager _gameManager;
 
     private void Start()
     {
         _timingManager = FindObjectOfType<TimingManager>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +32,7 @@ public class MissArea : MonoBehaviour
         else
         {
             _timingManager.SuccessOrFailure();
+            _gameManager.rhythm = true;
         }
     }
 }

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TimingManager : MonoBehaviour
 {
+    GameManager _gameManager;
+
     public List<GameObject> boxNoteListP1 = new List<GameObject>();
     public List<GameObject> boxNoteListP2 = new List<GameObject>();
 
@@ -17,20 +18,21 @@ public class TimingManager : MonoBehaviour
     Vector2[] _timingBoxsP1;
     Vector2[] _timingBoxsP2;
 
-    bool _IsPassP1 = false;
-    bool _IsPassP2 = false;
     int _keyInputNumP1 = 0;
     int _keyInputNumP2 = 0;
-    private Queue<bool> _IsSuccess = new Queue<bool>();
+    private Queue<bool> _IsSuccessP1 = new Queue<bool>();
+    private Queue<bool> _IsSuccessP2 = new Queue<bool>();
     private Queue<string> _whatKeyP1 = new Queue<string>();
     private Queue<string> _whatKeyP2 = new Queue<string>();
 
     [SerializeField] GameObject _successImage;
     [SerializeField] GameObject _failureImage;
-    [SerializeField] GameObject _tfSofFImage;
+    [SerializeField] GameObject _tfSoFImage;
 
     private void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
+
         _timingBoxsP1 = new Vector2[_timingRectP1.Length];
         for (int i = 0; i < _timingRectP1.Length; i++)
         {
@@ -55,11 +57,6 @@ public class TimingManager : MonoBehaviour
                 {
                     if (_timingBoxsP1[j].x <= t_notePosX && t_notePosX <= _timingBoxsP1[j].y)
                     {
-                        //ObjectPool.instance.noteQueueP1.Enqueue(boxNoteListP1[i].gameObject);
-                        //boxNoteListP1[i].gameObject.SetActive(false);
-                        //boxNoteListP1.RemoveAt(i);
-                        //print("P1" + j + key);
-
                         if (_keyInputNumP1 == 0)
                         {
                             for (int k = 0; k < _whatKeyP1.Count; k++)
@@ -67,11 +64,6 @@ public class TimingManager : MonoBehaviour
                                 _whatKeyP1.Dequeue();
                             }
                             _whatKeyP1.Enqueue(key);
-                            //_IsPassP2 = true;
-                        }
-                        else
-                        {
-                            //_IsPassP2 = false;
                         }
                         _keyInputNumP1++;
 
@@ -92,11 +84,6 @@ public class TimingManager : MonoBehaviour
                 {
                     if (_timingBoxsP2[j].x <= t_notePosX && t_notePosX <= _timingBoxsP2[j].y)
                     {
-                        //ObjectPool.instance.noteQueueP2.Enqueue(boxNoteListP2[i].gameObject);
-                        //boxNoteListP2[i].gameObject.SetActive(false);
-                        //boxNoteListP2.RemoveAt(i);
-                        //print("P2" + j + key);
-
                         if (_keyInputNumP2 == 0)
                         {
                             for (int k = 0; k < _whatKeyP2.Count; k++)
@@ -104,11 +91,6 @@ public class TimingManager : MonoBehaviour
                                 _whatKeyP2.Dequeue();
                             }
                             _whatKeyP2.Enqueue(key);
-                            //_IsPassP2 = true;
-                        }
-                        else
-                        {
-                            //_IsPassP2 = false;
                         }
                         _keyInputNumP2++;
 
@@ -126,40 +108,112 @@ public class TimingManager : MonoBehaviour
     {
         //print("P1" + _keyInputNumP1);
         //print("P2" + _keyInputNumP2);
-        for (int i = 0; i < _IsSuccess.Count; i++)
+        for (int i = 0; i < _IsSuccessP1.Count; i++)
         {
-            _IsSuccess.Dequeue();
+            _IsSuccessP1.Dequeue();
+        }
+        for (int i = 0; i < _IsSuccessP2.Count; i++)
+        {
+            _IsSuccessP2.Dequeue();
         }
 
-        if (_keyInputNumP1 == 1 && _keyInputNumP2 == 1)
+        if (_keyInputNumP1 == 1)
         {
-            _IsSuccess.Enqueue(true);
+            _IsSuccessP1.Enqueue(true);
         }
         else
         {
-            _IsSuccess.Enqueue(false);
+            _IsSuccessP1.Enqueue(false);
+        }
+
+        if ( _keyInputNumP2 == 1)
+        {
+            _IsSuccessP2.Enqueue(true);
+        }
+        else
+        {
+            _IsSuccessP2.Enqueue(false);
         }
     }
 
     public void SuccessOrFailure()
     {
-        _keyInputNumP1 = 0;
-        _keyInputNumP2 = 0;
-        if (_IsSuccess.Count != 0)
+        if (_IsSuccessP1.Count != 0)
         {
-            if (_IsSuccess.Dequeue())
+            _gameManager.isRedValid = _IsSuccessP1.Dequeue();
+            if (_whatKeyP1.Count != 0)
             {
-                Instantiate(_successImage, _tfSofFImage.transform.position, Quaternion.identity, this.transform);
-                print(_whatKeyP1.Dequeue() + _whatKeyP2.Dequeue());
-            }
-            else
-            {
-                Instantiate(_failureImage, _tfSofFImage.transform.position, Quaternion.identity, this.transform);
+                string key = _whatKeyP1.Dequeue();
+                if (key == "W")
+                {
+                    _gameManager.redPlayer.direction = DIRECTION.UP;
+                }
+                if (key == "A")
+                {
+                    _gameManager.redPlayer.direction = DIRECTION.LEFT;
+                }
+                if (key == "S")
+                {
+                    _gameManager.redPlayer.direction = DIRECTION.DOWN;
+                }
+                if (key == "D")
+                {
+                    _gameManager.redPlayer.direction = DIRECTION.RIGHT;
+                }
             }
         }
         else
         {
-            Instantiate(_failureImage, _tfSofFImage.transform.position, Quaternion.identity, this.transform);
+            _gameManager.isRedValid = false;
         }
+
+        if (_IsSuccessP2.Count != 0)
+        {
+            _gameManager.isBlueValid = _IsSuccessP2.Dequeue();
+            if (_whatKeyP2.Count != 0)
+            {
+                string key = _whatKeyP2.Dequeue();
+                if (key == "Up")
+                {
+                    _gameManager.redPlayer.direction = DIRECTION.UP;
+                }
+                if (key == "Left")
+                {
+                    _gameManager.redPlayer.direction = DIRECTION.LEFT;
+                }
+                if (key == "Down")
+                {
+                    _gameManager.redPlayer.direction = DIRECTION.DOWN;
+                }
+                if (key == "Right")
+                {
+                    _gameManager.redPlayer.direction = DIRECTION.RIGHT;
+                }
+            }
+        }
+        else
+        {
+            _gameManager.isBlueValid = false;
+        }
+
+        _keyInputNumP1 = 0;
+        _keyInputNumP2 = 0;
+
+        //if (_IsSuccess.Count != 0)
+        //{
+        //    if (_IsSuccess.Dequeue())
+        //    {
+        //        Instantiate(_successImage, _tfSoFImage.transform.position, Quaternion.identity, this.transform);
+        //        print(_whatKeyP1.Dequeue() + _whatKeyP2.Dequeue());
+        //    }
+        //    else
+        //    {
+        //        Instantiate(_failureImage, _tfSoFImage.transform.position, Quaternion.identity, this.transform);
+        //    }
+        //}
+        //else
+        //{
+        //    Instantiate(_failureImage, _tfSoFImage.transform.position, Quaternion.identity, this.transform);
+        //}
     }
 }

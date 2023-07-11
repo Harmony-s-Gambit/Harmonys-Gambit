@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> players = new List<GameObject>();
-    private Player redPlayer;
-    private Player bluePlayer;
+    public Player redPlayer;
+    public Player bluePlayer;
     public bool isRedValid = false;
     public bool isBlueValid = false;
     public bool isStunned = false;
