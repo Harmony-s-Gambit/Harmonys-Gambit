@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
     }
-
+    /*
     public void playerMovement()
     {
         if (MoveP1 && MoveP2)
@@ -128,4 +128,5 @@ public class PlayerManager : MonoBehaviour
         }
 
     }
+    */
 }
