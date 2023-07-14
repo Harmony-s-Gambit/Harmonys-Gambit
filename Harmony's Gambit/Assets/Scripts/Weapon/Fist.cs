@@ -8,6 +8,7 @@ public class Fist : Weapon
     public override void Start()
     {
         damage = 1;
+        Range = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -42,5 +43,22 @@ public class Fist : Weapon
             return true;
         }
         else return false;
+    }
+
+    public override void attackEnemyInRange()
+    {
+        if(Range.Count != 0)
+        {
+            for(int i = 0; i < Range.Count; i++)
+            {
+                if(Range[i].tag != "Wall")
+                {
+                    if(Range[i].GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Enemy")
+                    {
+
+                    }
+                }
+            }
+        }
     }
 }

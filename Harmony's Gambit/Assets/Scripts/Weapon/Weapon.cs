@@ -10,4 +10,5 @@ public abstract class Weapon : MonoBehaviour
     public abstract void Start();
     public abstract void Update();
     public abstract bool isEnemyInRange(int x, int y, int direction);
+    public abstract void attackEnemyInRange();
 }
