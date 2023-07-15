@@ -15,22 +15,22 @@ public class GenerateNoteTest : MonoBehaviour
         {
             NoteManager.instance.GenerateNote("BGM1");
             _currentTime += Time.deltaTime;
-            if (BGMTextReader.instance.BGMTextRead("BGM1")[2] < _currentTime && !isPlaying)
+            if (BGMJson.instance.bgm1.delay < _currentTime && !isPlaying) //BGMTextReader.instance.BGMTextRead("BGM1")[2]
             {
                 AudioManager.instance.PlayBGM("BGM1");
                 isPlaying = true;
             }
         }
-        else if (_bgmNum == 2)
-        {
-            NoteManager.instance.GenerateNote("Unity");
-            _currentTime += Time.deltaTime;
-            if (BGMTextReader.instance.BGMTextRead("Unity")[2] < _currentTime && !isPlaying)
-            {
-                AudioManager.instance.PlayBGM("Unity");
-                isPlaying = true;
-            }
-        }
+        //else if (_bgmNum == 2)
+        //{
+        //    NoteManager.instance.GenerateNote("Unity");
+        //    _currentTime += Time.deltaTime;
+        //    if (BGMTextReader.instance.BGMTextRead("Unity")[2] < _currentTime && !isPlaying)
+        //    {
+        //        AudioManager.instance.PlayBGM("Unity");
+        //        isPlaying = true;
+        //    }
+        //}
     }
 
     public void GamePlay1Button()

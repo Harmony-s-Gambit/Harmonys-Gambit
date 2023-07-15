@@ -9,7 +9,7 @@ public class BGMTextReader : MonoBehaviour
 
     private void Start()
     {
-        BGMTextRead("BGM1");
+        //BGMTextRead("BGM1");
         instance = this;
     }
 

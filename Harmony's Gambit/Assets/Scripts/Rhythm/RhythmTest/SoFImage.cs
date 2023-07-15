@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SofFImage : MonoBehaviour
+public class SoFImage : MonoBehaviour
 {
     private Image image;
     private float fadeSpeed;

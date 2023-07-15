@@ -26,37 +26,37 @@ public class NoteManager : MonoBehaviour
 
     public void GenerateNote(string bgmName)
     {
-        bpm = BGMTextReader.instance.BGMTextRead(bgmName)[1];
+        bpm = BGMJson.instance.bgm1.bpm; //BGMTextReader.instance.BGMTextRead(bgmName)[1]
 
-        if (bgmListindex < BGMTextReader.instance.BGMTextRead(bgmName).Count)
+        if (bgmListindex < BGMJson.instance.bgm1.beatList.Count) //BGMTextReader.instance.BGMTextRead(bgmName).Count
         {
             _currentTimeIn += Time.deltaTime;
-            if (_currentTimeIn >= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm)
+            if (_currentTimeIn >= BGMJson.instance.bgm1.beatList[bgmListindex] / bpm) //BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm
             {
                 GameObject t_note = ObjectPool.instance.noteQueueIn.Dequeue();
                 t_note.transform.position = _tfNoteAppearIn.position;
                 t_note.SetActive(true);
-                _currentTimeIn -= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm;
+                _currentTimeIn -= BGMJson.instance.bgm1.beatList[bgmListindex] / bpm;
             }
 
             _currentTimeP1 += Time.deltaTime;
-            if (_currentTimeP1 >= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm)
+            if (_currentTimeP1 >= BGMJson.instance.bgm1.beatList[bgmListindex] / bpm)
             {
                 GameObject t_note = ObjectPool.instance.noteQueueP1.Dequeue();
                 t_note.transform.position = _tfNoteAppearP1.position;
                 t_note.SetActive(true);
                 _timingManager.boxNoteListP1.Add(t_note);
-                _currentTimeP1 -= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm;
+                _currentTimeP1 -= BGMJson.instance.bgm1.beatList[bgmListindex] / bpm;
             }
 
             _currentTimeP2 += Time.deltaTime;
-            if (_currentTimeP2 >= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm)
+            if (_currentTimeP2 >= BGMJson.instance.bgm1.beatList[bgmListindex] / bpm)
             {
                 GameObject t_note = ObjectPool.instance.noteQueueP2.Dequeue();
                 t_note.transform.position = _tfNoteAppearP2.position;
                 t_note.SetActive(true);
                 _timingManager.boxNoteListP2.Add(t_note);
-                _currentTimeP2 -= BGMTextReader.instance.BGMTextRead(bgmName)[bgmListindex] / bpm;
+                _currentTimeP2 -= BGMJson.instance.bgm1.beatList[bgmListindex] / bpm;
                 bgmListindex++;
             }
         }
