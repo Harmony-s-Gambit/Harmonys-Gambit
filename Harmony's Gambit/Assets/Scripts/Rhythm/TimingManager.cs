@@ -6,26 +6,26 @@ public class TimingManager : MonoBehaviour
 {
     GameManager _gameManager;
 
-    public List<GameObject> boxNoteListP1 = new List<GameObject>();
+    public List<GameObject> boxNoteListP1 = new List<GameObject>(); //현재 생성되었고(hierarchy에서 setActive가 true가 되었고) 놓침 구간(Miss Area) 전의 타일들의 리스트
     public List<GameObject> boxNoteListP2 = new List<GameObject>();
 
-    [SerializeField] Transform _centerP1;
+    [SerializeField] Transform _centerP1; //판정 범위의 가운데 위치
     [SerializeField] Transform _centerP2;
-    [Tooltip("좋은 판정부터 나쁜판정순으로 입력")]
-    [SerializeField] RectTransform[] _timingRectP1;
-    [Tooltip("좋은 판정부터 나쁜판정순으로 입력")]
+    [Tooltip("좋은 판정부터 나쁜 판정순으로 입력")]
+    [SerializeField] RectTransform[] _timingRectP1; //판정들 추가할 때 필요. 예: perfect, good, bad 등, 현재는 하나뿐
+    [Tooltip("좋은 판정부터 나쁜 판정순으로 입력")]
     [SerializeField] RectTransform[] _timingRectP2;
-    Vector2[] _timingBoxsP1;
+    Vector2[] _timingBoxsP1; //판정 범위의 x좌표, boxNoteList의 노트들 중 이 x좌표 안에 있는 노트가 있다면 성공
     Vector2[] _timingBoxsP2;
 
-    int _keyInputNumP1 = 0;
+    int _keyInputNumP1 = 0; //키 입력 수, 2번 이상 정확한 타이밍에 눌렀는지 판단
     int _keyInputNumP2 = 0;
-    private Queue<bool> _IsSuccessP1 = new Queue<bool>();
+    private Queue<bool> _IsSuccessP1 = new Queue<bool>(); //성공했는가 실패했는가
     private Queue<bool> _IsSuccessP2 = new Queue<bool>();
-    private Queue<string> _whatKeyP1 = new Queue<string>();
+    private Queue<string> _whatKeyP1 = new Queue<string>(); //어떤 키를 눌렀는가
     private Queue<string> _whatKeyP2 = new Queue<string>();
 
-    [SerializeField] GameObject _successImage;
+    [SerializeField] GameObject _successImage; //성공, 실패 여부 이미지 테스트용
     [SerializeField] GameObject _failureImage;
     [SerializeField] GameObject _tfSoFImage;
 
@@ -33,10 +33,10 @@ public class TimingManager : MonoBehaviour
     {
         _gameManager = FindObjectOfType<GameManager>();
 
-        _timingBoxsP1 = new Vector2[_timingRectP1.Length];
+        _timingBoxsP1 = new Vector2[_timingRectP1.Length]; //판정 수 만큼 x좌표 범위 생성
         for (int i = 0; i < _timingRectP1.Length; i++)
         {
-            _timingBoxsP1[i].Set(_centerP1.localPosition.x - _timingRectP1[i].rect.width / 2, _centerP1.localPosition.x + _timingRectP1[i].rect.width / 2);
+            _timingBoxsP1[i].Set(_centerP1.localPosition.x - _timingRectP1[i].rect.width / 2, _centerP1.localPosition.x + _timingRectP1[i].rect.width / 2); //각 판정의 x좌표 범위 설정, 정확한 판정일수록 범위 작음
         }
 
         _timingBoxsP2 = new Vector2[_timingRectP2.Length];
@@ -46,24 +46,22 @@ public class TimingManager : MonoBehaviour
         }
     }
 
-    public void CheckTiming(int playerNum, string key)
+    public void CheckTiming(int playerNum, string key) //키를 눌렀을 때 실행
     {
-        if (playerNum == 1)
+        if (playerNum == 1) //플레이어 1이라면
         {
-            for (int i = 0; i < boxNoteListP1.Count; i++)
+            for (int i = 0; i < boxNoteListP1.Count; i++) //판정 범위 내에 있는 노트인지 확일할 노트들만큼 반복
             {
-                float t_notePosX = boxNoteListP1[i].transform.localPosition.x;
-                for (int j = 0; j < _timingBoxsP1.Length; j++)
+                float t_notePosX = boxNoteListP1[i].transform.localPosition.x; //노트의 x좌표 받아오기
+                for (int j = 0; j < _timingBoxsP1.Length; j++) //판정 범위만큼 실행, 현재 1개이므로 한 번만 실행하게 됨
                 {
-                    if (_timingBoxsP1[j].x <= t_notePosX && t_notePosX <= _timingBoxsP1[j].y)
+                    if (_timingBoxsP1[j].x <= t_notePosX && t_notePosX <= _timingBoxsP1[j].y) //판정 범위 안에 있는가
                     {
-                        if (_keyInputNumP1 == 0)
+                        boxNoteListP1[i].GetComponent<Note>().HideNote(); //노트 이미지 제거
+                        if (_keyInputNumP1 == 0) //1번 눌렀을 때
                         {
-                            for (int k = 0; k < _whatKeyP1.Count; k++)
-                            {
-                                _whatKeyP1.Dequeue();
-                            }
-                            _whatKeyP1.Enqueue(key);
+                            _whatKeyP1.Clear();
+                            _whatKeyP1.Enqueue(key); //어떤 키를 눌렀는지 저장
                         }
                         _keyInputNumP1++;
 
@@ -84,12 +82,10 @@ public class TimingManager : MonoBehaviour
                 {
                     if (_timingBoxsP2[j].x <= t_notePosX && t_notePosX <= _timingBoxsP2[j].y)
                     {
+                        boxNoteListP2[i].GetComponent<Note>().HideNote();
                         if (_keyInputNumP2 == 0)
                         {
-                            for (int k = 0; k < _whatKeyP2.Count; k++)
-                            {
-                                _whatKeyP2.Dequeue();
-                            }
+                            _whatKeyP2.Clear();
                             _whatKeyP2.Enqueue(key);
                         }
                         _keyInputNumP2++;
@@ -104,18 +100,10 @@ public class TimingManager : MonoBehaviour
         }
     }
 
-    private void IsSuccessManage()
+    private void IsSuccessManage() //성공인지 실패인지 저장하는 함수
     {
-        //print("P1" + _keyInputNumP1);
-        //print("P2" + _keyInputNumP2);
-        for (int i = 0; i < _IsSuccessP1.Count; i++)
-        {
-            _IsSuccessP1.Dequeue();
-        }
-        for (int i = 0; i < _IsSuccessP2.Count; i++)
-        {
-            _IsSuccessP2.Dequeue();
-        }
+        _IsSuccessP1.Clear();
+        _IsSuccessP2.Clear();
 
         if (_keyInputNumP1 == 1)
         {
@@ -136,7 +124,7 @@ public class TimingManager : MonoBehaviour
         }
     }
 
-    public void SuccessOrFailure()
+    public void SuccessOrFailure() //동기화 시에 실행, 성공인지 실패인지와 어떤 방향인지 설정하는 함수
     {
         if (_IsSuccessP1.Count != 0)
         {
@@ -198,22 +186,5 @@ public class TimingManager : MonoBehaviour
 
         _keyInputNumP1 = 0;
         _keyInputNumP2 = 0;
-
-        //if (_IsSuccess.Count != 0)
-        //{
-        //    if (_IsSuccess.Dequeue())
-        //    {
-        //        Instantiate(_successImage, _tfSoFImage.transform.position, Quaternion.identity, this.transform);
-        //        print(_whatKeyP1.Dequeue() + _whatKeyP2.Dequeue());
-        //    }
-        //    else
-        //    {
-        //        Instantiate(_failureImage, _tfSoFImage.transform.position, Quaternion.identity, this.transform);
-        //    }
-        //}
-        //else
-        //{
-        //    Instantiate(_failureImage, _tfSoFImage.transform.position, Quaternion.identity, this.transform);
-        //}
     }
 }

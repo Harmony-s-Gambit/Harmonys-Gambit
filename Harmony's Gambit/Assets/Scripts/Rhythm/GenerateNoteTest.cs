@@ -4,44 +4,18 @@ using UnityEngine;
 
 public class GenerateNoteTest : MonoBehaviour
 {
-    int _bgmNum = 0;
-
-    double _currentTime;
-    bool isPlaying = false;
-
     private void Update()
     {
-        if (_bgmNum == 1)
+        if (NoteManager.instance.currentBGM != "") //BGM 이름 설정 시 노트 생성 시작
         {
-            NoteManager.instance.GenerateNote("BGM1");
-            _currentTime += Time.deltaTime;
-            if (BGMJson.instance.bgm1.delay < _currentTime && !isPlaying) //BGMTextReader.instance.BGMTextRead("BGM1")[2]
-            {
-                AudioManager.instance.PlayBGM("BGM1");
-                isPlaying = true;
-            }
+            NoteManager.instance.GenerateNote();
         }
-        //else if (_bgmNum == 2)
-        //{
-        //    NoteManager.instance.GenerateNote("Unity");
-        //    _currentTime += Time.deltaTime;
-        //    if (BGMTextReader.instance.BGMTextRead("Unity")[2] < _currentTime && !isPlaying)
-        //    {
-        //        AudioManager.instance.PlayBGM("Unity");
-        //        isPlaying = true;
-        //    }
-        //}
     }
 
-    public void GamePlay1Button()
+    public void GamePlay1Button() //게임 플레이 시 설정, 노트 생성 시작, 즉 게임 시작 버튼
     {
-        _bgmNum = 1;
-        NoteManager.instance.bgmListindex = 10;
-    }
-
-    public void GamePlay2Button()
-    {
-        _bgmNum = 2;
-        NoteManager.instance.bgmListindex = 10;
+        NoteManager.instance.SetBGMValue("BGM1");
+        NoteManager.instance.currentBGM = "BGM1";
+        NoteManager.instance.bgmListindex = 0;
     }
 }
