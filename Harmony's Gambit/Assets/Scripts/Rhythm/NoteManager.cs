@@ -12,6 +12,7 @@ public class NoteManager : MonoBehaviour
     private double _currentTimeP1 = 0d; //플레이어 1(위쪽 노트) 생성 시간
     private double _currentTimeP2 = 0d; //플레이어 2(아래쪽 노트) 생성 시간
     public int bgmListindex = 0; //몇번째 노트의 박자인가
+    public List<double> currentBeatList = new List<double>(); //현재 곡의 비트리스트
 
     public string currentBGM; //이 변수로 현재 어떤 곡인지 판단
 
@@ -19,37 +20,35 @@ public class NoteManager : MonoBehaviour
     [SerializeField] Transform _tfNoteAppearP2; ////플레이어 2(아래쪽 노트) 생성 위치
 
     TimingManager _timingManager;
-    BGMJson _bgmJson;
 
     private void Start()
     {
         instance = this;
         _timingManager = GetComponent<TimingManager>();
-        _bgmJson = FindObjectOfType<BGMJson>();
     }
 
     public void GenerateNote()
     {
-        if (bgmListindex < BGMJson.instance.bgmJsonFiles[currentBGMindex].beatList.Count) //현재 곡의 박자 수 만큼 반복
+        if (bgmListindex < currentBeatList.Count) //현재 곡의 박자 수 만큼 반복
         {
             _currentTimeP1 += Time.deltaTime;
-            if (_currentTimeP1 >= BGMJson.instance.bgmJsonFiles[currentBGMindex].beatList[bgmListindex] / bpm) //일정 박자가 지나면
+            if (_currentTimeP1 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
             {
                 GameObject t_note = ObjectPool.instance.noteQueueP1.Dequeue();
                 t_note.transform.position = _tfNoteAppearP1.position;
                 t_note.SetActive(true); //노트 생성
                 _timingManager.boxNoteListP1.Add(t_note);
-                _currentTimeP1 -= BGMJson.instance.bgmJsonFiles[currentBGMindex].beatList[bgmListindex] / bpm;
+                _currentTimeP1 -= currentBeatList[bgmListindex] / bpm;
             }
 
             _currentTimeP2 += Time.deltaTime;
-            if (_currentTimeP2 >= BGMJson.instance.bgmJsonFiles[currentBGMindex].beatList[bgmListindex] / bpm) //일정 박자가 지나면
+            if (_currentTimeP2 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
             {
                 GameObject t_note = ObjectPool.instance.noteQueueP2.Dequeue();
                 t_note.transform.position = _tfNoteAppearP2.position;
                 t_note.SetActive(true);
                 _timingManager.boxNoteListP2.Add(t_note); //노트 생성
-                _currentTimeP2 -= BGMJson.instance.bgmJsonFiles[currentBGMindex].beatList[bgmListindex] / bpm;
+                _currentTimeP2 -= currentBeatList[bgmListindex] / bpm;
                 bgmListindex++;
             }
         }
@@ -57,9 +56,12 @@ public class NoteManager : MonoBehaviour
 
     public void SetBGMValue(string bgmName)
     {
-        currentBGMindex = _bgmJson.CurrentBGMindex(bgmName); //현재 곡의 인덱스 설정
+        currentBGMindex = BGMJson.instance.CurrentBGMindex(bgmName); //현재 곡의 인덱스 설정
         bpm = BGMJson.instance.bgmJsonFiles[currentBGMindex].bpm; //현재 곡의 bpm 설정
         delay = BGMJson.instance.bgmJsonFiles[currentBGMindex].delay; //현재 곡의 delay 설정
+        currentBGM = BGMJson.instance.bgmJsonFiles[currentBGMindex].bgmName; //현재 곡의 이름 설정
+        currentBeatList = BGMJson.instance.bgmJsonFiles[0].beatList; //현재 곡의 비트 리스트 설정
+        bgmListindex = 0; //초기화
     }
 
     private void OnTriggerExit2D(Collider2D collision) //노트가 화면 밖을 나가면 실행
