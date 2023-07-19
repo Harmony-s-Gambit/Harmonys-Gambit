@@ -1,64 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Fist : Weapon
-{
-    // Start is called before the first frame update
-    public override void Start()
+{ 
+    public override List<(int, int)> SearchRange()
     {
-        damage = 1;
-        Range = new List<GameObject>();
+        List<(int, int)> Range = new List<(int, int)>();
+        Range.Add((1, 0));
+        return Range;
     }
-
-    // Update is called once per frame
-    public override void Update()
+    public override void selectEnemies(DIRECTION direction, int x, int y, COLOR color)
     {
-        
-    }
-
-    public override bool isEnemyInRange(int x, int y, int direction)
-    {
-        Range.Clear();
-        GameObject targetRange = new GameObject();
+        List<(int, int)> Range = SearchRange();
+        GameObject inGridSlot = new GameObject();
         switch (direction)
         {
-            case 0:
-                targetRange = GameObject.Find(x + "_" + (y+1));
+            case (int)DIRECTION.UP:
+                inGridSlot = GameObject.Find((x + Range[0].Item2) + "_" + (y + Range[0].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
                 break;
-            case 1:
-                targetRange = GameObject.Find((x - 1) + "_" + y);
+            case DIRECTION.LEFT:
+                inGridSlot = GameObject.Find((x - Range[0].Item1) + "_" + (y + Range[0].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
                 break;
-            case 2:
-                targetRange = GameObject.Find(x + "_" + (y - 1));
+            case DIRECTION.RIGHT:
+                inGridSlot = GameObject.Find((x + Range[0].Item1) + "_" + (y + Range[0].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
                 break;
-            case 3:
-                targetRange = GameObject.Find((x + 1) + "_" + y);
+            case DIRECTION.DOWN:
+                inGridSlot = GameObject.Find((x + Range[0].Item2) + "_" + (y - Range[0].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                break;
+            case DIRECTION.STAY:
+                Attack = false;
                 break;
         }
-        Range = new List<GameObject>();
-        Range.Add(targetRange);
-        if (Range.Count != 0)
+        try
         {
-            return true;
-        }
-        else return false;
-    }
-
-    public override void attackEnemyInRange()
-    {
-        if(Range.Count != 0)
-        {
-            for(int i = 0; i < Range.Count; i++)
+            if (inGridSlot.tag == "Enemy")
             {
-                if(Range[i].tag != "Wall")
+                if (inGridSlot.GetComponent<Enemy>().color == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().color == color)
                 {
-                    if(Range[i].GetComponent<GridSlotInfo>().occupyingCharacter.tag == "Enemy")
-                    {
-
-                    }
+                    Selector.Add(inGridSlot);
+                    Attack = true;
                 }
             }
+            else
+            {
+                Attack = false;
+            }
+        }
+        catch (Exception e)
+        {
+            Attack = false;
         }
     }
 }
