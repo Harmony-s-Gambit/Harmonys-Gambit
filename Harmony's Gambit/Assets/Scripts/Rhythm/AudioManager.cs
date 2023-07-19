@@ -25,13 +25,14 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
 
-    public void PlayBGM(string p_bgmName)
+    public void PlayBGM(string p_bgmName, float delay = 0f)
     {
         for (int i = 0; i < _bgm.Length; i++)
         {
             if (p_bgmName == _bgm[i]._name)
             {
                 _bgmPlayer.clip = _bgm[i]._clip;
+                _bgmPlayer.time = delay;
                 _bgmPlayer.Play();
                 return;
             }
