@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     {
         redPlayer = players[0].GetComponent<Player>();
         bluePlayer = players[1].GetComponent<Player>();
+        //Attack or Move
         if (rhythm)
         {
             //player Move
@@ -77,7 +78,6 @@ public class GameManager : MonoBehaviour
                     //공격일 때
 
                     //이동일 때
-                    Debug.Log("Here");
                     enemy.GetComponent<Enemy>().MoveManage();
                 }
             }
@@ -93,6 +93,10 @@ public class GameManager : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().isMovedThisTurn = false;
         }
+
+        //무기 있으면 장착
+
+        //structure 있으면 발동
 
     }
 }
