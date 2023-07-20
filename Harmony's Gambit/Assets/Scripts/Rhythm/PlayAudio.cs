@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayAudio : MonoBehaviour
 {
-    private bool _isMusiceStart = false;
+    public static PlayAudio instance;
+
+    public bool _isMusiceStart = false;
     private double _currentTime = 0d;
-    private bool _isGameStart = false;
-    private int _NoteNum = 0;
+    public bool _isGameStart = false;
+
+    private void Start()
+    {
+        instance = this;
+    }
 
     private void FixedUpdate()
     {
@@ -40,17 +47,13 @@ public class PlayAudio : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("NoteP1") || collision.CompareTag("NoteP2"))
+        if (collision.CompareTag("NoteIn"))
         {
-            if (_NoteNum == 0) //noteNum 초기화 필요
+            _currentTime = 0;
+            _isGameStart = true;
+            if (NoteManager.instance.currentBGM == "Offset")
             {
-                _NoteNum++;
-            }
-            else if (_NoteNum == 1)
-            {
-                _currentTime = 0;
-                _isGameStart = true;
-                _NoteNum++;
+                AudioManager.instance.PlaySFX("Clap");
             }
         }
     }
