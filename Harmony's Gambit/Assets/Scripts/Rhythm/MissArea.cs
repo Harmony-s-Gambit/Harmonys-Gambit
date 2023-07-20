@@ -17,13 +17,16 @@ public class MissArea : MonoBehaviour
     {
         if (collision.CompareTag("NoteP1"))
         {
-            _gameManager.rhythm = true;
-            _timingManager.SuccessOrFailure(); //플레이어 1 노트로 동기화
             _timingManager.boxNoteListP1.Remove(collision.gameObject);
         }
         else if (collision.CompareTag("NoteP2"))
         {
             _timingManager.boxNoteListP2.Remove(collision.gameObject);
+        }
+        else if (collision.CompareTag("NoteIn"))
+        {
+            _gameManager.rhythm = true;
+            _timingManager.SuccessOrFailure(); //동기화
         }
     }
 }

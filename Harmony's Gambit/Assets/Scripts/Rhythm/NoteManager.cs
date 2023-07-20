@@ -11,6 +11,7 @@ public class NoteManager : MonoBehaviour
     private int currentBGMindex; //현재 곡이 상수로 어떤 값을 가지는가, BGMJson 스크립트에 있음. 예: BGM1은 0
     private double _currentTimeP1 = 0d; //플레이어 1(위쪽 노트) 생성 시간
     private double _currentTimeP2 = 0d; //플레이어 2(아래쪽 노트) 생성 시간
+    private double _currentTimeIn = 0d;
     public int bgmListindex = 0; //몇번째 노트의 박자인가
     public List<double> currentBeatList = new List<double>(); //현재 곡의 비트리스트
 
@@ -18,6 +19,7 @@ public class NoteManager : MonoBehaviour
 
     [SerializeField] Transform _tfNoteAppearP1; //플레이어 1(위쪽 노트) 생성 위치
     [SerializeField] Transform _tfNoteAppearP2; ////플레이어 2(아래쪽 노트) 생성 위치
+    [SerializeField] Transform _tfNoteAppearIn;
 
     TimingManager _timingManager;
 
@@ -49,8 +51,22 @@ public class NoteManager : MonoBehaviour
                 t_note.SetActive(true);
                 _timingManager.boxNoteListP2.Add(t_note); //노트 생성
                 _currentTimeP2 -= currentBeatList[bgmListindex] / bpm;
+            }
+
+            _currentTimeIn += Time.deltaTime;
+            if (_currentTimeIn >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
+            {
+                GameObject t_note = ObjectPool.instance.noteQueueIn.Dequeue();
+                t_note.transform.position = _tfNoteAppearIn.position;
+                t_note.SetActive(true);
+                _currentTimeIn -= currentBeatList[bgmListindex] / bpm;
                 bgmListindex++;
             }
+        }
+        else
+        {
+            PlayAudio.instance._isGameStart = false;
+            PlayAudio.instance._isMusiceStart = false;
         }
     }
 
@@ -72,10 +88,15 @@ public class NoteManager : MonoBehaviour
             ObjectPool.instance.noteQueueP1.Enqueue(collision.gameObject);
             collision.gameObject.SetActive(false); //파괴
         }
-        if (collision.CompareTag("NoteP2"))
+        else if (collision.CompareTag("NoteP2"))
         {
             _timingManager.boxNoteListP2.Remove(collision.gameObject);
             ObjectPool.instance.noteQueueP2.Enqueue(collision.gameObject);
+            collision.gameObject.SetActive(false); //파괴
+        }
+        else if (collision.CompareTag("NoteIn"))
+        {
+            ObjectPool.instance.noteQueueIn.Enqueue(collision.gameObject);
             collision.gameObject.SetActive(false); //파괴
         }
     }

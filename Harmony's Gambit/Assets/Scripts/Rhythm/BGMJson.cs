@@ -70,8 +70,8 @@ public class BGMJson : MonoBehaviour
     {
         bgmJsonFiles[offset].bgmName = "Offset";
         bgmJsonFiles[offset].bpm = 128d;
-        bgmJsonFiles[offset].delay = -0.05f;
-        bgmJsonFiles[offset].beatList = new List<double>() { 0, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240 };
+        bgmJsonFiles[offset].delay = 0f;
+        bgmJsonFiles[offset].beatList = new List<double>() { 0, 60, 60, 60, 60, 60, 60, 60, 60, 60};
         string jsondata = JsonUtility.ToJson(bgmJsonFiles[offset]);
         bgmJsonFiles[offset] = JsonUtility.FromJson<BGMJsonFile>(jsondata);
     }
