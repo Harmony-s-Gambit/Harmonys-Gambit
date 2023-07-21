@@ -66,6 +66,7 @@ public class TimingManager : MonoBehaviour
                         _keyInputNumP1++;
 
                         IsSuccessManage();
+                        RecordNoteXPos(1, t_notePosX);
 
                         return;
                     }
@@ -91,6 +92,7 @@ public class TimingManager : MonoBehaviour
                         _keyInputNumP2++;
 
                         IsSuccessManage();
+                        RecordNoteXPos(2, t_notePosX);
 
                         return;
                     }
@@ -186,5 +188,13 @@ public class TimingManager : MonoBehaviour
 
         _keyInputNumP1 = 0;
         _keyInputNumP2 = 0;
+    }
+
+    private void RecordNoteXPos(int player, float xPos) //오프셋 설정 시 필요함, 현재 노트의 x좌표를 넘겨줌
+    {
+        if (NoteManager.instance.currentBGM == "Offset")
+        {
+            GenerateNoteTest.instance.RecordingXPos(player, xPos);
+        }
     }
 }
