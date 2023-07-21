@@ -6,7 +6,7 @@ public class GridMaker : MonoBehaviour
 {
     public int rows = 5;
     public int cols = 5;
-    private int tileSize = 1;
+    private int tileSize = 150;
     // Start is called before the first frame update
     void Start()
     {
