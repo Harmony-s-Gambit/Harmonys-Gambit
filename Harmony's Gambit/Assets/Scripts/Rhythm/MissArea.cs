@@ -23,7 +23,7 @@ public class MissArea : MonoBehaviour
         {
             _timingManager.boxNoteListP2.Remove(collision.gameObject);
         }
-        else if (collision.CompareTag("NoteIn"))
+        if (collision.CompareTag("NoteIn"))
         {
             _gameManager.rhythm = true;
             _timingManager.SuccessOrFailure(); //µø±‚»≠
