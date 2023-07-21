@@ -20,9 +20,9 @@ public class PlayerManager : MonoBehaviour
         //그 후 Find를 이용해서 해당 타일을 찾고 배치
         P1_x = 1; P1_y = 2;
         P2_x = 5; P2_y = 3;
-        P1 = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton"));
+        P1 = (GameObject)Instantiate(Resources.Load("Prefabs/Players/bluePlayer"));
         P1.GetComponent<Player>().SetXY(P1_x, P1_y);
-        P2 = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton"));
+        P2 = (GameObject)Instantiate(Resources.Load("Prefabs/Players/redPlayer"));
         P2.GetComponent<Player>().SetXY(P2_x, P2_y);
     }
 
