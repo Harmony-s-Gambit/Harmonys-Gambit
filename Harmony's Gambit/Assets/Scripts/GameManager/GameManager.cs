@@ -75,14 +75,9 @@ public class GameManager : MonoBehaviour
                 {
                     //공격판정
 
+                    //안에 있으면 공격
 
-                    //판정 안 적들 이동
-
-                    //그래도 안에 있으면
-                        //공격
-                    //없으면
-                        //이동
-                    //이동일 때
+                    //없으면 이동
                     enemy.GetComponent<Enemy>().MoveManage();
                 }
             }
