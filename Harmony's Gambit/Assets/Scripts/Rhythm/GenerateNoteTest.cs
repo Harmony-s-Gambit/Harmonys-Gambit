@@ -35,24 +35,24 @@ public class GenerateNoteTest : MonoBehaviour
     }
 
     //오프셋 세팅 관련
-    private List<float> xPosP1 = new List<float>();
-    private List<float> xPosP2 = new List<float>();
+    private List<float> yPosP1 = new List<float>();
+    private List<float> yPosP2 = new List<float>();
 
     private void SettingOffset()
     {
-        xPosP1.Clear();
-        xPosP2.Clear();
+        yPosP1.Clear();
+        yPosP2.Clear();
     }
 
-    public void RecordingXPos(int player, float xPos)
+    public void RecordingXPos(int player, float yPos)
     {
         if (player == 1)
         {
-            xPosP1.Add(xPos);
+            yPosP1.Add(yPos);
         }
         else if (player == 2)
         {
-            xPosP2.Add(xPos);
+            yPosP2.Add(yPos);
         }
     }
 
@@ -61,22 +61,22 @@ public class GenerateNoteTest : MonoBehaviour
         float p1Center = 0;
         float p2Center = 0;
 
-        for (int i = 0; i < xPosP1.Count; i++)
+        for (int i = 0; i < yPosP1.Count; i++)
         {
-            p1Center += xPosP1[i];
+            p1Center += yPosP1[i];
         }
-        for (int i = 0; i < xPosP2.Count; i++)
+        for (int i = 0; i < yPosP2.Count; i++)
         {
-            p2Center += xPosP2[i];
+            p2Center += yPosP2[i];
         }
 
-        p1Center /= xPosP1.Count;
-        p2Center /= xPosP2.Count;
+        p1Center /= yPosP1.Count;
+        p2Center /= yPosP2.Count;
 
         print(p1Center);
         print(p2Center);
 
-        _tfNoteAppearP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(-1000 - p1Center, 0);
-        _tfNoteAppearP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-1000 - p2Center, 0);
+        _tfNoteAppearP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 200 - p1Center);
+        _tfNoteAppearP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 200 - p2Center);
     }
 }
