@@ -73,9 +73,6 @@ public class GenerateNoteTest : MonoBehaviour
         p1Center /= yPosP1.Count;
         p2Center /= yPosP2.Count;
 
-        print(p1Center);
-        print(p2Center);
-
         _tfNoteAppearP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 200 - p1Center);
         _tfNoteAppearP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 200 - p2Center);
     }
