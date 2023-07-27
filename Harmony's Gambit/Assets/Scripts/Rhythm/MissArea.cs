@@ -26,6 +26,7 @@ public class MissArea : MonoBehaviour
         if (collision.CompareTag("NoteIn"))
         {
             _gameManager.rhythm = true;
+            CameraMoving.instance.rhythm = true;
             _timingManager.SuccessOrFailure(); //µø±‚»≠
         }
     }
