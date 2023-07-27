@@ -23,11 +23,6 @@ public class GenerateNoteTest : MonoBehaviour
         }
     }
 
-    public void GamePlay1Button() //게임 플레이 시 설정, 노트 생성 시작, 즉 게임 시작 버튼
-    {
-        NoteManager.instance.SetBGMValue("BGM1");
-    }
-
     public void OffsetStartButton()
     {
         NoteManager.instance.SetBGMValue("Offset");
@@ -72,6 +67,7 @@ public class GenerateNoteTest : MonoBehaviour
 
         p1Center /= yPosP1.Count;
         p2Center /= yPosP2.Count;
+
 
         _tfNoteAppearP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 200 - p1Center);
         _tfNoteAppearP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 200 - p2Center);

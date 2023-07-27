@@ -25,9 +25,12 @@ public class MissArea : MonoBehaviour
         }
         if (collision.CompareTag("NoteIn"))
         {
-            _gameManager.rhythm = true;
-            CameraMoving.instance.rhythm = true;
-            _timingManager.SuccessOrFailure(); //동기화
+            if (NoteManager.instance.currentBGM != "Offset")
+            {
+                _gameManager.rhythm = true;
+                CameraMoving.instance.rhythm = true;
+                _timingManager.SuccessOrFailure(); //동기화
+            }
         }
     }
 }

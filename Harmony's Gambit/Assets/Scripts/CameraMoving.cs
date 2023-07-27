@@ -13,6 +13,7 @@ public class CameraMoving : MonoBehaviour
     private void Start()
     {
         instance = this;
+        center = this.transform.position;
     }
 
     void Update()
