@@ -5,10 +5,12 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
+    public Weapon weapon;
     // Start is called before the first frame update
     protected override void Start()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
+        weapon = new Fist();
     }
 
     // Update is called once per frame
@@ -82,11 +84,11 @@ public class Player : Character
 
     public override bool MoveManage()
     {
-        GameObject nextDest = GetNextDest();
         if (isMovedThisTurn)
         {
             return false;
         }
+        GameObject nextDest = GetNextDest();
         isMovedThisTurn = true;
         GameObject whosOnDest = nextDest.GetComponent<GridSlotInfo>().occupyingCharacter;
         if (nextDest.GetComponent<GridSlotInfo>().blockType == BLOCKTYPE.WALL)

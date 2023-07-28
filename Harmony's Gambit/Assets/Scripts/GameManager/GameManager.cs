@@ -53,13 +53,37 @@ public class GameManager : MonoBehaviour
                     }
                     else
                     {
+                        List<GameObject> tempEnemies = new List<GameObject>();
                         //공격판정
-
+                        for(int i = 0; i < 2; i++)
+                        {
+                            Player tempPlayer = players[i].GetComponent<Player>();   
+                            tempEnemies.AddRange(tempPlayer.weapon.targetEnemies(tempPlayer.direction,tempPlayer.x,tempPlayer.y,tempPlayer.color));
+                        }
                         //공격일때
-
+                        for(int i = 0; i < enemies.Count; i++)
+                        {
+                            if (tempEnemies[i].GetComponent<Enemy>().MoveManage())
+                            {
+                                tempEnemies[i].GetComponent<Enemy>().Move(enemies[i].GetComponent<Enemy>().GetNextDest());
+                            }
+                        }
+                        tempEnemies.Clear();
+                        for(int i = 0; i < 2; i++)
+                        {
+                            Player tempPlayer = players[i].GetComponent<Player>();
+                            tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
+                            tempPlayer.weapon.attackEnemies(i);
+                        }
                         //이동일때
-                        redPlayer.MoveManage();
-                        bluePlayer.MoveManage();
+                        if (redPlayer.MoveManage())
+                        {
+                            redPlayer.Move(redNextDest);
+                        }
+                        if (bluePlayer.MoveManage())
+                        {
+                            bluePlayer.Move(blueNextDest);
+                        }
                     }
                 }
             }   

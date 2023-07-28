@@ -87,11 +87,11 @@ public class Enemy : Character
 
     public override bool MoveManage()
     {
-        GameObject nextDest = GetNextDest();
         if (isMovedThisTurn)
         {
             return false;
         }
+        GameObject nextDest = GetNextDest();
         isMovedThisTurn = true;
         GameObject whosOnDest = nextDest.GetComponent<GridSlotInfo>().occupyingCharacter;
         if (nextDest.GetComponent<GridSlotInfo>().blockType == BLOCKTYPE.WALL)

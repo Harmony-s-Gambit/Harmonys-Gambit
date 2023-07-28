@@ -5,22 +5,19 @@ using System;
 
 public class Sweeper : Weapon
 {
-    public override List<(int, int)> SearchRange()
+    void Start()
     {
-        List<(int, int)> Range = new List<(int, int)>();
         Range.Add((1, 0));
         Range.Add((1, 1));
         Range.Add((1, -1));
         Range.Add((2, 0));
         Range.Add((2, 1));
         Range.Add((2, -1));
-        return Range;
     }
 
     public override void selectEnemies(DIRECTION direction, int x, int y, COLOR color)
     {
         Attack = false;
-        List<(int, int)> Range = SearchRange();
         GameObject inGridSlot = new GameObject();
         for (int i = 0; i < 3; i++)
         {

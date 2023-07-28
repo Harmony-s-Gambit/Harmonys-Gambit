@@ -4,17 +4,15 @@ using UnityEngine;
 using System;
 
 public class Fist : Weapon
-{ 
-    public override List<(int, int)> SearchRange()
+{
+    void Start()
     {
-        List<(int, int)> Range = new List<(int, int)>();
         Range.Add((1, 0));
-        return Range;
     }
     public override void selectEnemies(DIRECTION direction, int x, int y, COLOR color)
     {
-        List<(int, int)> Range = SearchRange();
         GameObject inGridSlot = new GameObject();
+        Selector.Clear();
         switch (direction)
         {
             case (int)DIRECTION.UP:
