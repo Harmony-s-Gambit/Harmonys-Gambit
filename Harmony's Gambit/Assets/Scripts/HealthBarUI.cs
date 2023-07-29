@@ -15,7 +15,7 @@ public class HealthBarUI : MonoBehaviour
         healthBarBackground = this.gameObject.transform.GetChild(0).gameObject;
         healthBarFilled = this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
 
-        fullHP = this.gameObject.transform.parent.GetComponent<Mouse>().HP;
+        fullHP = this.gameObject.transform.parent.GetComponent<Character>().HP;
         healthBarFilled.fillAmount = 1f;
     }
     
@@ -27,6 +27,6 @@ public class HealthBarUI : MonoBehaviour
     public void UpdateHPBar() //맞았을 때 실행
     {
         healthBarBackground.SetActive(true);
-        healthBarFilled.fillAmount = (float)this.gameObject.transform.parent.GetComponent<Mouse>().HP / fullHP;
+        healthBarFilled.fillAmount = (float)this.gameObject.transform.parent.GetComponent<Character>().HP / fullHP;
     }
 }
