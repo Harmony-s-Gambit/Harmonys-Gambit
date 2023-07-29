@@ -6,8 +6,9 @@ using System;
 
 public class Spear : Weapon
 {
-    void Start()
+    public override void Start()
     {
+        Range = new List<(int, int)>();
         Range.Add((1, 0));
         Range.Add((2, 0));
         Range.Add((3, 0));

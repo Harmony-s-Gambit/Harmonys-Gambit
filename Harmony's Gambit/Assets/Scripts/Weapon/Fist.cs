@@ -5,8 +5,9 @@ using System;
 
 public class Fist : Weapon
 {
-    void Start()
+    public override void Start()
     {
+        Range = new List<(int, int)>();
         Range.Add((1, 0));
     }
     public override void selectEnemies(DIRECTION direction, int x, int y, COLOR color)

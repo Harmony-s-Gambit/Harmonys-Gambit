@@ -61,11 +61,11 @@ public class GameManager : MonoBehaviour
                             tempEnemies.AddRange(tempPlayer.weapon.targetEnemies(tempPlayer.direction,tempPlayer.x,tempPlayer.y,tempPlayer.color));
                         }
                         //공격일때
-                        for(int i = 0; i < enemies.Count; i++)
+                        for(int i = 0; i < tempEnemies.Count; i++)
                         {
                             if (tempEnemies[i].GetComponent<Enemy>().MoveManage())
                             {
-                                tempEnemies[i].GetComponent<Enemy>().Move(enemies[i].GetComponent<Enemy>().GetNextDest());
+                                tempEnemies[i].GetComponent<Enemy>().Move(tempEnemies[i].GetComponent<Enemy>().GetNextDest());
                             }
                         }
                         tempEnemies.Clear();
@@ -73,17 +73,12 @@ public class GameManager : MonoBehaviour
                         {
                             Player tempPlayer = players[i].GetComponent<Player>();
                             tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
-                            tempPlayer.weapon.attackEnemies(i);
+                            tempPlayer.weapon.attackEnemies(1);
                         }
                         //이동일때
-                        if (redPlayer.MoveManage())
-                        {
-                            redPlayer.Move(redNextDest);
-                        }
-                        if (bluePlayer.MoveManage())
-                        {
-                            bluePlayer.Move(blueNextDest);
-                        }
+                        redPlayer.MoveManage();
+                        bluePlayer.MoveManage();
+                        
                     }
                 }
             }   

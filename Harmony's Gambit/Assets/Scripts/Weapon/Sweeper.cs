@@ -5,8 +5,9 @@ using System;
 
 public class Sweeper : Weapon
 {
-    void Start()
+    public override void Start()
     {
+        Range = new List<(int, int)>();
         Range.Add((1, 0));
         Range.Add((1, 1));
         Range.Add((1, -1));

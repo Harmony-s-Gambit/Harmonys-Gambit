@@ -11,6 +11,7 @@ public class Player : Character
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
         weapon = new Fist();
+        weapon.Start();
     }
 
     // Update is called once per frame
