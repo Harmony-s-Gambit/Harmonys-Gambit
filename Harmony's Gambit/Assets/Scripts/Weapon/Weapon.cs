@@ -11,6 +11,16 @@ public abstract class Weapon : MonoBehaviour
     public List<GameObject> Selector = new List<GameObject>();
     public abstract void Start();
     public abstract void selectEnemies(DIRECTION direction, int x, int y, COLOR color);
+
+    public int GetSelectorCount()
+    {
+        return Selector.Count;
+    }
+
+    public void ClearSelector()
+    {
+        Selector.Clear();
+    }
     public List<GameObject> targetEnemies(DIRECTION direction, int x, int y, COLOR color)
     {
         GameObject inGridSlot = new GameObject();

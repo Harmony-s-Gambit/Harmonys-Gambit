@@ -109,7 +109,6 @@ public class Player : Character
             }
             else
             {
-                // attack
                 return false;
             }
         }

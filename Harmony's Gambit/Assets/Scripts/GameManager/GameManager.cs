@@ -67,14 +67,20 @@ public class GameManager : MonoBehaviour
                             }
                             tempEnemies.Clear();
 
-                            //if 반환함수
                             //공격일때
                             tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
-                            tempPlayer.weapon.attackEnemies(1);
+                            if(tempPlayer.weapon.GetSelectorCount() > 0)
+                            {
+                                tempPlayer.weapon.attackEnemies(1);
+                            }
 
-                            //else
-                            //이동일때  
-                            tempPlayer.MoveManage();
+                            //이동일때
+                            else
+                            {
+                                tempPlayer.weapon.ClearSelector();
+                                tempPlayer.MoveManage();
+                            }
+
 
                         }                          
                     }
@@ -95,20 +101,22 @@ public class GameManager : MonoBehaviour
                     targetPlayers.AddRange(currentEnemy.weapon.targetEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color));
 
                     //공격일때
-                    if (targetPlayers.Count > 0)
+                    for (int j = 0; j < targetPlayers.Count; j++)
                     {
-                        for (int j = 0; j < targetPlayers.Count; j++)
-                        {
-                            targetPlayers[j].GetComponent<Enemy>().MoveManage();
-                        }
-                        targetPlayers.Clear();
-                        currentEnemy.weapon.selectEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color);
+                        targetPlayers[j].GetComponent<Player>().MoveManage();
+                    }
+                    targetPlayers.Clear();
+                    currentEnemy.weapon.selectEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color);
+                    if (currentEnemy.weapon.GetSelectorCount() > 0)
+                    {
                         currentEnemy.weapon.attackEnemies(1);
                     }
-                    //이동일때  
+
+                    //이동일때
                     else
                     {
-                        enemy.GetComponent<Enemy>().MoveManage();
+                        currentEnemy.weapon.ClearSelector();
+                        currentEnemy.MoveManage();
                     }
                 }
             }
