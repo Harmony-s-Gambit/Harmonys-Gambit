@@ -5,7 +5,6 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
-    public Weapon weapon;
     // Start is called before the first frame update
     protected override void Start()
     {

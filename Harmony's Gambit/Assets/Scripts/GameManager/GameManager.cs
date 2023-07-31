@@ -55,30 +55,29 @@ public class GameManager : MonoBehaviour
                     {
                         List<GameObject> tempEnemies = new List<GameObject>();
                         //공격판정
-                        for(int i = 0; i < 2; i++)
-                        {
-                            Player tempPlayer = players[i].GetComponent<Player>();   
-                            tempEnemies.AddRange(tempPlayer.weapon.targetEnemies(tempPlayer.direction,tempPlayer.x,tempPlayer.y,tempPlayer.color));
-                        }
-                        //공격일때
-                        for(int i = 0; i < tempEnemies.Count; i++)
-                        {
-                            if (tempEnemies[i].GetComponent<Enemy>().MoveManage())
-                            {
-                                tempEnemies[i].GetComponent<Enemy>().Move(tempEnemies[i].GetComponent<Enemy>().GetNextDest());
-                            }
-                        }
-                        tempEnemies.Clear();
-                        for(int i = 0; i < 2; i++)
+                        for (int i = 0; i < 2; i++)
                         {
                             Player tempPlayer = players[i].GetComponent<Player>();
-                            tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
-                            tempPlayer.weapon.attackEnemies(1);
-                        }
-                        //이동일때
-                        redPlayer.MoveManage();
-                        bluePlayer.MoveManage();
-                        
+                            tempEnemies.AddRange(tempPlayer.weapon.targetEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color));
+
+                            //공격일때
+                            if (tempEnemies.Count > 0)
+                            {
+                                for (int j = 0; j < tempEnemies.Count; j++)
+                                {
+                                    tempEnemies[j].GetComponent<Enemy>().MoveManage();
+                                }
+                                tempEnemies.Clear();
+                                tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
+                                tempPlayer.weapon.attackEnemies(1);
+                            }
+
+                            //이동일때  
+                            else
+                            {
+                                tempPlayer.MoveManage();
+                            }
+                        }                          
                     }
                 }
             }   
@@ -86,18 +85,32 @@ public class GameManager : MonoBehaviour
             //enemy move
             foreach (GameObject enemy in enemies)
             {
-                if (enemy.GetComponent<Enemy>().isMovedThisTurn)
+                Enemy currentEnemy = enemy.GetComponent<Enemy>();
+                if (currentEnemy.isMovedThisTurn)
                 {
-
+                    continue;
                 }
                 else
                 {
-                    //공격판정
+                    List<GameObject> targetPlayers = new List<GameObject>();
+                    targetPlayers.AddRange(currentEnemy.weapon.targetEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color));
 
-                    //안에 있으면 공격
-
-                    //없으면 이동
-                    enemy.GetComponent<Enemy>().MoveManage();
+                    //공격일때
+                    if (targetPlayers.Count > 0)
+                    {
+                        for (int j = 0; j < targetPlayers.Count; j++)
+                        {
+                            targetPlayers[j].GetComponent<Enemy>().MoveManage();
+                        }
+                        targetPlayers.Clear();
+                        currentEnemy.weapon.selectEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color);
+                        currentEnemy.weapon.attackEnemies(1);
+                    }
+                    //이동일때  
+                    else
+                    {
+                        enemy.GetComponent<Enemy>().MoveManage();
+                    }
                 }
             }
         }
