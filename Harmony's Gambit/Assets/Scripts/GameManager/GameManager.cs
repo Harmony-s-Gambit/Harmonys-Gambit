@@ -61,22 +61,21 @@ public class GameManager : MonoBehaviour
                             tempEnemies.AddRange(tempPlayer.weapon.targetEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color));
 
                             //공격일때
-                            if (tempEnemies.Count > 0)
+                            for (int j = 0; j < tempEnemies.Count; j++)
                             {
-                                for (int j = 0; j < tempEnemies.Count; j++)
-                                {
-                                    tempEnemies[j].GetComponent<Enemy>().MoveManage();
-                                }
-                                tempEnemies.Clear();
-                                tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
-                                tempPlayer.weapon.attackEnemies(1);
+                                tempEnemies[j].GetComponent<Enemy>().MoveManage();
                             }
+                            tempEnemies.Clear();
 
+                            //if 반환함수
+                            //공격일때
+                            tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
+                            tempPlayer.weapon.attackEnemies(1);
+
+                            //else
                             //이동일때  
-                            else
-                            {
-                                tempPlayer.MoveManage();
-                            }
+                            tempPlayer.MoveManage();
+
                         }                          
                     }
                 }

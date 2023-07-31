@@ -12,8 +12,6 @@ public class Enemy : Character
     {
         _directionIdx = 0;
         GameObject.Find("GameManager").GetComponent<GameManager>().enemies.Add(gameObject);
-        weapon = new Fist();
-        weapon.Start();
     }
 
     // Update is called once per frame
