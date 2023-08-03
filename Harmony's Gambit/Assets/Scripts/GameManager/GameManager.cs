@@ -81,23 +81,28 @@ public class GameManager : MonoBehaviour
                         
                     }
                 }
-            }   
-        
+            }
+
             //enemy move
             foreach (GameObject enemy in enemies)
             {
-                if (enemy.GetComponent<Enemy>().isMovedThisTurn)
+                try {
+                    if (enemy.GetComponent<Enemy>().isMovedThisTurn)
+                    {
+
+                    }
+                    else
+                    {
+                        //공격판정
+
+                        //안에 있으면 공격
+
+                        //없으면 이동
+                        enemy.GetComponent<Enemy>().MoveManage();
+                    }
+                }catch(MissingReferenceException e)
                 {
 
-                }
-                else
-                {
-                    //공격판정
-
-                    //안에 있으면 공격
-
-                    //없으면 이동
-                    enemy.GetComponent<Enemy>().MoveManage();
                 }
             }
         }
@@ -110,7 +115,22 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            enemy.GetComponent<Enemy>().isMovedThisTurn = false;
+            try
+            {
+                if (enemy.GetComponent<Enemy>().death)
+                {
+                    enemy.GetComponent<Enemy>().deathEffect();
+                    enemies.Remove(enemy);
+                    Destroy(enemy);
+                }
+                else
+                {
+                    enemy.GetComponent<Enemy>().isMovedThisTurn = false;
+                }
+            }catch(MissingReferenceException e)
+            {
+
+            }
         }
 
         //무기 있으면 장착

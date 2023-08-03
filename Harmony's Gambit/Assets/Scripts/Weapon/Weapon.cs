@@ -7,6 +7,7 @@ public abstract class Weapon : MonoBehaviour
 {
     protected List<(int, int)> Range;
     public bool Attack = false;
+    public bool playerWeapon = false;
     //Selector는 범위 tile GameObject를 잠시 받아두기도 하고 공격대상 GameObject를 받아두기도 합니다
     public List<GameObject> Selector = new List<GameObject>();
     public abstract void Start();
@@ -36,12 +37,22 @@ public abstract class Weapon : MonoBehaviour
                 }
                 try
                 {
-                    if (inGridSlot.tag == "Enemy")
+                    if (inGridSlot.tag == "Enemy" && playerWeapon)
                     {
-                        if (inGridSlot.GetComponent<Enemy>().color == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().color == color)
+                        if (!inGridSlot.GetComponent<Enemy>().isMultiColor) {
+                            if (inGridSlot.GetComponent<Enemy>().color == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().color == color)
+                            {
+                                Selector.Add(inGridSlot);
+                            }
+                    }
+                        else
                         {
-                            Selector.Add(inGridSlot);
+                            //여러 색을 가진 대상 공격
                         }
+                    }
+                    else if (inGridSlot.tag == "Player" && playerWeapon)
+                    {
+                    Selector.Add(inGridSlot);    
                     }
                 }
                 catch (Exception e)
@@ -55,7 +66,10 @@ public abstract class Weapon : MonoBehaviour
         {
             for(int i = 0; i < Selector.Count; i++)
             {
-                Selector[i].GetComponent<Enemy>().HP -= damage;
+                if (Selector[i].tag == "Enemy" && playerWeapon)
+                    Selector[i].GetComponent<Enemy>().HP -= damage;
+                else if (Selector[i].tag == "Player" && !playerWeapon)
+                    Selector[i].GetComponent<Player>().HP -= damage;
             }
         }
         Attack = false;

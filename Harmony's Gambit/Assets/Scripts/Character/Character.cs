@@ -6,7 +6,9 @@ public abstract class Character : MonoBehaviour
 {
     public int HP = 3;
     public int x, y;
+    public bool isMultiColor = false;
     public COLOR color;
+    public COLOR[] multiColor;
     public DIRECTION direction;
     public GameObject character;
     public GameObject currentBlock;

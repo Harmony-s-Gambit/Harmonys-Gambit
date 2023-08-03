@@ -5,13 +5,16 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
+    public bool takenDamage = false; //여러 몬스터한테서의 중복 데미지 방지차원에서 넣었습니다
     public Weapon weapon;
     // Start is called before the first frame update
     protected override void Start()
     {
+        
         GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
         weapon = new Fist();
         weapon.Start();
+        weapon.playerWeapon = true;
     }
 
     // Update is called once per frame
