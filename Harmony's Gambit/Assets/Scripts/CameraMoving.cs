@@ -11,9 +11,11 @@ public class CameraMoving : MonoBehaviour
 
     
     [Tooltip("카메라 이동 시간, 작을수록 빠름")]
-    [SerializeField] private float movingTime = 1f;
+    [SerializeField] private float movingTime;
     [Tooltip("카메라 최대 크기의 배수(1로 하면 플레이어가 멀수록 화면이 너무 많이 작아짐)")]
-    [SerializeField] private float maxSizeLimit = 0.8f;
+    [SerializeField] private float maxSizeLimit;
+    [Tooltip("처음 플레이어 거리")]
+    [SerializeField] private float firstPlayerDistance;
 
     public bool rhythm; //플레이어가 움직였을 때 true
     private float playerDistance; //플레이어들의 거리
@@ -25,7 +27,7 @@ public class CameraMoving : MonoBehaviour
         cam = GetComponent<Camera>();
 
         center = this.transform.position;
-        playerDistance = 618f; //처음 플레이어의 거리
+        playerDistance = firstPlayerDistance; //처음 플레이어의 거리
         cameraSize = cam.orthographicSize; //처음 카메라 크기
     }
 
@@ -41,13 +43,13 @@ public class CameraMoving : MonoBehaviour
             center = (player1Pos + player2Pos) / 2; //플레이어의 중심 좌표 계산
             center.z = -10f;
 
-            if (playerDistance <= 615f || playerDistance / 615f * 540f * maxSizeLimit <= 615f)
+            if (playerDistance <= firstPlayerDistance || playerDistance / firstPlayerDistance * cameraSize * maxSizeLimit <= firstPlayerDistance)
             {
-                StartCoroutine(ChangeSizeSmoothly(cam.orthographicSize, 540, movingTime));
+                StartCoroutine(ChangeSizeSmoothly(cam.orthographicSize, cameraSize, movingTime));
             }
             else
             {
-                StartCoroutine(ChangeSizeSmoothly(cam.orthographicSize, playerDistance / 615f * 540f * maxSizeLimit, movingTime));
+                StartCoroutine(ChangeSizeSmoothly(cam.orthographicSize, playerDistance / firstPlayerDistance * cameraSize * maxSizeLimit, movingTime));
             }
             rhythm = false;
         }
