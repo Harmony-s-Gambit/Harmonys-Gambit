@@ -15,5 +15,6 @@ public class Mouse : Enemy
             DIRECTION.STAY,
         };
         direction = pattern[0];
+        weapon = new Fist();
     }
 }

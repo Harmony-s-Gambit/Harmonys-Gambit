@@ -13,6 +13,7 @@ public abstract class Character : MonoBehaviour
     public GameObject character;
     public GameObject currentBlock;
     public bool isMovedThisTurn = false;
+    public Weapon weapon;
 
     public abstract void SetXY(int px, int py);
     public abstract GameObject GetNextDest();
