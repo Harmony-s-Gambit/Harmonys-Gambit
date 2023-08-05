@@ -5,12 +5,15 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
+    public bool takenDamage = false; //���� �������׼��� �ߺ� ������ ������������ �־����ϴ�
     // Start is called before the first frame update
     protected override void Start()
     {
+        
         GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
         weapon = new Fist();
         weapon.Start();
+        weapon.playerWeapon = true;
     }
 
     // Update is called once per frame

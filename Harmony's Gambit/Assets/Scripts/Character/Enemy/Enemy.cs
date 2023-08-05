@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    public bool death = false;
     protected DIRECTION[] pattern;
     protected int _directionIdx;
 
@@ -17,7 +18,10 @@ public class Enemy : Character
     // Update is called once per frame
     protected override void Update()
     {
-
+        if(HP < 0)
+        {
+            death = true;
+        }
     }
 
     public override void SetXY(int px, int py)
@@ -120,5 +124,10 @@ public class Enemy : Character
                 return false;
             }
         }
+    }
+
+    public void deathEffect()
+    {
+        
     }
 }

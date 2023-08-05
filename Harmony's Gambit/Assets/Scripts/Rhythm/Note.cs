@@ -25,7 +25,7 @@ public class Note : MonoBehaviour
 
     void Update()
     {
-        transform.localPosition += Vector3.down * _noteSpeed * Time.deltaTime;
+        transform.localPosition += Vector3.right * _noteSpeed * Time.deltaTime;
     }
 
     public void HideNote()

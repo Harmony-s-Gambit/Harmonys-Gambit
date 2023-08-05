@@ -7,8 +7,8 @@ public class GenerateNoteTest : MonoBehaviour
 {
     public static GenerateNoteTest instance;
 
-    [SerializeField] Transform _tfNoteAppearP1;
-    [SerializeField] Transform _tfNoteAppearP2;
+    [SerializeField] Transform _tfCenterFrameP1;
+    [SerializeField] Transform _tfCenterFrameP2;
 
     private void Start()
     {
@@ -30,24 +30,24 @@ public class GenerateNoteTest : MonoBehaviour
     }
 
     //오프셋 세팅 관련
-    private List<float> yPosP1 = new List<float>();
-    private List<float> yPosP2 = new List<float>();
+    private List<float> xPosP1 = new List<float>();
+    private List<float> xPosP2 = new List<float>();
 
     private void SettingOffset()
     {
-        yPosP1.Clear();
-        yPosP2.Clear();
+        xPosP1.Clear();
+        xPosP2.Clear();
     }
 
     public void RecordingXPos(int player, float yPos)
     {
         if (player == 1)
         {
-            yPosP1.Add(yPos);
+            xPosP1.Add(yPos);
         }
         else if (player == 2)
         {
-            yPosP2.Add(yPos);
+            xPosP2.Add(yPos);
         }
     }
 
@@ -56,20 +56,24 @@ public class GenerateNoteTest : MonoBehaviour
         float p1Center = 0;
         float p2Center = 0;
 
-        for (int i = 0; i < yPosP1.Count; i++)
+        for (int i = 0; i < xPosP1.Count; i++)
         {
-            p1Center += yPosP1[i];
+            p1Center += xPosP1[i];
         }
-        for (int i = 0; i < yPosP2.Count; i++)
+        for (int i = 0; i < xPosP2.Count; i++)
         {
-            p2Center += yPosP2[i];
+            p2Center += xPosP2[i];
         }
 
-        p1Center /= yPosP1.Count;
-        p2Center /= yPosP2.Count;
+        p1Center /= xPosP1.Count;
+        p2Center /= xPosP2.Count;
+        
+        if (xPosP1.Count != 0 && xPosP2.Count != 0)
+        {
+            _tfCenterFrameP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 + p1Center, 0);
+            _tfCenterFrameP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 + p2Center, 0);
+        }
 
-
-        _tfNoteAppearP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 200 - p1Center);
-        _tfNoteAppearP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 200 - p2Center);
+        FindObjectOfType<TimingManager>().SetTimingBoxs(p1Center, p2Center);
     }
 }

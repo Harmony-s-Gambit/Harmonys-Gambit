@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
             {
                 if (isRedValid ^ isBlueValid)
                 {
-                    //µÑÁß ÇÑ¸í¸¸ ¼º°ø
+                    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 }
                 if (isRedValid && isBlueValid)
                 {
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
                     GameObject blueNextDest = bluePlayer.GetNextDest();
                     if (redNextDest == blueNextDest || (redNextDest == bluePlayer.currentBlock && blueNextDest == redPlayer.currentBlock))
                     {
-                        //°°ÀºÄ­À¸·Î È¤Àº ºÙ¾îÀÖ´Â »óÅÂ¿¡¼­ ¼­·Î Ãæµ¹
+                        //ï¿½ï¿½ï¿½ï¿½Ä­ï¿½ï¿½ï¿½ï¿½ È¤ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹
                         isStunned = true;
                         redPlayer.isMovedThisTurn = true;
                         bluePlayer.isMovedThisTurn = true;
@@ -54,27 +54,27 @@ public class GameManager : MonoBehaviour
                     else
                     {
                         List<GameObject> tempEnemies = new List<GameObject>();
-                        //°ø°ÝÆÇÁ¤
+                        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                         for (int i = 0; i < 2; i++)
                         {
                             Player tempPlayer = players[i].GetComponent<Player>();
                             tempEnemies.AddRange(tempPlayer.weapon.targetEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color));
 
-                            //°ø°ÝÀÏ¶§
+                            //ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½
                             for (int j = 0; j < tempEnemies.Count; j++)
                             {
                                 tempEnemies[j].GetComponent<Enemy>().MoveManage();
                             }
                             tempEnemies.Clear();
 
-                            //°ø°ÝÀÏ¶§
+                            //ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½
                             tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
                             if(tempPlayer.weapon.GetSelectorCount() > 0)
                             {
                                 tempPlayer.weapon.attackEnemies(1);
                             }
 
-                            //ÀÌµ¿ÀÏ¶§
+                            //ï¿½Ìµï¿½ï¿½Ï¶ï¿½
                             else
                             {
                                 tempPlayer.weapon.ClearSelector();
@@ -85,8 +85,8 @@ public class GameManager : MonoBehaviour
                         }                          
                     }
                 }
-            }   
-        
+            }
+
             //enemy move
             foreach (GameObject enemy in enemies)
             {
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
                     List<GameObject> targetPlayers = new List<GameObject>();
                     targetPlayers.AddRange(currentEnemy.weapon.targetEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color));
 
-                    //°ø°ÝÀÏ¶§
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½
                     for (int j = 0; j < targetPlayers.Count; j++)
                     {
                         targetPlayers[j].GetComponent<Player>().MoveManage();
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
                         currentEnemy.weapon.attackEnemies(1);
                     }
 
-                    //ÀÌµ¿ÀÏ¶§
+                    //ï¿½Ìµï¿½ï¿½Ï¶ï¿½
                     else
                     {
                         currentEnemy.weapon.ClearSelector();
@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //isMovedThisTurn = false ·Î ÃÊ±âÈ­
+        //isMovedThisTurn = false ï¿½ï¿½ ï¿½Ê±ï¿½È­
         foreach (GameObject player in players)
         {
             player.GetComponent<Player>().isMovedThisTurn = false;
@@ -130,12 +130,27 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            enemy.GetComponent<Enemy>().isMovedThisTurn = false;
+            try
+            {
+                if (enemy.GetComponent<Enemy>().death)
+                {
+                    enemy.GetComponent<Enemy>().deathEffect();
+                    enemies.Remove(enemy);
+                    Destroy(enemy);
+                }
+                else
+                {
+                    enemy.GetComponent<Enemy>().isMovedThisTurn = false;
+                }
+            }catch(MissingReferenceException e)
+            {
+
+            }
         }
 
-        //¹«±â ÀÖÀ¸¸é ÀåÂø
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        //structure ÀÖÀ¸¸é ¹ßµ¿
+        //structure ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ßµï¿½
 
     }
 }
