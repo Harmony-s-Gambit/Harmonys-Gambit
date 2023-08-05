@@ -1659,6 +1659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingTime: 1
   maxSizeLimit: 0.8
+  firstPlayerDistance: 615
   rhythm: 0
 --- !u!1 &571241359
 GameObject:
