@@ -25,7 +25,7 @@ public abstract class Weapon : MonoBehaviour
     public List<GameObject> targetEnemies(DIRECTION direction, int x, int y, COLOR color)
     {
         GameObject inGridSlot = new GameObject();
-        Debug.Log(Range.Count);
+        //Debug.Log(Range.Count);
         for(int i = 0; i < Range.Count; i++)
         {
                 switch (direction)

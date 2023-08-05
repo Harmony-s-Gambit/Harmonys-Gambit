@@ -97,24 +97,17 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    List<GameObject> targetPlayers = new List<GameObject>();
-                    targetPlayers.AddRange(currentEnemy.weapon.targetEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color));
-
-                    //�����϶�
-                    for (int j = 0; j < targetPlayers.Count; j++)
-                    {
-                        targetPlayers[j].GetComponent<Player>().MoveManage();
-                    }
-                    targetPlayers.Clear();
                     currentEnemy.weapon.selectEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color);
                     if (currentEnemy.weapon.GetSelectorCount() > 0)
                     {
+                        Debug.Log("attack");
                         currentEnemy.weapon.attackEnemies(1);
                     }
 
                     //�̵��϶�
                     else
                     {
+                        Debug.Log("move");
                         currentEnemy.weapon.ClearSelector();
                         currentEnemy.MoveManage();
                     }
