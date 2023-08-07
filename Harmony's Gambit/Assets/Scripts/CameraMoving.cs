@@ -41,6 +41,7 @@ public class CameraMoving : MonoBehaviour
             player1Pos = new Vector3(GameObject.FindGameObjectWithTag("Player").transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y, -10f);
             player2Pos = new Vector3(GameObject.FindGameObjectWithTag("Player2").transform.position.x, GameObject.FindGameObjectWithTag("Player2").transform.position.y, -10f);
             center = (player1Pos + player2Pos) / 2; //플레이어의 중심 좌표 계산
+            center.y += 75f;
             center.z = -10f;
 
             if (playerDistance <= firstPlayerDistance || playerDistance / firstPlayerDistance * cameraSize * maxSizeLimit <= firstPlayerDistance)

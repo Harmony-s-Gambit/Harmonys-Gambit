@@ -20,7 +20,8 @@ public class ObjectPool : MonoBehaviour
     public Queue<GameObject> noteQueueP2 = new Queue<GameObject>();
     public Queue<GameObject> noteQueueIn = new Queue<GameObject>();
     
-    void Start()
+
+    private void Start()
     {
         instance = this;
         noteQueueP1 = insertQueue(objectInfo[0]);
