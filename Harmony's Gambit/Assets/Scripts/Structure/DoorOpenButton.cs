@@ -2,19 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorOpenButton : MonoBehaviour
+public class DoorOpenButton : Structure
 {
     public bool isPressed;
+    public int doorOpenButtonIndex;
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetIndex(int index)
     {
-        
+        doorOpenButtonIndex = index;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (_structureManager.rhythm)
+        {
+            if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter != null)
+            {
+                isPressed = true;
+            }
+        }
     }
 }

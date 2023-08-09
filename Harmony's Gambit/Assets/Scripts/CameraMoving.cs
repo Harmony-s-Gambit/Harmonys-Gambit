@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraMoving : MonoBehaviour
 {
-    public static CameraMoving instance;
     private Camera cam;
 
     Vector3 player1Pos, player2Pos, center; //플레이어1, 플레이어2의 위치 벡터와 카메라가 이동할 곳의 벡터
@@ -23,7 +22,6 @@ public class CameraMoving : MonoBehaviour
 
     private void Start()
     {
-        instance = this;
         cam = GetComponent<Camera>();
 
         center = this.transform.position;

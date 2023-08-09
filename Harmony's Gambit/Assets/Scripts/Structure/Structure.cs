@@ -8,24 +8,21 @@ public class Structure: MonoBehaviour
     public COLOR color;
     public DIRECTION direction;
     public GameObject currentBlock;
+    protected bool isPlaced = false;
 
-    public void Start()
+    protected StructureManager _structureManager;
+
+    private void Start()
     {
-        
+        _structureManager = FindObjectOfType<StructureManager>();
     }
-    public void Update()
-    {
-        
-    }
-    public void SetXY(int px, int py)
+
+    public virtual void SetXY(int px, int py)
     {
         x = px; y = py;
         currentBlock = GameObject.Find(x + "_" + y);
-        currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
+        currentBlock.GetComponent<GridSlotInfo>().structure = gameObject;
         gameObject.transform.position = currentBlock.transform.position;
-    }
-    public virtual void OnPress(GameObject character)
-    {
 
     }
 }
