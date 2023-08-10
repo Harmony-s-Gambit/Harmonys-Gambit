@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraMoving : MonoBehaviour
 {
     private Camera cam;
+    private GameManager _gameManager;
 
     Vector3 player1Pos, player2Pos, center; //플레이어1, 플레이어2의 위치 벡터와 카메라가 이동할 곳의 벡터
 
@@ -23,6 +24,7 @@ public class CameraMoving : MonoBehaviour
     private void Start()
     {
         cam = GetComponent<Camera>();
+        _gameManager = FindObjectOfType<GameManager>();
 
         center = this.transform.position;
         playerDistance = firstPlayerDistance; //처음 플레이어의 거리
@@ -31,28 +33,55 @@ public class CameraMoving : MonoBehaviour
 
     void Update()
     {
-        if (rhythm) //플레이어가 움직였다면
+        if (_gameManager.isRedPlayerPlaying || _gameManager.isBluePlayerPlaying) //한 명이라도 게임 중이라면
         {
-            StopAllCoroutines(); //진행중인 카메라 확대 또는 축소 정지
-            playerDistance = Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, GameObject.FindGameObjectWithTag("Player2").transform.position); //플레이어 거리 계산
-
-            player1Pos = new Vector3(GameObject.FindGameObjectWithTag("Player").transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y, -10f);
-            player2Pos = new Vector3(GameObject.FindGameObjectWithTag("Player2").transform.position.x, GameObject.FindGameObjectWithTag("Player2").transform.position.y, -10f);
-            center = (player1Pos + player2Pos) / 2; //플레이어의 중심 좌표 계산
-            center.y += 75f;
-            center.z = -10f;
-
-            if (playerDistance <= firstPlayerDistance || playerDistance / firstPlayerDistance * cameraSize * maxSizeLimit <= firstPlayerDistance)
+            if (rhythm) //플레이어가 움직였다면
             {
-                StartCoroutine(ChangeSizeSmoothly(cam.orthographicSize, cameraSize, movingTime));
+                GameObject player1, player2;
+
+                if (_gameManager.isRedPlayerPlaying && _gameManager.isBluePlayerPlaying) //2명 모두 게임 중
+                {
+                    player1 = GameObject.FindGameObjectWithTag("Player");
+                    player2 = GameObject.FindGameObjectWithTag("Player2");
+                }
+                else if (!_gameManager.isRedPlayerPlaying) //p2만 게임 중
+                {
+                    player1 = GameObject.FindGameObjectWithTag("Player2");
+                    player2 = GameObject.FindGameObjectWithTag("Player2");
+                }
+                else //p1만 게임 중
+                {
+                    player1 = GameObject.FindGameObjectWithTag("Player");
+                    player2 = GameObject.FindGameObjectWithTag("Player");
+                }
+
+                StopAllCoroutines(); //진행중인 카메라 확대 또는 축소 정지
+
+                playerDistance = Vector2.Distance(player1.transform.position, player2.transform.position); //플레이어 거리 계산
+
+                player1Pos = new Vector3(player1.transform.position.x, player1.transform.position.y, -10f);
+                player2Pos = new Vector3(player2.transform.position.x, player2.transform.position.y, -10f);
+
+                center = (player1Pos + player2Pos) / 2; //플레이어의 중심 좌표 계산
+                center.y += 75f;
+                center.z = -10f;
+
+                if (playerDistance <= firstPlayerDistance || playerDistance / firstPlayerDistance * cameraSize * maxSizeLimit <= firstPlayerDistance)
+                {
+                    StartCoroutine(ChangeSizeSmoothly(cam.orthographicSize, cameraSize, movingTime));
+                }
+                else
+                {
+                    StartCoroutine(ChangeSizeSmoothly(cam.orthographicSize, playerDistance / firstPlayerDistance * cameraSize * maxSizeLimit, movingTime));
+                }
+                rhythm = false;
             }
-            else
-            {
-                StartCoroutine(ChangeSizeSmoothly(cam.orthographicSize, playerDistance / firstPlayerDistance * cameraSize * maxSizeLimit, movingTime));
-            }
-            rhythm = false;
+            transform.position = Vector3.Lerp(this.transform.position, center, Time.deltaTime * movingTime);
         }
-        transform.position = Vector3.Lerp(this.transform.position, center, Time.deltaTime * movingTime);
+        else //게임 중이 아닐 때
+        {
+
+        }
     }
 
     IEnumerator ChangeSizeSmoothly(float startSize, float endSize, float duration)

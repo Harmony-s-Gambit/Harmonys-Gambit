@@ -26,9 +26,19 @@ public class StructureManager : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(0.1f);
+        //GenerateDoorOpenButton2(4, 5, 2);
+        //GenerateDoor(4, 3, 2);
+
         GenerateDoorOpenButton2(3, 5, 1);
         GenerateDoor(3, 3, 1);
         GenerateDoorOpenButton1(3, 4, 1);
+
+        GenerateNextStageDoor(5, 5, 1);
+        GenerateNextStageDoor(5, 6, 2);
+
+        //GenerateDoorOpenButton1(4, 4, 2);
+
+        CheckStructures();
     }
 
     public void GenerateDoor(int x, int y, int index)
@@ -115,6 +125,13 @@ public class StructureManager : MonoBehaviour
         }
     }
 
+    public void GenerateNextStageDoor(int x, int y, int index)
+    {
+        GameObject nextStageDoor = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/NextStageDoor"));
+        nextStageDoor.GetComponent<NextStageDoor>().SetXY(x, y);
+        nextStageDoor.GetComponent<NextStageDoor>().SetIndex(index);
+    }
+
     public bool TryOpenDoor(int index)
     {
         for (int i = 0; i < doors.Count; i++)
@@ -128,5 +145,18 @@ public class StructureManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void CheckStructures()
+    {
+        GameObject[] structures = GameObject.FindGameObjectsWithTag("Structure");
+
+        for (int i = 0; i < structures.Length; i++)
+        {
+            if (!structures[i].GetComponent<Structure>().isPlaced)
+            {
+                throw new System.Exception(structures[i].name + "이 설치되지 않았습니다.");
+            }
+        }
     }
 }

@@ -13,6 +13,15 @@ public class GameManager : MonoBehaviour
     public bool isBlueValid = false;
     public bool isStunned = false;
     public bool rhythm = false;
+
+    //=========================================================
+    public bool isRedPlayerPlaying = false;
+    public bool isBluePlayerPlaying = false;
+
+    public int whichDoorHasRedPlayer = -1;
+    public int whichDoorHasBluePlayer = -1;
+    //=========================================================
+
     // Start is called before the first frame update
     void Start()
     {

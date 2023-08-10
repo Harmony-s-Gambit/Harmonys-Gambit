@@ -416,6 +416,8 @@ MonoBehaviour:
   isBlueValid: 0
   isStunned: 0
   rhythm: 0
+  isRedPlayerPlaying: 0
+  isBluePlayerPlaying: 0
 --- !u!4 &81555333
 Transform:
   m_ObjectHideFlags: 0
@@ -6764,6 +6766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193d837d8fe71c6478406612ae39eb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rhythm: 0
 --- !u!4 &2075235928
 Transform:
   m_ObjectHideFlags: 0
