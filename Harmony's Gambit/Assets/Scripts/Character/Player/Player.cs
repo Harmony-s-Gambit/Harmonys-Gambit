@@ -5,7 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
-    public bool takenDamage = false; //���� �������׼��� �ߺ� ������ ������������ �־����ϴ�
+    public bool takenDamage = false; 
     // Start is called before the first frame update
     protected override void Start()
     {
