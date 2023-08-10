@@ -125,6 +125,18 @@ public class Enemy : Character
             }
         }
     }
+    // 요 밑의 3가지는 각각의 enemy 타입에서 overriding 하는 것을 추천
+    public void Attack()
+    {
+        weapon.attackEnemies(1);
+        _directionIdx = (_directionIdx + 1) % pattern.Length;
+        direction = pattern[_directionIdx];
+    }
+
+    public bool isPlayerAtDest()
+    {
+        return false;
+    }
 
     public void deathEffect()
     {

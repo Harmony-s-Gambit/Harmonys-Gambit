@@ -18,9 +18,6 @@ public class EnemyManager : MonoBehaviour
         E2 = (GameObject)Instantiate(Resources.Load("Prefabs/Enemies/purpleMouse"));
         E3 = (GameObject)Instantiate(Resources.Load("Prefabs/Enemies/purpleMouse"));
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gm.enemies.Add(E1);
-        gm.enemies.Add(E2);
-        gm.enemies.Add(E3);
         E1.GetComponent<Enemy>().SetXY(8, 8);
         E2.GetComponent<Enemy>().SetXY(2, 6);
         E3.GetComponent<Enemy>().SetXY(4, 1);

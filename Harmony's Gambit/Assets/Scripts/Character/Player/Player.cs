@@ -19,7 +19,11 @@ public class Player : Character
     // Update is called once per frame
     protected override void Update()
     {
-        
+        if(HP <= 0)
+        {
+            Debug.Log("Death");
+            Destroy(gameObject);
+        }
     }
 
     public override void SetXY(int px, int py)

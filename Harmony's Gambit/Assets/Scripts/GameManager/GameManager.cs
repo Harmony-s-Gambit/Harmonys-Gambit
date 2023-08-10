@@ -93,12 +93,19 @@ public class GameManager : MonoBehaviour
                     }
                     else
                     {
+                        Enemy tempEnemy = enemy.GetComponent<Enemy>();
+                        tempEnemy.weapon.selectEnemies(tempEnemy.direction, tempEnemy.x,tempEnemy.y,tempEnemy.color);
                         //공격판정
-
+                        if (enemy.GetComponent<Enemy>().weapon.Attack)
+                        {
+                            tempEnemy.Attack();
+                        }
                         //안에 있으면 공격
-
-                        //없으면 이동
-                        enemy.GetComponent<Enemy>().MoveManage();
+                        else
+                        {
+                            //없으면 이동
+                            enemy.GetComponent<Enemy>().MoveManage();
+                        }
                     }
                 }catch(MissingReferenceException e)
                 {

@@ -16,5 +16,6 @@ public class Mouse : Enemy
         };
         direction = pattern[0];
         weapon = new Fist();
+        weapon.Start();
     }
 }

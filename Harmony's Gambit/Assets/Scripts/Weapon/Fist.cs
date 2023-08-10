@@ -41,6 +41,10 @@ public class Fist : Weapon
                     Selector.Add(inGridSlot);
                     Attack = true;
                 }
+            }else if (!playerWeapon && inGridSlot.tag == "Player")
+            {
+                Selector.Add(inGridSlot);
+                Attack = true;
             }
             else
             {

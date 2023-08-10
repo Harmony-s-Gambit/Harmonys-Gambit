@@ -20,7 +20,7 @@ public abstract class Weapon : MonoBehaviour
         {
                 switch (direction)
                 {
-                    case (int)DIRECTION.UP:
+                    case DIRECTION.UP:
                         inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y + Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
                         break;
                     case DIRECTION.LEFT:
@@ -50,7 +50,7 @@ public abstract class Weapon : MonoBehaviour
                             //여러 색을 가진 대상 공격
                         }
                     }
-                    else if (inGridSlot.tag == "Player" && playerWeapon)
+                    else if (inGridSlot.tag == "Player" && !playerWeapon)
                     {
                     Selector.Add(inGridSlot);    
                     }
