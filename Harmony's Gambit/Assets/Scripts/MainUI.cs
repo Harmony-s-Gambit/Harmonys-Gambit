@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainUI : MonoBehaviour
 {
     [SerializeField] GameObject[] panels;
+    private GameManager _gameManager;
 
     private void Start()
     {
@@ -13,6 +14,8 @@ public class MainUI : MonoBehaviour
             panels[i].SetActive(false);
         }
         panels[0].SetActive(true);
+
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     public void Main_MapSelectButton()
@@ -42,6 +45,15 @@ public class MainUI : MonoBehaviour
     public void GamePlay1Button() //게임 플레이 시 설정, 노트 생성 시작, 즉 게임 시작 버튼
     {
         NoteManager.instance.SetBGMValue("BGM1");
+        GameStartSetting();
         panels[2].SetActive(false);
+    }
+
+    private void GameStartSetting()
+    {
+        _gameManager.isRedPlayerPlaying = true;
+        _gameManager.isBluePlayerPlaying = true;
+        _gameManager.whichDoorHasRedPlayer = -1;
+        _gameManager.whichDoorHasBluePlayer = -1;
     }
 }

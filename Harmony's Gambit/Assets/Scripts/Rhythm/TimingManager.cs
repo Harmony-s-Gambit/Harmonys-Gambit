@@ -49,11 +49,6 @@ public class TimingManager : MonoBehaviour
         {
             _timingBoxsP2[i].Set(_centerP2.localPosition.x - _timingRectP2[i].rect.width / 2 + offsetP2, _centerP2.localPosition.x + _timingRectP2[i].rect.width / 2 + offsetP2);
         }
-
-        for (int i = 0; i < _timingRectP1.Length; i++)
-        {
-            print(_timingBoxsP1[i]);
-        }
     }
 
     public void CheckTiming(int playerNum, string key) //키를 눌렀을 때 실행
@@ -93,7 +88,7 @@ public class TimingManager : MonoBehaviour
                 {
                     if (_timingBoxsP2[j].x <= t_notePosX && t_notePosX <= _timingBoxsP2[j].y)
                     {
-                        boxNoteListP2[i].GetComponent<Note>().HideNote();
+                        boxNoteListP2[i].GetComponent<Note2>().HideNote();
                         if (_keyInputNumP2 == 0)
                         {
                             _whatKeyP2.Clear();

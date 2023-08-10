@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Note : MonoBehaviour
+public class Note2 : MonoBehaviour
 {
     public float _noteSpeed;
     private Image noteImage;
@@ -46,7 +46,7 @@ public class Note : MonoBehaviour
 
     void Update()
     {
-        transform.localPosition += Vector3.right * _noteSpeed * Time.deltaTime;
+        transform.localPosition -= Vector3.right * _noteSpeed * Time.deltaTime;
     }
 
     public void HideNote()

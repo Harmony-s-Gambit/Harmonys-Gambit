@@ -5,7 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
-    public bool takenDamage = false; //¿©·¯ ¸ó½ºÅÍÇÑÅ×¼­ÀÇ Áßº¹ µ¥¹ÌÁö ¹æÁöÂ÷¿ø¿¡¼­ ³Ö¾ú½À´Ï´Ù
+    public bool takenDamage = false; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -116,7 +116,6 @@ public class Player : Character
             }
             else
             {
-                // attack
                 return false;
             }
         }

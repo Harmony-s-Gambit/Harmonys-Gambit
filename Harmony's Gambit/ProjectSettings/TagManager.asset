@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Wall
   - Player2
+  - Structure
   layers:
   - Default
   - TransparentFX
