@@ -15,34 +15,37 @@ public class NextStageDoor : Structure
     {
         if (_structureManager.rhythm)
         {
-            if ((_gameManager.whichDoorHasRedPlayer == -1 && _gameManager.whichDoorHasBluePlayer == -1) || (_gameManager.whichDoorHasRedPlayer == nextStageDoorIndex || _gameManager.whichDoorHasBluePlayer == nextStageDoorIndex))
+            if (_gameManager.isRedPlayerPlaying || _gameManager.isBluePlayerPlaying)
             {
-                if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player"))
+                if ((_gameManager.whichDoorHasRedPlayer == -1 && _gameManager.whichDoorHasBluePlayer == -1) || (_gameManager.whichDoorHasRedPlayer == nextStageDoorIndex || _gameManager.whichDoorHasBluePlayer == nextStageDoorIndex))
                 {
-                    _gameManager.isRedPlayerPlaying = false;
-                    _gameManager.whichDoorHasRedPlayer = nextStageDoorIndex;
-
-                    try
+                    if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player"))
                     {
-                        GameObject.FindGameObjectWithTag("Player").SetActive(false);
-                    }
-                    catch (System.NullReferenceException) { }
-                }
-                else if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player2"))
-                {
-                    _gameManager.isBluePlayerPlaying = false;
-                    _gameManager.whichDoorHasBluePlayer = nextStageDoorIndex;
+                        _gameManager.isRedPlayerPlaying = false;
+                        _gameManager.whichDoorHasRedPlayer = nextStageDoorIndex;
 
-                    try
+                        try
+                        {
+                            GameObject.FindGameObjectWithTag("Player").SetActive(false);
+                        }
+                        catch (System.NullReferenceException) { }
+                    }
+                    else if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player2"))
                     {
-                        GameObject.FindGameObjectWithTag("Player2").SetActive(false);
-                    }
-                    catch (System.NullReferenceException) { }
-                }
+                        _gameManager.isBluePlayerPlaying = false;
+                        _gameManager.whichDoorHasBluePlayer = nextStageDoorIndex;
 
-                if (!_gameManager.isRedPlayerPlaying && !_gameManager.isBluePlayerPlaying)
-                {
-                    ActiveNextStage(_gameManager.whichDoorHasRedPlayer);
+                        try
+                        {
+                            GameObject.FindGameObjectWithTag("Player2").SetActive(false);
+                        }
+                        catch (System.NullReferenceException) { }
+                    }
+
+                    if (!_gameManager.isRedPlayerPlaying && !_gameManager.isBluePlayerPlaying)
+                    {
+                        ActiveNextStage(_gameManager.whichDoorHasRedPlayer);
+                    }
                 }
             }
         }
@@ -50,6 +53,9 @@ public class NextStageDoor : Structure
 
     private void ActiveNextStage(int index)
     {
+        _gameManager.whichDoorHasRedPlayer = -1;
+        _gameManager.whichDoorHasBluePlayer = -1;
+
         switch (index)
         {
             case 1:
