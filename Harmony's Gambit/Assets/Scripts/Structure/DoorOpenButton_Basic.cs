@@ -2,15 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorOpenButton : Structure
+public class DoorOpenButton_Basic : Structure
 {
     public bool isPressed;
     public int doorOpenButtonIndex;
-
-    public void SetIndex(int index)
-    {
-        doorOpenButtonIndex = index;
-    }
 
     private void Update()
     {
@@ -21,5 +16,10 @@ public class DoorOpenButton : Structure
                 isPressed = true;
             }
         }
+    }
+
+    public void SetIndex(int index)
+    {
+        doorOpenButtonIndex = index;
     }
 }

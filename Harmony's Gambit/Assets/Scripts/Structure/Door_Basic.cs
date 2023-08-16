@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.TextCore.Text;
 
-public class Door : Structure
+public class Door_Basic : Structure
 {
     public int doorIndex;
 
@@ -12,7 +12,7 @@ public class Door : Structure
     {
         if (_structureManager.rhythm)
         {
-            if (_structureManager.TryOpenDoor(doorIndex))
+            if (_structureManager.TryOpenDoor_Basic(doorIndex))
             {
                 currentBlock.GetComponent<GridSlotInfo>().blockType = BLOCKTYPE.GROUND;
                 this.gameObject.GetComponent<SpriteRenderer>().enabled = false;

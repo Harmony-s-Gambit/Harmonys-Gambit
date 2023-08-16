@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3314964857238609968}
   - component: {fileID: 3498434522630515791}
-  - component: {fileID: 3903743056370163518}
+  - component: {fileID: -5114344950816164537}
   m_Layer: 0
-  m_Name: DoorOpenButton
+  m_Name: DoorOpenButton_Simultaneous
   m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3903743056370163518
+--- !u!114 &-5114344950816164537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,13 +94,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8817811646341112046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e564d85c53e6e3d4d8aeb6073dbb86df, type: 3}
+  m_Script: {fileID: 11500000, guid: 13d648a79b9460c449a233cc3ea8c2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  color: 0
-  direction: 0
-  currentBlock: {fileID: 0}
-  isPressed: 0
-  doorOpenButtonIndex: 0

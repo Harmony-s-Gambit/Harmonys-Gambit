@@ -6,10 +6,16 @@ public class StructureManager : MonoBehaviour
 {
     public bool rhythm;
 
-    private List<GameObject> doors = new List<GameObject>();
-    private List<GameObject> doorOpenButtons1 = new List<GameObject>();
-    private List<GameObject> doorOpenButtons2 = new List<GameObject>();
-    private List<int> doorSetIndex = new List<int>();
+    private List<GameObject> doors_Basic = new List<GameObject>();
+    private List<GameObject> doorOpenButtons1_Basic = new List<GameObject>();
+    private List<GameObject> doorOpenButtons2_Basic = new List<GameObject>();
+    private List<int> doorSetIndex_Basic = new List<int>();
+
+    private List<GameObject> doors_Simultaneous = new List<GameObject>();
+    private List<GameObject> doorOpenButtons1_Simultaneous = new List<GameObject>();
+    private List<GameObject> doorOpenButtons2_Simultaneous = new List<GameObject>();
+    private List<GameObject> doorOpenButtons3_Simultaneous = new List<GameObject>();
+    private List<int> doorSetIndex_Simultaneous = new List<int>();
 
     void Start()
     {
@@ -23,103 +29,103 @@ public class StructureManager : MonoBehaviour
         rhythm = false;
     }
 
-    IEnumerator Delay()
+    IEnumerator Delay() //임시 코루틴
     {
         yield return new WaitForSeconds(0.1f);
-        //GenerateDoorOpenButton2(4, 5, 2);
-        //GenerateDoor(4, 3, 2);
 
-        //GenerateDoorOpenButton2(3, 5, 1);
-        //GenerateDoor(3, 3, 1);
-        //GenerateDoorOpenButton1(3, 4, 1);
+        //GenerateDoorOpenButton2_Basic(3, 5, 1);
+        //GenerateDoor_Basic(3, 3, 1);
+        //GenerateDoorOpenButton1_Basic(3, 4, 1);
 
         //GenerateNextStageDoor(5, 5, 1);
-        //GenerateNextStageDoor(5, 6, 2);
 
-        //GenerateDoorOpenButton1(4, 4, 2);
+        GenerateDoor_Simultaneous(7, 5, 1);
+        GenerateDoorOpenButton1_Simultaneous(6, 4, 1);
+        GenerateDoorOpenButton2_Simultaneous(8, 4, 1);
+        GenerateDoorOpenButton3_Simultaneous(6, 6, 1);
 
         CheckStructures();
     }
 
-    public void GenerateDoor(int x, int y, int index)
+    public void GenerateDoor_Basic(int x, int y, int index)
     {
-        if (!doorSetIndex.Contains(index)) //index값에 해당하는 문 세트 없을 때
+        if (!doorSetIndex_Basic.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
-            doorSetIndex.Add(index); //index값을 가지는 문 세트(문+버튼1+버튼2)가 생성되었다는 것을 저장
-            GameObject door = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door"));
-            GameObject doorOpenButton1 = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton"));
-            GameObject doorOpenButton2 = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton")); //문, 버튼 2개 생성
-            doors.Add(door);
-            doorOpenButtons1.Add(doorOpenButton1);
-            doorOpenButtons2.Add(doorOpenButton2); //문, 버튼 2개 리스트에 저장
-            door.GetComponent<Door>().SetXY(x, y); //버튼 말고 문만 위치 설정
-            door.GetComponent<Door>().SetIndex(index);
-            doorOpenButton1.GetComponent<DoorOpenButton>().SetIndex(index);
-            doorOpenButton2.GetComponent<DoorOpenButton>().SetIndex(index); //생성한 문, 버튼 2개에 index값 설정
+            doorSetIndex_Basic.Add(index); //index값을 가지는 문 세트(문+버튼1+버튼2)가 생성되었다는 것을 저장
+            GameObject door_Basic = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Basic"));
+            GameObject doorOpenButton1_Basic = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Basic"));
+            GameObject doorOpenButton2_Basic = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Basic")); //문, 버튼 2개 생성
+            doors_Basic.Add(door_Basic);
+            doorOpenButtons1_Basic.Add(doorOpenButton1_Basic);
+            doorOpenButtons2_Basic.Add(doorOpenButton2_Basic); //문, 버튼 2개 리스트에 저장
+            door_Basic.GetComponent<Door_Basic>().SetXY(x, y); //버튼 말고 문만 위치 설정
+            door_Basic.GetComponent<Door_Basic>().SetIndex(index);
+            doorOpenButton1_Basic.GetComponent<DoorOpenButton_Basic>().SetIndex(index);
+            doorOpenButton2_Basic.GetComponent<DoorOpenButton_Basic>().SetIndex(index); //생성한 문, 버튼 2개에 index값 설정
         }
         else //index값에 해당하는 문 세트가 있을 때
         {
-            for (int i = 0; i < doors.Count; i++)
+            for (int i = 0; i < doors_Basic.Count; i++)
             {
-                if (doors[i].GetComponent<Door>().doorIndex == index) //index값과 같은 문 찾기
+                if (doors_Basic[i].GetComponent<Door_Basic>().doorIndex == index) //index값과 같은 문 찾기
                 {
-                    doors[i].GetComponent<Door>().SetXY(x, y); //위치 설정
+                    doors_Basic[i].GetComponent<Door_Basic>().SetXY(x, y); //위치 설정
                 }
             }
         }
     }
 
-    public void GenerateDoorOpenButton1(int x, int y, int index)
+    public void GenerateDoorOpenButton1_Basic(int x, int y, int index)
     {
-        if (!doorSetIndex.Contains(index)) //index값에 해당하는 문 세트 없을 때
+        if (!doorSetIndex_Basic.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
-            doorSetIndex.Add(index); //index값을 가지는 문 세트(문+버튼1+버튼2)가 생성되었다는 것을 저장
-            GameObject door = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door"));
-            GameObject doorOpenButton1 = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton"));
-            GameObject doorOpenButton2 = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton")); //문, 버튼 2개 생성
-            doors.Add(door);
-            doorOpenButtons1.Add(doorOpenButton1);
-            doorOpenButtons2.Add(doorOpenButton2); //문, 버튼 2개 리스트에 저장
-            doorOpenButton1.GetComponent<DoorOpenButton>().SetXY(x, y); //버튼1만 위치 설정
-            door.GetComponent<Door>().SetIndex(index);
-            doorOpenButton1.GetComponent<DoorOpenButton>().SetIndex(index);
-            doorOpenButton2.GetComponent<DoorOpenButton>().SetIndex(index); //생성한 문, 버튼 2개에 index값 설정
+            doorSetIndex_Basic.Add(index); //index값을 가지는 문 세트(문+버튼1+버튼2)가 생성되었다는 것을 저장
+            GameObject door_Basic = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Basic"));
+            GameObject doorOpenButton1_Basic = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Basic"));
+            GameObject doorOpenButton2_Basic = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Basic")); //문, 버튼 2개 생성
+            doors_Basic.Add(door_Basic);
+            doorOpenButtons1_Basic.Add(doorOpenButton1_Basic);
+            doorOpenButtons2_Basic.Add(doorOpenButton2_Basic); //문, 버튼 2개 리스트에 저장
+            doorOpenButton1_Basic.GetComponent<DoorOpenButton_Basic>().SetXY(x, y); //버튼1만 위치 설정
+            door_Basic.GetComponent<Door_Basic>().SetIndex(index);
+            doorOpenButton1_Basic.GetComponent<DoorOpenButton_Basic>().SetIndex(index);
+            doorOpenButton2_Basic.GetComponent<DoorOpenButton_Basic>().SetIndex(index); //생성한 문, 버튼 2개에 index값 설정
         }
         else //index값에 해당하는 문 세트가 있을 때
         {
-            for (int i = 0; i < doorOpenButtons1.Count; i++)
+            for (int i = 0; i < doorOpenButtons1_Basic.Count; i++)
             {
-                if (doorOpenButtons1[i].GetComponent<DoorOpenButton>().doorOpenButtonIndex == index) //index값과 같은 버튼 찾기
+                if (doorOpenButtons1_Basic[i].GetComponent<DoorOpenButton_Basic>().doorOpenButtonIndex == index) //index값과 같은 버튼 찾기
                 {
-                    doorOpenButtons1[i].GetComponent<DoorOpenButton>().SetXY(x, y); //위치 설정
+                    doorOpenButtons1_Basic[i].GetComponent<DoorOpenButton_Basic>().SetXY(x, y); //위치 설정
                 }
             }
         }
     }
 
-    public void GenerateDoorOpenButton2(int x, int y, int index)
+    public void GenerateDoorOpenButton2_Basic(int x, int y, int index)
     {
-        if (!doorSetIndex.Contains(index)) //index값에 해당하는 문 세트 없을 때
+        if (!doorSetIndex_Basic.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
-            doorSetIndex.Add(index); //index값을 가지는 문 세트(문+버튼1+버튼2)가 생성되었다는 것을 저장
-            GameObject door = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door"));
-            GameObject doorOpenButton1 = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton"));
-            GameObject doorOpenButton2 = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton")); //문, 버튼 2개 생성
-            doors.Add(door);
-            doorOpenButtons1.Add(doorOpenButton1);
-            doorOpenButtons2.Add(doorOpenButton2); //문, 버튼 2개 리스트에 저장
-            doorOpenButton2.GetComponent<DoorOpenButton>().SetXY(x, y); //버튼2만 위치 설정
-            door.GetComponent<Door>().SetIndex(index);
-            doorOpenButton1.GetComponent<DoorOpenButton>().SetIndex(index);
-            doorOpenButton2.GetComponent<DoorOpenButton>().SetIndex(index); //생성한 문, 버튼 2개에 index값 설정
+            doorSetIndex_Basic.Add(index); //index값을 가지는 문 세트(문+버튼1+버튼2)가 생성되었다는 것을 저장
+            GameObject door_Basic = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Basic"));
+            GameObject doorOpenButton1_Basic = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Basic"));
+            GameObject doorOpenButton2_Basic = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Basic")); //문, 버튼 2개 생성
+            doors_Basic.Add(door_Basic);
+            doorOpenButtons1_Basic.Add(doorOpenButton1_Basic);
+            doorOpenButtons2_Basic.Add(doorOpenButton2_Basic); //문, 버튼 2개 리스트에 저장
+            doorOpenButton2_Basic.GetComponent<DoorOpenButton_Basic>().SetXY(x, y); //버튼2만 위치 설정
+            door_Basic.GetComponent<Door_Basic>().SetIndex(index);
+            doorOpenButton1_Basic.GetComponent<DoorOpenButton_Basic>().SetIndex(index);
+            doorOpenButton2_Basic.GetComponent<DoorOpenButton_Basic>().SetIndex(index); //생성한 문, 버튼 2개에 index값 설정
         }
         else //index값에 해당하는 문 세트가 있을 때
         {
-            for (int i = 0; i < doorOpenButtons2.Count; i++)
+            for (int i = 0; i < doorOpenButtons2_Basic.Count; i++)
             {
-                if (doorOpenButtons2[i].GetComponent<DoorOpenButton>().doorOpenButtonIndex == index) //index값과 같은 버튼 찾기
+                if (doorOpenButtons2_Basic[i].GetComponent<DoorOpenButton_Basic>().doorOpenButtonIndex == index) //index값과 같은 버튼 찾기
                 {
-                    doorOpenButtons2[i].GetComponent<DoorOpenButton>().SetXY(x, y); //위치 설정
+                    doorOpenButtons2_Basic[i].GetComponent<DoorOpenButton_Basic>().SetXY(x, y); //위치 설정
                 }
             }
         }
@@ -132,13 +138,13 @@ public class StructureManager : MonoBehaviour
         nextStageDoor.GetComponent<NextStageDoor>().SetIndex(index);
     }
 
-    public bool TryOpenDoor(int index)
+    public bool TryOpenDoor_Basic(int index)
     {
-        for (int i = 0; i < doors.Count; i++)
+        for (int i = 0; i < doors_Basic.Count; i++)
         {
-            if (doors[i].GetComponent<Door>().doorIndex == index) //index값과 같은 문 찾기
+            if (doors_Basic[i].GetComponent<Door_Basic>().doorIndex == index) //index값과 같은 문 찾기
             {
-                if (doorOpenButtons1[i].GetComponent<DoorOpenButton>().isPressed && doorOpenButtons2[i].GetComponent<DoorOpenButton>().isPressed)
+                if (doorOpenButtons1_Basic[i].GetComponent<DoorOpenButton_Basic>().isPressed && doorOpenButtons2_Basic[i].GetComponent<DoorOpenButton_Basic>().isPressed)
                 {
                     return true;
                 }
@@ -158,5 +164,146 @@ public class StructureManager : MonoBehaviour
                 throw new System.Exception(structures[i].name + "이 설치되지 않았습니다.");
             }
         }
+    }
+
+    public void GenerateDoor_Simultaneous(int x, int y, int index)
+    {
+        if (!doorSetIndex_Simultaneous.Contains(index)) //index값에 해당하는 문 세트 없을 때
+        {
+            doorSetIndex_Simultaneous.Add(index); //index값을 가지는 문 세트가 생성되었다는 것을 저장
+            GameObject door_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Simultaneous"));
+            GameObject doorOpenButton1_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
+            GameObject doorOpenButton2_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
+            GameObject doorOpenButton3_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous")); //문, 버튼 3개 생성
+            doors_Simultaneous.Add(door_Simultaneous);
+            doorOpenButtons1_Simultaneous.Add(doorOpenButton1_Simultaneous);
+            doorOpenButtons2_Simultaneous.Add(doorOpenButton2_Simultaneous);
+            doorOpenButtons3_Simultaneous.Add(doorOpenButton3_Simultaneous); //문, 버튼 3개 리스트에 저장
+            door_Simultaneous.GetComponent<Door_Simultaneous>().SetXY(x, y); //버튼 말고 문만 위치 설정
+            door_Simultaneous.GetComponent<Door_Simultaneous>().SetIndex(index);
+            doorOpenButton1_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index);
+            doorOpenButton2_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index);
+            doorOpenButton3_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index); //생성한 문, 버튼 3개에 index값 설정
+        }
+        else //index값에 해당하는 문 세트가 있을 때
+        {
+            for (int i = 0; i < doors_Simultaneous.Count; i++)
+            {
+                if (doors_Simultaneous[i].GetComponent<Door_Simultaneous>().doorIndex == index) //index값과 같은 문 찾기
+                {
+                    doors_Simultaneous[i].GetComponent<Door_Simultaneous>().SetXY(x, y); //위치 설정
+                }
+            }
+        }
+    }
+
+    public void GenerateDoorOpenButton1_Simultaneous(int x, int y, int index)
+    {
+        if (!doorSetIndex_Simultaneous.Contains(index)) //index값에 해당하는 문 세트 없을 때
+        {
+            doorSetIndex_Simultaneous.Add(index); //index값을 가지는 문 세트가 생성되었다는 것을 저장
+            GameObject door_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Simultaneous"));
+            GameObject doorOpenButton1_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
+            GameObject doorOpenButton2_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
+            GameObject doorOpenButton3_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous")); //문, 버튼 3개 생성
+            doors_Simultaneous.Add(door_Simultaneous);
+            doorOpenButtons1_Simultaneous.Add(doorOpenButton1_Simultaneous);
+            doorOpenButtons2_Simultaneous.Add(doorOpenButton2_Simultaneous);
+            doorOpenButtons3_Simultaneous.Add(doorOpenButton3_Simultaneous); //문, 버튼 2개 리스트에 저장
+            doorOpenButton1_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetXY(x, y); //버튼1만 위치 설정
+            door_Simultaneous.GetComponent<Door_Simultaneous>().SetIndex(index);
+            doorOpenButton1_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index);
+            doorOpenButton2_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index);
+            doorOpenButton3_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index); //생성한 문, 버튼 3개에 index값 설정
+        }
+        else //index값에 해당하는 문 세트가 있을 때
+        {
+            for (int i = 0; i < doorOpenButtons1_Simultaneous.Count; i++)
+            {
+                if (doorOpenButtons1_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().doorOpenButtonIndex == index) //index값과 같은 버튼 찾기
+                {
+                    doorOpenButtons1_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().SetXY(x, y); //위치 설정
+                }
+            }
+        }
+    }
+
+    public void GenerateDoorOpenButton2_Simultaneous(int x, int y, int index)
+    {
+        if (!doorSetIndex_Simultaneous.Contains(index)) //index값에 해당하는 문 세트 없을 때
+        {
+            doorSetIndex_Simultaneous.Add(index); //index값을 가지는 문 세트가 생성되었다는 것을 저장
+            GameObject door_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Simultaneous"));
+            GameObject doorOpenButton1_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
+            GameObject doorOpenButton2_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
+            GameObject doorOpenButton3_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous")); //문, 버튼 3개 생성
+            doors_Simultaneous.Add(door_Simultaneous);
+            doorOpenButtons1_Simultaneous.Add(doorOpenButton1_Simultaneous);
+            doorOpenButtons2_Simultaneous.Add(doorOpenButton2_Simultaneous);
+            doorOpenButtons3_Simultaneous.Add(doorOpenButton3_Simultaneous); //문, 버튼 2개 리스트에 저장
+            doorOpenButton2_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetXY(x, y); //버튼2만 위치 설정
+            door_Simultaneous.GetComponent<Door_Simultaneous>().SetIndex(index);
+            doorOpenButton1_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index);
+            doorOpenButton2_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index);
+            doorOpenButton3_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index); //생성한 문, 버튼 3개에 index값 설정
+        }
+        else //index값에 해당하는 문 세트가 있을 때
+        {
+            for (int i = 0; i < doorOpenButtons2_Simultaneous.Count; i++)
+            {
+                if (doorOpenButtons2_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().doorOpenButtonIndex == index) //index값과 같은 버튼 찾기
+                {
+                    doorOpenButtons2_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().SetXY(x, y); //위치 설정
+                }
+            }
+        }
+    }
+
+    public void GenerateDoorOpenButton3_Simultaneous(int x, int y, int index)
+    {
+        if (!doorSetIndex_Simultaneous.Contains(index)) //index값에 해당하는 문 세트 없을 때
+        {
+            doorSetIndex_Simultaneous.Add(index); //index값을 가지는 문 세트가 생성되었다는 것을 저장
+            GameObject door_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Simultaneous"));
+            GameObject doorOpenButton1_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
+            GameObject doorOpenButton2_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
+            GameObject doorOpenButton3_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous")); //문, 버튼 3개 생성
+            doors_Simultaneous.Add(door_Simultaneous);
+            doorOpenButtons1_Simultaneous.Add(doorOpenButton1_Simultaneous);
+            doorOpenButtons2_Simultaneous.Add(doorOpenButton2_Simultaneous);
+            doorOpenButtons3_Simultaneous.Add(doorOpenButton3_Simultaneous); //문, 버튼 2개 리스트에 저장
+            doorOpenButton3_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetXY(x, y); //버튼3만 위치 설정
+            door_Simultaneous.GetComponent<Door_Simultaneous>().SetIndex(index);
+            doorOpenButton1_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index);
+            doorOpenButton2_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index);
+            doorOpenButton3_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex(index); //생성한 문, 버튼 3개에 index값 설정
+            doorOpenButton3_Simultaneous.GetComponent<DoorOpenButton_Simultaneous>().SetIndex2(1);
+        }
+        else //index값에 해당하는 문 세트가 있을 때
+        {
+            for (int i = 0; i < doorOpenButtons3_Simultaneous.Count; i++)
+            {
+                if (doorOpenButtons3_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().doorOpenButtonIndex == index) //index값과 같은 버튼 찾기
+                {
+                    doorOpenButtons3_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().SetXY(x, y); //위치 설정
+                    doorOpenButtons3_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().SetIndex2(1);
+                }
+            }
+        }
+    }
+
+    public bool TryOpenDoor_Simultaneous(int index)
+    {
+        for (int i = 0; i < doors_Simultaneous.Count; i++)
+        {
+            if (doors_Simultaneous[i].GetComponent<Door_Simultaneous>().doorIndex == index) //index값과 같은 문 찾기
+            {
+                if ((doorOpenButtons1_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().isPressed && doorOpenButtons2_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().isPressed) || doorOpenButtons3_Simultaneous[i].GetComponent<DoorOpenButton_Simultaneous>().isPressed)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6566415029658858480}
   - component: {fileID: 3898226996640702361}
-  - component: {fileID: 2388682486263009461}
+  - component: {fileID: 8386854880522393751}
   m_Layer: 0
-  m_Name: Door2
+  m_Name: Door_Basic
   m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2388682486263009461
+--- !u!114 &8386854880522393751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3994761185320770298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c86470f84fd8943af5f6dca685d6ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 44015a0a96d58fa4cb4f3b1285c98891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  color: 0
+  direction: 0
+  currentBlock: {fileID: 0}
+  doorIndex: 0
