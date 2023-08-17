@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainUI : MonoBehaviour
 {
     [SerializeField] GameObject[] panels;
+    [SerializeField] GameObject[] buttons;
     private GameManager _gameManager;
 
     private void Start()
@@ -55,5 +56,24 @@ public class MainUI : MonoBehaviour
         _gameManager.isBluePlayerPlaying = true;
         _gameManager.whichDoorHasRedPlayer = -1;
         _gameManager.whichDoorHasBluePlayer = -1;
+    }
+
+    public void ControllButton(int num)
+    {
+        switch (num)
+        {
+            case 0:
+                buttons[0].SetActive(false); //오프셋 설정 버튼 끄기
+                break;
+            case 1:
+                buttons[0].SetActive(true);
+                break;
+            case 2:
+                buttons[1].SetActive(false); //오프셋-메인 버튼 끄기
+                break;
+            case 3:
+                buttons[1].SetActive(true);
+                break;
+        }
     }
 }

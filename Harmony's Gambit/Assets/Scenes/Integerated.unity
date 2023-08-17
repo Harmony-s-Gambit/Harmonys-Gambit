@@ -418,6 +418,8 @@ MonoBehaviour:
   rhythm: 0
   isRedPlayerPlaying: 0
   isBluePlayerPlaying: 0
+  whichDoorHasRedPlayer: -1
+  whichDoorHasBluePlayer: -1
 --- !u!4 &81555333
 Transform:
   m_ObjectHideFlags: 0
@@ -4142,6 +4144,9 @@ MonoBehaviour:
   - {fileID: 1027394223}
   - {fileID: 72725034}
   - {fileID: 1491781646}
+  buttons:
+  - {fileID: 411870324}
+  - {fileID: 804576004}
 --- !u!1 &1198253968
 GameObject:
   m_ObjectHideFlags: 0

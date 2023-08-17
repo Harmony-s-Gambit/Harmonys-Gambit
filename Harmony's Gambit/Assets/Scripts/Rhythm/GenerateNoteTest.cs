@@ -10,8 +10,11 @@ public class GenerateNoteTest : MonoBehaviour
     [SerializeField] Transform _tfCenterFrameP1;
     [SerializeField] Transform _tfCenterFrameP2;
 
+    private MainUI _mainUI;
+
     private void Start()
     {
+        _mainUI = FindObjectOfType<MainUI>();
         instance = this;
     }
 
@@ -25,8 +28,18 @@ public class GenerateNoteTest : MonoBehaviour
 
     public void OffsetStartButton()
     {
+        _mainUI.ControllButton(0);
+        _mainUI.ControllButton(2);
         NoteManager.instance.SetBGMValue("Offset");
         SettingOffset();
+        StartCoroutine(TurnOnButton());
+    }
+
+    IEnumerator TurnOnButton()
+    {
+        yield return new WaitForSeconds(7f);
+        _mainUI.ControllButton(1);
+        _mainUI.ControllButton(3);
     }
 
     //오프셋 세팅 관련

@@ -37,7 +37,7 @@ public class StructureManager : MonoBehaviour
         //GenerateDoor_Basic(3, 3, 1);
         //GenerateDoorOpenButton1_Basic(3, 4, 1);
 
-        //GenerateNextStageDoor(5, 5, 1);
+        GenerateNextStageDoor(5, 5, 1);
 
         GenerateDoor_Simultaneous(7, 5, 1);
         GenerateDoorOpenButton1_Simultaneous(6, 4, 1);

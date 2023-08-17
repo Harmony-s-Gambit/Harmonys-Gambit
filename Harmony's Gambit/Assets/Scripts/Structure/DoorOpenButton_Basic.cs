@@ -11,7 +11,7 @@ public class DoorOpenButton_Basic : Structure
     {
         if (_structureManager.rhythm)
         {
-            if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter != null)
+            if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player") || currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player2"))
             {
                 isPressed = true;
             }

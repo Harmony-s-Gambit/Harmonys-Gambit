@@ -21,25 +21,23 @@ public class NextStageDoor : Structure
                 {
                     if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player"))
                     {
-                        _gameManager.isRedPlayerPlaying = false;
-                        _gameManager.whichDoorHasRedPlayer = nextStageDoorIndex;
-
-                        try
+                        if (_gameManager.isRedPlayerPlaying)
                         {
                             GameObject.FindGameObjectWithTag("Player").SetActive(false);
                         }
-                        catch (System.NullReferenceException) { }
+
+                        _gameManager.isRedPlayerPlaying = false;
+                        _gameManager.whichDoorHasRedPlayer = nextStageDoorIndex;
                     }
                     else if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player2"))
                     {
-                        _gameManager.isBluePlayerPlaying = false;
-                        _gameManager.whichDoorHasBluePlayer = nextStageDoorIndex;
-
-                        try
+                        if (_gameManager.isBluePlayerPlaying)
                         {
                             GameObject.FindGameObjectWithTag("Player2").SetActive(false);
                         }
-                        catch (System.NullReferenceException) { }
+
+                        _gameManager.isBluePlayerPlaying = false;
+                        _gameManager.whichDoorHasBluePlayer = nextStageDoorIndex;
                     }
 
                     if (!_gameManager.isRedPlayerPlaying && !_gameManager.isBluePlayerPlaying)
