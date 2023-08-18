@@ -87,6 +87,7 @@ public class Enemy : Character
         }
         _directionIdx = (_directionIdx + 1) % pattern.Length;
         direction = pattern[_directionIdx];
+        specialDirection();
     }
 
     public override bool MoveManage()
@@ -120,6 +121,7 @@ public class Enemy : Character
                 {
                     _directionIdx = (_directionIdx + 1) % pattern.Length;
                     direction = pattern[_directionIdx];
+                    specialDirection();
                 }
                 return false;
             }
@@ -136,6 +138,11 @@ public class Enemy : Character
     public bool isPlayerAtDest()
     {
         return false;
+    }
+
+    public void specialDirection()
+    {
+
     }
 
     public void deathEffect()
