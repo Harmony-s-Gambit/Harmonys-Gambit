@@ -5,6 +5,8 @@ using UnityEngine;
 public enum BLOCKTYPE
 {
     GROUND,
+    OBJECT,
+    CHARACTER,
     WALL
 };
 public enum DIRECTION
