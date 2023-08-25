@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Hiena : Enemy
 {
+    Dictionary<GameObject, int> MovementRoute;
     GameObject target;
     void Start()
     {
@@ -41,11 +42,38 @@ public class Hiena : Enemy
 
     DIRECTION toPlayer()
     {
-        if (true)
+        MovementRoute.Clear();
+        int upD = -1, leftD = -1, downD = -1, rightD = -1, temp = 0 ;
+        int tarX = target.GetComponent<Player>().x;
+        int tarY = target.GetComponent<Player>().y;
+        SearchEnemy(tarX, tarY, 0);
+        if (MovementRoute.ContainsKey(GameObject.Find((x + 1) + "_" + y)))
         {
-
+            rightD = MovementRoute[GameObject.Find((x + 1) + "_" + y)];
         }
-        return DIRECTION.DOWN;
+        if (MovementRoute.ContainsKey(GameObject.Find((x - 1) + "_" + y)))
+        {
+            leftD = MovementRoute[GameObject.Find((x - 1) + "_" + y)];
+        }
+        if (MovementRoute.ContainsKey(GameObject.Find(x + "_" + (y+1))))
+        {
+            upD = MovementRoute[GameObject.Find((x + "_" + (y+1)))];
+        }
+        if (MovementRoute.ContainsKey(GameObject.Find(x + "_" + (y - 1))))
+        {
+            downD = MovementRoute[GameObject.Find((x + "_" + (y - 1)))];
+        }
+        temp = Mathf.Min(upD, downD, leftD, rightD);
+        if (temp == upD)
+            return DIRECTION.UP;
+        else if (temp == downD)
+            return DIRECTION.DOWN;
+        else if (temp == rightD)
+            return DIRECTION.RIGHT;
+        else if (temp == leftD)
+            return DIRECTION.LEFT;
+        else
+            return DIRECTION.STAY;
     }
 
     public void specialDirection()
@@ -55,4 +83,36 @@ public class Hiena : Enemy
             pattern[0] = toPlayer();
         }
     }
+
+    void SearchEnemy(int GameObjectX, int GameObjectY, int distance)
+    {
+        if(MovementRoute.ContainsKey(GameObject.Find(GameObjectX + "_" +GameObjectY)))
+        {
+            if(MovementRoute[GameObject.Find(GameObjectX + "_" + GameObjectY)] > distance)
+            {
+                MovementRoute[GameObject.Find(GameObjectX + "_" + GameObjectY)] = distance;
+            }
+        }
+        else
+        {
+            MovementRoute.Add(GameObject.Find(GameObjectX + "_" + GameObjectY), distance);
+            if(GameObject.Find((GameObjectX + 1) + "_" + GameObjectY).tag != "Wall")
+            {
+                SearchEnemy(GameObjectX + 1, GameObjectY, distance + 1);
+            }
+            if (GameObject.Find((GameObjectX - 1) + "_" + GameObjectY).tag != "Wall")
+            {
+                SearchEnemy(GameObjectX - 1, GameObjectY, distance + 1);
+            }
+            if (GameObject.Find((GameObjectX ) + "_" + (GameObjectY + 1)).tag != "Wall")
+            {
+                SearchEnemy(GameObjectX, GameObjectY + 1, distance + 1);
+            }
+            if (GameObject.Find((GameObjectX) + "_" + (GameObjectY - 1)).tag != "Wall")
+            {
+                SearchEnemy(GameObjectX, GameObjectY - 1, distance + 1);
+            }
+        }
+    }
+
 }
