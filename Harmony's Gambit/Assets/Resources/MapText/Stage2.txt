@@ -1,0 +1,21 @@
+20	23
+e	e	e	w	w	w	w	w	e	e	e	e	e	e	e	e	e	e	e	e	e	e	e
+e	e	e	w	g	g	g	w	e	e	e	e	e	e	w	w	w	w	w	w	w	w	e
+e	e	w	w	g	g	g	w	w	w	w	w	w	w	w	g	g	g	g	g	g	w	e
+e	e	w	g	Ph	g	g	w	w	g	g	g	g	g	g	g	1	g	g	2	g	w	e
+e	e	w	g	g	Pm	g	w	Sb	g	g	Pm	g	g	g	g	g	g	g	g	g	w	e
+e	e	w	g	g	g	g	Sd	g	g	Pm	g	g	g	w	g	g	Sb	g	Sb	g	w	e
+e	e	w	g	Pm	g	Sb	w	Sb	g	g	g	g	w	w	w	w	w	Sd	w	w	w	w
+e	e	w	w	g	g	g	w	g	g	Pm	g	g	w	w	w	w	g	g	Sb	g	g	w
+e	w	w	w	w	w	w	w	w	w	w	g	w	w	w	w	g	Pm	g	g	g	g	w
+w	w	g	g	g	w	w	g	g	g	g	g	g	w	e	w	g	g	g	g	g	g	w
+w	g	g	Rm	g	w	g	g	Rm	g	Pm	g	g	w	e	w	g	g	g	Ph	g	g	w
+w	g	g	g	g	g	g	g	g	g	g	g	w	w	e	w	w	g	g	g	g	w	w
+w	g	Bm	g	g	w	g	Bm	g	Sb	g	Sb	w	w	e	e	w	w	w	w	w	w	e
+w	g	g	g	g	w	w	w	w	w	Sd	w	w	w	w	w	w	w	e	e	e	e	e
+w	w	w	w	w	w	e	e	e	w	g	Sb	g	g	g	g	g	w	e	e	e	e	e
+e	e	e	e	e	e	e	e	e	w	Bm	g	g	Pm	g	g	g	w	e	e	e	e	e
+e	e	e	e	e	e	e	e	e	w	g	g	g	g	g	g	g	w	e	e	e	e	e
+e	e	e	e	e	e	e	e	e	w	g	Rm	g	Pb	g	g	g	w	e	e	e	e	e
+e	e	e	e	e	e	e	e	e	w	w	g	g	g	Pm	g	w	w	e	e	e	e	e
+e	e	e	e	e	e	e	e	e	e	w	w	w	Nd	w	w	w	e	e	e	e	e	e
