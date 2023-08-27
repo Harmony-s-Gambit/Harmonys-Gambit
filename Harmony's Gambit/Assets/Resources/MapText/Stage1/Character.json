@@ -1,0 +1,14 @@
+{
+  "players":[
+    {
+      "color": "COLOR.RED",
+      "x": 8,
+      "y": 12
+    },
+    {
+      "color": "COLOR.BLUE",
+      "x": 11,
+      "y": 12
+    }
+  ]
+}
