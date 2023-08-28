@@ -43,7 +43,7 @@ public class GridMaker : MonoBehaviour
                     float Y = i * tileSize;
                     tile.transform.position = new Vector2(X, Y);
                 }
-                else if (stringData[j].Equals("g"))
+                else if (!stringData[j].Equals("e"))
                 {
                     GameObject tile = GameObject.Instantiate(GroundTile, transform);
                     tile.name = j + "_" + i;
