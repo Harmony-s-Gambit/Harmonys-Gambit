@@ -19,7 +19,12 @@ public class StructureManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Delay());
+        GenerateNextStageDoor(20, 0, 1);
+
+        GenerateDoor_Simultaneous(14, 16, 1);
+        GenerateDoorOpenButton1_Simultaneous(13, 17, 1);
+        GenerateDoorOpenButton2_Simultaneous(13, 15, 1);
+        GenerateDoorOpenButton3_Simultaneous(15, 17, 1);
     }
 
     public IEnumerator rhythmTure()

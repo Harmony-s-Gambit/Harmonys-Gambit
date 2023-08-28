@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using JetBrains.Annotations;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -15,6 +17,18 @@ public class PlayerManager : MonoBehaviour
     private int P1_x, P1_y, P2_x, P2_y;
     private GameObject P1target, P2target, P1current, P2current;
 
+    public class PlayerStat
+    {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public COLOR color;
+        public int x;
+        public int y;
+    }
+
+    public class PlayerData
+    {
+        public PlayerStat[] players = new PlayerStat[2];
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +36,14 @@ public class PlayerManager : MonoBehaviour
         //텍스트 파일을 읽어서 처음 위치 를 P1_x, P1_y, P2_x, P2_y에 저장하기
         //그 후 Find를 이용해서 해당 타일을 찾고 배치
 
-        
+        TextAsset playerJson = Resources.Load("MapText/Stage1/Character") as TextAsset;
 
-        P1_x = 7; P1_y = 10;
-        P2_x = 10; P2_y = 10;
+        PlayerData playerData = JsonConvert.DeserializeObject<PlayerData>(playerJson.text);
+
         P1 = (GameObject)Instantiate(Resources.Load("Prefabs/Players/redPlayer"));
-        P1.GetComponent<Player>().SetXY(P1_x, P1_y);
+        P1.GetComponent<Player>().SetXY(playerData.players[0].x, playerData.players[0].y);
         P2 = (GameObject)Instantiate(Resources.Load("Prefabs/Players/bluePlayer"));
-        P2.GetComponent<Player>().SetXY(P2_x, P2_y);
+        P2.GetComponent<Player>().SetXY(playerData.players[1].x, playerData.players[1].y);
     }
 
     // Update is called once per frame

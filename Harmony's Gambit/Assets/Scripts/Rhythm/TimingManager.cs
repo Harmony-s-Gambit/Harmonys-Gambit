@@ -139,19 +139,19 @@ public class TimingManager : MonoBehaviour
             if (_whatKeyP1.Count != 0)
             {
                 string key = _whatKeyP1.Dequeue();
-                if (key == "W")
+                if (key == "Up")
                 {
                     _gameManager.redPlayer.direction = DIRECTION.UP;
                 }
-                if (key == "A")
+                if (key == "Left")
                 {
                     _gameManager.redPlayer.direction = DIRECTION.LEFT;
                 }
-                if (key == "S")
+                if (key == "Down")
                 {
                     _gameManager.redPlayer.direction = DIRECTION.DOWN;
                 }
-                if (key == "D")
+                if (key == "Right")
                 {
                     _gameManager.redPlayer.direction = DIRECTION.RIGHT;
                 }
@@ -168,19 +168,19 @@ public class TimingManager : MonoBehaviour
             if (_whatKeyP2.Count != 0)
             {
                 string key = _whatKeyP2.Dequeue();
-                if (key == "Up")
+                if (key == "W")
                 {
                     _gameManager.bluePlayer.direction = DIRECTION.UP;
                 }
-                if (key == "Left")
+                if (key == "A")
                 {
                     _gameManager.bluePlayer.direction = DIRECTION.LEFT;
                 }
-                if (key == "Down")
+                if (key == "S")
                 {
                     _gameManager.bluePlayer.direction = DIRECTION.DOWN;
                 }
-                if (key == "Right")
+                if (key == "D")
                 {
                     _gameManager.bluePlayer.direction = DIRECTION.RIGHT;
                 }

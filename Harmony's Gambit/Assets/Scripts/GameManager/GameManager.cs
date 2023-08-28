@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> players = new List<GameObject>();
+
     public Player redPlayer;
     public Player bluePlayer;
+
     public bool isRedValid = false;
     public bool isBlueValid = false;
     public bool isStunned = false;
@@ -21,6 +23,10 @@ public class GameManager : MonoBehaviour
     public int whichDoorHasBluePlayer = -1;
 
     public bool isDebugMode = false;
+
+    public PlayerManager PM;
+    public EnemyManager EM;
+    public StructureManager SM;
     // Start is called before the first frame update
     void Start()
     {

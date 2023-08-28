@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2429020284263201685}
   - component: {fileID: 7267672965815066251}
+  - component: {fileID: -747499285312333773}
   m_Layer: 0
   m_Name: purpleRacoon
   m_TagString: Enemy
@@ -117,6 +118,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &-747499285312333773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608206507867151747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57b56b4733f86749bab3cc85e3d2514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 3
+  x: 0
+  y: 0
+  isMultiColor: 0
+  color: 0
+  multiColor: 
+  direction: 0
+  character: {fileID: 0}
+  currentBlock: {fileID: 0}
+  isMovedThisTurn: 0
+  weapon: {fileID: 0}
+  death: 0
 --- !u!1 &2380615563963698492
 GameObject:
   m_ObjectHideFlags: 0

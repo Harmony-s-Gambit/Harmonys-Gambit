@@ -24,3 +24,11 @@ public enum COLOR
     BLUE,
     PURPLE
 };
+
+public enum MONSTER
+{
+    MOUSE,
+    HYENA,
+    BEAR,
+    RACOON
+}

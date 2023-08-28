@@ -15,36 +15,36 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            _timingManager.CheckTiming(1, "W");
+            _timingManager.CheckTiming(2, "W");
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            _timingManager.CheckTiming(1, "A");
+            _timingManager.CheckTiming(2, "A");
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            _timingManager.CheckTiming(1, "S");
+            _timingManager.CheckTiming(2, "S");
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            _timingManager.CheckTiming(1, "D");
+            _timingManager.CheckTiming(2, "D");
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            _timingManager.CheckTiming(2, "Up");
+            _timingManager.CheckTiming(1, "Up");
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            _timingManager.CheckTiming(2, "Down");
+            _timingManager.CheckTiming(1, "Down");
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            _timingManager.CheckTiming(2, "Right");
+            _timingManager.CheckTiming(1, "Right");
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            _timingManager.CheckTiming(2, "Left");
+            _timingManager.CheckTiming(1, "Left");
         }
     }
 }

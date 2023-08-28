@@ -41,8 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2429020284263201685}
   - component: {fileID: 7267672965815066251}
+  - component: {fileID: -8019305148239324902}
   m_Layer: 0
-  m_Name: purpleHiena
+  m_Name: blueHyena
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: fad6182f222ae574e82d77df903cc818, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 81cefe76973680f498132e4156b6c3d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,6 +118,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &-8019305148239324902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608206507867151747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170eeae9662e3c54c94a96a4bf1d5797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 3
+  x: 0
+  y: 0
+  isMultiColor: 0
+  color: 0
+  multiColor: 
+  direction: 0
+  character: {fileID: 0}
+  currentBlock: {fileID: 0}
+  isMovedThisTurn: 0
+  weapon: {fileID: 0}
+  death: 0
 --- !u!1 &2380615563963698492
 GameObject:
   m_ObjectHideFlags: 0
