@@ -18,7 +18,7 @@ public class Enemy : Character
     // Update is called once per frame
     protected override void Update()
     {
-        if(HP < 0)
+        if(HP < 1)
         {
             death = true;
         }
