@@ -37,12 +37,12 @@ public class StructureManager : MonoBehaviour
         //GenerateDoor_Basic(3, 3, 1);
         //GenerateDoorOpenButton1_Basic(3, 4, 1);
 
-        GenerateNextStageDoor(5, 5, 1);
+        GenerateNextStageDoor(20, 0, 1);
 
-        GenerateDoor_Simultaneous(7, 5, 1);
-        GenerateDoorOpenButton1_Simultaneous(6, 4, 1);
-        GenerateDoorOpenButton2_Simultaneous(8, 4, 1);
-        GenerateDoorOpenButton3_Simultaneous(6, 6, 1);
+        GenerateDoor_Simultaneous(14, 16, 1);
+        GenerateDoorOpenButton1_Simultaneous(13, 17, 1);
+        GenerateDoorOpenButton2_Simultaneous(13, 15, 1);
+        GenerateDoorOpenButton3_Simultaneous(15, 17, 1);
 
         CheckStructures();
     }
