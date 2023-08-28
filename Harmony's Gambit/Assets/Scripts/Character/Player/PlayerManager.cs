@@ -9,13 +9,10 @@ using JetBrains.Annotations;
 public class PlayerManager : MonoBehaviour
 {
     public bool GameOver = false;
-    public int P1_HP = 3, P2_HP = 3;
+    public int P1_HP = 4, P2_HP = 4;
     public int P1_AttackType = 0, P2_AttackType = 0;
     public int P1direction, P2direction;
     private GameObject P1, P2;
-    private bool MoveP1, MoveP2;
-    private int P1_x, P1_y, P2_x, P2_y;
-    private GameObject P1target, P2target, P1current, P2current;
 
     public class PlayerStat
     {
