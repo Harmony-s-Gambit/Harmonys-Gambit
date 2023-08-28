@@ -1,0 +1,100 @@
+{
+  "enemies": [
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 3,
+      "y": 12
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 4,
+      "y": 11
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 8,
+      "y": 5
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 10,
+      "y": 4
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 12,
+      "y": 6
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 18,
+      "y": 10
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "HYENA",
+      "x": 19,
+      "y": 3
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 19,
+      "y": 13
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "HYENA",
+      "x": 19,
+      "y": 18
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "HYENA",
+      "x": 20,
+      "y": 7
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 21,
+      "y": 11
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "BEAR",
+      "x": 21,
+      "y": 19
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 22,
+      "y": 17
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "HYENA",
+      "x": 23,
+      "y": 19
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 28,
+      "y": 11
+    },
+    {
+      "color": "COLOR.PURPLE",
+      "type": "MOUSE",
+      "x": 29,
+      "y": 13
+    }
+  ]
+}

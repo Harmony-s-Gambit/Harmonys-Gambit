@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public int whichDoorHasRedPlayer = -1;
     public int whichDoorHasBluePlayer = -1;
 
-
+    public bool isDebugMode = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
         redPlayer = players[0].GetComponent<Player>();
         bluePlayer = players[1].GetComponent<Player>();
         //Attack or Move
+        if(isDebugMode)
+        {
+            rhythm= true;
+        }
         if (rhythm)
         {
             //player Move
