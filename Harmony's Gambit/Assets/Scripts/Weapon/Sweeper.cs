@@ -19,7 +19,7 @@ public class Sweeper : Weapon
     public override void selectEnemies(DIRECTION direction, int x, int y, COLOR color)
     {
         Attack = false;
-        GameObject inGridSlot = new GameObject();
+      
         for (int i = 0; i < 3; i++)
         {
             switch (direction)

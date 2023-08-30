@@ -10,6 +10,7 @@ public abstract class Weapon : MonoBehaviour
     public bool playerWeapon = false;
     //Selector는 범위 tile GameObject를 잠시 받아두기도 하고 공격대상 GameObject를 받아두기도 합니다
     public List<GameObject> Selector = new List<GameObject>();
+    protected GameObject inGridSlot;
     public abstract void Start();
     public abstract void selectEnemies(DIRECTION direction, int x, int y, COLOR color);
 
@@ -24,7 +25,6 @@ public abstract class Weapon : MonoBehaviour
     }
     public List<GameObject> targetEnemies(DIRECTION direction, int x, int y, COLOR color)
     {
-        GameObject inGridSlot = new GameObject();
         //Debug.Log(Range.Count);
         for(int i = 0; i < Range.Count; i++)
         {

@@ -12,31 +12,31 @@ public class Hiena : Enemy
         base.Start();
         if(color == COLOR.PURPLE)
         {
-            Player rp = GameObject.Find("redPlayer").GetComponent<Player>();
-            Player bp = GameObject.Find("bluePlayer").GetComponent<Player>();
+            Player rp = GameObject.Find("redPlayer(Clone)").GetComponent<Player>();
+            Player bp = GameObject.Find("bluePlayer(Clone)").GetComponent<Player>();
             if(rp.x + rp.y < bp.x + bp.y)
             {
-                target = GameObject.Find("redPlayer");
+                target = GameObject.Find("redPlayer(Clone)");
             }
             else
             {
-                target = GameObject.Find("bluePlayer");
+                target = GameObject.Find("bluePlayer(Clone)");
             }
         }
         else if(color == COLOR.BLUE)
         {
-            target = GameObject.Find("redPlayer");
+            target = GameObject.Find("redPlayer(Clone)");
         }
         else if(color == COLOR.RED)
         {
-            target = GameObject.Find("bluePlayer");
+            target = GameObject.Find("bluePlayer(Clone)");
         }
         pattern = new DIRECTION[2] {
             DIRECTION.RIGHT,
             DIRECTION.STAY
         };
         direction = pattern[0];
-        weapon = new Fist();
+        weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
     }
 

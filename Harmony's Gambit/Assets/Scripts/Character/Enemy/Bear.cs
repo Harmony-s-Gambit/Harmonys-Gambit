@@ -13,24 +13,24 @@ public class Bear : Enemy
         base.Start();
         if (color == COLOR.PURPLE)
         {
-            Player rp = GameObject.Find("redPlayer").GetComponent<Player>();
-            Player bp = GameObject.Find("bluePlayer").GetComponent<Player>();
+            Player rp = GameObject.Find("redPlayer(Clone)").GetComponent<Player>();
+            Player bp = GameObject.Find("bluePlayer(Clone)").GetComponent<Player>();
             if (rp.x + rp.y < bp.x + bp.y)
             {
-                target = GameObject.Find("redPlayer");
+                target = GameObject.Find("redPlayer(Clone)");
             }
             else
             {
-                target = GameObject.Find("bluePlayer");
+                target = GameObject.Find("bluePlayer(Clone)");
             }
         }
         else if (color == COLOR.BLUE)
         {
-            target = GameObject.Find("redPlayer");
+            target = GameObject.Find("redPlayer(Clone)");
         }
         else if (color == COLOR.RED)
         {
-            target = GameObject.Find("bluePlayer");
+            target = GameObject.Find("bluePlayer(Clone)");
         }
         pattern = new DIRECTION[4] {
             DIRECTION.RIGHT,
@@ -40,7 +40,7 @@ public class Bear : Enemy
         };
         direction = pattern[0];
         //나중에 3x3(자신 주변으로) 공격하는 무기를 넣을 겁니다. 요기다가 적용
-        weapon = new Fist();
+        weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
         targetP = target.GetComponent<Player>();
         thisEnemy = target.GetComponent<Enemy>();

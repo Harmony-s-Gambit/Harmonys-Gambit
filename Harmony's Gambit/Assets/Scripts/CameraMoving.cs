@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CameraMoving : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class CameraMoving : MonoBehaviour
     public bool rhythm; //플레이어가 움직였을 때 true
     private float playerDistance; //플레이어들의 거리
     private float cameraSize; // 카메라 크기
+    private bool isNeedSetup = true;
 
     private void Start()
     {
@@ -35,7 +37,25 @@ public class CameraMoving : MonoBehaviour
     {
         if (_gameManager.isRedPlayerPlaying || _gameManager.isBluePlayerPlaying) //한 명이라도 게임 중이라면
         {
-            if (rhythm) //플레이어가 움직였다면
+            if (isNeedSetup)
+            {
+                isNeedSetup = false;
+
+                GameObject player1, player2;
+                player1 = GameObject.FindGameObjectWithTag("Player");
+                player2 = GameObject.FindGameObjectWithTag("Player2");
+
+                playerDistance = Vector2.Distance(player1.transform.position, player2.transform.position); //플레이어 거리 계산
+
+                player1Pos = new Vector3(player1.transform.position.x, player1.transform.position.y, -10f);
+                player2Pos = new Vector3(player2.transform.position.x, player2.transform.position.y, -10f);
+
+                center = (player1Pos + player2Pos) / 2; //플레이어의 중심 좌표 계산
+                center.y += 75f;
+                center.z = -10f;
+                transform.position = center;
+            }
+            else if(rhythm)//플레이어가 움직였다면
             {
                 GameObject player1, player2;
 
@@ -74,7 +94,6 @@ public class CameraMoving : MonoBehaviour
                 {
                     StartCoroutine(ChangeSizeSmoothly(cam.orthographicSize, playerDistance / firstPlayerDistance * cameraSize * maxSizeLimit, movingTime));
                 }
-                rhythm = false;
             }
             transform.position = Vector3.Lerp(this.transform.position, center, Time.deltaTime * movingTime);
         }

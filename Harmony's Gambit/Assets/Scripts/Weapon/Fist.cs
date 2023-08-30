@@ -12,7 +12,6 @@ public class Fist : Weapon
     }
     public override void selectEnemies(DIRECTION direction, int x, int y, COLOR color)
     {
-        GameObject inGridSlot = new GameObject();
         Selector.Clear();
         switch (direction)
         {

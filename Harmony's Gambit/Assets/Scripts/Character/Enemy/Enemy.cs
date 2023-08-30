@@ -12,7 +12,6 @@ public class Enemy : Character
     protected override void Start()
     {
         _directionIdx = 0;
-        GameObject.Find("GameManager").GetComponent<GameManager>().enemies.Add(gameObject);
     }
 
     // Update is called once per frame
@@ -20,7 +19,7 @@ public class Enemy : Character
     {
         if(HP < 1)
         {
-            death = true;
+            Die();
         }
     }
 
@@ -145,8 +144,11 @@ public class Enemy : Character
 
     }
 
-    public void deathEffect()
+    public void Die()
     {
-        
+        Debug.Log("Die");
+        GameObject.Find((x) + "_" + y).GetComponent<GridSlotInfo>().occupyingCharacter = null;
+        GameObject.Find("GameManager").GetComponent<GameManager>().enemies.Remove(gameObject);
+        Destroy(gameObject);
     }
 }

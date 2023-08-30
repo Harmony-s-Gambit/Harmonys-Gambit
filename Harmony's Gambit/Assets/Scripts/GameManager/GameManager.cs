@@ -24,9 +24,6 @@ public class GameManager : MonoBehaviour
 
     public bool isDebugMode = false;
 
-    public PlayerManager PM;
-    public EnemyManager EM;
-    public StructureManager SM;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,13 +33,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(players.Count == 0)
+        {
+            return;
+        }
         redPlayer = players[0].GetComponent<Player>();
         bluePlayer = players[1].GetComponent<Player>();
         //Attack or Move
-        if(isDebugMode)
-        {
-            rhythm= true;
-        }
+
         if (rhythm)
         {
             //player Move
@@ -91,14 +89,12 @@ public class GameManager : MonoBehaviour
                             {
                                 tempPlayer.weapon.attackEnemies(1);
                             }
-
                             //�̵��϶�
                             else
                             {
-                                tempPlayer.weapon.ClearSelector();
                                 tempPlayer.MoveManage();
                             }
-
+                            tempPlayer.weapon.ClearSelector();
 
                         }                          
                     }
@@ -118,26 +114,12 @@ public class GameManager : MonoBehaviour
                     currentEnemy.weapon.selectEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color);
                     if (currentEnemy.weapon.GetSelectorCount() > 0)
                     {
-                        Debug.Log("attack");
+                        Debug.Log($"{currentEnemy.x}, {currentEnemy.y}");
                         currentEnemy.weapon.attackEnemies(1);
                     }
-
                     //�̵��϶�
                     else
                     {
-                        Enemy tempEnemy = enemy.GetComponent<Enemy>();
-                        tempEnemy.weapon.selectEnemies(tempEnemy.direction, tempEnemy.x,tempEnemy.y,tempEnemy.color);
-                        //��������
-                        if (enemy.GetComponent<Enemy>().weapon.Attack)
-                        {
-                            tempEnemy.Attack();
-                        }
-                        //�ȿ� ������ ����
-                        else
-                        {
-                            //������ �̵�
-                            enemy.GetComponent<Enemy>().MoveManage();
-                        }
                         Debug.Log("move");
                         currentEnemy.weapon.ClearSelector();
                         currentEnemy.MoveManage();
@@ -154,22 +136,7 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            try
-            {
-                if (enemy.GetComponent<Enemy>().death)
-                {
-                    enemy.GetComponent<Enemy>().deathEffect();
-                    enemies.Remove(enemy);
-                    Destroy(enemy);
-                }
-                else
-                {
-                    enemy.GetComponent<Enemy>().isMovedThisTurn = false;
-                }
-            }catch(MissingReferenceException e)
-            {
-
-            }
+            enemy.GetComponent<Enemy>().isMovedThisTurn = false;
         }
 
         //���� ������ ����

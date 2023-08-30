@@ -11,7 +11,7 @@ public class Player : Character
     {
         
         GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
-        weapon = new Fist();
+        weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
         weapon.playerWeapon = true;
     }

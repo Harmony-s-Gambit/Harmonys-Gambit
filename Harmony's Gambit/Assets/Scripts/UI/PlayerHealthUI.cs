@@ -42,21 +42,22 @@ public class PlayerHealthUI : MonoBehaviour
 
             }
         }
-        else
+        if (player.GetComponent<Player>().HP == 4)
         {
-            return;
+            first.GetComponent<SpriteRenderer>().sprite = full;
+            second.GetComponent<SpriteRenderer>().sprite = full;
         }
-        if(player.GetComponent<Player>().HP == 3)
+        if (player.GetComponent<Player>().HP == 3)
         {
             first.GetComponent<SpriteRenderer>().sprite = full;
             second.GetComponent<SpriteRenderer>().sprite = half;
         }
-        else if(player.GetComponent<Player>().HP == 2)
+        if(player.GetComponent<Player>().HP == 2)
         {
             first.GetComponent<SpriteRenderer>().sprite = full;
             second.GetComponent<SpriteRenderer>().sprite = empty;
         }
-        else if(player.GetComponent<Player>().HP == 1)
+        if(player.GetComponent<Player>().HP == 1)
         {
             first.GetComponent<SpriteRenderer>().sprite = half;
             second.GetComponent<SpriteRenderer>().sprite = empty;
