@@ -60,9 +60,9 @@ public abstract class Weapon : MonoBehaviour
                             //여러 색을 가진 대상 공격
                         }
                     }
-                    else if (inGridSlot.tag == "Player" && !playerWeapon)
+                    else if (inGridSlot.tag.Contains("Player") && !playerWeapon)
                     {
-                    Selector.Add(inGridSlot);    
+                        Selector.Add(inGridSlot);    
                     }
                 }
                 catch (Exception e)
@@ -78,7 +78,7 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (Selector[i].tag == "Enemy" && playerWeapon)
                     Selector[i].GetComponent<Enemy>().HP -= damage;
-                else if (Selector[i].tag == "Player" && !playerWeapon)
+                else if (Selector[i].tag.Contains("Player") && !playerWeapon)
                     Selector[i].GetComponent<Player>().HP -= damage;
             }
         }

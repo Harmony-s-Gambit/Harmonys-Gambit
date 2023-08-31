@@ -8,6 +8,7 @@ public class Hiena : Enemy
 {
     Dictionary<GameObject, int> MovementRoute;
     GameObject target;
+    private bool dontMove =false;
     void Start()
     {
         base.Start();
@@ -131,6 +132,11 @@ public class Hiena : Enemy
 
     public override GameObject GetNextDest()
     {
+        if(dontMove)
+        {
+            dontMove = false;
+            return GameObject.Find(x + "_" + y);
+        }
         int tarX = target.GetComponent<Player>().x;
         int tarY = target.GetComponent<Player>().y;
 
@@ -171,6 +177,8 @@ public class Hiena : Enemy
                 nextY = cur.y + dy[i];
                 if(nextX == tarX && nextY == tarY)
                 {
+                    xydQ.Clear();
+                    dontMove = true;
                     direction = cur.dir;
                     switch (cur.dir)
                     {
@@ -184,7 +192,8 @@ public class Hiena : Enemy
                             return GameObject.Find(x + "_" + (y-1));
                     }
                 }
-                if (Mathf.Abs(nextX-x) + Mathf.Abs(nextY - y)> Mathf.Abs(cur.x-x) + Mathf.Abs(cur.y - y))
+                if (Mathf.Abs(nextX-x) + Mathf.Abs(nextY - y)> Mathf.Abs(cur.x-x) + Mathf.Abs(cur.y - y)
+                    && Mathf.Abs(nextX - x) + Mathf.Abs(nextY - y) <10)
                 {
                     if (GameObject.Find(nextX + "_" + nextY).GetComponent<GridSlotInfo>().blockType != BLOCKTYPE.WALL)
                     {
