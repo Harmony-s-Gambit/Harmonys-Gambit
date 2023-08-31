@@ -5,11 +5,12 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
-    public bool takenDamage = false; 
+    public bool takenDamage = false;
+    private Animator m_Animator;
     // Start is called before the first frame update
     protected override void Start()
     {
-        
+        m_Animator= GetComponent<Animator>();
         GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
@@ -63,6 +64,7 @@ public class Player : Character
 
     public override void Move(GameObject nextDest)
     {
+        m_Animator.SetTrigger("move");
         isMovedThisTurn = true;
         currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
         nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
