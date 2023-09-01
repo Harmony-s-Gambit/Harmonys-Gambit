@@ -32,3 +32,10 @@ public enum MONSTER
     BEAR,
     RACOON
 }
+
+public enum SIGHTTYPE
+{
+    NEVERSEEN,
+    ONCESAW,
+    NOWSEEING
+}

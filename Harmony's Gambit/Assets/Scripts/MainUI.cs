@@ -7,6 +7,8 @@ public class MainUI : MonoBehaviour
     [SerializeField] GameObject[] panels;
     [SerializeField] GameObject[] buttons;
     private GameManager _gameManager;
+    private SightManager _sightManager;
+    private CameraMoving _cameraMoving;
 
     private void Start()
     {
@@ -17,6 +19,8 @@ public class MainUI : MonoBehaviour
         panels[0].SetActive(true);
 
         _gameManager = FindObjectOfType<GameManager>();
+        _sightManager = FindObjectOfType<SightManager>();
+        _cameraMoving = FindObjectOfType<CameraMoving>();
     }
 
     public void Main_MapSelectButton()
@@ -48,6 +52,21 @@ public class MainUI : MonoBehaviour
         NoteManager.instance.SetBGMValue("BGM1");
         GameStartSetting();
         panels[2].SetActive(false);
+
+        GridSlotInfo[] slots = FindObjectsOfType<GridSlotInfo>();
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].UpdateSightType();
+        }
+
+        StartCoroutine(TestDelay());
+        _cameraMoving.FirstCam();
+    }
+
+    IEnumerator TestDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _sightManager.rhythm = true;
     }
 
     private void GameStartSetting()
