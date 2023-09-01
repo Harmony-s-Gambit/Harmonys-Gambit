@@ -62,5 +62,10 @@ public class PlayerHealthUI : MonoBehaviour
             first.GetComponent<SpriteRenderer>().sprite = half;
             second.GetComponent<SpriteRenderer>().sprite = empty;
         }
+        if (player.GetComponent<Player>().HP == 0)
+        {
+            first.GetComponent<SpriteRenderer>().sprite = empty;
+            second.GetComponent<SpriteRenderer>().sprite = empty;
+        }
     }
 }

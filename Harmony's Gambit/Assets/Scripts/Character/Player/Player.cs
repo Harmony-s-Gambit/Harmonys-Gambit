@@ -30,25 +30,27 @@ public class Player : Character
         if(HP <= 0)
         {
             m_Animator.SetTrigger("die");
-            Destroy(gameObject);
         }
-        if(direction == DIRECTION.LEFT)
+        else
         {
-            Vector3 tempScale = transform.localScale;
-            tempScale.x = -1;
-            transform.localScale = tempScale;
+            if (direction == DIRECTION.LEFT)
+            {
+                Vector3 tempScale = transform.localScale;
+                tempScale.x = -1;
+                transform.localScale = tempScale;
+            }
+            else if (direction == DIRECTION.RIGHT)
+            {
+                Vector3 tempScale = transform.localScale;
+                tempScale.x = 1;
+                transform.localScale = tempScale;
+            }
+            if (HP < beforeHP)
+            {
+                m_Animator.SetTrigger("damage");
+            }
+            beforeHP = HP;
         }
-        else if (direction == DIRECTION.RIGHT)
-        {
-            Vector3 tempScale = transform.localScale;
-            tempScale.x = 1;
-            transform.localScale = tempScale;
-        }
-        if (HP < beforeHP)
-        {
-            m_Animator.SetTrigger("damage");
-        }
-        beforeHP = HP;
     }
 
     public override void SetXY(int px, int py)

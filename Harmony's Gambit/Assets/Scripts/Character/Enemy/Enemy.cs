@@ -20,13 +20,13 @@ public class Enemy : Character
         if (direction == DIRECTION.LEFT)
         {
             Vector3 tempScale = transform.localScale;
-            tempScale.x = -1;
+            tempScale.x = -Mathf.Abs(tempScale.x);
             transform.localScale = tempScale;
         }
         else if (direction == DIRECTION.RIGHT)
         {
             Vector3 tempScale = transform.localScale;
-            tempScale.x = 1;
+            tempScale.x = Mathf.Abs(tempScale.x);
             transform.localScale = tempScale;
         }
         if (HP < 1)
