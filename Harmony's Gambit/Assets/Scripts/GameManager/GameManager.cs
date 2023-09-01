@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
                 if (isRedValid ^ isBlueValid)
                 {
                     //���� �Ѹ��� ����
+                    redPlayer.m_Animator.SetTrigger("stun");
+                    bluePlayer.m_Animator.SetTrigger("stun");
                 }
                 if (isRedValid && isBlueValid)
                 {
@@ -63,6 +65,8 @@ public class GameManager : MonoBehaviour
                     if (redNextDest == blueNextDest || (redNextDest == bluePlayer.currentBlock && blueNextDest == redPlayer.currentBlock))
                     {
                         //����ĭ���� Ȥ�� �پ��ִ� ���¿��� ���� �浹
+                        redPlayer.m_Animator.SetTrigger("crash");
+                        bluePlayer.m_Animator.SetTrigger("crash");
                         isStunned = true;
                         redPlayer.isMovedThisTurn = true;
                         bluePlayer.isMovedThisTurn = true;
@@ -87,6 +91,7 @@ public class GameManager : MonoBehaviour
                             tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
                             if(tempPlayer.weapon.GetSelectorCount() > 0)
                             {
+                                tempPlayer.m_Animator.SetTrigger("attack");
                                 tempPlayer.weapon.attackEnemies(1);
                             }
                             //�̵��϶�

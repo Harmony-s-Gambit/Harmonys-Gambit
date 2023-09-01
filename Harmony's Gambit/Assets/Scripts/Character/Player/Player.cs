@@ -6,12 +6,18 @@ using static UnityEngine.GraphicsBuffer;
 public class Player : Character
 {
     public bool takenDamage = false;
-    private Animator m_Animator;
+    public Animator m_Animator;
+    private int beforeHP;
     // Start is called before the first frame update
     protected override void Start()
     {
-        m_Animator= GetComponent<Animator>();
         GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
+
+        m_Animator = GetComponent<Animator>();
+        m_Animator.SetTrigger("idle");
+
+        beforeHP = HP;
+
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
         weapon.playerWeapon = true;
@@ -20,11 +26,17 @@ public class Player : Character
     // Update is called once per frame
     protected override void Update()
     {
+        
         if(HP <= 0)
         {
-            Debug.Log("Death");
+            m_Animator.SetTrigger("die");
             Destroy(gameObject);
         }
+        if (HP < beforeHP)
+        {
+            m_Animator.SetTrigger("damage");
+        }
+        beforeHP = HP;
     }
 
     public override void SetXY(int px, int py)
