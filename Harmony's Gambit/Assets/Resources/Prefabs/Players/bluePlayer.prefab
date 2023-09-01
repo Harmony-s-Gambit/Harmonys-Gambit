@@ -79,6 +79,7 @@ MonoBehaviour:
   isMovedThisTurn: 0
   weapon: {fileID: 0}
   takenDamage: 0
+  m_Animator: {fileID: 0}
 --- !u!1001 &7997082091393898778
 PrefabInstance:
   m_ObjectHideFlags: 0

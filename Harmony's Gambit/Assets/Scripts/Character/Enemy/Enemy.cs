@@ -17,7 +17,19 @@ public class Enemy : Character
     // Update is called once per frame
     protected override void Update()
     {
-        if(HP < 1)
+        if (direction == DIRECTION.LEFT)
+        {
+            Vector3 tempScale = transform.localScale;
+            tempScale.x = -1;
+            transform.localScale = tempScale;
+        }
+        else if (direction == DIRECTION.RIGHT)
+        {
+            Vector3 tempScale = transform.localScale;
+            tempScale.x = 1;
+            transform.localScale = tempScale;
+        }
+        if (HP < 1)
         {
             Die();
         }
