@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2429020284263201685}
   - component: {fileID: 7267672965815066251}
   - component: {fileID: 6311138341642674314}
+  - component: {fileID: 4232120586091406065}
   m_Layer: 0
   m_Name: purpleBear
   m_TagString: Enemy
@@ -140,8 +141,30 @@ MonoBehaviour:
   character: {fileID: 0}
   currentBlock: {fileID: 0}
   isMovedThisTurn: 0
+  m_Animator: {fileID: 0}
   weapon: {fileID: 0}
   death: 0
+--- !u!95 &4232120586091406065
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608206507867151747}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0be952f1ce973674782b39847fc8c629, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2380615563963698492
 GameObject:
   m_ObjectHideFlags: 0

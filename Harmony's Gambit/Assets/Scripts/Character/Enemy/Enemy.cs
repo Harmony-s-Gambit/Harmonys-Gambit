@@ -7,11 +7,17 @@ public class Enemy : Character
     public bool death = false;
     protected DIRECTION[] pattern;
     protected int _directionIdx;
+    protected int beforeHP;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         _directionIdx = 0;
+
+        m_Animator = GetComponent<Animator>();
+        m_Animator.SetTrigger("idle");
+
+        beforeHP = HP;
     }
 
     // Update is called once per frame
@@ -31,8 +37,14 @@ public class Enemy : Character
         }
         if (HP < 1)
         {
+            m_Animator.SetTrigger("die");
             Die();
         }
+        if (HP < beforeHP)
+        {
+            m_Animator.SetTrigger("damage");
+        }
+        beforeHP = HP;
     }
 
     public override void SetXY(int px, int py)
@@ -72,6 +84,7 @@ public class Enemy : Character
 
     public override void Move(GameObject nextDest)
     {
+        m_Animator.SetTrigger("move");
         isMovedThisTurn = true;
         currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
         nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;

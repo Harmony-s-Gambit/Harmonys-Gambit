@@ -6,8 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 public class Player : Character
 {
     public bool takenDamage = false;
-    public Animator m_Animator;
     private int beforeHP;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -146,6 +146,23 @@ public class Player : Character
             {
                 return false;
             }
+        }
+    }
+
+    public void Crashed(GameObject nextDest, Vector3 ori)
+    {
+        Coroutine crash = StartCoroutine(Crash(nextDest, ori));
+
+    }
+    IEnumerator Crash(GameObject nextDest, Vector3 ori)
+    {
+        int N=2;
+        float elapsed = 0f;
+        while(elapsed < 1)
+        {
+            elapsed += Time.deltaTime*N; 
+            transform.position = Vector3.Lerp(nextDest.transform.position, ori, elapsed);
+            yield return null;
         }
     }
 }

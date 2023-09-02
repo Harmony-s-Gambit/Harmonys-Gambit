@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour
                         redPlayer.m_Animator.SetTrigger("crash");
                         bluePlayer.m_Animator.SetTrigger("crash");
                         isStunned = true;
+                        if(redNextDest == blueNextDest)
+                        {
+                            redPlayer.Crashed(redNextDest, redPlayer.transform.position);
+                            bluePlayer.Crashed(blueNextDest, bluePlayer.transform.position);
+                        }
                         redPlayer.isMovedThisTurn = true;
                         bluePlayer.isMovedThisTurn = true;
                     }
@@ -119,13 +124,12 @@ public class GameManager : MonoBehaviour
                     currentEnemy.weapon.selectEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color);
                     if (currentEnemy.weapon.GetSelectorCount() > 0)
                     {
-                        Debug.Log($"{currentEnemy.x}, {currentEnemy.y}");
+                        currentEnemy.m_Animator.SetTrigger("attack");
                         currentEnemy.weapon.attackEnemies(1);
                     }
                     //�̵��϶�
                     else
                     {
-                        Debug.Log("move");
                         currentEnemy.weapon.ClearSelector();
                         currentEnemy.MoveManage();
                     }

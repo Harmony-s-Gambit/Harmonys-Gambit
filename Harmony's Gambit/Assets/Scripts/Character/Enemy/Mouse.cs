@@ -8,6 +8,7 @@ public class Mouse : Enemy
     void Start()
     {
         base.Start();
+
         pattern = new DIRECTION[4] {
             DIRECTION.LEFT,
             DIRECTION.STAY,
@@ -17,5 +18,6 @@ public class Mouse : Enemy
         direction = pattern[0];
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
+
     }
 }
