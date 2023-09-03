@@ -52,6 +52,7 @@ public class Fist : Weapon
         }
         catch (Exception e)
         {
+            //Debug.Log(e);
             Attack = false;
         }
     }

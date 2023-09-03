@@ -49,6 +49,8 @@ public class MainUI : MonoBehaviour
 
     public void GamePlay1Button() //게임 플레이 시 설정, 노트 생성 시작, 즉 게임 시작 버튼
     {
+        panels[0].SetActive(false);
+        panels[3].SetActive(true);
         NoteManager.instance.SetBGMValue("BGM1");
         GameStartSetting();
         panels[2].SetActive(false);

@@ -10,7 +10,7 @@ public class Enemy : Character
     protected int beforeHP;
 
     // Start is called before the first frame update
-    protected override void Start()
+    public override void Start()
     {
         _directionIdx = 0;
 

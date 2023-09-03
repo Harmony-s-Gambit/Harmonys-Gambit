@@ -9,7 +9,7 @@ public class Hiena : Enemy
     Dictionary<GameObject, int> MovementRoute;
     GameObject target;
     private bool dontMove =false;
-    void Start()
+    public override void Start()
     {
         base.Start();
         if(color == COLOR.PURPLE)

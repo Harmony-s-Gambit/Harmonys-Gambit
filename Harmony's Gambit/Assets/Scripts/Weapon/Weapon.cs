@@ -28,45 +28,47 @@ public abstract class Weapon : MonoBehaviour
         //Debug.Log(Range.Count);
         for(int i = 0; i < Range.Count; i++)
         {
-                switch (direction)
+            switch (direction)
+            {
+                case DIRECTION.UP:
+                    inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y + Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                    break;
+                case DIRECTION.LEFT:
+                    inGridSlot = GameObject.Find((x - Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                    break;
+                case DIRECTION.RIGHT:
+                    inGridSlot = GameObject.Find((x + Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                    break;
+                case DIRECTION.DOWN:
+                    inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y - Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                    break;
+                case DIRECTION.STAY:
+                    break;
+            }
+            try
+            {
+                if (inGridSlot.tag == "Enemy" && playerWeapon)
                 {
-                    case DIRECTION.UP:
-                        inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y + Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                        break;
-                    case DIRECTION.LEFT:
-                        inGridSlot = GameObject.Find((x - Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                        break;
-                    case DIRECTION.RIGHT:
-                        inGridSlot = GameObject.Find((x + Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                        break;
-                    case DIRECTION.DOWN:
-                        inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y - Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                        break;
-                    case DIRECTION.STAY:
-                        break;
-                }
-                try
-                {
-                    if (inGridSlot.tag == "Enemy" && playerWeapon)
-                    {
-                        if (!inGridSlot.GetComponent<Enemy>().isMultiColor) {
-                            if (inGridSlot.GetComponent<Enemy>().color == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().color == color)
-                            {
-                                Selector.Add(inGridSlot);
-                            }
-                    }
-                        else
+                    if (!inGridSlot.GetComponent<Enemy>().isMultiColor) {
+                        if (inGridSlot.GetComponent<Enemy>().color == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().color == color)
                         {
-                            //여러 색을 가진 대상 공격
+                            Selector.Add(inGridSlot);
                         }
-                    }
-                    else if (inGridSlot.tag.Contains("Player") && !playerWeapon)
+                }
+                    else
                     {
-                        Selector.Add(inGridSlot);    
+                        //여러 색을 가진 대상 공격
                     }
                 }
-                catch (Exception e)
-                {}
+                else if (inGridSlot.tag.Contains("Player") && !playerWeapon)
+                {
+                    Selector.Add(inGridSlot);    
+                }
+            }
+            catch (Exception e)
+            {
+                //Debug.Log(e);
+            }
         }
         return Selector;
     }

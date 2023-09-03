@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Mouse : Enemy
 {
-    void Start()
+    public override void Start()
     {
         base.Start();
 

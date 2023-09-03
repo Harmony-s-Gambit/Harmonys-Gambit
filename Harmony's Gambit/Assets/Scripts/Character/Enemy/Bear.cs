@@ -8,7 +8,7 @@ public class Bear : Enemy
     GameObject target;
     Player targetP;
     Enemy thisEnemy;
-    void Start()
+    public override void Start()
     {
         base.Start();
         if (color == COLOR.PURPLE)
@@ -72,7 +72,7 @@ public class Bear : Enemy
         }
     }
 
-    public void specialDirection()
+    public void SpecialDirection()
     {
         if (_directionIdx == 0)
         {

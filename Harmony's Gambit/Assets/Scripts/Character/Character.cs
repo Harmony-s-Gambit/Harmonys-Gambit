@@ -25,6 +25,6 @@ public abstract class Character : MonoBehaviour
     public abstract void Move(GameObject nextDest);
     public abstract bool MoveManage();
 
-    protected abstract void Start();
+    public abstract void Start();
     protected abstract void Update();
 }

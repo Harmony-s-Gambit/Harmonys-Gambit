@@ -9,7 +9,7 @@ public class Player : Character
     private int beforeHP;
 
     // Start is called before the first frame update
-    protected override void Start()
+    public override void Start()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
 

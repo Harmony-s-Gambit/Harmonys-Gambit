@@ -8,7 +8,6 @@ using static PlayerManager;
 public class EnemyManager : MonoBehaviour
 {
     List<GameObject> enemyArray = new List<GameObject>();
-    private int EnemyCount = 0;
 
     GameManager gm;
 

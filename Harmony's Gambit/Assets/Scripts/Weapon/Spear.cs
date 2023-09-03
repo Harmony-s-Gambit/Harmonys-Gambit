@@ -53,6 +53,7 @@ public class Spear : Weapon
             }
             catch (Exception e)
             {
+                //Debug.Log(e);
                 Attack = false;
             }
             if (Attack)

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Racoon : Enemy
 {
-    void Start()
+    public override void Start()
     {
         base.Start();
         pattern = new DIRECTION[4] {
