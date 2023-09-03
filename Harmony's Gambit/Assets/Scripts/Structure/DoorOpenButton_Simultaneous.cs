@@ -18,10 +18,11 @@ public class DoorOpenButton_Simultaneous : Structure
             }
             else
             {
-                if (doorOpenButtonIndex2 == 0)
-                {
-                    isPressed = false;
-                }
+                //if (doorOpenButtonIndex2 == 0)
+                //{
+                //    isPressed = false;
+                //}
+                isPressed = false;
             }
         }
     }

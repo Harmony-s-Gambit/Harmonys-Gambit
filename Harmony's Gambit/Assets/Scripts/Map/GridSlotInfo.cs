@@ -18,6 +18,7 @@ public class GridSlotInfo : MonoBehaviour
     private void Start()
     {
         spriteRen = this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        spriteRen.sortingOrder = 20;
     }
 
     // Update is called once per frame

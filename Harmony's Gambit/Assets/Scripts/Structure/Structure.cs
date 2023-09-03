@@ -13,7 +13,7 @@ public class Structure: MonoBehaviour
     protected StructureManager _structureManager;
     protected GameManager _gameManager;
 
-    private void Start()
+    protected void Start()
     {
         _structureManager = FindObjectOfType<StructureManager>();
         _gameManager = FindObjectOfType<GameManager>();

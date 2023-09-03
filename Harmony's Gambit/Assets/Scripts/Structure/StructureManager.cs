@@ -39,24 +39,6 @@ public class StructureManager : MonoBehaviour
         rhythm = false;
     }
 
-    IEnumerator Delay() //임시 코루틴
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        //GenerateDoorOpenButton2_Basic(3, 5, 1);
-        //GenerateDoor_Basic(3, 3, 1);
-        //GenerateDoorOpenButton1_Basic(3, 4, 1);
-
-        GenerateNextStageDoor(20, 0, 1);
-
-        GenerateDoor_Simultaneous(14, 16, 1);
-        GenerateDoorOpenButton1_Simultaneous(13, 17, 1);
-        GenerateDoorOpenButton2_Simultaneous(13, 15, 1);
-        GenerateDoorOpenButton3_Simultaneous(15, 17, 1);
-
-        CheckStructures();
-    }
-
     public void GenerateDoor_Basic(int x, int y, int index)
     {
         if (!doorSetIndex_Basic.Contains(index)) //index값에 해당하는 문 세트 없을 때

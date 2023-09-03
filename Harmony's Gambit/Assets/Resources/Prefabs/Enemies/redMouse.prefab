@@ -134,12 +134,13 @@ MonoBehaviour:
   x: 0
   y: 0
   isMultiColor: 0
-  color: 2
+  color: 0
   multiColor: 
   direction: 0
   character: {fileID: 0}
   currentBlock: {fileID: 0}
   isMovedThisTurn: 0
+  m_Animator: {fileID: 0}
   weapon: {fileID: 0}
   death: 0
 --- !u!1001 &378872198680214678

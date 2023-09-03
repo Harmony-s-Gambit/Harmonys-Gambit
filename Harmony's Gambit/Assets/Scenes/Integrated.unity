@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 29407413}
   - component: {fileID: 29407415}
   - component: {fileID: 29407416}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: CenterFlame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 72725035}
   - component: {fileID: 72725037}
   - component: {fileID: 72725036}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: OffsetSettingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 209540070}
   - component: {fileID: 209540072}
   - component: {fileID: 209540071}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: PerfectRectP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 233862252}
   - component: {fileID: 233862254}
   - component: {fileID: 233862253}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 273890779}
   - component: {fileID: 273890781}
   - component: {fileID: 273890780}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273890778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 318957508}
   - component: {fileID: 318957510}
   - component: {fileID: 318957509}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 335566093}
   - component: {fileID: 335566092}
   - component: {fileID: 335566091}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Credit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,7 +1007,7 @@ GameObject:
   - component: {fileID: 411870328}
   - component: {fileID: 411870327}
   - component: {fileID: 411870326}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: OffsetSettingStartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 457898812}
   - component: {fileID: 457898811}
   - component: {fileID: 457898810}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1476,7 +1476,7 @@ GameObject:
   - component: {fileID: 599755572}
   - component: {fileID: 599755571}
   - component: {fileID: 599755570}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1834,7 +1834,7 @@ GameObject:
   - component: {fileID: 712111241}
   - component: {fileID: 712111243}
   - component: {fileID: 712111244}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: MissAreaP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1929,7 +1929,7 @@ GameObject:
   - component: {fileID: 733268688}
   - component: {fileID: 733268690}
   - component: {fileID: 733268689}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2066,7 +2066,7 @@ GameObject:
   - component: {fileID: 796590210}
   - component: {fileID: 796590212}
   - component: {fileID: 796590211}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: CenterFlameP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 804576008}
   - component: {fileID: 804576007}
   - component: {fileID: 804576006}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3064,7 +3064,7 @@ GameObject:
   - component: {fileID: 1006514414}
   - component: {fileID: 1006514416}
   - component: {fileID: 1006514415}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3145,7 +3145,7 @@ GameObject:
   - component: {fileID: 1024096945}
   - component: {fileID: 1024096944}
   - component: {fileID: 1024096943}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: char_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3237,7 +3237,7 @@ GameObject:
   - component: {fileID: 1027394224}
   - component: {fileID: 1027394226}
   - component: {fileID: 1027394225}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: MainPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3315,7 +3315,7 @@ GameObject:
   - component: {fileID: 1080100707}
   - component: {fileID: 1080100706}
   - component: {fileID: 1080100705}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: char_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3408,7 +3408,7 @@ GameObject:
   - component: {fileID: 1155886977}
   - component: {fileID: 1155886976}
   - component: {fileID: 1155886975}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: GameSatrt1Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3545,7 +3545,7 @@ GameObject:
   - component: {fileID: 1183537853}
   - component: {fileID: 1183537854}
   - component: {fileID: 1183537856}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3613,7 +3613,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 40
   m_TargetDisplay: 0
 --- !u!224 &1183537852
 RectTransform:
@@ -3931,7 +3931,7 @@ GameObject:
   - component: {fileID: 1228086681}
   - component: {fileID: 1228086683}
   - component: {fileID: 1228086682}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4527,7 +4527,7 @@ GameObject:
   - component: {fileID: 1292787503}
   - component: {fileID: 1292787505}
   - component: {fileID: 1292787504}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4605,7 +4605,7 @@ GameObject:
   - component: {fileID: 1300561732}
   - component: {fileID: 1300561734}
   - component: {fileID: 1300561735}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: NoteManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4809,7 +4809,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1330101895}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: NoteAppearLocationIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4923,7 +4923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1344852693}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: NoteAppearLocationP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4961,7 +4961,7 @@ GameObject:
   - component: {fileID: 1362663989}
   - component: {fileID: 1362663991}
   - component: {fileID: 1362663990}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5039,7 +5039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1363825133}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: TimingRectP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5080,7 +5080,7 @@ GameObject:
   - component: {fileID: 1370162809}
   - component: {fileID: 1370162811}
   - component: {fileID: 1370162810}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5160,7 +5160,7 @@ GameObject:
   - component: {fileID: 1391082548}
   - component: {fileID: 1391082550}
   - component: {fileID: 1391082549}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: PerfectRectP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5236,7 +5236,7 @@ GameObject:
   - component: {fileID: 1491781647}
   - component: {fileID: 1491781649}
   - component: {fileID: 1491781648}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: MapSelectPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5315,7 +5315,7 @@ GameObject:
   - component: {fileID: 1516334695}
   - component: {fileID: 1516334697}
   - component: {fileID: 1516334696}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7883,7 +7883,7 @@ GameObject:
   - component: {fileID: 1728532152}
   - component: {fileID: 1728532154}
   - component: {fileID: 1728532153}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: CenterFlameP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8043,7 +8043,7 @@ GameObject:
   - component: {fileID: 1816736053}
   - component: {fileID: 1816736055}
   - component: {fileID: 1816736054}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: bg_obj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8119,7 +8119,7 @@ GameObject:
   - component: {fileID: 1837586124}
   - component: {fileID: 1837586125}
   - component: {fileID: 1837586126}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: MissAreaP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10572,7 +10572,7 @@ GameObject:
   - component: {fileID: 2003735790}
   - component: {fileID: 2003735792}
   - component: {fileID: 2003735791}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10852,7 +10852,7 @@ GameObject:
   - component: {fileID: 2059065313}
   - component: {fileID: 2059065312}
   - component: {fileID: 2059065311}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: GameStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10983,7 +10983,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2107050859}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: TimingRectP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11022,7 +11022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2126513601}
-  m_Layer: 5
+  m_Layer: 21
   m_Name: NoteAppearLocationP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
