@@ -114,7 +114,7 @@ public class SightManager : MonoBehaviour
 
                 if (isRedAvailable[1, 0]) //b
                 {
-                    if (redPlayerSight[2, 1] || redPlayerSight[2, 2] || (redPlayerSight[2, 0] && redPlayerSight[1, 1]) || (redPlayerSight[3, 2] && redPlayerSight[2, 3]))
+                    if (redPlayerSight[2, 1] || redPlayerSight[2, 2] || (redPlayerSight[2, 0] && redPlayerSight[1, 1]) || redPlayerSight[3, 2])
                     {
                         redPlayerSightG[1, 0].sightType = SIGHTTYPE.NEVERSEEN;
                         redPlayerSightG[1, 0].UpdateSightType();
@@ -174,7 +174,7 @@ public class SightManager : MonoBehaviour
 
                 if (isRedAvailable[5, 0]) //f
                 {
-                    if (redPlayerSight[4, 1] || redPlayerSight[4, 2] || (redPlayerSight[4, 0] && redPlayerSight[5, 1]) || (redPlayerSight[3, 2] && redPlayerSight[4, 3]))
+                    if (redPlayerSight[4, 1] || redPlayerSight[4, 2] || (redPlayerSight[4, 0] && redPlayerSight[5, 1]) || redPlayerSight[3, 2])
                     {
                         redPlayerSightG[5, 0].sightType = SIGHTTYPE.NEVERSEEN;
                         redPlayerSightG[5, 0].UpdateSightType();
@@ -204,7 +204,7 @@ public class SightManager : MonoBehaviour
 
                 if (isRedAvailable[0, 1]) //h
                 {
-                    if (redPlayerSight[1, 2] || redPlayerSight[2, 2] || (redPlayerSight[0, 2] && redPlayerSight[1, 1]) || (redPlayerSight[2, 3] && redPlayerSight[3, 2]))
+                    if (redPlayerSight[1, 2] || redPlayerSight[2, 2] || (redPlayerSight[0, 2] && redPlayerSight[1, 1]) || redPlayerSight[2, 3])
                     {
                         redPlayerSightG[0, 1].sightType = SIGHTTYPE.NEVERSEEN;
                         redPlayerSightG[0, 1].UpdateSightType();
@@ -294,7 +294,7 @@ public class SightManager : MonoBehaviour
 
                 if (isRedAvailable[6, 1]) //n
                 {
-                    if (redPlayerSight[4, 2] || redPlayerSight[5, 2] || (redPlayerSight[6, 2] && redPlayerSight[5, 1]) || (redPlayerSight[4, 3] && redPlayerSight[3, 2]))
+                    if (redPlayerSight[4, 2] || redPlayerSight[5, 2] || (redPlayerSight[6, 2] && redPlayerSight[5, 1]) || redPlayerSight[4, 3])
                     {
                         redPlayerSightG[6, 1].sightType = SIGHTTYPE.NEVERSEEN;
                         redPlayerSightG[6, 1].UpdateSightType();
@@ -552,7 +552,7 @@ public class SightManager : MonoBehaviour
 
                 if (isRedAvailable[0, 5]) //K
                 {
-                    if (redPlayerSight[1, 4] || redPlayerSight[2, 4] || (redPlayerSight[0, 4] && redPlayerSight[1, 5]) || (redPlayerSight[2, 3] && redPlayerSight[3, 4]))
+                    if (redPlayerSight[1, 4] || redPlayerSight[2, 4] || (redPlayerSight[0, 4] && redPlayerSight[1, 5]) || redPlayerSight[2, 3])
                     {
                         redPlayerSightG[0, 5].sightType = SIGHTTYPE.NEVERSEEN;
                         redPlayerSightG[0, 5].UpdateSightType();
@@ -642,7 +642,7 @@ public class SightManager : MonoBehaviour
 
                 if (isRedAvailable[6, 5]) //Q
                 {
-                    if (redPlayerSight[4, 4] || redPlayerSight[5, 4] || (redPlayerSight[6, 4] && redPlayerSight[5, 5]) || (redPlayerSight[4, 3] && redPlayerSight[3, 4]))
+                    if (redPlayerSight[4, 4] || redPlayerSight[5, 4] || (redPlayerSight[6, 4] && redPlayerSight[5, 5]) || redPlayerSight[4, 3])
                     {
                         redPlayerSightG[6, 5].sightType = SIGHTTYPE.NEVERSEEN;
                         redPlayerSightG[6, 5].UpdateSightType();
@@ -672,7 +672,7 @@ public class SightManager : MonoBehaviour
 
                 if (isRedAvailable[1, 6]) //S
                 {
-                    if (redPlayerSight[2, 4] || redPlayerSight[2, 5] || (redPlayerSight[2, 6] && redPlayerSight[1, 5]) || (redPlayerSight[3, 4] && redPlayerSight[2, 3]))
+                    if (redPlayerSight[2, 4] || redPlayerSight[2, 5] || (redPlayerSight[2, 6] && redPlayerSight[1, 5]) || redPlayerSight[3, 4])
                     {
                         redPlayerSightG[1, 6].sightType = SIGHTTYPE.NEVERSEEN;
                         redPlayerSightG[1, 6].UpdateSightType();
@@ -732,7 +732,7 @@ public class SightManager : MonoBehaviour
 
                 if (isRedAvailable[5, 6]) //W
                 {
-                    if (redPlayerSight[4, 4] || redPlayerSight[4, 5] || (redPlayerSight[4, 6] && redPlayerSight[5, 5]) || (redPlayerSight[3, 4] && redPlayerSight[4, 3]))
+                    if (redPlayerSight[4, 4] || redPlayerSight[4, 5] || (redPlayerSight[4, 6] && redPlayerSight[5, 5]) || redPlayerSight[3, 4])
                     {
                         redPlayerSightG[5, 6].sightType = SIGHTTYPE.NEVERSEEN;
                         redPlayerSightG[5, 6].UpdateSightType();
@@ -811,7 +811,7 @@ public class SightManager : MonoBehaviour
 
                 if (isBlueAvailable[1, 0] && !bluePlayerSightG[1, 0].isRedNowSeeing) //b
                 {
-                    if (bluePlayerSight[2, 1] || bluePlayerSight[2, 2] || (bluePlayerSight[2, 0] && bluePlayerSight[1, 1]) || (bluePlayerSight[3, 2] && bluePlayerSight[2, 3]))
+                    if (bluePlayerSight[2, 1] || bluePlayerSight[2, 2] || (bluePlayerSight[2, 0] && bluePlayerSight[1, 1]) || bluePlayerSight[3, 2])
                     {
                         bluePlayerSightG[1, 0].sightType = SIGHTTYPE.NEVERSEEN;
                         bluePlayerSightG[1, 0].UpdateSightType();
@@ -867,7 +867,7 @@ public class SightManager : MonoBehaviour
 
                 if (isBlueAvailable[5, 0] && !bluePlayerSightG[5, 0].isRedNowSeeing) //f
                 {
-                    if (bluePlayerSight[4, 1] || bluePlayerSight[4, 2] || (bluePlayerSight[4, 0] && bluePlayerSight[5, 1]) || (bluePlayerSight[3, 2] && bluePlayerSight[4, 3]))
+                    if (bluePlayerSight[4, 1] || bluePlayerSight[4, 2] || (bluePlayerSight[4, 0] && bluePlayerSight[5, 1]) || bluePlayerSight[3, 2])
                     {
                         bluePlayerSightG[5, 0].sightType = SIGHTTYPE.NEVERSEEN;
                         bluePlayerSightG[5, 0].UpdateSightType();
@@ -895,7 +895,7 @@ public class SightManager : MonoBehaviour
 
                 if (isBlueAvailable[0, 1] && !bluePlayerSightG[0, 1].isRedNowSeeing) //h
                 {
-                    if (bluePlayerSight[1, 2] || bluePlayerSight[2, 2] || (bluePlayerSight[0, 2] && bluePlayerSight[1, 1]) || (bluePlayerSight[2, 3] && bluePlayerSight[3, 2]))
+                    if (bluePlayerSight[1, 2] || bluePlayerSight[2, 2] || (bluePlayerSight[0, 2] && bluePlayerSight[1, 1]) || bluePlayerSight[2, 3])
                     {
                         bluePlayerSightG[0, 1].sightType = SIGHTTYPE.NEVERSEEN;
                         bluePlayerSightG[0, 1].UpdateSightType();
@@ -979,7 +979,7 @@ public class SightManager : MonoBehaviour
 
                 if (isBlueAvailable[6, 1] && !bluePlayerSightG[6, 1].isRedNowSeeing) //n
                 {
-                    if (bluePlayerSight[4, 2] || bluePlayerSight[5, 2] || (bluePlayerSight[6, 2] && bluePlayerSight[5, 1]) || (bluePlayerSight[4, 3] && bluePlayerSight[3, 2]))
+                    if (bluePlayerSight[4, 2] || bluePlayerSight[5, 2] || (bluePlayerSight[6, 2] && bluePlayerSight[5, 1]) || bluePlayerSight[4, 3])
                     {
                         bluePlayerSightG[6, 1].sightType = SIGHTTYPE.NEVERSEEN;
                         bluePlayerSightG[6, 1].UpdateSightType();
@@ -1215,7 +1215,7 @@ public class SightManager : MonoBehaviour
 
                 if (isBlueAvailable[0, 5] && !bluePlayerSightG[0, 5].isRedNowSeeing) //K
                 {
-                    if (bluePlayerSight[1, 4] || bluePlayerSight[2, 4] || (bluePlayerSight[0, 4] && bluePlayerSight[1, 5]) || (bluePlayerSight[2, 3] && bluePlayerSight[3, 4]))
+                    if (bluePlayerSight[1, 4] || bluePlayerSight[2, 4] || (bluePlayerSight[0, 4] && bluePlayerSight[1, 5]) || bluePlayerSight[2, 3])
                     {
                         bluePlayerSightG[0, 5].sightType = SIGHTTYPE.NEVERSEEN;
                         bluePlayerSightG[0, 5].UpdateSightType();
@@ -1299,7 +1299,7 @@ public class SightManager : MonoBehaviour
 
                 if (isBlueAvailable[6, 5] && !bluePlayerSightG[6, 5].isRedNowSeeing) //Q
                 {
-                    if (bluePlayerSight[4, 4] || bluePlayerSight[5, 4] || (bluePlayerSight[6, 4] && bluePlayerSight[5, 5]) || (bluePlayerSight[4, 3] && bluePlayerSight[3, 4]))
+                    if (bluePlayerSight[4, 4] || bluePlayerSight[5, 4] || (bluePlayerSight[6, 4] && bluePlayerSight[5, 5]) || bluePlayerSight[4, 3])
                     {
                         bluePlayerSightG[6, 5].sightType = SIGHTTYPE.NEVERSEEN;
                         bluePlayerSightG[6, 5].UpdateSightType();
@@ -1327,7 +1327,7 @@ public class SightManager : MonoBehaviour
 
                 if (isBlueAvailable[1, 6] && !bluePlayerSightG[1, 6].isRedNowSeeing) //S
                 {
-                    if (bluePlayerSight[2, 4] || bluePlayerSight[2, 5] || (bluePlayerSight[2, 6] && bluePlayerSight[1, 5]) || (bluePlayerSight[3, 4] && bluePlayerSight[2, 3]))
+                    if (bluePlayerSight[2, 4] || bluePlayerSight[2, 5] || (bluePlayerSight[2, 6] && bluePlayerSight[1, 5]) || bluePlayerSight[3, 4])
                     {
                         bluePlayerSightG[1, 6].sightType = SIGHTTYPE.NEVERSEEN;
                         bluePlayerSightG[1, 6].UpdateSightType();
@@ -1383,7 +1383,7 @@ public class SightManager : MonoBehaviour
 
                 if (isBlueAvailable[5, 6] && !bluePlayerSightG[5, 6].isRedNowSeeing) //W
                 {
-                    if (bluePlayerSight[4, 4] || bluePlayerSight[4, 5] || (bluePlayerSight[4, 6] && bluePlayerSight[5, 5]) || (bluePlayerSight[3, 4] && bluePlayerSight[4, 3]))
+                    if (bluePlayerSight[4, 4] || bluePlayerSight[4, 5] || (bluePlayerSight[4, 6] && bluePlayerSight[5, 5]) || bluePlayerSight[3, 4])
                     {
                         bluePlayerSightG[5, 6].sightType = SIGHTTYPE.NEVERSEEN;
                         bluePlayerSightG[5, 6].UpdateSightType();
