@@ -74,4 +74,10 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# Folders
+/Harmony's Gambit_BurstDebugInformation_DoNotShip/*
+/Harmony's Gambit_Data/*
+/MonoBleedingEdge
+/빌드
+
 # End of https://www.toptal.com/developers/gitignore/api/unity

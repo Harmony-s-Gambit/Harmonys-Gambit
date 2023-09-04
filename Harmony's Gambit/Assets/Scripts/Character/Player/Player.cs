@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
     public bool takenDamage = false;
     private int beforeHP;
+    public AudioSource[] audioSources;
 
     // Start is called before the first frame update
     public override void Start()
@@ -21,6 +23,8 @@ public class Player : Character
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
         weapon.playerWeapon = true;
+
+        audioSources= GetComponentsInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +34,7 @@ public class Player : Character
         if(HP <= 0)
         {
             m_Animator.SetTrigger("die");
+            Invoke("AfterDie", 1f);
         }
         else
         {
@@ -51,6 +56,10 @@ public class Player : Character
             }
             beforeHP = HP;
         }
+    }
+    private void AfterDie()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
     public override void SetXY(int px, int py)
@@ -91,6 +100,7 @@ public class Player : Character
     public override void Move(GameObject nextDest)
     {
         m_Animator.SetTrigger("move");
+        audioSources[0].Play();
         isMovedThisTurn = true;
         currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
         nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
