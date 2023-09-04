@@ -7,7 +7,7 @@ public class Player : Character
 {
     public bool takenDamage = false;
     private int beforeHP;
-
+    
     // Start is called before the first frame update
     public override void Start()
     {
@@ -17,7 +17,7 @@ public class Player : Character
         m_Animator.SetTrigger("idle");
 
         beforeHP = HP;
-
+        
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
         weapon.playerWeapon = true;

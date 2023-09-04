@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(players.Count == 0)
+        if (players.Count == 0)
         {
             return;
         }
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
                         redPlayer.m_Animator.SetTrigger("crash");
                         bluePlayer.m_Animator.SetTrigger("crash");
                         isStunned = true;
-                        if(redNextDest == blueNextDest)
+                        if (redNextDest == blueNextDest)
                         {
                             redPlayer.Crashed(redNextDest, redPlayer.transform.position);
                             bluePlayer.Crashed(blueNextDest, bluePlayer.transform.position);
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
 
                             //�����϶�
                             tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
-                            if(tempPlayer.weapon.GetSelectorCount() > 0)
+                            if (tempPlayer.weapon.GetSelectorCount() > 0)
                             {
                                 tempPlayer.m_Animator.SetTrigger("attack");
                                 tempPlayer.weapon.attackEnemies(1);
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
                             }
                             tempPlayer.weapon.ClearSelector();
 
-                        }                          
+                        }
                     }
                 }
             }
@@ -147,10 +148,110 @@ public class GameManager : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().isMovedThisTurn = false;
         }
-
-        //���� ������ ����
-
-        //structure ������ �ߵ�
-
     }
+    //���� ������ ����
+
+    //structure ������ �ߵ�
+    /* Hiena Targeting AI proposal
+        public void resetCheck(int x, int y)
+        {
+            GridSlotInfo temp = GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>();
+            if (temp.redDistanceCheck || temp.blueDistanceCheck)
+            {
+                temp.redDistance = -1;
+                temp.blueDistance = -1;
+                temp.redDistanceCheck = false;
+                temp.blueDistanceCheck = false;
+                try
+                {
+                    resetCheck(x + 1, y);
+                }
+                catch (Exception e) { }
+                try
+                {
+                    resetCheck(x - 1, y);
+                }
+                catch (Exception e) { }
+                try
+                {
+                    resetCheck(x, y + 1);
+                }
+                catch (Exception e) { }
+                try
+                {
+                    resetCheck(x, y - 1);
+                }
+                catch (Exception e) { }
+            }
+        }
+    
+        public void RedDistance(int x, int y, int n)
+        {
+            GameObject tempObject = GameObject.Find(x + "_" + y);
+            GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
+            if (!temp.redDistanceCheck)
+            {
+            if (tempObject.tag != "Wall")
+            {
+                temp.redDistanceCheck = true;
+                temp.redDistance = n;
+                try
+                {
+                    RedDistance(x + 1, y, n + 1);
+                }
+                catch (Exception e) { }
+                try
+                {
+                    RedDistance(x - 1, y, n + 1);
+                }
+                catch (Exception e) { }
+                try
+                {
+                    RedDistance(x, y + 1, n + 1);
+                }
+                catch (Exception e) { }
+                try
+                {
+                    RedDistance(x, y - 1, n + 1);
+                }
+                catch (Exception e) { }
+            }
+            }
+        }
+
+        public void BlueDistance(int x, int y, int n)
+        {
+            GameObject tempObject = GameObject.Find(x + "_" + y);
+            GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
+            if (!temp.blueDistanceCheck)
+            {
+                if (tempObject.tag != "Wall")
+                {
+                    temp.blueDistanceCheck = true;
+                    temp.blueDistance = n;
+                    try
+                    {
+                        BlueDistance(x + 1, y, n + 1);
+                    }
+                    catch (Exception e) { }
+                    try
+                    {
+                        BlueDistance(x - 1, y, n + 1);
+                    }
+                    catch (Exception e) { }
+                    try
+                    {
+                        BlueDistance(x, y + 1, n + 1);
+                    }
+                    catch (Exception e) { }
+                    try
+                    {
+                        BlueDistance(x, y - 1, n + 1);
+                    }
+                    catch (Exception e) { }
+                }
+            }
+        }*/
 }
+
+
