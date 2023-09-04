@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class DoorOpenButton_Simultaneous : Structure
 {
@@ -12,7 +13,14 @@ public class DoorOpenButton_Simultaneous : Structure
     {
         if (_structureManager.rhythm)
         {
-            if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player") || currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player2"))
+            if(currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == null)
+            {
+                if (isPressed)
+                {
+                    isPressed = false;
+                }
+            }
+            else if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player") || currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player2"))
             {
                 isPressed = true;
             }

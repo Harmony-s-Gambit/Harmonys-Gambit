@@ -41,7 +41,14 @@ public class GameManager : MonoBehaviour
         redPlayer = players[0].GetComponent<Player>();
         bluePlayer = players[1].GetComponent<Player>();
         //Attack or Move
-
+        if(!isBluePlayerPlaying)
+        {
+            isBlueValid = true;
+        }
+        if(!isRedPlayerPlaying)
+        {
+            isRedValid = true;
+        }
         if (rhythm)
         {
             //player Move
@@ -68,6 +75,7 @@ public class GameManager : MonoBehaviour
                         //����ĭ���� Ȥ�� �پ��ִ� ���¿��� ���� �浹
                         redPlayer.m_Animator.SetTrigger("crash");
                         bluePlayer.m_Animator.SetTrigger("crash");
+                        redPlayer.audioSources[2].Play();
                         isStunned = true;
                         if (redNextDest == blueNextDest)
                         {
@@ -98,6 +106,8 @@ public class GameManager : MonoBehaviour
                             if (tempPlayer.weapon.GetSelectorCount() > 0)
                             {
                                 tempPlayer.m_Animator.SetTrigger("attack");
+                                tempPlayer.audioSources[1].Play();
+
                                 tempPlayer.weapon.attackEnemies(1);
                             }
                             //�̵��϶�

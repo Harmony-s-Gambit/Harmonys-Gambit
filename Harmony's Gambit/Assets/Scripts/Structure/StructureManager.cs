@@ -19,14 +19,14 @@ public class StructureManager : MonoBehaviour
 
     void Start()
     {
-        GenerateNextStageDoor(20, 0, 1);
+        GenerateNextStageDoor(20, 0, 3);
 
-        GenerateDoor_Simultaneous(14, 16, 1);
+        GenerateDoor_Simultaneous(14, 16, 1,true);
         GenerateDoorOpenButton1_Simultaneous(13, 17, 1);
         GenerateDoorOpenButton2_Simultaneous(13, 15, 1);
         GenerateDoorOpenButton3_Simultaneous(15, 17, 1);
 
-        GenerateDoor_Simultaneous(19, 6, 2);
+        GenerateDoor_Simultaneous(19, 6, 2,false);
         GenerateDoorOpenButton1_Simultaneous(18, 7, 2);
         GenerateDoorOpenButton2_Simultaneous(20, 7, 2);
         GenerateDoorOpenButton3_Simultaneous(20, 5, 2);
@@ -158,12 +158,20 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void GenerateDoor_Simultaneous(int x, int y, int index)
+    public void GenerateDoor_Simultaneous(int x, int y, int index,bool isVertical)
     {
         if (!doorSetIndex_Simultaneous.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
             doorSetIndex_Simultaneous.Add(index); //index값을 가지는 문 세트가 생성되었다는 것을 저장
-            GameObject door_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Simultaneous"));
+            GameObject door_Simultaneous;
+            if (isVertical)
+            {
+                door_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Simultaneous_Vertical"));
+            }
+            else
+            {
+                door_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Simultaneous"));
+            }
             GameObject doorOpenButton1_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
             GameObject doorOpenButton2_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous"));
             GameObject doorOpenButton3_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/DoorOpenButton_Simultaneous")); //문, 버튼 3개 생성
