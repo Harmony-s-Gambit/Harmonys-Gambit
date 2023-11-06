@@ -8272,7 +8272,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.0033333302, y: 0.0033333302, z: 0}
+  m_ChunkCullingBounds: {x: 0.0011110902, y: 0.0033333302, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -8394,16 +8394,6 @@ Tilemap:
       m_TileIndex: 19
       m_TileSpriteIndex: 19
       m_TileMatrixIndex: 7
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 22, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 23
-      m_TileMatrixIndex: 8
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -10156,8 +10146,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 69b83c40b5f887a45b9b0e39efdf377b, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: cef0a2ae34a74024cba5c5c6b2d00e52, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 020f1f88f36d60c48a168362c49e3d90, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -10251,8 +10241,8 @@ Tilemap:
     m_Data: {fileID: 254724458, guid: c74a865fc4ff3a34dadfa155ef73d872, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1747159849, guid: db0ddfbe85f15c64081bb901b525a057, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 96bade69d8d34f44098b6ef80405cc54, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 7
     m_Data: {fileID: -862571450, guid: 523d1f5465789584ca2dfb660f02b81a, type: 3}
   - m_RefCount: 8
@@ -10404,7 +10394,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 52
+  - m_RefCount: 51
     m_Data:
       e00: 1
       e01: 0
@@ -10423,7 +10413,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 186
+  - m_RefCount: 185
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
