@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
                         //����ĭ���� Ȥ�� �پ��ִ� ���¿��� ���� �浹
                         redPlayer.m_Animator.SetTrigger("crash");
                         bluePlayer.m_Animator.SetTrigger("crash");
-                        redPlayer.audioSources[2].Play();
+                        AudioManager.instance.PlaySFX("Crash");
                         isStunned = true;
                         if (redNextDest == blueNextDest)
                         {
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
                             if (tempPlayer.weapon.GetSelectorCount() > 0)
                             {
                                 tempPlayer.m_Animator.SetTrigger("attack");
-                                tempPlayer.audioSources[1].Play();
+                                AudioManager.instance.PlaySFX("PlayerAttackEnemy");
 
                                 tempPlayer.weapon.attackEnemies(1);
                             }

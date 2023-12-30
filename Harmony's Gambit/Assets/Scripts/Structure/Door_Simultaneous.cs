@@ -9,12 +9,9 @@ public class Door_Simultaneous : Structure
     private int doorOpenTurn;
     private bool doorOpenTurnOnce = true;
 
-    private AudioSource[] doorSound;
-
     protected void Start()
     {
         base.Start();
-        doorSound = gameObject.GetComponents<AudioSource>();
 
     }
     private void Update()
@@ -27,7 +24,7 @@ public class Door_Simultaneous : Structure
                 this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 isDoorOpened = true;
                 doorOpenTurn = 0;
-                doorSound[0].Play();
+                AudioManager.instance.PlaySFX("DoorOpenButton");
             }
 
             if (isDoorOpened && doorOpenTurnOnce)
@@ -40,7 +37,7 @@ public class Door_Simultaneous : Structure
                     currentBlock.GetComponent<GridSlotInfo>().blockType = BLOCKTYPE.WALL;
                     this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     isDoorOpened = false;
-                    doorSound[1].Play();
+                    AudioManager.instance.PlaySFX("DoorClose");
                 }
             }
         }

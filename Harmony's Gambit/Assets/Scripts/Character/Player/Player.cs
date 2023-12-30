@@ -8,9 +8,7 @@ public class Player : Character
 {
     public bool takenDamage = false;
     private int beforeHP;
-    public AudioSource[] audioSources;
 
-    // Start is called before the first frame update
     public override void Start()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
@@ -23,11 +21,8 @@ public class Player : Character
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
         weapon.playerWeapon = true;
-
-        audioSources= GetComponentsInChildren<AudioSource>();
     }
 
-    // Update is called once per frame
     protected override void Update()
     {
         
@@ -100,7 +95,7 @@ public class Player : Character
     public override void Move(GameObject nextDest)
     {
         m_Animator.SetTrigger("move");
-        audioSources[0].Play();
+        AudioManager.instance.PlaySFX("Step");
         isMovedThisTurn = true;
         currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
         nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;

@@ -4021,7 +4021,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4132,7 +4132,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4228,7 +4228,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4324,7 +4324,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4420,7 +4420,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5172,8 +5172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 75}
+  m_AnchoredPosition: {x: 5.172104, y: 0}
+  m_SizeDelta: {x: 393.6158, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1391082549
 MonoBehaviour:
@@ -9152,7 +9152,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 11
-      m_TileSpriteIndex: 22
+      m_TileSpriteIndex: 23
       m_TileMatrixIndex: 8
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9402,7 +9402,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 23
-      m_TileSpriteIndex: 17
+      m_TileSpriteIndex: 22
       m_TileMatrixIndex: 8
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -10229,8 +10229,8 @@ Tilemap:
     m_Data: {fileID: -911092021, guid: db0ddfbe85f15c64081bb901b525a057, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: -857640753, guid: db0ddfbe85f15c64081bb901b525a057, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -880349811, guid: db0ddfbe85f15c64081bb901b525a057, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 10
     m_Data: {fileID: 1857319441, guid: c74a865fc4ff3a34dadfa155ef73d872, type: 3}
   - m_RefCount: 19
@@ -10240,9 +10240,9 @@ Tilemap:
   - m_RefCount: 11
     m_Data: {fileID: 254724458, guid: c74a865fc4ff3a34dadfa155ef73d872, type: 3}
   - m_RefCount: 1
+    m_Data: {fileID: -880349811, guid: db0ddfbe85f15c64081bb901b525a057, type: 3}
+  - m_RefCount: 1
     m_Data: {fileID: -1747159849, guid: db0ddfbe85f15c64081bb901b525a057, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 7
     m_Data: {fileID: -862571450, guid: 523d1f5465789584ca2dfb660f02b81a, type: 3}
   - m_RefCount: 8
@@ -10512,6 +10512,16 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: 9d56c7072c395ad49a4d7388f3e07c08, type: 3}
   - _name: Clap
     _clip: {fileID: 8300000, guid: 95eaf6468d87d2f46b5801ea555d79bb, type: 3}
+  - _name: Step
+    _clip: {fileID: 8300000, guid: e8476282d252d6d4f86fdd270e2f6b20, type: 3}
+  - _name: Crash
+    _clip: {fileID: 8300000, guid: 14552accb2f3baa4b8cdcdb00577a006, type: 3}
+  - _name: PlayerAttackEnemy
+    _clip: {fileID: 8300000, guid: 6650bcb29fcf45846baf3199f688a901, type: 3}
+  - _name: DoorOpenButton
+    _clip: {fileID: 8300000, guid: 38d9a7667a4b8a2478be740a61483754, type: 3}
+  - _name: DoorClose
+    _clip: {fileID: 8300000, guid: ddadda6ec2605904f9f32838091e0f6d, type: 3}
   _bgm:
   - _name: BGM1
     _clip: {fileID: 8300000, guid: 09e9c6809218acb49a18f8be2bf6a381, type: 3}
