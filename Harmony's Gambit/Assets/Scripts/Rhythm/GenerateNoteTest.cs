@@ -40,6 +40,7 @@ public class GenerateNoteTest : MonoBehaviour
         yield return new WaitForSeconds(7f);
         _mainUI.ControllButton(1);
         _mainUI.ControllButton(3);
+        OffsetTestButton();
     }
 
     //오프셋 세팅 관련
@@ -52,15 +53,15 @@ public class GenerateNoteTest : MonoBehaviour
         xPosP2.Clear();
     }
 
-    public void RecordingXPos(int player, float yPos)
+    public void RecordingXPos(int player, float xPos)
     {
         if (player == 1)
         {
-            xPosP1.Add(yPos);
+            xPosP1.Add(xPos);
         }
         else if (player == 2)
         {
-            xPosP2.Add(yPos);
+            xPosP2.Add(xPos);
         }
     }
 
@@ -78,13 +79,29 @@ public class GenerateNoteTest : MonoBehaviour
             p2Center += xPosP2[i];
         }
 
-        p1Center /= xPosP1.Count;
-        p2Center /= xPosP2.Count;
+        try
+        {
+            p1Center /= xPosP1.Count;
+            
+        }
+        catch (Exception)
+        {
+            p1Center = 0;
+        }
+
+        try
+        {
+            p2Center /= xPosP2.Count;
+        }
+        catch (Exception)
+        {
+            p2Center = 0;
+        }
         
         if (xPosP1.Count != 0 && xPosP2.Count != 0)
         {
-            _tfCenterFrameP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 + p1Center, 0);
-            _tfCenterFrameP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 + p2Center, 0);
+            _tfCenterFrameP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 + p1Center, 30);
+            _tfCenterFrameP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 + p2Center, 30);
         }
 
         FindObjectOfType<TimingManager>().SetTimingBoxs(p1Center, p2Center);

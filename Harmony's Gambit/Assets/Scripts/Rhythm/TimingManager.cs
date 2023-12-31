@@ -15,7 +15,7 @@ public class TimingManager : MonoBehaviour
     [SerializeField] RectTransform[] _timingRectP1; //판정들 추가할 때 필요. 예: perfect, good, bad 등, 현재는 하나뿐
     [Tooltip("좋은 판정부터 나쁜 판정순으로 입력")]
     [SerializeField] RectTransform[] _timingRectP2;
-    Vector2[] _timingBoxsP1; //판정 범위의 y좌표, boxNoteList의 노트들 중 이 x좌표 안에 있는 노트가 있다면 성공
+    Vector2[] _timingBoxsP1; //판정 범위의 x좌표, boxNoteList의 노트들 중 이 x좌표 안에 있는 노트가 있다면 성공
     Vector2[] _timingBoxsP2;
 
     int _keyInputNumP1 = 0; //키 입력 수, 2번 이상 정확한 타이밍에 눌렀는지 판단
@@ -33,7 +33,7 @@ public class TimingManager : MonoBehaviour
     {
         _gameManager = FindObjectOfType<GameManager>();
 
-        _timingBoxsP1 = new Vector2[_timingRectP1.Length]; //판정 수 만큼 y좌표 범위 생성
+        _timingBoxsP1 = new Vector2[_timingRectP1.Length]; //판정 수 만큼 x좌표 범위 생성
         _timingBoxsP2 = new Vector2[_timingRectP2.Length];
         SetTimingBoxs();
     }
@@ -42,7 +42,7 @@ public class TimingManager : MonoBehaviour
     {
         for (int i = 0; i < _timingRectP1.Length; i++)
         {
-            _timingBoxsP1[i].Set(_centerP1.localPosition.x - _timingRectP1[i].rect.width / 2 + offsetP1, _centerP1.localPosition.x + _timingRectP1[i].rect.width / 2 + offsetP1); //각 판정의 y좌표 범위 설정, 정확한 판정일수록 범위 작음
+            _timingBoxsP1[i].Set(_centerP1.localPosition.x - _timingRectP1[i].rect.width / 2 + offsetP1, _centerP1.localPosition.x + _timingRectP1[i].rect.width / 2 + offsetP1); //각 판정의 x좌표 범위 설정, 정확한 판정일수록 범위 작음
         }
         
         for (int i = 0; i < _timingRectP2.Length; i++)
@@ -57,7 +57,7 @@ public class TimingManager : MonoBehaviour
         {
             for (int i = 0; i < boxNoteListP1.Count; i++) //판정 범위 내에 있는 노트인지 확일할 노트들만큼 반복
             {
-                float t_notePosX = boxNoteListP1[i].transform.localPosition.x; //노트의 y좌표 받아오기
+                float t_notePosX = boxNoteListP1[i].transform.localPosition.x; //노트의 x좌표 받아오기
                 for (int j = 0; j < _timingBoxsP1.Length; j++) //판정 범위만큼 실행, 현재 1개이므로 한 번만 실행하게 됨
                 {
                     if (_timingBoxsP1[j].x <= t_notePosX && t_notePosX <= _timingBoxsP1[j].y) //판정 범위 안에 있는가
@@ -71,7 +71,11 @@ public class TimingManager : MonoBehaviour
                         _keyInputNumP1++;
 
                         IsSuccessManage();
-                        RecordNoteXPos(1, t_notePosX);
+                        
+                        if (NoteManager.instance.currentBGM == "Offset")
+                        {
+                            RecordNoteXPos(1, t_notePosX);
+                        }
 
                         return;
                     }
@@ -97,7 +101,11 @@ public class TimingManager : MonoBehaviour
                         _keyInputNumP2++;
 
                         IsSuccessManage();
-                        RecordNoteXPos(2, t_notePosX);
+                        
+                        if (NoteManager.instance.currentBGM == "Offset")
+                        {
+                            RecordNoteXPos(2, t_notePosX);
+                        }
 
                         return;
                     }
