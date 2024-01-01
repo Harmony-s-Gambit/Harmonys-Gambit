@@ -29,7 +29,6 @@ public class PlayAudio : MonoBehaviour
                     {
                         AudioManager.instance.PlayBGM(NoteManager.instance.currentBGM);
                         _isMusiceStart = true;
-
                     }
                 }
             }
@@ -39,7 +38,6 @@ public class PlayAudio : MonoBehaviour
                 {
                     AudioManager.instance.PlayBGM(NoteManager.instance.currentBGM, NoteManager.instance.delay * -1);
                     _isMusiceStart = true;
-
                 }
             }
         }
