@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 
 public class PlayerManager : MonoBehaviour
 {
-    public bool GameOver = false;
+    //public bool GameOver = false;
     public int P1_HP = 4, P2_HP = 4;
     public int P1_AttackType = 0, P2_AttackType = 0;
     public int P1direction, P2direction;
@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(P1_HP <= 0 || P2_HP <= 0)
         {
-            GameOver = true;
+            //GameOver = true;
             SceneManager.LoadScene("GameOver");
         }
     }

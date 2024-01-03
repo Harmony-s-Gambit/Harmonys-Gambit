@@ -23,8 +23,8 @@ public class GridMaker : MonoBehaviour
         string[] stringData = line.Split('\t');
         rows = int.Parse(stringData[0]);
         cols = int.Parse(stringData[1]);
-        Debug.Log(rows);
-        Debug.Log(cols);    
+        //Debug.Log(rows);
+        //Debug.Log(cols);    
 
         GameObject GroundTile = (GameObject)Instantiate(Resources.Load("Prefabs/Map/Ground"));
         GameObject WallTile = (GameObject)Instantiate(Resources.Load("Prefabs/Map/Wall"));

@@ -5,46 +5,66 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     TimingManager _timingManager;
+    GameManager _gameManager;
+
+    private const int p1 = 1;
+    private const int p2 = 2;
 
     private void Start()
     {
         _timingManager = FindObjectOfType<TimingManager>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (_gameManager.isBluePlayerPlaying)
         {
-            _timingManager.CheckTiming(2, "W");
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                _timingManager.CheckTiming(p2, "W");
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                _timingManager.CheckTiming(p2, "A");
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                _timingManager.CheckTiming(p2, "S");
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                _timingManager.CheckTiming(p2, "D");
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else
         {
-            _timingManager.CheckTiming(2, "A");
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            _timingManager.CheckTiming(2, "S");
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            _timingManager.CheckTiming(2, "D");
+            _timingManager.CheckTiming(2, "W", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (_gameManager.isRedPlayerPlaying)
         {
-            _timingManager.CheckTiming(1, "Up");
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                _timingManager.CheckTiming(p1, "Up");
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                _timingManager.CheckTiming(p1, "Down");
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                _timingManager.CheckTiming(p1, "Right");
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                _timingManager.CheckTiming(p1, "Left");
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else
         {
-            _timingManager.CheckTiming(1, "Down");
+            _timingManager.CheckTiming(1, "Up", true);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            _timingManager.CheckTiming(1, "Right");
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            _timingManager.CheckTiming(1, "Left");
-        }
+        
     }
 }

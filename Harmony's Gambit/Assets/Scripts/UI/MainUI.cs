@@ -52,7 +52,7 @@ public class MainUI : MonoBehaviour
     {
         panels[0].SetActive(false);
         panels[3].SetActive(true);
-        NoteManager.instance.SetBGMValue("BGM1");
+        
         GameStartSetting();
         panels[2].SetActive(false);
 
@@ -68,12 +68,13 @@ public class MainUI : MonoBehaviour
 
     IEnumerator TestDelay()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
         _sightManager.rhythm = true;
     }
 
     private void GameStartSetting()
     {
+        NoteManager.instance.SetBGMValue("BGM1");
         _gameManager.isRedPlayerPlaying = true;
         _gameManager.isBluePlayerPlaying = true;
         _gameManager.whichDoorHasRedPlayer = -1;

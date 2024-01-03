@@ -51,7 +51,7 @@ public class TimingManager : MonoBehaviour
         }
     }
 
-    public void CheckTiming(int playerNum, string key) //키를 눌렀을 때 실행
+    public void CheckTiming(int playerNum, string key, bool forceTrue = false) //키를 눌렀을 때 실행
     {
         if (playerNum == 1) //플레이어 1이라면
         {
@@ -60,7 +60,7 @@ public class TimingManager : MonoBehaviour
                 float t_notePosX = boxNoteListP1[i].transform.localPosition.x; //노트의 x좌표 받아오기
                 for (int j = 0; j < _timingBoxsP1.Length; j++) //판정 범위만큼 실행, 현재 1개이므로 한 번만 실행하게 됨
                 {
-                    if (_timingBoxsP1[j].x <= t_notePosX && t_notePosX <= _timingBoxsP1[j].y) //판정 범위 안에 있는가
+                    if ((_timingBoxsP1[j].x <= t_notePosX && t_notePosX <= _timingBoxsP1[j].y) || forceTrue) //판정 범위 안에 있는가
                     {
                         boxNoteListP1[i].GetComponent<Note>().HideNote(); //노트 이미지 제거
                         if (_keyInputNumP1 == 0) //1번 눌렀을 때
@@ -71,7 +71,7 @@ public class TimingManager : MonoBehaviour
                         _keyInputNumP1++;
 
                         IsSuccessManage();
-                        
+
                         if (NoteManager.instance.currentBGM == "Offset")
                         {
                             RecordNoteXPos(1, t_notePosX);
@@ -90,7 +90,7 @@ public class TimingManager : MonoBehaviour
                 float t_notePosX = boxNoteListP2[i].transform.localPosition.x;
                 for (int j = 0; j < _timingBoxsP2.Length; j++)
                 {
-                    if (_timingBoxsP2[j].x <= t_notePosX && t_notePosX <= _timingBoxsP2[j].y)
+                    if ((_timingBoxsP2[j].x <= t_notePosX && t_notePosX <= _timingBoxsP2[j].y) || forceTrue)
                     {
                         boxNoteListP2[i].GetComponent<Note2>().HideNote();
                         if (_keyInputNumP2 == 0)
@@ -101,7 +101,7 @@ public class TimingManager : MonoBehaviour
                         _keyInputNumP2++;
 
                         IsSuccessManage();
-                        
+
                         if (NoteManager.instance.currentBGM == "Offset")
                         {
                             RecordNoteXPos(2, t_notePosX);
