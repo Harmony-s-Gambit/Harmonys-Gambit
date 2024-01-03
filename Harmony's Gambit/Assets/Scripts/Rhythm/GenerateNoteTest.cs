@@ -11,10 +11,12 @@ public class GenerateNoteTest : MonoBehaviour
     [SerializeField] Transform _tfCenterFrameP2;
 
     private MainUI _mainUI;
+    private GameManager _gameManager;
 
     private void Start()
     {
         _mainUI = FindObjectOfType<MainUI>();
+        _gameManager = FindObjectOfType<GameManager>();
         instance = this;
     }
 
@@ -28,6 +30,8 @@ public class GenerateNoteTest : MonoBehaviour
 
     public void OffsetStartButton()
     {
+        _gameManager.isBluePlayerPlaying = true;
+        _gameManager.isRedPlayerPlaying = true;
         _mainUI.ControllButton(0);
         _mainUI.ControllButton(2);
         NoteManager.instance.SetBGMValue("Offset");
@@ -40,6 +44,8 @@ public class GenerateNoteTest : MonoBehaviour
         yield return new WaitForSeconds(7f);
         _mainUI.ControllButton(1);
         _mainUI.ControllButton(3);
+        _gameManager.isBluePlayerPlaying = false;
+        _gameManager.isRedPlayerPlaying = false;
         OffsetTestButton();
     }
 
@@ -82,7 +88,6 @@ public class GenerateNoteTest : MonoBehaviour
         try
         {
             p1Center /= xPosP1.Count;
-            
         }
         catch (Exception)
         {
@@ -100,10 +105,15 @@ public class GenerateNoteTest : MonoBehaviour
         
         if (xPosP1.Count != 0 && xPosP2.Count != 0)
         {
-            _tfCenterFrameP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 + p1Center, 30);
-            _tfCenterFrameP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 + p2Center, 30);
+            _tfCenterFrameP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 - p1Center, 30);
+            _tfCenterFrameP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0 - p2Center, 30);
+            FindObjectOfType<TimingManager>().SetTimingBoxs(p2Center, p1Center);
         }
-
-        FindObjectOfType<TimingManager>().SetTimingBoxs(p1Center, p2Center);
+        else
+        {
+            _tfCenterFrameP1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 30);
+            _tfCenterFrameP2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 30);
+            FindObjectOfType<TimingManager>().SetTimingBoxs(0, 0);
+        }
     }
 }

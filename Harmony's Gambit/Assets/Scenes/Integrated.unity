@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 209540072}
   - component: {fileID: 209540071}
   m_Layer: 5
-  m_Name: PerfectRectP2
+  m_Name: PerfectRectP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 1, b: 0.19607843, a: 0}
+  m_Color: {r: 0.5882353, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1835,7 +1835,7 @@ GameObject:
   - component: {fileID: 712111243}
   - component: {fileID: 712111244}
   m_Layer: 5
-  m_Name: MissAreaP2
+  m_Name: MissAreaP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2067,7 +2067,7 @@ GameObject:
   - component: {fileID: 796590212}
   - component: {fileID: 796590211}
   m_Layer: 5
-  m_Name: CenterFlameP1
+  m_Name: CenterFlameP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4639,8 +4639,8 @@ MonoBehaviour:
   bgmListindex: 10
   currentBeatList: []
   currentBGM: 
-  _tfNoteAppearP1: {fileID: 2126513601}
-  _tfNoteAppearP2: {fileID: 1344852693}
+  _tfNoteAppearP1: {fileID: 1344852693}
+  _tfNoteAppearP2: {fileID: 2126513601}
   _tfNoteAppearIn: {fileID: 1330101895}
 --- !u!61 &1300561733
 BoxCollider2D:
@@ -4701,12 +4701,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxNoteListP1: []
   boxNoteListP2: []
-  _centerP1: {fileID: 796590210}
-  _centerP2: {fileID: 1728532152}
+  _centerP1: {fileID: 1728532152}
+  _centerP2: {fileID: 796590210}
   _timingRectP1:
-  - {fileID: 1391082548}
-  _timingRectP2:
   - {fileID: 209540070}
+  _timingRectP2:
+  - {fileID: 1391082548}
   _successImage: {fileID: 3163769654402579815, guid: 402cff0c6bf56fe49ae7d65d963ffed4, type: 3}
   _failureImage: {fileID: 325068101484025955, guid: ed8d240c597aea54887d99dac0b94932, type: 3}
   _tfSoFImage: {fileID: 0}
@@ -4912,7 +4912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1344852693}
   m_Layer: 5
-  m_Name: NoteAppearLocationP2
+  m_Name: NoteAppearLocationP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5028,7 +5028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1363825133}
   m_Layer: 5
-  m_Name: TimingRectP2
+  m_Name: TimingRectP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5149,7 +5149,7 @@ GameObject:
   - component: {fileID: 1391082550}
   - component: {fileID: 1391082549}
   m_Layer: 5
-  m_Name: PerfectRectP1
+  m_Name: PerfectRectP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5188,7 +5188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0.5882353, b: 0.5882353, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7876,7 +7876,7 @@ GameObject:
   - component: {fileID: 1728532154}
   - component: {fileID: 1728532153}
   m_Layer: 5
-  m_Name: CenterFlameP2
+  m_Name: CenterFlameP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8112,7 +8112,7 @@ GameObject:
   - component: {fileID: 1837586125}
   - component: {fileID: 1837586126}
   m_Layer: 5
-  m_Name: MissAreaP1
+  m_Name: MissAreaP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10976,7 +10976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2107050859}
   m_Layer: 5
-  m_Name: TimingRectP1
+  m_Name: TimingRectP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11015,7 +11015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2126513601}
   m_Layer: 5
-  m_Name: NoteAppearLocationP1
+  m_Name: NoteAppearLocationP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

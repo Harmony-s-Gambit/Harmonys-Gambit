@@ -21,10 +21,10 @@ public class MissArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("NoteP1"))
+        if (collision.CompareTag("NoteP2"))
         {
             _timingManager.boxNoteListP1.Remove(collision.gameObject);
-            StartCoroutine(collision.gameObject.GetComponent<Note>().FadeOutImage());
+            StartCoroutine(collision.gameObject.GetComponent<Note2>().FadeOutImage());
         }
         if (collision.CompareTag("NoteIn"))
         {

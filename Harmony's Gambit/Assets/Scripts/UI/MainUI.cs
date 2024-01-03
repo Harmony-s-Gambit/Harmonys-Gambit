@@ -37,7 +37,6 @@ public class MainUI : MonoBehaviour
 
     public void OffsetSetting_MainButton()
     {
-        Debug.Log("Hello");
         panels[1].SetActive(false);
         panels[0].SetActive(true);
     }

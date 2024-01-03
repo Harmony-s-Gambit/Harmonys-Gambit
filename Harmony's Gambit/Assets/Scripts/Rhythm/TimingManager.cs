@@ -42,12 +42,12 @@ public class TimingManager : MonoBehaviour
     {
         for (int i = 0; i < _timingRectP1.Length; i++)
         {
-            _timingBoxsP1[i].Set(_centerP1.localPosition.x - _timingRectP1[i].rect.width / 2 + offsetP1, _centerP1.localPosition.x + _timingRectP1[i].rect.width / 2 + offsetP1); //각 판정의 x좌표 범위 설정, 정확한 판정일수록 범위 작음
+            _timingBoxsP1[i].Set(_centerP1.localPosition.x - _timingRectP1[i].rect.width / 2 - offsetP1, _centerP1.localPosition.x + _timingRectP1[i].rect.width / 2 - offsetP1); //각 판정의 x좌표 범위 설정, 정확한 판정일수록 범위 작음
         }
         
         for (int i = 0; i < _timingRectP2.Length; i++)
         {
-            _timingBoxsP2[i].Set(_centerP2.localPosition.x - _timingRectP2[i].rect.width / 2 + offsetP2, _centerP2.localPosition.x + _timingRectP2[i].rect.width / 2 + offsetP2);
+            _timingBoxsP2[i].Set(_centerP2.localPosition.x - _timingRectP2[i].rect.width / 2 - offsetP2, _centerP2.localPosition.x + _timingRectP2[i].rect.width / 2 - offsetP2);
         }
     }
 
