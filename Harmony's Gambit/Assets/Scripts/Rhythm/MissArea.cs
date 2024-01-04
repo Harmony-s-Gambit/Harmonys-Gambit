@@ -9,6 +9,7 @@ public class MissArea : MonoBehaviour
     StructureManager _structureManager;
     CameraMoving _cameraMoving;
     SightManager _sightManager;
+    PlayerManager _playerManager;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class MissArea : MonoBehaviour
         _structureManager = FindObjectOfType<StructureManager>();
         _cameraMoving = FindObjectOfType<CameraMoving>();
         _sightManager = FindObjectOfType<SightManager>();
+        _playerManager = FindObjectOfType<PlayerManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,6 +35,7 @@ public class MissArea : MonoBehaviour
                 _gameManager.rhythm = true;
                 _cameraMoving.rhythm = true;
                 _sightManager.rhythm = true;
+                _playerManager.rhythm = true;
                 StartCoroutine(_structureManager.rhythmTure());
                 _timingManager.SuccessOrFailure(); //µø±‚»≠
             }

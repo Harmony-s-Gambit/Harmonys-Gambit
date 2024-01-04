@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public int P1_AttackType = 0, P2_AttackType = 0;
     public int P1direction, P2direction;
     private GameObject P1, P2;
+    public bool rhythm;
 
     public class PlayerStat
     {
@@ -46,10 +47,15 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(P1_HP <= 0 || P2_HP <= 0)
+        if (rhythm)
         {
-            //GameOver = true;
-            SceneManager.LoadScene("GameOver");
+            rhythm = false;
+            if (P1_HP <= 0 || P2_HP <= 0)
+            {
+                //GameOver = true;
+                SceneManager.LoadScene("GameOver");
+            }
         }
+        
     }
 }
