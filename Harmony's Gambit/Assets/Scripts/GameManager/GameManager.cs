@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
     //���� ������ ����
 
     //structure ������ �ߵ�
-    /* Hiena Targeting AI proposal
+     //Hiena Targeting AI proposal
         public void resetCheck(int x, int y)
         {
             GridSlotInfo temp = GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>();
@@ -261,7 +261,7 @@ public class GameManager : MonoBehaviour
                     catch (Exception e) { }
                 }
             }
-        }*/
+        }
 }
 
 

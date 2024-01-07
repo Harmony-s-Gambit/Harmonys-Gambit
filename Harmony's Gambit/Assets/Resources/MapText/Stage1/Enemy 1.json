@@ -1,0 +1,76 @@
+{
+  "enemies": [
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 2,
+      "y": 9
+    },
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 3,
+      "y": 10
+    },
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 7,
+      "y": 16
+    },
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 9,
+      "y": 17
+    },
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 11,
+      "y": 15
+    },
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 17,
+      "y": 11
+    },
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 20,
+      "y": 10
+    },
+    {
+      "color": "PURPLE",
+      "type": "BEAR",
+      "x": 20,
+      "y": 2
+    },
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 21,
+      "y": 4
+    },
+    {
+      "color": "PURPLE",
+      "type": "HYENA",
+      "x": 22,
+      "y": 2
+    },
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 27,
+      "y": 10
+    },
+    {
+      "color": "PURPLE",
+      "type": "MOUSE",
+      "x": 28,
+      "y": 8
+    }
+  ]
+}
