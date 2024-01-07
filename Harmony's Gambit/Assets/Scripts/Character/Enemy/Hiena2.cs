@@ -56,11 +56,4 @@ public class Hiena2 : Enemy
         }
     }
 
-    public override GameObject GetNextDest()
-    {
-        if (dontMove) {
-            dontMove = false;
-            return GameObject.Find(x + "_" + y);
-        }
-    }
 }
