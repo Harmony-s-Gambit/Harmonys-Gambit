@@ -4,8 +4,15 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
+
+
+
 public class GameManager : MonoBehaviour
 {
+    public Queue<GridSlotInfo> redDijSlots = new Queue<GridSlotInfo>();
+    public Queue<GridSlotInfo> blueDijSlots = new Queue<GridSlotInfo>();
+
+
     public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> players = new List<GameObject>();
 
@@ -51,6 +58,20 @@ public class GameManager : MonoBehaviour
         }
         if (rhythm)
         {
+            resetCheck(redPlayer.x, redPlayer.y);
+            GameObject curRed = GameObject.Find(redPlayer.x + "_" + redPlayer.y);
+            GameObject curBlue = GameObject.Find(bluePlayer.x + "_" + bluePlayer.y);
+            curRed.GetComponent<GridSlotInfo>().redDistance = 0;
+            curBlue.GetComponent<GridSlotInfo>().blueDistance = 0;
+            RedDistance(redPlayer.x, redPlayer.y);
+            while (redDijSlots.Count != 0) {
+                GridSlotInfo t = redDijSlots.Dequeue();
+                RedDistance(t.x, t.y);
+            }
+
+
+            RedDistance(redPlayer.x, redPlayer.y);
+            BlueDistance(bluePlayer.x, bluePlayer.y, 0);
             //player Move
             rhythm = false;
             if (isStunned)
@@ -146,6 +167,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            Debug.Log(GameObject.Find("11_18").GetComponent<GridSlotInfo>().redDistance + " " + GameObject.Find("11_18").GetComponent<GridSlotInfo>().blueDistance);
         }
 
         //isMovedThisTurn = false �� �ʱ�ȭ
@@ -168,8 +190,8 @@ public class GameManager : MonoBehaviour
             GridSlotInfo temp = GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>();
             if (temp.redDistanceCheck || temp.blueDistanceCheck)
             {
-                temp.redDistance = -1;
-                temp.blueDistance = -1;
+                temp.redDistance = 100000;
+                temp.blueDistance = 100000;
                 temp.redDistanceCheck = false;
                 temp.blueDistanceCheck = false;
                 try
@@ -195,12 +217,63 @@ public class GameManager : MonoBehaviour
             }
         }
     
-        public void RedDistance(int x, int y, int n)
+        public void RedDistance(int x, int y)
         {
             GameObject tempObject = GameObject.Find(x + "_" + y);
             GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
-            if (!temp.redDistanceCheck)
+
+        if (temp.redDistanceCheck) return;
+        else {
+            temp.redDistanceCheck = true;
+            if (tempObject.tag != "Wall")
             {
+                temp.redDistanceCheck = true;
+                try
+                {
+                    GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
+                    if (g.redDistance > temp.redDistance)
+                    {
+                        redDijSlots.Enqueue(g);
+                        g.redDistance = temp.redDistance + 1;
+                    }
+                }
+                catch (Exception e) { };
+
+                try
+                {
+                    GridSlotInfo g = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
+                    if (g.redDistance > temp.redDistance)
+                    {
+                        redDijSlots.Enqueue(g);
+                        g.redDistance = temp.redDistance + 1;
+                    }
+                }
+                catch (Exception e) { }
+                try
+                {
+                    GridSlotInfo g = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
+                    if (g.redDistance > temp.redDistance + 1)
+                    {
+                        redDijSlots.Enqueue(g);
+                        g.redDistance = temp.redDistance + 1;
+                    }
+                }
+                catch (Exception e) { }
+                try
+                {
+                    GridSlotInfo g = GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>();
+                    if (g.redDistance > temp.redDistance + 1)
+                    {
+                        redDijSlots.Enqueue(g);
+                        g.redDistance = temp.redDistance + 1;
+                    }
+                }catch(Exception e) { }
+            }
+        }
+
+        
+        /*if (!temp.redDistanceCheck)
+        {
             if (tempObject.tag != "Wall")
             {
                 temp.redDistanceCheck = true;
@@ -226,42 +299,96 @@ public class GameManager : MonoBehaviour
                 }
                 catch (Exception e) { }
             }
-            }
+        }*/
         }
 
         public void BlueDistance(int x, int y, int n)
         {
-            GameObject tempObject = GameObject.Find(x + "_" + y);
-            GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
-            if (!temp.blueDistanceCheck)
+        /*
+        GameObject tempObject = GameObject.Find(x + "_" + y);
+        GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
+
+        if (temp.blueDistanceCheck) return;
+        else
+        {
+            temp.blueDistanceCheck = true;
+            if (tempObject.tag != "Wall")
             {
-                if (tempObject.tag != "Wall")
+                temp.blueDistanceCheck = true;
+                try
                 {
-                    temp.blueDistanceCheck = true;
-                    temp.blueDistance = n;
-                    try
+                    GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
+                    if (g.blueDistance > temp.blueDistance)
                     {
-                        BlueDistance(x + 1, y, n + 1);
+                        blueDijSlots.Enqueue(g);
+                        g.blueDistance = temp.blueDistance + 1;
                     }
-                    catch (Exception e) { }
-                    try
-                    {
-                        BlueDistance(x - 1, y, n + 1);
-                    }
-                    catch (Exception e) { }
-                    try
-                    {
-                        BlueDistance(x, y + 1, n + 1);
-                    }
-                    catch (Exception e) { }
-                    try
-                    {
-                        BlueDistance(x, y - 1, n + 1);
-                    }
-                    catch (Exception e) { }
                 }
+                catch (Exception e) { };
+
+                try
+                {
+                    GridSlotInfo g = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
+                    if (g.blueDistance > temp.blueDistance)
+                    {
+                        blueDijSlots.Enqueue(g);
+                        g.blueDistance = temp.blueDistance + 1;
+                    }
+                }
+                catch (Exception e) { }
+                try
+                {
+                    GridSlotInfo g = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
+                    if (g.blueDistance > temp.blueDistance + 1)
+                    {
+                        redDijSlots.Enqueue(g);
+                        g.blueDistance = temp.blueDistance + 1;
+                    }
+                }
+                catch (Exception e) { }
+                try
+                {
+                    GridSlotInfo g = GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>();
+                    if (g.blueDistance > temp.blueDistance + 1)
+                    {
+                        redDijSlots.Enqueue(g);
+                        g.blueDistance = temp.blueDistance + 1;
+                    }
+                }
+                catch (Exception e) { }
+            }
+        }*/
+        GameObject tempObject = GameObject.Find(x + "_" + y);
+        GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
+        if (!temp.blueDistanceCheck)
+        {
+            if (tempObject.tag != "Wall")
+            {
+                temp.blueDistanceCheck = true;
+                temp.blueDistance = n;
+                try
+                {
+                    BlueDistance(x + 1, y, n + 1);
+                }
+                catch (Exception e) { }
+                try
+                {
+                    BlueDistance(x - 1, y, n + 1);
+                }
+                catch (Exception e) { }
+                try
+                {
+                    BlueDistance(x, y + 1, n + 1);
+                }
+                catch (Exception e) { }
+                try
+                {
+                    BlueDistance(x, y - 1, n + 1);
+                }
+                catch (Exception e) { }
             }
         }
+    }
 }
 
 

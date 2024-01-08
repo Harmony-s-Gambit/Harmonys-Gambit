@@ -39,6 +39,8 @@ public class GridMaker : MonoBehaviour
 
                     GameObject tile = GameObject.Instantiate(WallTile, transform);
                     tile.name = j + "_" + i;
+                    tile.GetComponent<GridSlotInfo>().x = j;
+                    tile.GetComponent<GridSlotInfo>().y = i;
                     float X = j * tileSize;
                     float Y = i * tileSize;
                     tile.transform.position = new Vector2(X, Y);
@@ -47,6 +49,8 @@ public class GridMaker : MonoBehaviour
                 {
                     GameObject tile = GameObject.Instantiate(GroundTile, transform);
                     tile.name = j + "_" + i;
+                    tile.GetComponent<GridSlotInfo>().x = j;
+                    tile.GetComponent<GridSlotInfo>().y = i;
                     float X = j * tileSize;
                     float Y = i * tileSize;
                     tile.transform.position = new Vector2(X, Y);

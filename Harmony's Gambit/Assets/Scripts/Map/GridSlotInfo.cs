@@ -13,9 +13,10 @@ public class GridSlotInfo : MonoBehaviour
 
     // Hiena Targeting AI proposal
     public bool blueDistanceCheck, redDistanceCheck;
-    public int blueDistance, redDistance;
-    
+    public int blueDistance = 0, redDistance = 0;
 
+    //È¤½Ã ¸ô¶ó¼­ ³Ö¾îµÒ
+    public int x, y;
 
     private SpriteRenderer spriteRen;
     private bool onceSaw = false;

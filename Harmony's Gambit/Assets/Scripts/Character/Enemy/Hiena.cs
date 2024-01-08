@@ -7,7 +7,7 @@ using UnityEngine;
 public class Hiena : Enemy
 {
     Dictionary<GameObject, int> MovementRoute;
-    GameObject target;
+    public GameObject target;
     private bool dontMove =false;
     public override void Start()
     {
