@@ -36,6 +36,7 @@ public class MissArea : MonoBehaviour
                 _cameraMoving.rhythm = true;
                 _sightManager.rhythm = true;
                 _playerManager.rhythm = true;
+                ScoreManager.instance.rhythm = true;
                 StartCoroutine(_structureManager.rhythmTure());
                 _timingManager.SuccessOrFailure(); //µø±‚»≠
             }

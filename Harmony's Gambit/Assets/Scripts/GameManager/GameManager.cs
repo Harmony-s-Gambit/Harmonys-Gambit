@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            Debug.Log(GameObject.Find("11_18").GetComponent<GridSlotInfo>().redDistance + " " + GameObject.Find("11_18").GetComponent<GridSlotInfo>().blueDistance);
+            //Debug.Log(GameObject.Find("11_18").GetComponent<GridSlotInfo>().redDistance + " " + GameObject.Find("11_18").GetComponent<GridSlotInfo>().blueDistance);
         }
 
         //isMovedThisTurn = false �� �ʱ�ȭ

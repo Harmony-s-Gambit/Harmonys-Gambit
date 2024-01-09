@@ -8,6 +8,7 @@ public class NoteManager : MonoBehaviour
 
     private double bpm = 0; //현재 곡 bpm
     public float delay = 0; //현재 곡 delay, 몇초 뒤에 곡을 재생할 것인가
+    public double time = 0; //현재 곡 길이
     private int currentBGMindex; //현재 곡이 상수로 어떤 값을 가지는가, BGMJson 스크립트에 있음. 예: BGM1은 0
     private double _currentTimeP1 = 0d; //플레이어 1(위쪽 노트) 생성 시간
     private double _currentTimeP2 = 0d; //플레이어 2(아래쪽 노트) 생성 시간
@@ -75,6 +76,7 @@ public class NoteManager : MonoBehaviour
         currentBGMindex = BGMJson.instance.CurrentBGMindex(bgmName); //현재 곡의 인덱스 설정
         bpm = BGMJson.instance.bgmJsonFiles[currentBGMindex].bpm; //현재 곡의 bpm 설정
         delay = BGMJson.instance.bgmJsonFiles[currentBGMindex].delay; //현재 곡의 delay 설정
+        time = BGMJson.instance.bgmJsonFiles[currentBGMindex].time; //현재 곡의 길이 설정
         currentBGM = BGMJson.instance.bgmJsonFiles[currentBGMindex].bgmName; //현재 곡의 이름 설정
         currentBeatList = BGMJson.instance.bgmJsonFiles[currentBGMindex].beatList; //현재 곡의 비트 리스트 설정
         bgmListindex = 0; //초기화

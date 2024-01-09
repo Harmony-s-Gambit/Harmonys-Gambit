@@ -6,6 +6,7 @@ public class BGMJsonFile
 {
     public string bgmName; //곡 이름
     public double bpm; //곡 bpm
+    public double time; //곡 시간(초)
     public float delay; //곡 delay, 노트가 판정 범위 가운데를 지나고 몇 초 후에 곡을 재생 시킬 것인가
     public List<double> beatList; //박자들
 }
@@ -54,6 +55,7 @@ public class BGMJson : MonoBehaviour
         bgmJsonFiles[bgm1].bgmName = "BGM1";
         bgmJsonFiles[bgm1].bpm = 128d;
         bgmJsonFiles[bgm1].delay = 0f;
+        bgmJsonFiles[bgm1].time = 10f;
         bgmJsonFiles[bgm1].beatList = new List<double>() { 0, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
                                                            60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
                                                            60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,

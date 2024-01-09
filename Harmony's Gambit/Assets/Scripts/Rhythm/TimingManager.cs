@@ -20,8 +20,8 @@ public class TimingManager : MonoBehaviour
 
     int _keyInputNumP1 = 0; //키 입력 수, 2번 이상 정확한 타이밍에 눌렀는지 판단
     int _keyInputNumP2 = 0;
-    private Queue<bool> _IsSuccessP1 = new Queue<bool>(); //성공했는가 실패했는가
-    private Queue<bool> _IsSuccessP2 = new Queue<bool>();
+    private bool _IsSuccessP1 = false; //성공했는가 실패했는가
+    private bool _IsSuccessP2 = false;
     private Queue<string> _whatKeyP1 = new Queue<string>(); //어떤 키를 눌렀는가
     private Queue<string> _whatKeyP2 = new Queue<string>();
 
@@ -117,90 +117,78 @@ public class TimingManager : MonoBehaviour
 
     private void IsSuccessManage() //성공인지 실패인지 저장하는 함수
     {
-        _IsSuccessP1.Clear();
-        _IsSuccessP2.Clear();
-
         if (_keyInputNumP1 == 1)
         {
-            _IsSuccessP1.Enqueue(true);
+            _IsSuccessP1 = true;
         }
         else
         {
-            _IsSuccessP1.Enqueue(false);
+            _IsSuccessP1 = false;
         }
 
         if ( _keyInputNumP2 == 1)
         {
-            _IsSuccessP2.Enqueue(true);
+            _IsSuccessP2 = true;
         }
         else
         {
-            _IsSuccessP2.Enqueue(false);
+            _IsSuccessP2 = false;
         }
     }
 
     public void SuccessOrFailure() //동기화 시에 실행, 성공인지 실패인지와 어떤 방향인지 설정하는 함수
     {
-        if (_IsSuccessP1.Count != 0)
+        _gameManager.isRedValid = _IsSuccessP1;
+        if (_whatKeyP1.Count != 0)
         {
-            _gameManager.isRedValid = _IsSuccessP1.Dequeue();
-            if (_whatKeyP1.Count != 0)
+            string key = _whatKeyP1.Dequeue();
+            if (key == "Up")
             {
-                string key = _whatKeyP1.Dequeue();
-                if (key == "Up")
-                {
-                    _gameManager.redPlayer.direction = DIRECTION.UP;
-                }
-                if (key == "Left")
-                {
-                    _gameManager.redPlayer.direction = DIRECTION.LEFT;
-                }
-                if (key == "Down")
-                {
-                    _gameManager.redPlayer.direction = DIRECTION.DOWN;
-                }
-                if (key == "Right")
-                {
-                    _gameManager.redPlayer.direction = DIRECTION.RIGHT;
-                }
+                _gameManager.redPlayer.direction = DIRECTION.UP;
             }
-        }
-        else
-        {
-            _gameManager.isRedValid = false;
+            if (key == "Left")
+            {
+                _gameManager.redPlayer.direction = DIRECTION.LEFT;
+            }
+            if (key == "Down")
+            {
+                _gameManager.redPlayer.direction = DIRECTION.DOWN;
+            }
+            if (key == "Right")
+            {
+                _gameManager.redPlayer.direction = DIRECTION.RIGHT;
+            }
         }
 
-        if (_IsSuccessP2.Count != 0)
+        _gameManager.isBlueValid = _IsSuccessP2;
+        if (_whatKeyP2.Count != 0)
         {
-            _gameManager.isBlueValid = _IsSuccessP2.Dequeue();
-            if (_whatKeyP2.Count != 0)
+            string key = _whatKeyP2.Dequeue();
+            if (key == "W")
             {
-                string key = _whatKeyP2.Dequeue();
-                if (key == "W")
-                {
-                    _gameManager.bluePlayer.direction = DIRECTION.UP;
-                }
-                if (key == "A")
-                {
-                    _gameManager.bluePlayer.direction = DIRECTION.LEFT;
-                }
-                if (key == "S")
-                {
-                    _gameManager.bluePlayer.direction = DIRECTION.DOWN;
-                }
-                if (key == "D")
-                {
-                    _gameManager.bluePlayer.direction = DIRECTION.RIGHT;
-                }
+                _gameManager.bluePlayer.direction = DIRECTION.UP;
             }
-        }
-        else
-        {
-            _gameManager.isBlueValid = false;
+            if (key == "A")
+            {
+                _gameManager.bluePlayer.direction = DIRECTION.LEFT;
+            }
+            if (key == "S")
+            {
+                _gameManager.bluePlayer.direction = DIRECTION.DOWN;
+            }
+            if (key == "D")
+            {
+                _gameManager.bluePlayer.direction = DIRECTION.RIGHT;
+            }
         }
 
         _keyInputNumP1 = 0;
         _keyInputNumP2 = 0;
+
+        ScoreManager.instance.NoteScore(_IsSuccessP1, _IsSuccessP2);
+
+        _IsSuccessP1 = false;
+        _IsSuccessP2 = false;
     }
 
     private void RecordNoteXPos(int player, float xPos) //오프셋 설정 시 필요함, 현재 노트의 x좌표를 넘겨줌
