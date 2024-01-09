@@ -21,7 +21,6 @@ public class MainUI : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>();
         _sightManager = FindObjectOfType<SightManager>();
         _cameraMoving = FindObjectOfType<CameraMoving>();
-        _scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     public void Main_MapSelectButton()

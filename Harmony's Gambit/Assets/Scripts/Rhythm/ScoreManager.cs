@@ -25,7 +25,7 @@ public class ScoreManager : MonoBehaviour
         {
             currentTime += Time.deltaTime;
         }
-        print(currentScore);
+        //print(currentScore);
     }
 
     public void GetScore(int score)
