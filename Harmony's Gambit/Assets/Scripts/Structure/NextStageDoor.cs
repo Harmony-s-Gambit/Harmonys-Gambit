@@ -41,14 +41,24 @@ public class NextStageDoor : Structure
 
                     if (!_gameManager.isRedPlayerPlaying && !_gameManager.isBluePlayerPlaying)
                     {
-                        ActiveNextStage();
+                        ActiveNextStage(nextStageDoorIndex);
                     }
             }
         }
     }
 
-    private void ActiveNextStage()
+    private void ActiveNextStage(int index)
     {
-        SceneManager.LoadScene("Clear");
+        
+        switch (index)
+        {
+            case 0:
+                //SceneManager.LoadScene("BossStage1"); //스코어보드 보고, 버튼눌러서 다음 씬 이동
+                ScoreManager.instance.StageClearScore(nextStageDoorIndex);
+                break;
+            case 1:
+                SceneManager.LoadScene("Clear");
+                break;
+        }
     }
 }

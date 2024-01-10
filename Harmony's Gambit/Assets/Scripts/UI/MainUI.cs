@@ -80,6 +80,7 @@ public class MainUI : MonoBehaviour
         _gameManager.whichDoorHasBluePlayer = -1;
         ScoreManager.instance.currentScore = 0;
         ScoreManager.instance.currentTime = 0;
+        ScoreManager.instance.currentCombo = 0;
         ScoreManager.instance.time = NoteManager.instance.time;
     }
 

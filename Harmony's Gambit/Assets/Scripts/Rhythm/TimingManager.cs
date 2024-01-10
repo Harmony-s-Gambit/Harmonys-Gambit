@@ -186,6 +186,7 @@ public class TimingManager : MonoBehaviour
         _keyInputNumP2 = 0;
 
         ScoreManager.instance.NoteScore(_IsSuccessP1, _IsSuccessP2);
+        ScoreManager.instance.ComboScore(_IsSuccessP1, _IsSuccessP2);
 
         _IsSuccessP1 = false;
         _IsSuccessP2 = false;

@@ -54,6 +54,7 @@ public class PlayerManager : MonoBehaviour
             {
                 //GameOver = true;
                 SceneManager.LoadScene("GameOver");
+                ScoreManager.instance.StageFailScore();
             }
         }
         

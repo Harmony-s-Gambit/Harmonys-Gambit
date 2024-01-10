@@ -8,6 +8,7 @@ public class Enemy : Character
     protected DIRECTION[] pattern;
     protected int _directionIdx;
     protected int beforeHP;
+    protected int killScore; //처치 시 얻는 점수
 
     // Start is called before the first frame update
     public override void Start()
@@ -171,6 +172,7 @@ public class Enemy : Character
 
     public void Die()
     {
+        ScoreManager.instance.GetScore(killScore);
         Debug.Log("Die");
         GameObject.Find((x) + "_" + y).GetComponent<GridSlotInfo>().occupyingCharacter = null;
         GameObject.Find("GameManager").GetComponent<GameManager>().enemies.Remove(gameObject);

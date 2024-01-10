@@ -11,6 +11,8 @@ public class Hiena : Enemy
     private bool dontMove =false;
     public override void Start()
     {
+        killScore = ScoreManager.instance.hienaScore;
+
         base.Start();
         if(color == COLOR.PURPLE)
         {
