@@ -172,7 +172,7 @@ public class Enemy : Character
 
     public void Die()
     {
-        ScoreManager.instance.GetScore(killScore);
+        ScoreManager.instance.KillScore(killScore);
         Debug.Log("Die");
         GameObject.Find((x) + "_" + y).GetComponent<GridSlotInfo>().occupyingCharacter = null;
         GameObject.Find("GameManager").GetComponent<GameManager>().enemies.Remove(gameObject);

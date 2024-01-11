@@ -18,38 +18,37 @@ public class NextStageDoor : Structure
         {
             if (_gameManager.isRedPlayerPlaying || _gameManager.isBluePlayerPlaying)
             {
-                    if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player"))
+                if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player"))
+                {
+                    if (_gameManager.isRedPlayerPlaying)
                     {
-                        if (_gameManager.isRedPlayerPlaying)
-                        {
                             GameObject.FindGameObjectWithTag("Player").SetActive(false);
                             currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
-                        }
-
-                        _gameManager.isRedPlayerPlaying = false;
                     }
-                    else if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player2"))
+
+                    _gameManager.isRedPlayerPlaying = false;
+                }
+                else if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player2"))
+                {
+                    if (_gameManager.isBluePlayerPlaying)
                     {
-                        if (_gameManager.isBluePlayerPlaying)
-                        {
                             GameObject.FindGameObjectWithTag("Player2").SetActive(false);
                             currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
-                        }
-
-                        _gameManager.isBluePlayerPlaying = false;
                     }
 
-                    if (!_gameManager.isRedPlayerPlaying && !_gameManager.isBluePlayerPlaying)
-                    {
-                        ActiveNextStage(nextStageDoorIndex);
-                    }
+                    _gameManager.isBluePlayerPlaying = false;
+                }
+
+                if (!_gameManager.isRedPlayerPlaying && !_gameManager.isBluePlayerPlaying)
+                {
+                    ActiveNextStage(nextStageDoorIndex);
+                }
             }
         }
     }
 
     private void ActiveNextStage(int index)
     {
-        
         switch (index)
         {
             case 0:

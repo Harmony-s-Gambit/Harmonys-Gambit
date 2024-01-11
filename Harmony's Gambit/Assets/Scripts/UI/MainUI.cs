@@ -78,10 +78,7 @@ public class MainUI : MonoBehaviour
         _gameManager.isBluePlayerPlaying = true;
         _gameManager.whichDoorHasRedPlayer = -1;
         _gameManager.whichDoorHasBluePlayer = -1;
-        ScoreManager.instance.currentScore = 0;
-        ScoreManager.instance.currentTime = 0;
-        ScoreManager.instance.currentCombo = 0;
-        ScoreManager.instance.time = NoteManager.instance.time;
+        ScoreManager.instance.GameStartSetting();
     }
 
     public void ControllButton(int num)

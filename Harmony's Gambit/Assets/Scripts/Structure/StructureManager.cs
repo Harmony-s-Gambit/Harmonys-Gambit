@@ -19,7 +19,7 @@ public class StructureManager : MonoBehaviour
 
     void Start()
     {
-        GenerateNextStageDoor(20, 0, 3);
+        GenerateNextStageDoor(20, 0, 0);
 
         GenerateDoor_Simultaneous(14, 16, 1,true);
         GenerateDoorOpenButton1_Simultaneous(13, 17, 1);
