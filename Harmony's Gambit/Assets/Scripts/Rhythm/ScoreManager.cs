@@ -163,6 +163,8 @@ public class ScoreManager : MonoBehaviour
     public void StageClearScore(int index)
     {
         currentScore += stageClearScore * (_gameManager.redPlayer.HP + _gameManager.bluePlayer.HP);
+        currentScore += (NoteManager.instance.currentBeatList.Count - twoNote - oneNote - zeroNote) * 2;
+
         if (index == 0)
         {
             GameObject.Find("ScoreBoardCanvas").transform.GetChild(0).gameObject.SetActive(true); //스코어 보드 켜기

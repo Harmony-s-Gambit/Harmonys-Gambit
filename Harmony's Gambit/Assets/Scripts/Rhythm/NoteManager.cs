@@ -23,35 +23,44 @@ public class NoteManager : MonoBehaviour
     [SerializeField] Transform _tfNoteAppearIn;
 
     TimingManager _timingManager;
+    GameManager _gameManager;
 
     private void Start()
     {
         instance = this;
         _timingManager = GetComponent<TimingManager>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     public void GenerateNote()
     {
         if (bgmListindex < currentBeatList.Count) //현재 곡의 박자 수 만큼 반복
         {
-            _currentTimeP1 += Time.deltaTime;
-            if (_currentTimeP1 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
+            if (_gameManager.isRedPlayerPlaying)
             {
-                GameObject t_note = ObjectPool.instance.noteQueueP1.Dequeue();
-                t_note.transform.position = _tfNoteAppearP1.position;
-                t_note.SetActive(true); //노트 생성
-                _timingManager.boxNoteListP1.Add(t_note);
-                _currentTimeP1 -= currentBeatList[bgmListindex] / bpm;
+                _currentTimeP1 += Time.deltaTime;
+                if (_currentTimeP1 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
+                {
+                    GameObject t_note = ObjectPool.instance.noteQueueP1.Dequeue();
+                    t_note.transform.position = _tfNoteAppearP1.position;
+                    t_note.SetActive(true); //노트 생성
+
+                    _timingManager.boxNoteListP1.Add(t_note);
+                    _currentTimeP1 -= currentBeatList[bgmListindex] / bpm;
+                }
             }
 
-            _currentTimeP2 += Time.deltaTime;
-            if (_currentTimeP2 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
+            if (_gameManager.isBluePlayerPlaying)
             {
-                GameObject t_note = ObjectPool.instance.noteQueueP2.Dequeue();
-                t_note.transform.position = _tfNoteAppearP2.position;
-                t_note.SetActive(true);
-                _timingManager.boxNoteListP2.Add(t_note); //노트 생성
-                _currentTimeP2 -= currentBeatList[bgmListindex] / bpm;
+                _currentTimeP2 += Time.deltaTime;
+                if (_currentTimeP2 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
+                {
+                    GameObject t_note = ObjectPool.instance.noteQueueP2.Dequeue();
+                    t_note.transform.position = _tfNoteAppearP2.position;
+                    t_note.SetActive(true);
+                    _timingManager.boxNoteListP2.Add(t_note); //노트 생성
+                    _currentTimeP2 -= currentBeatList[bgmListindex] / bpm;
+                }
             }
 
             _currentTimeIn += Time.deltaTime;

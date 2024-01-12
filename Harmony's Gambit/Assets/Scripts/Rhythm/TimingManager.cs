@@ -117,22 +117,36 @@ public class TimingManager : MonoBehaviour
 
     private void IsSuccessManage() //성공인지 실패인지 저장하는 함수
     {
-        if (_keyInputNumP1 == 1)
+        if (_gameManager.isRedPlayerPlaying)
+        {
+            if (_keyInputNumP1 == 1)
+            {
+                _IsSuccessP1 = true;
+            }
+            else
+            {
+                _IsSuccessP1 = false;
+            }
+        }
+        else
         {
             _IsSuccessP1 = true;
         }
-        else
-        {
-            _IsSuccessP1 = false;
-        }
 
-        if ( _keyInputNumP2 == 1)
+        if (_gameManager.isBluePlayerPlaying)
+        {
+            if (_keyInputNumP2 == 1)
+            {
+                _IsSuccessP2 = true;
+            }
+            else
+            {
+                _IsSuccessP2 = false;
+            }
+        }
+        else
         {
             _IsSuccessP2 = true;
-        }
-        else
-        {
-            _IsSuccessP2 = false;
         }
     }
 
