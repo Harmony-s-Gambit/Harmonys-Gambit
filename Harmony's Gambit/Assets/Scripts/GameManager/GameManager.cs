@@ -47,12 +47,17 @@ public class GameManager : MonoBehaviour
         }
         redPlayer = players[0].GetComponent<Player>();
         bluePlayer = players[1].GetComponent<Player>();
+        StartCoroutine(MainManager());
+    }
+
+    IEnumerator MainManager()
+    {
         //Attack or Move
-        if(!isBluePlayerPlaying)
+        if (!isBluePlayerPlaying)
         {
             isBlueValid = true;
         }
-        if(!isRedPlayerPlaying)
+        if (!isRedPlayerPlaying)
         {
             isRedValid = true;
         }
@@ -64,14 +69,17 @@ public class GameManager : MonoBehaviour
             curRed.GetComponent<GridSlotInfo>().redDistance = 0;
             curBlue.GetComponent<GridSlotInfo>().blueDistance = 0;
             RedDistance(redPlayer.x, redPlayer.y);
-            while (redDijSlots.Count != 0) {
+            BlueDistance(bluePlayer.x, bluePlayer.y);
+            while (redDijSlots.Count != 0)
+            {
                 GridSlotInfo t = redDijSlots.Dequeue();
                 RedDistance(t.x, t.y);
             }
-
-
-            RedDistance(redPlayer.x, redPlayer.y);
-            BlueDistance(bluePlayer.x, bluePlayer.y, 0);
+            while (blueDijSlots.Count != 0)
+            {
+                GridSlotInfo t = blueDijSlots.Dequeue();
+                BlueDistance(t.x, t.y);
+            }
             //player Move
             rhythm = false;
             if (isStunned)
@@ -167,7 +175,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            //Debug.Log(GameObject.Find("11_18").GetComponent<GridSlotInfo>().redDistance + " " + GameObject.Find("11_18").GetComponent<GridSlotInfo>().blueDistance);
+            Debug.Log(GameObject.Find("11_18").GetComponent<GridSlotInfo>().redDistance + " " + GameObject.Find("11_18").GetComponent<GridSlotInfo>().blueDistance);
         }
 
         //isMovedThisTurn = false �� �ʱ�ȭ
@@ -180,7 +188,17 @@ public class GameManager : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().isMovedThisTurn = false;
         }
+        yield return new WaitWhile(testfunc);
     }
+
+    bool testfunc() {
+        if (redDijSlots.Count == 0 || blueDijSlots.Count == 0)
+        {
+            return true;
+        }
+        else return false;
+    }
+
     //���� ������ ����
 
     //structure ������ �ߵ�
@@ -302,9 +320,9 @@ public class GameManager : MonoBehaviour
         }*/
         }
 
-        public void BlueDistance(int x, int y, int n)
+        public void BlueDistance(int x, int y)
         {
-        /*
+        
         GameObject tempObject = GameObject.Find(x + "_" + y);
         GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
 
@@ -357,7 +375,7 @@ public class GameManager : MonoBehaviour
                 }
                 catch (Exception e) { }
             }
-        }*/
+        }/*
         GameObject tempObject = GameObject.Find(x + "_" + y);
         GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
         if (!temp.blueDistanceCheck)
@@ -387,7 +405,7 @@ public class GameManager : MonoBehaviour
                 }
                 catch (Exception e) { }
             }
-        }
+        }*/
     }
 }
 
