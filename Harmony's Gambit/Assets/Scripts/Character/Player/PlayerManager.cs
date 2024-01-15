@@ -57,6 +57,5 @@ public class PlayerManager : MonoBehaviour
                 ScoreManager.instance.StageFailScore();
             }
         }
-        
     }
 }

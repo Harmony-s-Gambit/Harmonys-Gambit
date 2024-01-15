@@ -65,7 +65,7 @@ public abstract class Weapon : MonoBehaviour
                     Selector.Add(inGridSlot);    
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //Debug.Log(e);
             }

@@ -50,7 +50,7 @@ public class Fist : Weapon
                 Attack = false;
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
             //Debug.Log(e);
             Attack = false;

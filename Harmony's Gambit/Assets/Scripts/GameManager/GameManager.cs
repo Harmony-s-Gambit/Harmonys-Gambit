@@ -13,6 +13,8 @@ public struct dijSet
 
 public class GameManager : MonoBehaviour
 {
+    private PlayerManager _playerManager;
+
     /*
     public Queue<GridSlotInfo> redDijSlots = new Queue<GridSlotInfo>();
     public Queue<GridSlotInfo> blueDijSlots = new Queue<GridSlotInfo>();
@@ -36,13 +38,11 @@ public class GameManager : MonoBehaviour
 
     public bool isDebugMode = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        StartCoroutine(startDelay());
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (players.Count == 0)
@@ -51,7 +51,21 @@ public class GameManager : MonoBehaviour
         }
         redPlayer = players[0].GetComponent<Player>();
         bluePlayer = players[1].GetComponent<Player>();
-        StartCoroutine(MainManager());
+        
+        
+        if (isRedPlayerPlaying || isBluePlayerPlaying)
+        {
+            if (!_playerManager.GameOver)
+            {
+                StartCoroutine(MainManager());
+            }
+        }
+    }
+
+    IEnumerator startDelay()
+    {
+        yield return null;
+        _playerManager = FindObjectOfType<PlayerManager>();
     }
 
     IEnumerator MainManager()
@@ -100,7 +114,6 @@ public class GameManager : MonoBehaviour
             {
                 if (isRedValid ^ isBlueValid)
                 {
-                    //���� �Ѹ��� ����
                     redPlayer.m_Animator.SetTrigger("stun");
                     bluePlayer.m_Animator.SetTrigger("stun");
                 }
@@ -111,7 +124,6 @@ public class GameManager : MonoBehaviour
                     GameObject blueNextDest = bluePlayer.GetNextDest();
                     if (redNextDest == blueNextDest || (redNextDest == bluePlayer.currentBlock && blueNextDest == redPlayer.currentBlock))
                     {
-                        //����ĭ���� Ȥ�� �پ��ִ� ���¿��� ���� �浹
                         redPlayer.m_Animator.SetTrigger("crash");
                         bluePlayer.m_Animator.SetTrigger("crash");
                         AudioManager.instance.PlaySFX("Crash");
@@ -127,20 +139,17 @@ public class GameManager : MonoBehaviour
                     else
                     {
                         List<GameObject> tempEnemies = new List<GameObject>();
-                        //��������
                         for (int i = 0; i < 2; i++)
                         {
                             Player tempPlayer = players[i].GetComponent<Player>();
                             tempEnemies.AddRange(tempPlayer.weapon.targetEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color));
 
-                            //�����϶�
                             for (int j = 0; j < tempEnemies.Count; j++)
                             {
                                 tempEnemies[j].GetComponent<Enemy>().MoveManage();
                             }
                             tempEnemies.Clear();
 
-                            //�����϶�
                             tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
                             if (tempPlayer.weapon.GetSelectorCount() > 0)
                             {
@@ -149,7 +158,6 @@ public class GameManager : MonoBehaviour
 
                                 tempPlayer.weapon.attackEnemies(1);
                             }
-                            //�̵��϶�
                             else
                             {
                                 tempPlayer.MoveManage();
@@ -248,7 +256,7 @@ public class GameManager : MonoBehaviour
                     redDij.Enqueue(g);
                     g.redDistance = temp.redDistance + 1;
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
 
                 try
                 {
@@ -256,7 +264,7 @@ public class GameManager : MonoBehaviour
                     redDij.Enqueue(g);
                     g.redDistance = temp.redDistance + 1;
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
 
                 try
                 {
@@ -264,7 +272,7 @@ public class GameManager : MonoBehaviour
                     redDij.Enqueue(g);
                     g.redDistance = temp.redDistance + 1;
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
 
                 try
                 {
@@ -272,7 +280,7 @@ public class GameManager : MonoBehaviour
                     redDij.Enqueue(g);
                     g.redDistance = temp.redDistance + 1;
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
             }
             else temp.redDistance = 100000;
         }
@@ -299,7 +307,7 @@ public class GameManager : MonoBehaviour
                     blueDij.Enqueue(g);
                     g.blueDistance = temp.blueDistance + 1;
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
 
                 try
                 {
@@ -307,7 +315,7 @@ public class GameManager : MonoBehaviour
                     blueDij.Enqueue(g);
                     g.blueDistance = temp.blueDistance + 1;
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
 
                 try
                 {
@@ -315,7 +323,7 @@ public class GameManager : MonoBehaviour
                     blueDij.Enqueue(g);
                     g.blueDistance = temp.blueDistance + 1;
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
 
                 try
                 {
@@ -323,7 +331,7 @@ public class GameManager : MonoBehaviour
                     blueDij.Enqueue(g);
                     g.blueDistance = temp.blueDistance + 1;
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
 
             }
             else temp.blueDistance = 100000;
@@ -381,22 +389,22 @@ public class GameManager : MonoBehaviour
                 {
                     resetCheck(x + 1, y);
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
                 try
                 {
                     resetCheck(x - 1, y);
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
                 try
                 {
                     resetCheck(x, y + 1);
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
                 try
                 {
                     resetCheck(x, y - 1);
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
             }
         }
     /*

@@ -6,12 +6,16 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
+    private GameManager _gameManager;
+
     public bool takenDamage = false;
     private int beforeHP;
 
     public override void Start()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().players.Add(gameObject);
+        _gameManager = FindObjectOfType<GameManager>();
+
+        _gameManager.players.Add(gameObject);
 
         m_Animator = GetComponent<Animator>();
         m_Animator.SetTrigger("idle");
@@ -97,28 +101,31 @@ public class Player : Character
         m_Animator.SetTrigger("move");
         AudioManager.instance.PlaySFX("Step");
         isMovedThisTurn = true;
-        currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
-        nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
-        currentBlock = nextDest;
-        gameObject.transform.position = currentBlock.transform.position;
-        switch (direction)
+        if (!((gameObject.name.Substring(0, 9) == "redPlayer" && !_gameManager.isRedPlayerPlaying) || (gameObject.name.Substring(0, 10) == "bluePlayer" && !_gameManager.isBluePlayerPlaying)))
         {
-            case DIRECTION.UP:
-                y = y + 1;
-                break;
-            case DIRECTION.LEFT:
-                x = x - 1;
-                break;
-            case DIRECTION.DOWN:
-                y = y - 1;
-                break;
-            case DIRECTION.RIGHT:
-                x = x + 1;
-                break;
-            case DIRECTION.STAY:
-                break;
-            default:
-                break;
+            currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
+            nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
+            currentBlock = nextDest;
+            gameObject.transform.position = currentBlock.transform.position;
+            switch (direction)
+            {
+                case DIRECTION.UP:
+                    y = y + 1;
+                    break;
+                case DIRECTION.LEFT:
+                    x = x - 1;
+                    break;
+                case DIRECTION.DOWN:
+                    y = y - 1;
+                    break;
+                case DIRECTION.RIGHT:
+                    x = x + 1;
+                    break;
+                case DIRECTION.STAY:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

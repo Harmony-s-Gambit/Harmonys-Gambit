@@ -51,7 +51,7 @@ public class Sweeper : Weapon
                     }
                 }
             }
-            catch (Exception e) 
+            catch (Exception) 
             {
                 //Debug.Log(e);
             }

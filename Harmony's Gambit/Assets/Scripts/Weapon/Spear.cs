@@ -51,7 +51,7 @@ public class Spear : Weapon
                     Attack = false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //Debug.Log(e);
                 Attack = false;

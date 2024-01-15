@@ -37,10 +37,6 @@ public class PlayerController : MonoBehaviour
                 _timingManager.CheckTiming(p2, "D");
             }
         }
-        else
-        {
-            _timingManager.CheckTiming(2, "W", true);
-        }
 
         if (_gameManager.isRedPlayerPlaying)
         {
@@ -61,10 +57,5 @@ public class PlayerController : MonoBehaviour
                 _timingManager.CheckTiming(p1, "Left");
             }
         }
-        else
-        {
-            _timingManager.CheckTiming(1, "Up", true);
-        }
-        
     }
 }

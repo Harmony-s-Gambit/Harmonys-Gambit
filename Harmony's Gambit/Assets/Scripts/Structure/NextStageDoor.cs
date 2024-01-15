@@ -27,6 +27,7 @@ public class NextStageDoor : Structure
                     }
 
                     _gameManager.isRedPlayerPlaying = false;
+                    
                 }
                 else if (currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter == GameObject.FindGameObjectWithTag("Player2"))
                 {

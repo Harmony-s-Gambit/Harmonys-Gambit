@@ -12,8 +12,8 @@ public class Door_Simultaneous : Structure
     protected void Start()
     {
         base.Start();
-
     }
+
     private void Update()
     {
         if (_structureManager.rhythm)
