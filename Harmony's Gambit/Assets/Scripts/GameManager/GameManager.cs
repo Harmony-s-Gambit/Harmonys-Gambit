@@ -5,14 +5,18 @@ using UnityEngine;
 using System;
 
 
-
+public struct dijSet
+{
+    public Queue<GridSlotInfo> dijSlot;
+    public Dictionary<GridSlotInfo, bool> dijDic;
+}
 
 public class GameManager : MonoBehaviour
 {
+    /*
     public Queue<GridSlotInfo> redDijSlots = new Queue<GridSlotInfo>();
     public Queue<GridSlotInfo> blueDijSlots = new Queue<GridSlotInfo>();
-
-
+    */
     public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> players = new List<GameObject>();
 
@@ -63,13 +67,13 @@ public class GameManager : MonoBehaviour
         }
         if (rhythm)
         {
-            resetCheck(redPlayer.x, redPlayer.y);
+            /*
             GameObject curRed = GameObject.Find(redPlayer.x + "_" + redPlayer.y);
             GameObject curBlue = GameObject.Find(bluePlayer.x + "_" + bluePlayer.y);
             curRed.GetComponent<GridSlotInfo>().redDistance = 0;
             curBlue.GetComponent<GridSlotInfo>().blueDistance = 0;
-            RedDistance(redPlayer.x, redPlayer.y);
-            BlueDistance(bluePlayer.x, bluePlayer.y);
+            redDijSlots.Enqueue(curRed.GetComponent<GridSlotInfo>());
+            blueDijSlots.Enqueue(curBlue.GetComponent<GridSlotInfo>());
             while (redDijSlots.Count != 0)
             {
                 GridSlotInfo t = redDijSlots.Dequeue();
@@ -80,6 +84,12 @@ public class GameManager : MonoBehaviour
                 GridSlotInfo t = blueDijSlots.Dequeue();
                 BlueDistance(t.x, t.y);
             }
+
+            */
+            GridSlotInfo curRed = GameObject.Find(redPlayer.x + "_" + redPlayer.y).GetComponent<GridSlotInfo>();
+            GridSlotInfo curBlue = GameObject.Find(bluePlayer.x + "_" + bluePlayer.y).GetComponent<GridSlotInfo>();
+
+            Distance(curRed, curBlue);
             //player Move
             rhythm = false;
             if (isStunned)
@@ -188,16 +198,171 @@ public class GameManager : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().isMovedThisTurn = false;
         }
-        yield return new WaitWhile(testfunc);
+        yield return new WaitForFixedUpdate();
+        resetCheck(redPlayer.x, redPlayer.y);
+        //yield return new WaitWhile(testfunc);
     }
 
-    bool testfunc() {
-        if (redDijSlots.Count == 0 || blueDijSlots.Count == 0)
+    public void Distance(GridSlotInfo redStart, GridSlotInfo blueStart)
+    {
+        Queue<GridSlotInfo> redDijSlots = new Queue<GridSlotInfo>();
+        Queue<GridSlotInfo> blueDijSlots = new Queue<GridSlotInfo>();
+
+        Dictionary<GridSlotInfo, bool> redCheck = new Dictionary<GridSlotInfo, bool>();
+        Dictionary<GridSlotInfo, bool> blueCheck = new Dictionary<GridSlotInfo, bool>();
+
+        redStart.redDistance = 0;
+        blueStart.blueDistance = 0;
+
+        redDijSlots.Enqueue(redStart);
+        blueDijSlots.Enqueue(blueStart);
+
+        while(redDijSlots.Count != 0)
         {
-            return true;
+            dijSet n = RD(redDijSlots, redCheck);
+            redDijSlots = n.dijSlot;
+            redCheck = n.dijDic;
         }
-        else return false;
+        while(blueDijSlots.Count != 0)
+        {
+            dijSet n = BD(blueDijSlots, blueCheck);
+            blueDijSlots = n.dijSlot;
+            blueCheck = n.dijDic;
+        }
+
     }
+
+    public dijSet RD(Queue<GridSlotInfo> redDij, Dictionary<GridSlotInfo, bool> redCheck)
+    {
+        GridSlotInfo temp = redDij.Dequeue();
+        int x = temp.x;
+        int y = temp.y;
+        if (!redCheck.ContainsKey(temp))
+        {
+            redCheck.Add(temp, true);
+            if (GameObject.Find(x + "_" + y).tag != "Wall")
+            {
+                try
+                {
+                    GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
+                    redDij.Enqueue(g);
+                    g.redDistance = temp.redDistance + 1;
+                }
+                catch (Exception e) { }
+
+                try
+                {
+                    GridSlotInfo g = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
+                    redDij.Enqueue(g);
+                    g.redDistance = temp.redDistance + 1;
+                }
+                catch (Exception e) { }
+
+                try
+                {
+                    GridSlotInfo g = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
+                    redDij.Enqueue(g);
+                    g.redDistance = temp.redDistance + 1;
+                }
+                catch (Exception e) { }
+
+                try
+                {
+                    GridSlotInfo g = GameObject.Find(x + "_" + (y-1)).GetComponent<GridSlotInfo>();
+                    redDij.Enqueue(g);
+                    g.redDistance = temp.redDistance + 1;
+                }
+                catch (Exception e) { }
+            }
+            else temp.redDistance = 100000;
+        }
+        dijSet n;
+        n.dijSlot = redDij;
+        n.dijDic = redCheck;
+        return n;
+        
+    }
+
+    public dijSet BD(Queue<GridSlotInfo> blueDij, Dictionary<GridSlotInfo, bool> blueCheck)
+    {
+        GridSlotInfo temp = blueDij.Dequeue();
+        int x = temp.x;
+        int y = temp.y;
+        if (!blueCheck.ContainsKey(temp))
+        {
+            blueCheck.Add(temp, true);
+            if (GameObject.Find(x + "_" + y).tag != "Wall")
+            {
+                try
+                {
+                    GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
+                    blueDij.Enqueue(g);
+                    g.blueDistance = temp.blueDistance + 1;
+                }
+                catch (Exception e) { }
+
+                try
+                {
+                    GridSlotInfo g = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
+                    blueDij.Enqueue(g);
+                    g.blueDistance = temp.blueDistance + 1;
+                }
+                catch (Exception e) { }
+
+                try
+                {
+                    GridSlotInfo g = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
+                    blueDij.Enqueue(g);
+                    g.blueDistance = temp.blueDistance + 1;
+                }
+                catch (Exception e) { }
+
+                try
+                {
+                    GridSlotInfo g = GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>();
+                    blueDij.Enqueue(g);
+                    g.blueDistance = temp.blueDistance + 1;
+                }
+                catch (Exception e) { }
+
+            }
+            else temp.blueDistance = 100000;
+        }
+        dijSet n;
+        n.dijSlot = blueDij;
+        n.dijDic = blueCheck;
+        return n;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //���� ������ ����
 
@@ -234,7 +399,7 @@ public class GameManager : MonoBehaviour
                 catch (Exception e) { }
             }
         }
-    
+    /*
         public void RedDistance(int x, int y)
         {
             GameObject tempObject = GameObject.Find(x + "_" + y);
@@ -288,7 +453,7 @@ public class GameManager : MonoBehaviour
                 }catch(Exception e) { }
             }
         }
-
+    */
         
         /*if (!temp.redDistanceCheck)
         {
@@ -319,7 +484,7 @@ public class GameManager : MonoBehaviour
             }
         }*/
         }
-
+/*
         public void BlueDistance(int x, int y)
         {
         
@@ -375,7 +540,7 @@ public class GameManager : MonoBehaviour
                 }
                 catch (Exception e) { }
             }
-        }/*
+        }*//*
         GameObject tempObject = GameObject.Find(x + "_" + y);
         GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
         if (!temp.blueDistanceCheck)
@@ -406,7 +571,7 @@ public class GameManager : MonoBehaviour
                 catch (Exception e) { }
             }
         }*/
-    }
-}
+
+
 
 
