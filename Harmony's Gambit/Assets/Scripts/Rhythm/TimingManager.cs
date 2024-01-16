@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimingManager : MonoBehaviour
 {
     GameManager _gameManager;
+    PlayerManager _playerManager;
 
     public List<GameObject> boxNoteListP1 = new List<GameObject>(); //현재 생성되었고(hierarchy에서 setActive가 true가 되었고) 놓침 구간(Miss Area) 전의 타일들의 리스트
     public List<GameObject> boxNoteListP2 = new List<GameObject>();
@@ -32,6 +33,7 @@ public class TimingManager : MonoBehaviour
     private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
+        _playerManager = FindObjectOfType<PlayerManager>();
 
         _timingBoxsP1 = new Vector2[_timingRectP1.Length]; //판정 수 만큼 x좌표 범위 생성
         _timingBoxsP2 = new Vector2[_timingRectP2.Length];
@@ -117,36 +119,40 @@ public class TimingManager : MonoBehaviour
 
     private void IsSuccessManage() //성공인지 실패인지 저장하는 함수
     {
-        if (_gameManager.isRedPlayerPlaying)
+        //print(_playerManager.GameOver);
+        if (!(_playerManager.P1_HP <= 0 || _playerManager.P2_HP <= 0))
         {
-            if (_keyInputNumP1 == 1)
+            if (_gameManager.isRedPlayerPlaying)
+            {
+                if (_keyInputNumP1 == 1)
+                {
+                    _IsSuccessP1 = true;
+                }
+                else
+                {
+                    _IsSuccessP1 = false;
+                }
+            }
+            else
             {
                 _IsSuccessP1 = true;
             }
-            else
-            {
-                _IsSuccessP1 = false;
-            }
-        }
-        else
-        {
-            _IsSuccessP1 = true;
-        }
 
-        if (_gameManager.isBluePlayerPlaying)
-        {
-            if (_keyInputNumP2 == 1)
+            if (_gameManager.isBluePlayerPlaying)
+            {
+                if (_keyInputNumP2 == 1)
+                {
+                    _IsSuccessP2 = true;
+                }
+                else
+                {
+                    _IsSuccessP2 = false;
+                }
+            }
+            else
             {
                 _IsSuccessP2 = true;
             }
-            else
-            {
-                _IsSuccessP2 = false;
-            }
-        }
-        else
-        {
-            _IsSuccessP2 = true;
         }
     }
 

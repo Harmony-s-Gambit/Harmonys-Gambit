@@ -9,11 +9,11 @@ using JetBrains.Annotations;
 public class PlayerManager : MonoBehaviour
 {
     public bool GameOver = false;
+    public bool GameClear = false;
     public int P1_HP = 4, P2_HP = 4;
     public int P1_AttackType = 0, P2_AttackType = 0;
     public int P1direction, P2direction;
     private GameObject P1, P2;
-    public bool rhythm;
 
     public class PlayerStat
     {
@@ -42,20 +42,5 @@ public class PlayerManager : MonoBehaviour
         P1.GetComponent<Player>().SetXY(playerData.players[0].x, playerData.players[0].y);
         P2 = (GameObject)Instantiate(Resources.Load("Prefabs/Players/bluePlayer"));
         P2.GetComponent<Player>().SetXY(playerData.players[1].x, playerData.players[1].y);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (rhythm)
-        {
-            rhythm = false;
-            if (P1_HP <= 0 || P2_HP <= 0)
-            {
-                GameOver = true;
-                SceneManager.LoadScene("GameOver");
-                ScoreManager.instance.StageFailScore();
-            }
-        }
     }
 }

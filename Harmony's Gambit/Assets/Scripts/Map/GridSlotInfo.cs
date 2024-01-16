@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GridSlotInfo : MonoBehaviour
 {
+    private PlayerManager _playerManager;
+
     public string background;
     public BLOCKTYPE blockType;
     public SIGHTTYPE sightType;
@@ -26,12 +28,20 @@ public class GridSlotInfo : MonoBehaviour
     {
         spriteRen = this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
         spriteRen.sortingOrder = 20;
+
+        _playerManager = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (_playerManager.GameClear)
+        {
+            Color color = spriteRen.color;
+            color.a = 0.8f;
+            spriteRen.color = color;
+            onceSaw = true;
+        }
     }
 
     public void UpdateSightType()

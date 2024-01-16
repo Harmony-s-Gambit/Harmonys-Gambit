@@ -7,6 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Player : Character
 {
     private GameManager _gameManager;
+    private PlayerManager _playerManager;
 
     public bool takenDamage = false;
     private int beforeHP;
@@ -14,6 +15,7 @@ public class Player : Character
     public override void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
+        _playerManager = FindObjectOfType<PlayerManager>();
 
         _gameManager.players.Add(gameObject);
 
@@ -29,11 +31,21 @@ public class Player : Character
 
     protected override void Update()
     {
-        
         if(HP <= 0)
         {
+            _playerManager.GameOver = true;
+            ScoreManager.instance.StageFailScore();
             m_Animator.SetTrigger("die");
             Invoke("AfterDie", 1f);
+            if (gameObject.name.Substring(0, 9) == "redPlayer")
+            {
+                _gameManager.isRedPlayerPlaying = false;
+                
+            }
+            if (gameObject.name.Substring(0, 10) == "bluePlayer")
+            {
+                _gameManager.isBluePlayerPlaying = false;
+            }
         }
         else
         {
@@ -51,7 +63,7 @@ public class Player : Character
             }
             if (HP < beforeHP)
             {
-                m_Animator.SetTrigger("damage");
+                m_Animator.Play("damage", -1, 0);
             }
             beforeHP = HP;
         }
@@ -98,7 +110,7 @@ public class Player : Character
 
     public override void Move(GameObject nextDest)
     {
-        m_Animator.SetTrigger("move");
+        m_Animator.Play("move", -1, 0);
         AudioManager.instance.PlaySFX("Step");
         isMovedThisTurn = true;
         if (!((gameObject.name.Substring(0, 9) == "redPlayer" && !_gameManager.isRedPlayerPlaying) || (gameObject.name.Substring(0, 10) == "bluePlayer" && !_gameManager.isBluePlayerPlaying)))

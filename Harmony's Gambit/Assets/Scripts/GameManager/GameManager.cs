@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
             GridSlotInfo curBlue = GameObject.Find(bluePlayer.x + "_" + bluePlayer.y).GetComponent<GridSlotInfo>();
 
             Distance(curRed, curBlue);
+
             //player Move
             rhythm = false;
             if (isStunned)
@@ -114,18 +115,18 @@ public class GameManager : MonoBehaviour
             {
                 if (isRedValid ^ isBlueValid)
                 {
-                    redPlayer.m_Animator.SetTrigger("stun");
-                    bluePlayer.m_Animator.SetTrigger("stun");
+                    redPlayer.m_Animator.Play("stun", -1, 0);
+                    bluePlayer.m_Animator.Play("stun", -1, 0);
                 }
                 if (isRedValid && isBlueValid)
                 {
                     isRedValid = false; isBlueValid = false;
                     GameObject redNextDest = redPlayer.GetNextDest();
                     GameObject blueNextDest = bluePlayer.GetNextDest();
-                    if (redNextDest == blueNextDest || (redNextDest == bluePlayer.currentBlock && blueNextDest == redPlayer.currentBlock))
+                    if ((redNextDest == blueNextDest || (redNextDest == bluePlayer.currentBlock && blueNextDest == redPlayer.currentBlock)) && (isRedPlayerPlaying || isBluePlayerPlaying))
                     {
-                        redPlayer.m_Animator.SetTrigger("crash");
-                        bluePlayer.m_Animator.SetTrigger("crash");
+                        redPlayer.m_Animator.Play("crash", -1, 0);
+                        bluePlayer.m_Animator.Play("crash", -1, 0);
                         AudioManager.instance.PlaySFX("Crash");
                         isStunned = true;
                         if (redNextDest == blueNextDest)
@@ -139,9 +140,31 @@ public class GameManager : MonoBehaviour
                     else
                     {
                         List<GameObject> tempEnemies = new List<GameObject>();
-                        for (int i = 0; i < 2; i++)
+                        int k = 0;
+                        if (isRedPlayerPlaying && isBluePlayerPlaying)
                         {
-                            Player tempPlayer = players[i].GetComponent<Player>();
+                            k = 2;
+                        }
+                        else
+                        {
+                            k = 1;
+                        }
+                        for (int i = 0; i < k; i++)
+                        {
+                            Player tempPlayer;
+                            if (isRedPlayerPlaying && isBluePlayerPlaying)
+                            {
+                                tempPlayer = players[i].GetComponent<Player>();
+                            }
+                            else if (isRedPlayerPlaying)
+                            {
+                                tempPlayer = players[0].GetComponent<Player>();
+                            }
+                            else
+                            {
+                                tempPlayer = players[1].GetComponent<Player>();
+                            }
+
                             tempEnemies.AddRange(tempPlayer.weapon.targetEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color));
 
                             for (int j = 0; j < tempEnemies.Count; j++)
@@ -153,7 +176,7 @@ public class GameManager : MonoBehaviour
                             tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
                             if (tempPlayer.weapon.GetSelectorCount() > 0)
                             {
-                                tempPlayer.m_Animator.SetTrigger("attack");
+                                tempPlayer.m_Animator.Play("attack", -1, 0);
                                 AudioManager.instance.PlaySFX("PlayerAttackEnemy");
 
                                 tempPlayer.weapon.attackEnemies(1);
@@ -182,7 +205,7 @@ public class GameManager : MonoBehaviour
                     currentEnemy.weapon.selectEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color);
                     if (currentEnemy.weapon.GetSelectorCount() > 0)
                     {
-                        currentEnemy.m_Animator.SetTrigger("attack");
+                        currentEnemy.m_Animator.Play("attack", -1 ,0);
                         currentEnemy.weapon.attackEnemies(1);
                     }
                     //�̵��϶�
@@ -193,7 +216,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            Debug.Log(GameObject.Find("11_18").GetComponent<GridSlotInfo>().redDistance + " " + GameObject.Find("11_18").GetComponent<GridSlotInfo>().blueDistance);
+            //Debug.Log(GameObject.Find("11_18").GetComponent<GridSlotInfo>().redDistance + " " + GameObject.Find("11_18").GetComponent<GridSlotInfo>().blueDistance);
         }
 
         //isMovedThisTurn = false �� �ʱ�ȭ
