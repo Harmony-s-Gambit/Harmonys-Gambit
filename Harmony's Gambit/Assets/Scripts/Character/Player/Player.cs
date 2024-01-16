@@ -110,7 +110,18 @@ public class Player : Character
 
     public override void Move(GameObject nextDest)
     {
-        m_Animator.Play("move", -1, 0);
+        if (nextDest.GetComponent<GridSlotInfo>().y == currentBlock.GetComponent<GridSlotInfo>().y)
+        {
+            m_Animator.Play("move", -1, 0);
+        }
+        else if (nextDest.GetComponent<GridSlotInfo>().y - currentBlock.GetComponent<GridSlotInfo>().y == 1)
+        {
+            m_Animator.Play("move2", -1, 0);
+        }
+        else
+        {
+            m_Animator.Play("move3", -1, 0);
+        }
         AudioManager.instance.PlaySFX("Step");
         isMovedThisTurn = true;
         if (!((gameObject.name.Substring(0, 9) == "redPlayer" && !_gameManager.isRedPlayerPlaying) || (gameObject.name.Substring(0, 10) == "bluePlayer" && !_gameManager.isBluePlayerPlaying)))
