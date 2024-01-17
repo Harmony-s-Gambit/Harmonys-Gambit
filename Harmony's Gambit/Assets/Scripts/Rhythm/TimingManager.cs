@@ -30,6 +30,8 @@ public class TimingManager : MonoBehaviour
     [SerializeField] GameObject _failureImage;
     [SerializeField] GameObject _tfSoFImage;
 
+    private GameObject[] judgmentUIs = new GameObject[3];
+
     private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
@@ -38,6 +40,15 @@ public class TimingManager : MonoBehaviour
         _timingBoxsP1 = new Vector2[_timingRectP1.Length]; //판정 수 만큼 x좌표 범위 생성
         _timingBoxsP2 = new Vector2[_timingRectP2.Length];
         SetTimingBoxs();
+
+        judgmentUIs[0] = GameObject.Find("Perfect");
+        judgmentUIs[1] = GameObject.Find("Good");
+        judgmentUIs[2] = GameObject.Find("Miss");
+        for (int i = 0; i < judgmentUIs.Length; i++)
+        {
+            //print(judgmentUIs[i].gameObject.name);
+            judgmentUIs[i].SetActive(false);
+        }
     }
 
     public void SetTimingBoxs(float offsetP1 = 0, float offsetP2 = 0)
@@ -158,6 +169,25 @@ public class TimingManager : MonoBehaviour
 
     public void SuccessOrFailure() //동기화 시에 실행, 성공인지 실패인지와 어떤 방향인지 설정하는 함수
     {
+        for (int i = 0; i < judgmentUIs.Length; i++)
+        {
+            //print(judgmentUIs[i].gameObject.name);
+            judgmentUIs[i].SetActive(false);
+        }
+
+        if (_IsSuccessP1 && _IsSuccessP2)
+        {
+            judgmentUIs[0].SetActive(true);
+        }
+        else if (_IsSuccessP1 || _IsSuccessP2)
+        {
+            judgmentUIs[1].SetActive(true);
+        }
+        else
+        {
+            judgmentUIs[2].SetActive(true);
+        }
+
         _gameManager.isRedValid = _IsSuccessP1;
         if (_whatKeyP1.Count != 0)
         {
