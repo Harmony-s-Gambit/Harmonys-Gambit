@@ -41,6 +41,7 @@ public class TimingManager : MonoBehaviour
         _timingBoxsP2 = new Vector2[_timingRectP2.Length];
         SetTimingBoxs();
 
+        //ÆÇÁ¤ ui
         judgmentUIs[0] = GameObject.Find("Perfect");
         judgmentUIs[1] = GameObject.Find("Good");
         judgmentUIs[2] = GameObject.Find("Miss");

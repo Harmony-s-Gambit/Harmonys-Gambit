@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class ScoreManager : MonoBehaviour
     private int maximumCombo = 0; //가장 길게 이어진 콤보
     private int killedMob = 0; //적 처치 수
 
+    //콤보 ui
+    private GameObject comboEffect;
+    private GameObject combo100Effect;
+
     private void Start()
     {
         currentScore = 0;
@@ -49,7 +54,10 @@ public class ScoreManager : MonoBehaviour
         instance = this;
         _gameManager = FindObjectOfType<GameManager>();
 
-        
+        comboEffect = GameObject.Find("combo_effect");
+        combo100Effect = GameObject.Find("100combo_effect_0");
+        comboEffect.SetActive(false);
+        combo100Effect.SetActive(false);
     }
 
     private void Update()
@@ -102,22 +110,33 @@ public class ScoreManager : MonoBehaviour
         }
         else if (p1 || p2)
         {
+            comboEffect.SetActive(false);
+            combo100Effect.SetActive(false);
             oneNote += 1;
         }
         else
         {
+            comboEffect.SetActive(false);
+            combo100Effect.SetActive(false);
             currentCombo = 0;
             zeroNote += 1;
         }
 
-        if (currentCombo % comboUnit == 0 && currentCombo != 0 && currentCombo <= maxCombo)
+        if (currentCombo % comboUnit == 0 && currentCombo != 0 && currentCombo < maxCombo)
         {
             //print(currentCombo);
             currentScore += currentCombo / comboUnit;
+
+            comboEffect.SetActive(false);
+            comboEffect.SetActive(true);
+            comboEffect.gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = "x" + currentCombo;
         }
-        else if (currentCombo % comboUnit == 0 && currentCombo > maxCombo)
+        else if (currentCombo % comboUnit == 0 && currentCombo >= maxCombo)
         {
             currentScore += maxComboScore;
+            comboEffect.SetActive(false);
+            combo100Effect.SetActive(false);
+            combo100Effect.SetActive(true);
         }
 
         if (currentCombo > maximumCombo)

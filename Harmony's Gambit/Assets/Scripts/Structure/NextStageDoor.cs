@@ -64,6 +64,7 @@ public class NextStageDoor : Structure
                 //SceneManager.LoadScene("BossStage1"); //스코어보드 보고, 버튼눌러서 다음 씬 이동
                 ScoreManager.instance.StageClearScore(nextStageDoorIndex);
                 _playerManager.GameClear = true;
+                SceneManager.LoadScene("Clear");
                 break;
             case 1:
                 SceneManager.LoadScene("Clear");
