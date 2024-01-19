@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     */
     public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> players = new List<GameObject>();
+    public List<GameObject> items = new List<GameObject>();
 
     public Player redPlayer;
     public Player bluePlayer;

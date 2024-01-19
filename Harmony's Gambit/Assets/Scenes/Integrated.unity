@@ -444,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   players: []
+  items: []
   redPlayer: {fileID: 0}
   bluePlayer: {fileID: 0}
   isRedValid: 0

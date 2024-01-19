@@ -1,0 +1,16 @@
+{
+    "items": [
+      {
+        "color": "PURPLE",
+        "type": "POTION",
+        "x": 7,
+        "y": 10
+      },
+      {
+        "color": "PURPLE",
+        "type": "POTION",
+        "x": 7,
+        "y": 12
+      }
+    ]
+  }
