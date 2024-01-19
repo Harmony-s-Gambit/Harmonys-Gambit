@@ -60,7 +60,7 @@ public class ItemManager : MonoBehaviour
     void MakeItemDict()
     {
         ItemDict[ITEM.POTION] = new Dictionary<COLOR, GameObject>();
-        ItemDict[ITEM.POTION][COLOR.PURPLE] = (GameObject)(Resources.Load("Prefabs/Items/potion_purple_temp"));
+        ItemDict[ITEM.POTION][COLOR.PURPLE] = (GameObject)(Resources.Load("Prefabs/Items/temp_potion"));
         // ItemDict[ITEM.POTION][COLOR.RED] = (GameObject)(Resources.Load(""));
         // ItemDict[ITEM.POTION][COLOR.BLUE] = (GameObject)(Resources.Load(""));
     }
