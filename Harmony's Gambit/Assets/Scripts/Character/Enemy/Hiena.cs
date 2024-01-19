@@ -8,17 +8,17 @@ public class Hiena : Enemy
 {
     Dictionary<GameObject, int> MovementRoute;
     public GameObject target;
-    private bool dontMove =false;
+    private bool dontMove = false;
     public override void Start()
     {
         killScore = ScoreManager.instance.hienaScore;
 
         base.Start();
-        if(color == COLOR.PURPLE)
+        if (color == COLOR.PURPLE)
         {
             Player rp = GameObject.Find("redPlayer(Clone)").GetComponent<Player>();
             Player bp = GameObject.Find("bluePlayer(Clone)").GetComponent<Player>();
-            if(rp.x + rp.y < bp.x + bp.y)
+            if (rp.x + rp.y < bp.x + bp.y)
             {
                 target = GameObject.Find("redPlayer(Clone)");
             }
@@ -27,16 +27,15 @@ public class Hiena : Enemy
                 target = GameObject.Find("bluePlayer(Clone)");
             }
         }
-        else if(color == COLOR.BLUE)
+        else if (color == COLOR.BLUE)
         {
             target = GameObject.Find("redPlayer(Clone)");
         }
-        else if(color == COLOR.RED)
+        else if (color == COLOR.RED)
         {
             target = GameObject.Find("bluePlayer(Clone)");
         }
-        pattern = new DIRECTION[2] {
-            DIRECTION.RIGHT,
+        pattern = new DIRECTION[1] {
             DIRECTION.STAY
         };
         direction = pattern[0];
@@ -58,80 +57,61 @@ public class Hiena : Enemy
 
     public override GameObject GetNextDest()
     {
-        if(dontMove)
+        if (dontMove)
         {
             dontMove = false;
+            direction = DIRECTION.STAY;
             return GameObject.Find(x + "_" + y);
-        }
-        int tarX = target.GetComponent<Player>().x;
-        int tarY = target.GetComponent<Player>().y;
 
-        if(Mathf.Abs(tarX - x) + Mathf.Abs(tarY - y) >= 10) 
-        {
-            return GameObject.Find(x+ "_" + y);
         }
+        GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
+        direction = DIRECTION.RIGHT;
+        GridSlotInfo t = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
 
-        Queue<XYD> xydQ = new Queue<XYD>();
-        if (GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>().blockType != BLOCKTYPE.WALL)
+        if (target.GetComponent<Player>().color == COLOR.BLUE)
         {
-            xydQ.Enqueue(new XYD(x - 1, y, DIRECTION.LEFT));
-        }
-        if (GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>().blockType != BLOCKTYPE.WALL)
-        {
-            xydQ.Enqueue(new XYD(x + 1, y, DIRECTION.RIGHT));
-        }
-        if (GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>().blockType != BLOCKTYPE.WALL)
-        {
-            xydQ.Enqueue(new XYD(x, y + 1, DIRECTION.UP));
-        }
-        if (GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>().blockType != BLOCKTYPE.WALL)
-        {
-            xydQ.Enqueue(new XYD(x, y - 1, DIRECTION.DOWN));
-        }
-
-        int[] dx = { -1, 1, 0, 0 };
-        int[] dy = { 0, 0, 1, -1 };
-        while(xydQ.Count > 0)
-        {
-            XYD cur = xydQ.Peek();
-            xydQ.Dequeue();
-
-            int nextX, nextY;
-            for(int i = 0; i < 4; i++)
+            if (g.blueDistance > t.blueDistance)
             {
-                nextX = cur.x + dx[i];
-                nextY = cur.y + dy[i];
-                if(nextX == tarX && nextY == tarY)
-                {
-                    xydQ.Clear();
-                    dontMove = true;
-                    direction = cur.dir;
-                    switch (cur.dir)
-                    {
-                        case DIRECTION.LEFT:
-                            return GameObject.Find(x - 1 + "_" + y);
-                        case DIRECTION.RIGHT:
-                            return GameObject.Find(x + 1 + "_" + y);
-                        case DIRECTION.UP:
-                            return GameObject.Find(x + "_" + (y+1));
-                        case DIRECTION.DOWN:
-                            return GameObject.Find(x + "_" + (y-1));
-                    }
-                }
-                if (Mathf.Abs(nextX-x) + Mathf.Abs(nextY - y)> Mathf.Abs(cur.x-x) + Mathf.Abs(cur.y - y)
-                    && Mathf.Abs(nextX - x) + Mathf.Abs(nextY - y) <10)
-                {
-                    if (GameObject.Find(nextX + "_" + nextY).GetComponent<GridSlotInfo>().blockType != BLOCKTYPE.WALL)
-                    {
-                        xydQ.Enqueue(new XYD(nextX, nextY, cur.dir));
-                    }
-                }
-                
+                g = t;
+                direction = DIRECTION.LEFT;
+            }
+            t = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
+            if (g.blueDistance > t.blueDistance)
+            {
+                g = t;
+                direction = DIRECTION.UP;
+            }
+            t = GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>();
+            if (g.blueDistance > t.blueDistance)
+            {
+                g = t;
+                direction = DIRECTION.DOWN;
             }
         }
-
-        return GameObject.Find(x+"_" + y);
+        else
+        {
+            if (g.redDistance > t.redDistance)
+            {
+                g = t;
+                direction = DIRECTION.LEFT;
+            }
+            t = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
+            if (g.redDistance > t.redDistance)
+            {
+                g = t;
+                direction = DIRECTION.UP;
+            }
+            t = GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>();
+            if (g.redDistance > t.redDistance)
+            {
+                g = t;
+                direction = DIRECTION.DOWN;
+            }
+        }
+        dontMove = true;
+        return GameObject.Find(g.x + "_" + g.y);
     }
-      
+
+    public void targetChange() { }
 
 }
