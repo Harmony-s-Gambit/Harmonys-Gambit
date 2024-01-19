@@ -12,11 +12,13 @@ public class Structure: MonoBehaviour
 
     protected StructureManager _structureManager;
     protected GameManager _gameManager;
+    protected PlayerManager _playerManager;
 
     protected void Start()
     {
         _structureManager = FindObjectOfType<StructureManager>();
         _gameManager = FindObjectOfType<GameManager>();
+        _playerManager = FindObjectOfType<PlayerManager>();
     }
 
     public virtual void SetXY(int px, int py)

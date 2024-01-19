@@ -40,6 +40,13 @@ public class Door_Simultaneous : Structure
                     AudioManager.instance.PlaySFX("DoorClose");
                 }
             }
+
+            if ((!_gameManager.isBluePlayerPlaying || !_gameManager.isRedPlayerPlaying) && !_playerManager.GameOver)
+            {
+                currentBlock.GetComponent<GridSlotInfo>().blockType = BLOCKTYPE.GROUND;
+                this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                doorOpenTurn = 0;
+            }
         }
         else
         {
