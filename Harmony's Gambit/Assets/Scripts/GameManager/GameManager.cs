@@ -230,7 +230,6 @@ public class GameManager : MonoBehaviour
             enemy.GetComponent<Enemy>().isMovedThisTurn = false;
         }
         yield return new WaitForFixedUpdate();
-        resetCheck(redPlayer.x, redPlayer.y);
         //yield return new WaitWhile(testfunc);
     }
 
@@ -244,11 +243,31 @@ public class GameManager : MonoBehaviour
 
         redStart.redDistance = 0;
         blueStart.blueDistance = 0;
+        
+        redCheck.Add(redStart, true);
+        blueCheck.Add(blueStart, true);
 
-        redDijSlots.Enqueue(redStart);
-        blueDijSlots.Enqueue(blueStart);
+        redDijSlots.Enqueue(GameObject.Find((redStart.x+1) + "_" + redStart.y).GetComponent<GridSlotInfo>());
+        redDijSlots.Enqueue(GameObject.Find((redStart.x-1) + "_" + redStart.y).GetComponent<GridSlotInfo>());
+        redDijSlots.Enqueue(GameObject.Find(redStart.x + "_" + (redStart.y+1)).GetComponent<GridSlotInfo>());
+        redDijSlots.Enqueue(GameObject.Find(redStart.x + "_" + (redStart.y-1)).GetComponent<GridSlotInfo>());
 
-        while(redDijSlots.Count != 0)
+        GameObject.Find((redStart.x + 1) + "_" + redStart.y).GetComponent<GridSlotInfo>().redDistance = 1;
+        GameObject.Find((redStart.x - 1) + "_" + redStart.y).GetComponent<GridSlotInfo>().redDistance = 1;
+        GameObject.Find(redStart.x  + "_" + (redStart.y+1)).GetComponent<GridSlotInfo>().redDistance = 1;
+        GameObject.Find(redStart.x + "_" + (redStart.y-1)).GetComponent<GridSlotInfo>().redDistance = 1;
+
+        blueDijSlots.Enqueue(GameObject.Find((blueStart.x+1) + "_" + blueStart.y).GetComponent<GridSlotInfo>());
+        blueDijSlots.Enqueue(GameObject.Find((blueStart.x-1) + "_" + blueStart.y).GetComponent<GridSlotInfo>());
+        blueDijSlots.Enqueue(GameObject.Find(blueStart.x + "_" + (blueStart.y+1)).GetComponent<GridSlotInfo>());
+        blueDijSlots.Enqueue(GameObject.Find(blueStart.x + "_" + (blueStart.y-1)).GetComponent<GridSlotInfo>());
+
+        GameObject.Find((blueStart.x + 1) + "_" + blueStart.y).GetComponent<GridSlotInfo>().blueDistance = 1;
+        GameObject.Find((blueStart.x - 1) + "_" + blueStart.y).GetComponent<GridSlotInfo>().blueDistance = 1;
+        GameObject.Find(blueStart.x  + "_" + (blueStart.y-1)).GetComponent<GridSlotInfo>().blueDistance = 1;
+        GameObject.Find(blueStart.x  + "_" + (blueStart.y+1)).GetComponent<GridSlotInfo>().blueDistance = 1;
+
+        while (redDijSlots.Count != 0)
         {
             dijSet n = RD(redDijSlots, redCheck);
             redDijSlots = n.dijSlot;
@@ -276,32 +295,44 @@ public class GameManager : MonoBehaviour
                 try
                 {
                     GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
-                    redDij.Enqueue(g);
-                    g.redDistance = temp.redDistance + 1;
+                    if (!redCheck.ContainsKey(g))
+                    {
+                        redDij.Enqueue(g);
+                        if (GameObject.Find((x + 1) + "_" + y).tag != "Wall") g.redDistance = temp.redDistance + 1;
+                    }
                 }
                 catch (Exception) { }
 
                 try
                 {
                     GridSlotInfo g = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
-                    redDij.Enqueue(g);
-                    g.redDistance = temp.redDistance + 1;
+                    if (!redCheck.ContainsKey(g))
+                    {
+                        redDij.Enqueue(g);
+                        if (GameObject.Find(x  + "_" + (y+1)).tag != "Wall") g.redDistance = temp.redDistance + 1;
+                    }
                 }
                 catch (Exception) { }
 
                 try
                 {
                     GridSlotInfo g = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
-                    redDij.Enqueue(g);
-                    g.redDistance = temp.redDistance + 1;
+                    if (!redCheck.ContainsKey(g))
+                    {
+                        redDij.Enqueue(g);
+                        if (GameObject.Find((x - 1) + "_" + y).tag != "Wall") g.redDistance = temp.redDistance + 1;
+                    }
                 }
                 catch (Exception) { }
 
                 try
                 {
                     GridSlotInfo g = GameObject.Find(x + "_" + (y-1)).GetComponent<GridSlotInfo>();
-                    redDij.Enqueue(g);
-                    g.redDistance = temp.redDistance + 1;
+                    if (!redCheck.ContainsKey(g))
+                    {
+                        redDij.Enqueue(g);
+                        if (GameObject.Find(x  + "_" + (y-1)).tag != "Wall") g.redDistance = temp.redDistance + 1;
+                    }
                 }
                 catch (Exception) { }
             }
@@ -327,32 +358,44 @@ public class GameManager : MonoBehaviour
                 try
                 {
                     GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
-                    blueDij.Enqueue(g);
-                    g.blueDistance = temp.blueDistance + 1;
+                    if (!blueCheck.ContainsKey(g))
+                    {
+                        blueDij.Enqueue(g);
+                        if (GameObject.Find((x + 1) + "_" + y).tag != "Wall") g.blueDistance = temp.blueDistance + 1;
+                    }
                 }
                 catch (Exception) { }
 
                 try
                 {
                     GridSlotInfo g = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
-                    blueDij.Enqueue(g);
-                    g.blueDistance = temp.blueDistance + 1;
+                    if (!blueCheck.ContainsKey(g))
+                    {
+                        blueDij.Enqueue(g);
+                        if (GameObject.Find(x + "_" + (y+1)).tag != "Wall") g.blueDistance = temp.blueDistance + 1;
+                    }
                 }
                 catch (Exception) { }
 
                 try
                 {
                     GridSlotInfo g = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
-                    blueDij.Enqueue(g);
-                    g.blueDistance = temp.blueDistance + 1;
+                    if (!blueCheck.ContainsKey(g))
+                    {
+                        blueDij.Enqueue(g);
+                        if (GameObject.Find((x - 1) + "_" + y).tag != "Wall") g.blueDistance = temp.blueDistance + 1;
+                    }
                 }
                 catch (Exception) { }
 
                 try
                 {
                     GridSlotInfo g = GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>();
-                    blueDij.Enqueue(g);
-                    g.blueDistance = temp.blueDistance + 1;
+                    if (!blueCheck.ContainsKey(g))
+                    {
+                        blueDij.Enqueue(g);
+                        if (GameObject.Find(x+ "_" + (y-1)).tag != "Wall") g.blueDistance = temp.blueDistance + 1;
+                    }
                 }
                 catch (Exception) { }
 
