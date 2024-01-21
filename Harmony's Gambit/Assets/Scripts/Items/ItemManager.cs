@@ -42,7 +42,7 @@ public class ItemManager : MonoBehaviour
         foreach (ItemStat item in itemData.items)
         {
             temp = Instantiate(ItemDict[item.type][item.color]);
-            temp.GetComponent<Item>().SetXY(item.x, item.y);
+            temp.GetComponent<Item>().initPotion(item.x, item.y);
             gm.items.Add(temp);
         }
         /*
