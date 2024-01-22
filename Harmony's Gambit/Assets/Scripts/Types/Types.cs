@@ -39,3 +39,8 @@ public enum SIGHTTYPE
     ONCESAW,
     NOWSEEING
 }
+
+public enum ITEM
+{
+    POTION
+}
