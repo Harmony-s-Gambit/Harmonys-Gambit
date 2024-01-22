@@ -200,4 +200,12 @@ public class Player : Character
             yield return null;
         }
     }
+
+    public void HealthRocover()
+    {
+        if (HP < 4)
+        {
+            HP += 1;
+        }
+    }
 }

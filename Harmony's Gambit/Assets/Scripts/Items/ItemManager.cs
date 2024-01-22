@@ -56,36 +56,12 @@ public class ItemManager : MonoBehaviour
         */
     }
 
-
     void MakeItemDict()
     {
         ItemDict[ITEM.POTION] = new Dictionary<COLOR, GameObject>();
-        ItemDict[ITEM.POTION][COLOR.PURPLE] = (GameObject)(Resources.Load("Prefabs/Items/temp_potion"));
+        ItemDict[ITEM.POTION][COLOR.PURPLE] = (GameObject)(Resources.Load("Prefabs/Items/potion"));
         // ItemDict[ITEM.POTION][COLOR.RED] = (GameObject)(Resources.Load(""));
         // ItemDict[ITEM.POTION][COLOR.BLUE] = (GameObject)(Resources.Load(""));
     }
-    /*
-     * void MakeMonsterDict()
-    {
-        MonsterDict[MONSTER.MOUSE] = new Dictionary<COLOR, GameObject>();
-        MonsterDict[MONSTER.MOUSE][COLOR.PURPLE] = (GameObject)(Resources.Load("Prefabs/Enemies/purpleMouse"));
-        MonsterDict[MONSTER.MOUSE][COLOR.RED] = (GameObject)(Resources.Load("Prefabs/Enemies/redMouse"));
-        MonsterDict[MONSTER.MOUSE][COLOR.BLUE] = (GameObject)(Resources.Load("Prefabs/Enemies/blueMouse"));
-
-        MonsterDict[MONSTER.HYENA] = new Dictionary<COLOR, GameObject>();
-        MonsterDict[MONSTER.HYENA][COLOR.PURPLE] = (GameObject)(Resources.Load("Prefabs/Enemies/purpleHyena"));
-        MonsterDict[MONSTER.HYENA][COLOR.RED] = (GameObject)(Resources.Load("Prefabs/Enemies/redHyena"));
-        MonsterDict[MONSTER.HYENA][COLOR.BLUE] = (GameObject)(Resources.Load("Prefabs/Enemies/blueHyena"));
-
-        MonsterDict[MONSTER.BEAR] = new Dictionary<COLOR, GameObject>();
-        MonsterDict[MONSTER.BEAR][COLOR.PURPLE] = (GameObject)(Resources.Load("Prefabs/Enemies/purpleBear"));
-        MonsterDict[MONSTER.BEAR][COLOR.RED] = (GameObject)(Resources.Load("Prefabs/Enemies/redBear"));
-        MonsterDict[MONSTER.BEAR][COLOR.BLUE] = (GameObject)(Resources.Load("Prefabs/Enemies/blueBear"));
-
-        MonsterDict[MONSTER.RACOON] = new Dictionary<COLOR, GameObject>();
-        MonsterDict[MONSTER.RACOON][COLOR.PURPLE] = (GameObject)Resources.Load("Prefabs/Enemies/purpleRacoon");
-        MonsterDict[MONSTER.RACOON][COLOR.RED] = (GameObject)Resources.Load("Prefabs/Enemies/redRacoon");
-        MonsterDict[MONSTER.RACOON][COLOR.BLUE] = (GameObject)Resources.Load("Prefabs/Enemies/blueRacoon");
-    }*/
 }
 
