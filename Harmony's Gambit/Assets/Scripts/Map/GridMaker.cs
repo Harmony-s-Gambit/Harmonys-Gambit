@@ -6,6 +6,7 @@ using System;
 
 public class GridMaker : MonoBehaviour
 {
+    public int stage;
     public int rows = 5;
     public int cols = 5;
     private int tileSize = 150;
@@ -16,7 +17,14 @@ public class GridMaker : MonoBehaviour
     }
     private void MakeGrid()
     {
-        TextAsset mapText = Resources.Load("MapText/Stage1/Stage1") as TextAsset;
+        TextAsset mapText = Resources.Load("MapText/Stage1/Stage1") as TextAsset; ;
+        if (stage == 0)
+        {
+            mapText = Resources.Load("MapText/Stage1/Stage1") as TextAsset;
+        }else if (stage == 1)
+        {
+            mapText = Resources.Load("MapText/Stage1/Stage2") as TextAsset;
+        }
         StringReader stringReader= new StringReader(mapText.text);
 
         string line = stringReader.ReadLine();
