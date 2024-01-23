@@ -17,6 +17,12 @@
         "type": "POTION",
         "x": 15,
         "y": 9
+      },
+      {
+        "color": "PURPLE",
+        "type": "POTION",
+        "x": 16,
+        "y": 19
       }
     ]
   }
