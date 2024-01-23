@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class Hiena : Enemy
 {
@@ -112,6 +113,17 @@ public class Hiena : Enemy
         return GameObject.Find(g.x + "_" + g.y);
     }
 
-    public void targetChange() { }
+    public override void changeTarget(COLOR c) {
+        if (c == COLOR.RED)
+        {
+            Debug.Log("Touched");
+            target = GameObject.Find("redPlayer(Clone)");
+        }
+        else
+        {
+            Debug.Log("Touched");
+            target = GameObject.Find("bluePlayer(Clone)");
+        }
+    }
 
 }

@@ -178,4 +178,9 @@ public class Enemy : Character
         GameObject.Find("GameManager").GetComponent<GameManager>().enemies.Remove(gameObject);
         Destroy(gameObject);
     }
+
+    public override void changeTarget(COLOR c)
+    {
+        
+    }
 }

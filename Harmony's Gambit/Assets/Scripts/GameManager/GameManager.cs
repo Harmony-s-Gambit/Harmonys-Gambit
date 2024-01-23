@@ -75,10 +75,18 @@ public class GameManager : MonoBehaviour
         if (!isBluePlayerPlaying)
         {
             isBlueValid = true;
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.GetComponent<Enemy>().changeTarget(COLOR.RED);
+            }
         }
         if (!isRedPlayerPlaying)
         {
             isRedValid = true;
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.GetComponent<Enemy>().changeTarget(COLOR.BLUE);
+            }
         }
         if (rhythm)
         {
@@ -217,7 +225,6 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            //Debug.Log(GameObject.Find("11_18").GetComponent<GridSlotInfo>().redDistance + " " + GameObject.Find("11_18").GetComponent<GridSlotInfo>().blueDistance);
         }
 
         //isMovedThisTurn = false �� �ʱ�ȭ
@@ -247,26 +254,31 @@ public class GameManager : MonoBehaviour
         
         redCheck.Add(redStart, true);
         blueCheck.Add(blueStart, true);
+        if (isRedPlayerPlaying)
+        {
+            redDijSlots.Enqueue(GameObject.Find((redStart.x + 1) + "_" + redStart.y).GetComponent<GridSlotInfo>());
+            redDijSlots.Enqueue(GameObject.Find((redStart.x - 1) + "_" + redStart.y).GetComponent<GridSlotInfo>());
+            redDijSlots.Enqueue(GameObject.Find(redStart.x + "_" + (redStart.y + 1)).GetComponent<GridSlotInfo>());
+            redDijSlots.Enqueue(GameObject.Find(redStart.x + "_" + (redStart.y - 1)).GetComponent<GridSlotInfo>());
 
-        redDijSlots.Enqueue(GameObject.Find((redStart.x+1) + "_" + redStart.y).GetComponent<GridSlotInfo>());
-        redDijSlots.Enqueue(GameObject.Find((redStart.x-1) + "_" + redStart.y).GetComponent<GridSlotInfo>());
-        redDijSlots.Enqueue(GameObject.Find(redStart.x + "_" + (redStart.y+1)).GetComponent<GridSlotInfo>());
-        redDijSlots.Enqueue(GameObject.Find(redStart.x + "_" + (redStart.y-1)).GetComponent<GridSlotInfo>());
+            GameObject.Find((redStart.x + 1) + "_" + redStart.y).GetComponent<GridSlotInfo>().redDistance = 1;
+            GameObject.Find((redStart.x - 1) + "_" + redStart.y).GetComponent<GridSlotInfo>().redDistance = 1;
+            GameObject.Find(redStart.x + "_" + (redStart.y + 1)).GetComponent<GridSlotInfo>().redDistance = 1;
+            GameObject.Find(redStart.x + "_" + (redStart.y - 1)).GetComponent<GridSlotInfo>().redDistance = 1;
+        }
 
-        GameObject.Find((redStart.x + 1) + "_" + redStart.y).GetComponent<GridSlotInfo>().redDistance = 1;
-        GameObject.Find((redStart.x - 1) + "_" + redStart.y).GetComponent<GridSlotInfo>().redDistance = 1;
-        GameObject.Find(redStart.x  + "_" + (redStart.y+1)).GetComponent<GridSlotInfo>().redDistance = 1;
-        GameObject.Find(redStart.x + "_" + (redStart.y-1)).GetComponent<GridSlotInfo>().redDistance = 1;
+        if (isBluePlayerPlaying)
+        {
+            blueDijSlots.Enqueue(GameObject.Find((blueStart.x + 1) + "_" + blueStart.y).GetComponent<GridSlotInfo>());
+            blueDijSlots.Enqueue(GameObject.Find((blueStart.x - 1) + "_" + blueStart.y).GetComponent<GridSlotInfo>());
+            blueDijSlots.Enqueue(GameObject.Find(blueStart.x + "_" + (blueStart.y + 1)).GetComponent<GridSlotInfo>());
+            blueDijSlots.Enqueue(GameObject.Find(blueStart.x + "_" + (blueStart.y - 1)).GetComponent<GridSlotInfo>());
 
-        blueDijSlots.Enqueue(GameObject.Find((blueStart.x+1) + "_" + blueStart.y).GetComponent<GridSlotInfo>());
-        blueDijSlots.Enqueue(GameObject.Find((blueStart.x-1) + "_" + blueStart.y).GetComponent<GridSlotInfo>());
-        blueDijSlots.Enqueue(GameObject.Find(blueStart.x + "_" + (blueStart.y+1)).GetComponent<GridSlotInfo>());
-        blueDijSlots.Enqueue(GameObject.Find(blueStart.x + "_" + (blueStart.y-1)).GetComponent<GridSlotInfo>());
-
-        GameObject.Find((blueStart.x + 1) + "_" + blueStart.y).GetComponent<GridSlotInfo>().blueDistance = 1;
-        GameObject.Find((blueStart.x - 1) + "_" + blueStart.y).GetComponent<GridSlotInfo>().blueDistance = 1;
-        GameObject.Find(blueStart.x  + "_" + (blueStart.y-1)).GetComponent<GridSlotInfo>().blueDistance = 1;
-        GameObject.Find(blueStart.x  + "_" + (blueStart.y+1)).GetComponent<GridSlotInfo>().blueDistance = 1;
+            GameObject.Find((blueStart.x + 1) + "_" + blueStart.y).GetComponent<GridSlotInfo>().blueDistance = 1;
+            GameObject.Find((blueStart.x - 1) + "_" + blueStart.y).GetComponent<GridSlotInfo>().blueDistance = 1;
+            GameObject.Find(blueStart.x + "_" + (blueStart.y - 1)).GetComponent<GridSlotInfo>().blueDistance = 1;
+            GameObject.Find(blueStart.x + "_" + (blueStart.y + 1)).GetComponent<GridSlotInfo>().blueDistance = 1;
+        }
 
         while (redDijSlots.Count != 0)
         {

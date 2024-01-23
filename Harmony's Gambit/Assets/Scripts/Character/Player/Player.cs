@@ -208,4 +208,9 @@ public class Player : Character
             HP += 1;
         }
     }
+
+    public override void changeTarget(COLOR c)
+    {
+       
+    }
 }
