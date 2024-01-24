@@ -23,7 +23,7 @@ public class GridMaker : MonoBehaviour
             mapText = Resources.Load("MapText/Stage1/Stage1") as TextAsset;
         }else if (stage == 1)
         {
-            mapText = Resources.Load("MapText/Stage1/Stage2") as TextAsset;
+            mapText = Resources.Load("MapText/Stage1/Stage1Boss") as TextAsset;
         }
         StringReader stringReader= new StringReader(mapText.text);
 

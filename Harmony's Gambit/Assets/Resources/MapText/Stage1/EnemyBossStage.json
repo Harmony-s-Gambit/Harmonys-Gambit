@@ -1,0 +1,10 @@
+{
+  "enemies": [
+    {
+      "color": "PURPLE",
+      "type": "BEAR",
+      "x": 0,
+      "y": 0
+    }
+  ]
+}

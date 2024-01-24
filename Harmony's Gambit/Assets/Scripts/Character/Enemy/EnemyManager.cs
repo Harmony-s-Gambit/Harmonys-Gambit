@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
         MakeMonsterDict();
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-
+        
         TextAsset enemyJson = Resources.Load("MapText/Stage1/Enemy") as TextAsset;
         EnemyData enemyData = JsonConvert.DeserializeObject<EnemyData>(enemyJson.text);
         GameObject temp;

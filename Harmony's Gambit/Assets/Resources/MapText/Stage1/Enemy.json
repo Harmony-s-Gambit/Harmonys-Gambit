@@ -68,12 +68,6 @@
     },
     {
       "color": "PURPLE",
-      "type": "BEAR",
-      "x": 20,
-      "y": 2
-    },
-    {
-      "color": "PURPLE",
       "type": "MOUSE",
       "x": 21,
       "y": 4
