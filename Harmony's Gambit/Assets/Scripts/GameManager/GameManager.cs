@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
                     currentEnemy.weapon.selectEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color);
                     if (currentEnemy.weapon.GetSelectorCount() > 0)
                     {
-                        currentEnemy.m_Animator.Play("attack", -1 ,0);
+                        currentEnemy.m_Animator.Play("Attack", -1 ,0);
                         currentEnemy.weapon.attackEnemies(1);
                     }
                     //�̵��϶�

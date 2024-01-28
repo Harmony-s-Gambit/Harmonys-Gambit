@@ -47,7 +47,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1
+    path: EnemySkeletar/bone_1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -90,7 +90,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1/bone_12
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -133,7 +133,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_12/bone_13
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -167,7 +167,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_12/bone_13/bone_14
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -201,7 +201,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_12/bone_13/bone_14/bone_15
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -235,7 +235,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -269,7 +269,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_2
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -312,7 +312,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_3
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -355,7 +355,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_3/bone_4
+    path: EnemySkeletar/bone_1/bone_3/bone_4
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -398,7 +398,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_3/bone_4/bone_5
+    path: EnemySkeletar/bone_1/bone_3/bone_4/bone_5
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -441,7 +441,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_6
+    path: EnemySkeletar/bone_1/bone_6
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -484,7 +484,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_6/bone_7
+    path: EnemySkeletar/bone_1/bone_6/bone_7
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -518,7 +518,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_6/bone_7/bone_8
+    path: EnemySkeletar/bone_1/bone_6/bone_7/bone_8
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -561,7 +561,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_9
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -595,7 +595,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9/bone_10
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -629,7 +629,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -673,7 +673,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1
+    path: EnemySkeletar/bone_1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -698,7 +698,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1/bone_12
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -714,7 +714,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_12/bone_13
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -730,7 +730,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_2
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -746,73 +746,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_3
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: {x: -2.6190667, y: 6.9548173, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.5
-        value: {x: -2.9845715, y: 14.301205, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: bone_1/bone_9
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: {x: 11.681216, y: 0.000004984617, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.33333334
-        value: {x: 20.616194, y: 0.894848, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: bone_1/bone_9/bone_10
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: {x: 9.459263, y: 0.000005010148, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_3
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -837,7 +771,73 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: bone_1/bone_6
+    path: EnemySkeletar/bone_1/bone_6
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -2.6190667, y: 6.9548173, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5
+        value: {x: -2.9845715, y: 14.301205, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: EnemySkeletar/bone_1/bone_9
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 11.681216, y: 0.000004984617, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.33333334
+        value: {x: 20.616194, y: 0.894848, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: EnemySkeletar/bone_1/bone_9/bone_10
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 9.459263, y: 0.000005010148, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -849,7 +849,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 377759540
+      path: 156968569
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -858,7 +858,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2188627979
+      path: 2537857578
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -867,7 +867,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2056598128
+      path: 125126588
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -876,7 +876,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1610908971
+      path: 2546620973
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -885,7 +885,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3928633313
+      path: 1004722418
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -894,7 +894,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 377759540
+      path: 156968569
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -903,7 +903,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2188627979
+      path: 2537857578
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -912,7 +912,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 609291626
+      path: 3674571079
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -921,7 +921,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3647181922
+      path: 2849893902
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -930,7 +930,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 4274503396
+      path: 3901298367
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -939,7 +939,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1748739389
+      path: 3468811930
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -948,7 +948,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3980913656
+      path: 1606565
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -957,7 +957,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2587941742
+      path: 1998566195
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -966,7 +966,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1523279566
+      path: 1647878769
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -975,7 +975,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2085153304
+      path: 436695856
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -984,7 +984,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3928633313
+      path: 125126588
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -993,7 +993,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2334275856
+      path: 3016883631
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -1002,7 +1002,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3220254669
+      path: 3653154533
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -1011,7 +1011,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2056598128
+      path: 2546620973
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -1020,7 +1020,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1610908971
+      path: 1004722418
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -1029,7 +1029,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 116875718
+      path: 3531178691
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -1038,7 +1038,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 609291626
+      path: 3674571079
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -1047,7 +1047,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3980913656
+      path: 1606565
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -1056,7 +1056,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2587941742
+      path: 1998566195
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -1065,7 +1065,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 116875718
+      path: 3531178691
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -1084,7 +1084,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -1139,7 +1139,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: bone_1
+    path: EnemySkeletar/bone_1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1187,7 +1187,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: bone_1
+    path: EnemySkeletar/bone_1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1235,7 +1235,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: bone_1
+    path: EnemySkeletar/bone_1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1274,10 +1274,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1
+    path: EnemySkeletar/bone_1
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1313,10 +1313,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1
+    path: EnemySkeletar/bone_1
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1352,10 +1352,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1
+    path: EnemySkeletar/bone_1
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1382,7 +1382,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1/bone_12
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1412,7 +1412,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1/bone_12
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1442,7 +1442,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1/bone_12
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1490,10 +1490,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1/bone_12
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1538,10 +1538,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1/bone_12
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1586,10 +1586,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1/bone_12
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1607,7 +1607,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_12/bone_13
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1628,7 +1628,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_12/bone_13
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1649,7 +1649,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_12/bone_13
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1697,10 +1697,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_12/bone_13
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1745,10 +1745,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_12/bone_13
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1793,10 +1793,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_12/bone_13
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1832,10 +1832,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_12/bone_13/bone_14
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1871,10 +1871,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_12/bone_13/bone_14
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1910,10 +1910,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_12/bone_13/bone_14
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1949,10 +1949,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_12/bone_13/bone_14/bone_15
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -1988,10 +1988,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_12/bone_13/bone_14/bone_15
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2027,10 +2027,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_12/bone_13/bone_14/bone_15
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2066,10 +2066,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2105,10 +2105,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2144,10 +2144,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2165,7 +2165,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2186,7 +2186,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2207,7 +2207,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2246,10 +2246,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_2
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2285,10 +2285,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_2
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2324,10 +2324,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_2
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2345,7 +2345,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2366,7 +2366,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2387,7 +2387,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2435,10 +2435,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_3
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2483,10 +2483,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_3
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2531,10 +2531,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_3
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2579,10 +2579,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_3/bone_4
+    path: EnemySkeletar/bone_1/bone_3/bone_4
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2627,10 +2627,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_3/bone_4
+    path: EnemySkeletar/bone_1/bone_3/bone_4
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2675,10 +2675,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_3/bone_4
+    path: EnemySkeletar/bone_1/bone_3/bone_4
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2723,10 +2723,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_3/bone_4/bone_5
+    path: EnemySkeletar/bone_1/bone_3/bone_4/bone_5
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2771,10 +2771,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_3/bone_4/bone_5
+    path: EnemySkeletar/bone_1/bone_3/bone_4/bone_5
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2819,10 +2819,100 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_3/bone_4/bone_5
+    path: EnemySkeletar/bone_1/bone_3/bone_4/bone_5
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 22.363945
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 15.416098
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: EnemySkeletar/bone_1/bone_6
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -10.929125
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: -9.485794
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: EnemySkeletar/bone_1/bone_6
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: EnemySkeletar/bone_1/bone_6
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2867,10 +2957,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_6
+    path: EnemySkeletar/bone_1/bone_6
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2915,10 +3005,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_6
+    path: EnemySkeletar/bone_1/bone_6
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -2963,10 +3053,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_6
+    path: EnemySkeletar/bone_1/bone_6
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3011,10 +3101,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_6/bone_7
+    path: EnemySkeletar/bone_1/bone_6/bone_7
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3059,10 +3149,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_6/bone_7
+    path: EnemySkeletar/bone_1/bone_6/bone_7
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3107,10 +3197,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_6/bone_7
+    path: EnemySkeletar/bone_1/bone_6/bone_7
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3146,10 +3236,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_6/bone_7/bone_8
+    path: EnemySkeletar/bone_1/bone_6/bone_7/bone_8
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3185,10 +3275,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_6/bone_7/bone_8
+    path: EnemySkeletar/bone_1/bone_6/bone_7/bone_8
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3224,10 +3314,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_6/bone_7/bone_8
+    path: EnemySkeletar/bone_1/bone_6/bone_7/bone_8
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3254,7 +3344,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_9
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3284,7 +3374,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_9
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3314,7 +3404,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_9
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3362,10 +3452,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_9
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3410,10 +3500,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_9
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3458,10 +3548,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_9
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3488,7 +3578,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9/bone_10
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3518,7 +3608,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9/bone_10
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3548,7 +3638,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9/bone_10
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3587,10 +3677,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9/bone_10
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3626,10 +3716,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9/bone_10
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3665,10 +3755,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9/bone_10
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3686,7 +3776,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3707,7 +3797,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3728,7 +3818,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3767,10 +3857,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3806,10 +3896,10 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
-    flags: 16
+    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -3845,97 +3935,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: bone_1/bone_9/bone_10/bone_11
-    classID: 4
-    script: {fileID: 0}
-    flags: 16
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 22.363945
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 15.416098
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.x
-    path: bone_1/bone_6
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -10.929125
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: -9.485794
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.y
-    path: bone_1/bone_6
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.z
-    path: bone_1/bone_6
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3948,7 +3948,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_9/bone_10
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3960,7 +3960,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_9/bone_10
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3972,7 +3972,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_9/bone_10/bone_11
+    path: EnemySkeletar/bone_1/bone_9/bone_10
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3984,7 +3984,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_3/bone_4/bone_5
+    path: EnemySkeletar/bone_1/bone_3/bone_4
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -3996,7 +3996,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_3/bone_4/bone_5
+    path: EnemySkeletar/bone_1/bone_3/bone_4
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4008,7 +4008,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_3/bone_4/bone_5
+    path: EnemySkeletar/bone_1/bone_3/bone_4
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4020,7 +4020,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4032,7 +4032,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4044,7 +4044,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_12
+    path: EnemySkeletar/bone_1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4056,7 +4056,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4068,7 +4068,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4080,7 +4080,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_2
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4092,7 +4092,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_6
+    path: EnemySkeletar/bone_1/bone_3/bone_4/bone_5
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4104,7 +4104,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_6
+    path: EnemySkeletar/bone_1/bone_3/bone_4/bone_5
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4116,7 +4116,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_6
+    path: EnemySkeletar/bone_1/bone_3/bone_4/bone_5
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4128,7 +4128,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_6/bone_7/bone_8
+    path: EnemySkeletar/bone_1/bone_6/bone_7
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4140,7 +4140,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_6/bone_7/bone_8
+    path: EnemySkeletar/bone_1/bone_6/bone_7
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4152,7 +4152,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_6/bone_7/bone_8
+    path: EnemySkeletar/bone_1/bone_6/bone_7
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4164,7 +4164,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4176,7 +4176,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4188,7 +4188,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_3
+    path: EnemySkeletar/bone_1/bone_2
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4200,7 +4200,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_12/bone_13/bone_14/bone_15
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4212,7 +4212,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_12/bone_13/bone_14/bone_15
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4224,7 +4224,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_12/bone_13/bone_14/bone_15
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4236,7 +4236,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1
+    path: EnemySkeletar/bone_1/bone_12
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4248,7 +4248,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1
+    path: EnemySkeletar/bone_1/bone_12
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4260,7 +4260,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1
+    path: EnemySkeletar/bone_1/bone_12
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4272,7 +4272,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_6/bone_7/bone_8
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4284,7 +4284,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_6/bone_7/bone_8
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4296,7 +4296,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_9
+    path: EnemySkeletar/bone_1/bone_6/bone_7/bone_8
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4308,7 +4308,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_6/bone_7
+    path: EnemySkeletar/bone_1/bone_6
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4320,7 +4320,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_6/bone_7
+    path: EnemySkeletar/bone_1/bone_6
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4332,7 +4332,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_6/bone_7
+    path: EnemySkeletar/bone_1/bone_6
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4344,7 +4344,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_3/bone_4
+    path: EnemySkeletar/bone_1/bone_3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4356,7 +4356,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_3/bone_4
+    path: EnemySkeletar/bone_1/bone_3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4368,7 +4368,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_3/bone_4
+    path: EnemySkeletar/bone_1/bone_3
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4380,7 +4380,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4392,7 +4392,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4404,7 +4404,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_12/bone_13/bone_14/bone_15/bone_16
+    path: EnemySkeletar/bone_1/bone_12/bone_13/bone_14/bone_15
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4416,7 +4416,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_12/bone_13/bone_14
+    path: EnemySkeletar/bone_1/bone_12/bone_13
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4428,7 +4428,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_12/bone_13/bone_14
+    path: EnemySkeletar/bone_1/bone_12/bone_13
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4440,7 +4440,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_12/bone_13/bone_14
+    path: EnemySkeletar/bone_1/bone_12/bone_13
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4452,7 +4452,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4464,7 +4464,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4476,7 +4476,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_9/bone_10
+    path: EnemySkeletar/bone_1/bone_9
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4488,7 +4488,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4500,7 +4500,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4512,7 +4512,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: bone_1/bone_12/bone_13
+    path: EnemySkeletar/bone_1/bone_9/bone_10/bone_11
     classID: 4
     script: {fileID: 0}
     flags: 0

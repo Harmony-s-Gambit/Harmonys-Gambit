@@ -16,6 +16,7 @@ public class Enemy : Character
         _directionIdx = 0;
 
         m_Animator = GetComponent<Animator>();
+
         m_Animator.SetTrigger("idle");
 
         beforeHP = HP;
@@ -39,6 +40,7 @@ public class Enemy : Character
         if (HP < 1)
         {
             m_Animator.SetTrigger("die");
+
             Die();
         }
         if (HP < beforeHP)
@@ -176,8 +178,12 @@ public class Enemy : Character
         Debug.Log("Die");
         GameObject.Find((x) + "_" + y).GetComponent<GridSlotInfo>().occupyingCharacter = null;
         GameObject.Find("GameManager").GetComponent<GameManager>().enemies.Remove(gameObject);
-        Destroy(gameObject);
+        if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f)
+        {
+            Destroy(gameObject);
+        }
     }
+
 
     public override void changeTarget(COLOR c)
     {
