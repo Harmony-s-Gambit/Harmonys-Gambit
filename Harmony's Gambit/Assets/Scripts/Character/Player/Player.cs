@@ -122,7 +122,6 @@ public class Player : Character
         {
             m_Animator.Play("move3", -1, 0);
         }
-        AudioManager.instance.PlaySFX("Step");
         isMovedThisTurn = true;
         if (!((gameObject.name.Substring(0, 9) == "redPlayer" && !_gameManager.isRedPlayerPlaying) || (gameObject.name.Substring(0, 10) == "bluePlayer" && !_gameManager.isBluePlayerPlaying)))
         {

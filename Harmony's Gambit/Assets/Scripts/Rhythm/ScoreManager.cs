@@ -105,11 +105,13 @@ public class ScoreManager : MonoBehaviour
     {
         if (p1 && p2)
         {
+            AudioManager.instance.PlaySFX("Perfect");
             currentCombo += 1;
             twoNote += 1;
         }
         else if (p1 || p2)
         {
+            AudioManager.instance.PlaySFX("Good");
             comboEffect.SetActive(false);
             combo100Effect.SetActive(false);
             oneNote += 1;
