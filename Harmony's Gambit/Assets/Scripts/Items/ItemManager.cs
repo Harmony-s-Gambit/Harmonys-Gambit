@@ -27,14 +27,23 @@ public class ItemManager : MonoBehaviour
     }
 
     private Dictionary<ITEM, Dictionary<COLOR, GameObject>> ItemDict = new Dictionary<ITEM, Dictionary<COLOR, GameObject>>();
-    void Start()
+
+    void MakeItemDict()
+    {
+        ItemDict[ITEM.POTION] = new Dictionary<COLOR, GameObject>();
+        ItemDict[ITEM.POTION][COLOR.PURPLE] = (GameObject)(Resources.Load("Prefabs/Items/potion"));
+        // ItemDict[ITEM.POTION][COLOR.RED] = (GameObject)(Resources.Load(""));
+        // ItemDict[ITEM.POTION][COLOR.BLUE] = (GameObject)(Resources.Load(""));
+    }
+
+    public void MakeItem()
     {
         MakeItemDict();
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         // TextAsset enemyJson = Resources.Load("MapText/Stage1/Enemy") as TextAsset
-        TextAsset itemJson = Resources.Load("MapText/Stage1/Item 1") as TextAsset;
+        TextAsset itemJson = Resources.Load("MapText/" + StageInfo.instance.GetStageName() + "/Item") as TextAsset;
         // EnemyData enemyData = JsonConvert.DeserializeObject<EnemyData>(enemyJson.text);
         ItemData itemData = JsonConvert.DeserializeObject<ItemData>(itemJson.text);
 
@@ -54,14 +63,6 @@ public class ItemManager : MonoBehaviour
         E2.GetComponent<Enemy>().SetXY(2, 6);
         E3.GetComponent<Enemy>().SetXY(4, 1);
         */
-    }
-
-    void MakeItemDict()
-    {
-        ItemDict[ITEM.POTION] = new Dictionary<COLOR, GameObject>();
-        ItemDict[ITEM.POTION][COLOR.PURPLE] = (GameObject)(Resources.Load("Prefabs/Items/potion"));
-        // ItemDict[ITEM.POTION][COLOR.RED] = (GameObject)(Resources.Load(""));
-        // ItemDict[ITEM.POTION][COLOR.BLUE] = (GameObject)(Resources.Load(""));
     }
 }
 

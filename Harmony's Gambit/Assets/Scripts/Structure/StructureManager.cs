@@ -17,16 +17,16 @@ public class StructureManager : MonoBehaviour
     private List<GameObject> doorOpenButtons3_Simultaneous = new List<GameObject>();
     private List<int> doorSetIndex_Simultaneous = new List<int>();
 
-    void Start()
+    public void MakeStructure()
     {
         GenerateNextStageDoor(20, 0, 0);
 
-        GenerateDoor_Simultaneous(14, 16, 1,true);
+        GenerateDoor_Simultaneous(14, 16, 1, true);
         GenerateDoorOpenButton1_Simultaneous(13, 17, 1);
         GenerateDoorOpenButton2_Simultaneous(13, 15, 1);
         GenerateDoorOpenButton3_Simultaneous(15, 17, 1);
 
-        GenerateDoor_Simultaneous(19, 6, 2,false);
+        GenerateDoor_Simultaneous(19, 6, 2, false);
         GenerateDoorOpenButton1_Simultaneous(18, 7, 2);
         GenerateDoorOpenButton2_Simultaneous(20, 7, 2);
         GenerateDoorOpenButton3_Simultaneous(20, 5, 2);

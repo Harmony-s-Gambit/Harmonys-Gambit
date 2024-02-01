@@ -26,16 +26,18 @@ public class EnemyManager : MonoBehaviour
     }
 
     private Dictionary<MONSTER, Dictionary<COLOR, GameObject>> MonsterDict = new Dictionary<MONSTER, Dictionary<COLOR, GameObject>>();
-    void Start()
+
+
+    public void MakeEnemy()
     {
         MakeMonsterDict();
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        
-        TextAsset enemyJson = Resources.Load("MapText/Stage1/Enemy") as TextAsset;
+
+        TextAsset enemyJson = Resources.Load("MapText/" + StageInfo.instance.GetStageName() + "/Enemy") as TextAsset;
         EnemyData enemyData = JsonConvert.DeserializeObject<EnemyData>(enemyJson.text);
         GameObject temp;
-        foreach( EnemyStat enemy in enemyData.enemies)
+        foreach (EnemyStat enemy in enemyData.enemies)
         {
             temp = Instantiate(MonsterDict[enemy.type][enemy.color]);
             temp.GetComponent<Enemy>().SetXY(enemy.x, enemy.y);
@@ -52,12 +54,6 @@ public class EnemyManager : MonoBehaviour
         */
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     void MakeMonsterDict()
     {
         MonsterDict[MONSTER.MOUSE] = new Dictionary<COLOR, GameObject>();

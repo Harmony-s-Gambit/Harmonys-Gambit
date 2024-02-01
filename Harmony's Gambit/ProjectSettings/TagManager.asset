@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - Player2
   - Structure
+  - Managers
   layers:
   - Default
   - TransparentFX

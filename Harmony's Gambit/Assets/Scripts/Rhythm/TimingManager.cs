@@ -32,7 +32,7 @@ public class TimingManager : MonoBehaviour
 
     private GameObject[] judgmentUIs = new GameObject[3];
 
-    private void Start()
+    public void SetStart()
     {
         _gameManager = FindObjectOfType<GameManager>();
         _playerManager = FindObjectOfType<PlayerManager>();

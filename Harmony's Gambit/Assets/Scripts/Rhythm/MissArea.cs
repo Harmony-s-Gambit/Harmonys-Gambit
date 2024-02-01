@@ -11,7 +11,7 @@ public class MissArea : MonoBehaviour
     SightManager _sightManager;
     PlayerManager _playerManager;
 
-    private void Start()
+    public void SetStart()
     {
         _timingManager = FindObjectOfType<TimingManager>();
         _gameManager = FindObjectOfType<GameManager>();

@@ -17,7 +17,7 @@ public class Player : Character
         _gameManager = FindObjectOfType<GameManager>();
         _playerManager = FindObjectOfType<PlayerManager>();
 
-        _gameManager.players.Add(gameObject);
+        //_gameManager.players.Add(gameObject);
 
         m_Animator = GetComponent<Animator>();
         m_Animator.SetTrigger("idle");
@@ -71,6 +71,8 @@ public class Player : Character
     private void AfterDie()
     {
         SceneManager.LoadScene("GameOver");
+        GameObject.Find("Managers").SetActive(false);
+        GameObject.Find("MainCanvas").SetActive(false);
     }
 
     public override void SetXY(int px, int py)

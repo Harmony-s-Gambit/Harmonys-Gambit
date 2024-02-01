@@ -14,9 +14,13 @@ public class PlayerHealthUI : MonoBehaviour
     public Sprite empty;
 
     public bool isBlue;
-    // Start is called before the first frame update
+
+    private GameManager _gameManager;
+
     void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
+
         first.GetComponent<SpriteRenderer>().sprite = full;
         second.GetComponent<SpriteRenderer>().sprite = full;
     }
@@ -24,48 +28,52 @@ public class PlayerHealthUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player == null) 
+        if (_gameManager.isRedPlayerPlaying || _gameManager.isBluePlayerPlaying)
         {
-            try 
+            if (player == null)
             {
-                if (isBlue)
+                try
                 {
-                    player = GameObject.Find("bluePlayer(Clone)");
+                    if (isBlue)
+                    {
+                        player = GameObject.Find("bluePlayer(Clone)");
+                    }
+                    else
+                    {
+                        player = GameObject.Find("redPlayer(Clone)");
+                    }
                 }
-                else
+                catch
                 {
-                    player = GameObject.Find("redPlayer(Clone)");
-                }
-            }
-            catch
-            {
 
+                }
             }
-        }
-        if (player.GetComponent<Player>().HP == 4)
-        {
-            first.GetComponent<SpriteRenderer>().sprite = full;
-            second.GetComponent<SpriteRenderer>().sprite = full;
-        }
-        if (player.GetComponent<Player>().HP == 3)
-        {
-            first.GetComponent<SpriteRenderer>().sprite = full;
-            second.GetComponent<SpriteRenderer>().sprite = half;
-        }
-        if(player.GetComponent<Player>().HP == 2)
-        {
-            first.GetComponent<SpriteRenderer>().sprite = full;
-            second.GetComponent<SpriteRenderer>().sprite = empty;
-        }
-        if(player.GetComponent<Player>().HP == 1)
-        {
-            first.GetComponent<SpriteRenderer>().sprite = half;
-            second.GetComponent<SpriteRenderer>().sprite = empty;
-        }
-        if (player.GetComponent<Player>().HP == 0)
-        {
-            first.GetComponent<SpriteRenderer>().sprite = empty;
-            second.GetComponent<SpriteRenderer>().sprite = empty;
+
+            if (player.GetComponent<Player>().HP == 4)
+            {
+                first.GetComponent<SpriteRenderer>().sprite = full;
+                second.GetComponent<SpriteRenderer>().sprite = full;
+            }
+            if (player.GetComponent<Player>().HP == 3)
+            {
+                first.GetComponent<SpriteRenderer>().sprite = full;
+                second.GetComponent<SpriteRenderer>().sprite = half;
+            }
+            if (player.GetComponent<Player>().HP == 2)
+            {
+                first.GetComponent<SpriteRenderer>().sprite = full;
+                second.GetComponent<SpriteRenderer>().sprite = empty;
+            }
+            if (player.GetComponent<Player>().HP == 1)
+            {
+                first.GetComponent<SpriteRenderer>().sprite = half;
+                second.GetComponent<SpriteRenderer>().sprite = empty;
+            }
+            if (player.GetComponent<Player>().HP == 0)
+            {
+                first.GetComponent<SpriteRenderer>().sprite = empty;
+                second.GetComponent<SpriteRenderer>().sprite = empty;
+            }
         }
     }
 }

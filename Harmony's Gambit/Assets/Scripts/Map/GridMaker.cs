@@ -6,26 +6,19 @@ using System;
 
 public class GridMaker : MonoBehaviour
 {
-    public int stage;
     public int rows = 5;
     public int cols = 5;
     private int tileSize = 150;
-    // Start is called before the first frame update
-    void Start()
+    
+
+    public void MakeGrid()
     {
-        MakeGrid();
-    }
-    private void MakeGrid()
-    {
+        
+
         TextAsset mapText = Resources.Load("MapText/Stage1/Stage1") as TextAsset; ;
-        if (stage == 0)
-        {
-            mapText = Resources.Load("MapText/Stage1/Stage1") as TextAsset;
-        }else if (stage == 1)
-        {
-            mapText = Resources.Load("MapText/Stage1/Stage1Boss") as TextAsset;
-        }
-        StringReader stringReader= new StringReader(mapText.text);
+        mapText = Resources.Load("MapText/" + StageInfo.instance.GetStageName() + "/MapText") as TextAsset;
+
+        StringReader stringReader = new StringReader(mapText.text);
 
         string line = stringReader.ReadLine();
         string[] stringData = line.Split('\t');
@@ -79,11 +72,5 @@ public class GridMaker : MonoBehaviour
         SManager.name = "StructureManager";
         GameObject IManager = (GameObject)Instantiate(Resources.Load("Prefabs/Items/ItemManager"));
         IManager.name = "ItemManager";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

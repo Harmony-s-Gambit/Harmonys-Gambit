@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainUI : MonoBehaviour
 {
@@ -9,18 +10,26 @@ public class MainUI : MonoBehaviour
     private GameManager _gameManager;
     private SightManager _sightManager;
     private CameraMoving _cameraMoving;
+    private GridMaker _gridMaker;
+    private ItemManager _itemManager;
+    private StructureManager _structureManager;
+    private PlayerManager _playerManager;
+    private EnemyManager _enemyManager;
+    private TimingManager _timingManager;
+    private MissArea _missArea;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
-        for (int i = 0; i < panels.Length; i++)
-        {
-            panels[i].SetActive(false);
-        }
+        //for (int i = 0; i < panels.Length; i++)
+        //{
+        //    panels[i].SetActive(false);
+        //}
         panels[0].SetActive(true);
-
-        _gameManager = FindObjectOfType<GameManager>();
-        _sightManager = FindObjectOfType<SightManager>();
-        _cameraMoving = FindObjectOfType<CameraMoving>();
     }
 
     public void Main_MapSelectButton()
@@ -51,8 +60,48 @@ public class MainUI : MonoBehaviour
     {
         AudioManager.instance.PlaySFX("Start");
         panels[0].SetActive(false);
-        panels[3].SetActive(true);
-        
+
+        StageInfo.instance.SetStageName("Stage1");
+        SceneManager.LoadScene("Stage");
+        StartCoroutine(MapDelay());
+    }
+
+    IEnumerator MapDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(Resources.Load("Map/" + StageInfo.instance.GetStageName()));
+
+        _gameManager = FindObjectOfType<GameManager>();
+        _sightManager = FindObjectOfType<SightManager>();
+        _cameraMoving = FindObjectOfType<CameraMoving>();
+        _gridMaker = FindObjectOfType<GridMaker>();
+        _timingManager = FindObjectOfType<TimingManager>();
+        _missArea = FindObjectOfType<MissArea>();
+
+        yield return new WaitForSeconds(0.1f);
+
+        _gridMaker.MakeGrid();
+
+        yield return new WaitForSeconds(0.1f);
+
+        _itemManager = FindObjectOfType<ItemManager>();
+        _structureManager = FindObjectOfType<StructureManager>();
+        _playerManager = FindObjectOfType<PlayerManager>();
+        _enemyManager = FindObjectOfType<EnemyManager>();
+
+        _itemManager.MakeItem();
+        _structureManager.MakeStructure();
+        _playerManager.MakePlayer();
+        _enemyManager.MakeEnemy();
+
+        _gameManager.SetStart();
+        _timingManager.SetStart();
+        _missArea.SetStart();
+
+        yield return new WaitForSeconds(1f);
+
+        //panels[3].SetActive(true);
+
         GameStartSetting();
         panels[2].SetActive(false);
 

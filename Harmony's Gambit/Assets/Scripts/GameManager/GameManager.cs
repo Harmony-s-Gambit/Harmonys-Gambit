@@ -39,11 +39,6 @@ public class GameManager : MonoBehaviour
 
     public bool isDebugMode = false;
 
-    private void Start()
-    {
-        StartCoroutine(startDelay());
-    }
-
     void Update()
     {
         if (players.Count == 0)
@@ -52,7 +47,6 @@ public class GameManager : MonoBehaviour
         }
         redPlayer = players[0].GetComponent<Player>();
         bluePlayer = players[1].GetComponent<Player>();
-        
         
         if (isRedPlayerPlaying || isBluePlayerPlaying)
         {
@@ -63,11 +57,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator startDelay()
+    public void SetStart()
     {
-        yield return null;
         _playerManager = FindObjectOfType<PlayerManager>();
     }
+
 
     IEnumerator MainManager()
     {
