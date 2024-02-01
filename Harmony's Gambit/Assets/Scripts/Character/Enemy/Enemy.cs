@@ -189,4 +189,6 @@ public class Enemy : Character
     {
         
     }
+
+    public void specialAttack() { }
 }

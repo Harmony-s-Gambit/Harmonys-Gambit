@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Bear : Enemy
 {
+
     System.Random r = new System.Random();
     public GameObject target;
     Enemy thisEnemy;
     int dashCount = 0;
     int dashChargeTurn = 0;
+    Stack<GridSlotInfo> dashAttackRange;
     DIRECTION dashDirection = DIRECTION.DOWN;
     private bool dontMove = false;
     public override void Start()
@@ -105,7 +107,7 @@ public class Bear : Enemy
         if(dashChargeTurn == 0 && dashCount > 4)
         {
             //dash
-            dashCount = 0;
+            
         }
 
 
@@ -173,5 +175,9 @@ public class Bear : Enemy
             Debug.Log("Touched");
             target = GameObject.Find("bluePlayer(Clone)");
         }
+    }
+    public void speicalAttack()
+    {
+        dashCount = 0;
     }
 }

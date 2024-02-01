@@ -219,7 +219,12 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            foreach(GameObject enemy in enemies)
+            {
+                enemy.GetComponent<Enemy>().specialAttack();
+            }
         }
+
 
         //isMovedThisTurn = false �� �ʱ�ȭ
         foreach (GameObject player in players)
