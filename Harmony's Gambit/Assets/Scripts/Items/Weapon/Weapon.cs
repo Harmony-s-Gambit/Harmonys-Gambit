@@ -10,6 +10,7 @@ public abstract class Weapon : MonoBehaviour
     public bool playerWeapon = false;
     //Selector는 범위 tile GameObject를 잠시 받아두기도 하고 공격대상 GameObject를 받아두기도 합니다
     public List<GameObject> Selector = new List<GameObject>();
+    public GameObject equiper;
     protected GameObject inGridSlot;
     public abstract void Start();
     public abstract void selectEnemies(DIRECTION direction, int x, int y, COLOR color);
@@ -50,9 +51,19 @@ public abstract class Weapon : MonoBehaviour
                 if (inGridSlot.tag == "Enemy" && playerWeapon)
                 {
                     if (!inGridSlot.GetComponent<Enemy>().isMultiColor) {
-                        if (inGridSlot.GetComponent<Enemy>().color == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().color == color)
+                        if (inGridSlot.GetComponent<Enemy>().barrier.Count != 0)
                         {
-                            Selector.Add(inGridSlot);
+                            if(inGridSlot.GetComponent<Enemy>().barrier.Peek() == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().barrier.Peek() == color)
+                            {
+                                Selector.Add(inGridSlot);
+                            }
+                        }
+                        else
+                        {
+                            if (inGridSlot.GetComponent<Enemy>().color == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().color == color)
+                            {
+                                Selector.Add(inGridSlot);
+                            }
                         }
                 }
                     else
@@ -79,7 +90,15 @@ public abstract class Weapon : MonoBehaviour
             for(int i = 0; i < Selector.Count; i++)
             {
                 if (Selector[i].tag == "Enemy" && playerWeapon)
-                    Selector[i].GetComponent<Enemy>().HP -= damage;
+                {
+                    if(Selector[i].GetComponent<Enemy>().barrier.Count != 0)
+                    {
+                        Selector[i].GetComponent<Enemy>().barrier.Pop();
+                    }
+                    else {
+                        Selector[i].GetComponent<Enemy>().HP -= damage;
+                    }
+                }
                 else if (Selector[i].tag.Contains("Player") && !playerWeapon)
                     Selector[i].GetComponent<Player>().HP -= damage;
             }

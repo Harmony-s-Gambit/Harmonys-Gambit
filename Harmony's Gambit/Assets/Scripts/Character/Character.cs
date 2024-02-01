@@ -10,6 +10,7 @@ public abstract class Character : MonoBehaviour
     public bool isMultiColor = false;
     public COLOR color;
     public COLOR[] multiColor;
+    public Stack<COLOR> barrier;
 
     public DIRECTION direction;
 

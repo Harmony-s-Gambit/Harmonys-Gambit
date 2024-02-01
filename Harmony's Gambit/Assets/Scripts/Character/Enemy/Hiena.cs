@@ -41,6 +41,8 @@ public class Hiena : Enemy
         };
         direction = pattern[0];
         weapon = gameObject.AddComponent<Fist>();
+        weapon.Start();
+        weapon.equiper = gameObject;
     }
 
     public class XYD

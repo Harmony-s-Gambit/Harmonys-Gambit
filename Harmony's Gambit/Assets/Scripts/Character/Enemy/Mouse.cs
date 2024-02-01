@@ -18,6 +18,7 @@ public class Mouse : Enemy
         direction = pattern[0];
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
+        weapon.equiper = gameObject;
 
         killScore = ScoreManager.instance.mouseScore;
     }

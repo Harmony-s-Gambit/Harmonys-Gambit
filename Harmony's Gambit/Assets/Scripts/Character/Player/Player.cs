@@ -27,6 +27,7 @@ public class Player : Character
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
         weapon.playerWeapon = true;
+        weapon.equiper = gameObject;
     }
 
     protected override void Update()
