@@ -1,3 +1,5 @@
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,19 +19,62 @@ public class StructureManager : MonoBehaviour
     private List<GameObject> doorOpenButtons3_Simultaneous = new List<GameObject>();
     private List<int> doorSetIndex_Simultaneous = new List<int>();
 
+    public class StructureStat
+    {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public COLOR color;
+        [JsonConverter(typeof(StringEnumConverter))]
+        public STRUCTURE type;
+        public int id, x, y, direction;
+    }
+
+    public class StructureData
+    {
+        public List<StructureStat> structures = new List<StructureStat>();
+    }
+
     public void MakeStructure()
     {
-        GenerateNextStageDoor(20, 0, 0);
+        TextAsset structureJson = Resources.Load("MapText/" + StageInfo.instance.GetStageName() + "/Structure") as TextAsset;
 
-        GenerateDoor_Simultaneous(14, 16, 1, true);
-        GenerateDoorOpenButton1_Simultaneous(13, 17, 1);
-        GenerateDoorOpenButton2_Simultaneous(13, 15, 1);
-        GenerateDoorOpenButton3_Simultaneous(15, 17, 1);
+        StructureData structureData = JsonConvert.DeserializeObject<StructureData>(structureJson.text);
 
-        GenerateDoor_Simultaneous(19, 6, 2, false);
-        GenerateDoorOpenButton1_Simultaneous(18, 7, 2);
-        GenerateDoorOpenButton2_Simultaneous(20, 7, 2);
-        GenerateDoorOpenButton3_Simultaneous(20, 5, 2);
+        foreach (StructureStat structure in structureData.structures)
+        {
+            if (structure.type == STRUCTURE.DOOR_NEXTSTAGE)
+            {
+                GenerateNextStageDoor(structure.x, structure.y, structure.id);
+            }
+            else if (structure.type == STRUCTURE.DOOR_SIMULTANEOUS)
+            {
+                GenerateDoor_Simultaneous(structure.x, structure.y, structure.id, structure.direction);
+            }
+            else if (structure.type == STRUCTURE.BUTTON_SIMULTANEOUS_1)
+            {
+                GenerateDoorOpenButton1_Simultaneous(structure.x, structure.y, structure.id);
+            }
+            else if (structure.type == STRUCTURE.BUTTON_SIMULTANEOUS_2)
+            {
+                GenerateDoorOpenButton2_Simultaneous(structure.x, structure.y, structure.id);
+            }
+            else if (structure.type == STRUCTURE.BUTTON_SIMULTANEOUS_3)
+            {
+                GenerateDoorOpenButton3_Simultaneous(structure.x, structure.y, structure.id);
+            }
+        }
+
+        //GenerateNextStageDoor(20, 0, 0);
+
+        //GenerateDoor_Simultaneous(14, 16, 1, 1);//
+        //GenerateDoorOpenButton1_Simultaneous(13, 17, 1);//
+        //GenerateDoorOpenButton2_Simultaneous(13, 15, 1);//
+        //GenerateDoorOpenButton3_Simultaneous(15, 17, 1);//
+
+        //GenerateDoor_Simultaneous(19, 6, 2, 0);//
+
+        //GenerateDoorOpenButton1_Simultaneous(18, 7, 2);//
+        //GenerateDoorOpenButton2_Simultaneous(20, 7, 2);//
+        //GenerateDoorOpenButton3_Simultaneous(20, 5, 2);//
     }
 
     public IEnumerator rhythmTure()
@@ -39,7 +84,7 @@ public class StructureManager : MonoBehaviour
         rhythm = false;
     }
 
-    public void GenerateDoor_Basic(int x, int y, int index)
+    public void GenerateDoor_Basic(int x, int y, int index, int isVertical = 0)
     {
         if (!doorSetIndex_Basic.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
@@ -67,7 +112,7 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void GenerateDoorOpenButton1_Basic(int x, int y, int index)
+    public void GenerateDoorOpenButton1_Basic(int x, int y, int index, int isVertical = 0)
     {
         if (!doorSetIndex_Basic.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
@@ -95,7 +140,7 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void GenerateDoorOpenButton2_Basic(int x, int y, int index)
+    public void GenerateDoorOpenButton2_Basic(int x, int y, int index, int isVertical = 0)
     {
         if (!doorSetIndex_Basic.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
@@ -123,7 +168,7 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void GenerateNextStageDoor(int x, int y, int index)
+    public void GenerateNextStageDoor(int x, int y, int index, int isVertical = 0)
     {
         GameObject nextStageDoor = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/NextStageDoor"));
         nextStageDoor.GetComponent<NextStageDoor>().SetXY(x, y);
@@ -158,13 +203,13 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void GenerateDoor_Simultaneous(int x, int y, int index,bool isVertical)
+    public void GenerateDoor_Simultaneous(int x, int y, int index, int isVertical = 0)
     {
         if (!doorSetIndex_Simultaneous.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
             doorSetIndex_Simultaneous.Add(index); //index값을 가지는 문 세트가 생성되었다는 것을 저장
             GameObject door_Simultaneous;
-            if (isVertical)
+            if (isVertical == 1)
             {
                 door_Simultaneous = (GameObject)Instantiate(Resources.Load("Prefabs/Structures/Door_Simultaneous_Vertical"));
             }
@@ -197,7 +242,7 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void GenerateDoorOpenButton1_Simultaneous(int x, int y, int index)
+    public void GenerateDoorOpenButton1_Simultaneous(int x, int y, int index, int isVertical = 0)
     {
         if (!doorSetIndex_Simultaneous.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
@@ -228,7 +273,7 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void GenerateDoorOpenButton2_Simultaneous(int x, int y, int index)
+    public void GenerateDoorOpenButton2_Simultaneous(int x, int y, int index, int isVertical = 0)
     {
         if (!doorSetIndex_Simultaneous.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {
@@ -259,7 +304,7 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void GenerateDoorOpenButton3_Simultaneous(int x, int y, int index)
+    public void GenerateDoorOpenButton3_Simultaneous(int x, int y, int index, int isVertical = 0)
     {
         if (!doorSetIndex_Simultaneous.Contains(index)) //index값에 해당하는 문 세트 없을 때
         {

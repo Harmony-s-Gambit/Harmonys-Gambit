@@ -44,7 +44,7 @@ public class PlayerManager : MonoBehaviour
         GameObject temp;
         foreach (PlayerStat player in playerData.players)
         {
-            if (player.color.ToString() == "RED")
+            if (player.color == COLOR.RED)
             {
                 temp = (GameObject)Instantiate(Resources.Load("Prefabs/Players/redPlayer"));
             }

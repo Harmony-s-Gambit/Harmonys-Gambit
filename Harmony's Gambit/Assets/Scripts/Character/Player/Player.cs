@@ -72,8 +72,8 @@ public class Player : Character
     private void AfterDie()
     {
         SceneManager.LoadScene("GameOver");
-        GameObject.Find("Managers").SetActive(false);
-        GameObject.Find("MainCanvas").SetActive(false);
+        Destroy(GameObject.Find("Managers"));
+        Destroy(GameObject.Find("MainCanvas"));
     }
 
     public override void SetXY(int px, int py)

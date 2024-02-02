@@ -68,7 +68,7 @@ public class MainUI : MonoBehaviour
 
     IEnumerator MapDelay()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
         Instantiate(Resources.Load("Map/" + StageInfo.instance.GetStageName()));
 
         _gameManager = FindObjectOfType<GameManager>();
@@ -78,11 +78,11 @@ public class MainUI : MonoBehaviour
         _timingManager = FindObjectOfType<TimingManager>();
         _missArea = FindObjectOfType<MissArea>();
 
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
 
         _gridMaker.MakeGrid();
 
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
 
         _itemManager = FindObjectOfType<ItemManager>();
         _structureManager = FindObjectOfType<StructureManager>();
@@ -102,7 +102,7 @@ public class MainUI : MonoBehaviour
 
         //panels[3].SetActive(true);
 
-        GameStartSetting();
+        StartCoroutine(GameStartSetting());
         panels[2].SetActive(false);
 
         GridSlotInfo[] slots = FindObjectsOfType<GridSlotInfo>();
@@ -121,14 +121,16 @@ public class MainUI : MonoBehaviour
         _sightManager.rhythm = true;
     }
 
-    private void GameStartSetting()
+    IEnumerator GameStartSetting()
     {
-        NoteManager.instance.SetBGMValue("BGM1");
         _gameManager.isRedPlayerPlaying = true;
         _gameManager.isBluePlayerPlaying = true;
         _gameManager.whichDoorHasRedPlayer = -1;
         _gameManager.whichDoorHasBluePlayer = -1;
         ScoreManager.instance.GameStartSetting();
+
+        yield return new WaitForSeconds(1f);
+        NoteManager.instance.SetBGMValue("BGM1");
     }
 
     public void ControllButton(int num)
