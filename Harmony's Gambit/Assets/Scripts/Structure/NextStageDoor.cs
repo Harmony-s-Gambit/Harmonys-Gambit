@@ -5,15 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NextStageDoor : Structure
 {
-    private PlayerManager _playerManager;
-
     public int nextStageDoorIndex;
-
-    private void Start()
-    {
-        base.Start();
-        _playerManager = FindObjectOfType<PlayerManager>();
-    }
 
     public void SetIndex(int index)
     {

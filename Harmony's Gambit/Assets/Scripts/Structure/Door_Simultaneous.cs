@@ -9,11 +9,6 @@ public class Door_Simultaneous : Structure
     private int doorOpenTurn;
     private bool doorOpenTurnOnce = true;
 
-    protected void Start()
-    {
-        base.Start();
-    }
-
     private void Update()
     {
         if (_structureManager.rhythm)
