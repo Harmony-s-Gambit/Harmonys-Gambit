@@ -13,10 +13,7 @@ public class GridMaker : MonoBehaviour
 
     public void MakeGrid()
     {
-        
-
-        TextAsset mapText = Resources.Load("MapText/Stage1/Stage1") as TextAsset; ;
-        mapText = Resources.Load("MapText/" + StageInfo.instance.GetStageName() + "/MapText") as TextAsset;
+        TextAsset mapText = Resources.Load("MapText/" + StageInfo.instance.GetStageName() + "/MapText") as TextAsset;
 
         StringReader stringReader = new StringReader(mapText.text);
 

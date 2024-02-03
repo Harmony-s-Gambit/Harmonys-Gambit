@@ -61,7 +61,7 @@ public class MainUI : MonoBehaviour
         AudioManager.instance.PlaySFX("Start");
         panels[0].SetActive(false);
 
-        StageInfo.instance.SetStageName("Stage1");
+        StageInfo.instance.SetStageName("BossStage1");
         SceneManager.LoadScene("Stage");
         StartCoroutine(MapDelay());
     }
