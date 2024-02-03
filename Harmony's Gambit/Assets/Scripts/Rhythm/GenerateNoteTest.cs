@@ -20,14 +20,6 @@ public class GenerateNoteTest : MonoBehaviour
         instance = this;
     }
 
-    private void FixedUpdate()
-    {
-        if (NoteManager.instance.currentBGM != "") //BGM 이름 설정 시 노트 생성 시작
-        {
-            NoteManager.instance.GenerateNote();
-        }
-    }
-
     public void OffsetStartButton()
     {
         _gameManager.isBluePlayerPlaying = true;

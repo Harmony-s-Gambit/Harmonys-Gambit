@@ -61,7 +61,7 @@ public class MainUI : MonoBehaviour
         AudioManager.instance.PlaySFX("Start");
         panels[0].SetActive(false);
 
-        StageInfo.instance.SetStageName("BossStage1");
+        StageInfo.instance.SetStageName("Stage1");
         SceneManager.LoadScene("Stage");
         StartCoroutine(MapDelay());
     }
@@ -127,10 +127,10 @@ public class MainUI : MonoBehaviour
         _gameManager.isBluePlayerPlaying = true;
         _gameManager.whichDoorHasRedPlayer = -1;
         _gameManager.whichDoorHasBluePlayer = -1;
-        ScoreManager.instance.GameStartSetting();
 
         yield return new WaitForSeconds(1f);
-        NoteManager.instance.SetBGMValue("BGM1");
+        NoteManager.instance.SetBGMValue("DiscoHeart");
+        ScoreManager.instance.GameStartSetting();
     }
 
     public void ControllButton(int num)

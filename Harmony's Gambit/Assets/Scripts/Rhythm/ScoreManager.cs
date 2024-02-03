@@ -11,9 +11,9 @@ public class ScoreManager : MonoBehaviour
 
     public bool rhythm;
     private int currentScore = 0;
-    private float currentTime = 0;
-    private double time = 0;
-    private bool isTimeOver = false;
+    public float currentTime = 0;
+    public double time = 0;
+    public bool isTimeOver = false;
 
     //노트 점수
     private int[] noteScore = new int[] { 2, 1, 0, -1, -2, -3 }; // 차례대로 타임오버 이전 노트 2개 1개 0개, 타임 오버 이후 노트 2개 1개 0개 입력 시 얻는 점수
@@ -71,6 +71,7 @@ public class ScoreManager : MonoBehaviour
         {
             isTimeOver = true;
             currentScore += timeOverScore;
+            //AudioManager.instance.PlayBGM(NoteManager.instance.currentBgmNameAfterTimeOver);
         }
         
         if (rhythm)
@@ -114,6 +115,7 @@ public class ScoreManager : MonoBehaviour
             AudioManager.instance.PlaySFX("Good");
             comboEffect.SetActive(false);
             combo100Effect.SetActive(false);
+            currentCombo = 0;
             oneNote += 1;
         }
         else

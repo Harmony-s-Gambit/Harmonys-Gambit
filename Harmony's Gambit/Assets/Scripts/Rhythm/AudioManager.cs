@@ -25,6 +25,14 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
 
+    private void Update()
+    {
+        if (ScoreManager.instance.currentTime > ScoreManager.instance.time && !_bgmPlayer.isPlaying)
+        {
+            PlayBGM(NoteManager.instance.currentBgmNameAfterTimeOver);
+        }
+    }
+
     public void PlayBGM(string p_bgmName, float delay = 0f)
     {
         for (int i = 0; i < _bgm.Length; i++)

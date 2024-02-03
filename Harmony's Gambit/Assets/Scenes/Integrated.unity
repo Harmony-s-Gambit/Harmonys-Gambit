@@ -626,6 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rhythm: 0
+  isTimeOver: 0
   mouseScore: 10
   hienaScore: 30
 --- !u!1 &209540069
@@ -663,8 +664,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 75}
+  m_AnchoredPosition: {x: 32, y: 0}
+  m_SizeDelta: {x: 190, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209540071
 MonoBehaviour:
@@ -2339,7 +2340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1027394224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3937,6 +3938,7 @@ MonoBehaviour:
   time: 0
   bgmListindex: 10
   currentBeatList: []
+  currentbeatAfterTimeOver: 0
   currentBGM: 
   _tfNoteAppearP1: {fileID: 1344852693}
   _tfNoteAppearP2: {fileID: 2126513601}
@@ -4404,8 +4406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 75}
+  m_AnchoredPosition: {x: -32, y: 0}
+  m_SizeDelta: {x: 190, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1391082549
 MonoBehaviour:
@@ -5367,7 +5369,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890279064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -5564,6 +5566,8 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: c4e867e569c23444e810904d9ae2de21, type: 3}
   - _name: Unity
     _clip: {fileID: 8300000, guid: 8438b02e410efb4498c0f2783513b0ee, type: 3}
+  - _name: DiscoHeart
+    _clip: {fileID: 8300000, guid: 7814def806ac6a54dbaa970973ddae82, type: 3}
   _bgmPlayer: {fileID: 1198253969}
   _sfxPlayer:
   - {fileID: 1265284579}

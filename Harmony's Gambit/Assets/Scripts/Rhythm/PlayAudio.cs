@@ -45,7 +45,7 @@ public class PlayAudio : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("NoteIn"))
+        if (collision.CompareTag("NoteIn") && !ScoreManager.instance.isTimeOver)
         {
             _currentTime = 0;
             _isGameStart = true;

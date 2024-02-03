@@ -15,6 +15,8 @@ public class NoteManager : MonoBehaviour
     private double _currentTimeIn = 0d;
     public int bgmListindex = 0; //몇번째 노트의 박자인가
     public List<double> currentBeatList = new List<double>(); //현재 곡의 비트리스트
+    public double currentbeatAfterTimeOver;
+    public string currentBgmNameAfterTimeOver;
 
     public string currentBGM; //이 변수로 현재 어떤 곡인지 판단
 
@@ -32,51 +34,54 @@ public class NoteManager : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>();
     }
 
+    private void FixedUpdate()
+    {
+        if (currentBGM != "")
+        {
+            GenerateNote();
+        }
+    }
+
     public void GenerateNote()
     {
-        if (bgmListindex < currentBeatList.Count) //현재 곡의 박자 수 만큼 반복
+        if (_gameManager.isRedPlayerPlaying)
         {
-            if (_gameManager.isRedPlayerPlaying)
-            {
-                _currentTimeP1 += Time.deltaTime;
-                if (_currentTimeP1 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
-                {
-                    GameObject t_note = ObjectPool.instance.noteQueueP1.Dequeue();
-                    t_note.transform.position = _tfNoteAppearP1.position;
-                    t_note.SetActive(true); //노트 생성
+            _currentTimeP1 += Time.deltaTime;
 
-                    _timingManager.boxNoteListP1.Add(t_note);
-                    _currentTimeP1 -= currentBeatList[bgmListindex] / bpm;
-                }
-            }
-
-            if (_gameManager.isBluePlayerPlaying)
+            if (_currentTimeP1 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
             {
-                _currentTimeP2 += Time.deltaTime;
-                if (_currentTimeP2 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
-                {
-                    GameObject t_note = ObjectPool.instance.noteQueueP2.Dequeue();
-                    t_note.transform.position = _tfNoteAppearP2.position;
-                    t_note.SetActive(true);
-                    _timingManager.boxNoteListP2.Add(t_note); //노트 생성
-                    _currentTimeP2 -= currentBeatList[bgmListindex] / bpm;
-                }
-            }
-
-            _currentTimeIn += Time.deltaTime;
-            if (_currentTimeIn >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
-            {
-                GameObject t_note = ObjectPool.instance.noteQueueIn.Dequeue();
-                t_note.transform.position = _tfNoteAppearIn.position;
-                t_note.SetActive(true);
-                _currentTimeIn -= currentBeatList[bgmListindex] / bpm;
-                bgmListindex++;
+                GameObject t_note = ObjectPool.instance.noteQueueP1.Dequeue();
+                t_note.transform.position = _tfNoteAppearP1.position;
+                t_note.SetActive(true); //노트 생성
+                _timingManager.boxNoteListP1.Add(t_note);
+                _currentTimeP1 -= currentBeatList[bgmListindex] / bpm;
             }
         }
-        else
+
+        if (_gameManager.isBluePlayerPlaying)
         {
-            PlayAudio.instance._isGameStart = false;
-            PlayAudio.instance._isMusiceStart = false;
+            _currentTimeP2 += Time.deltaTime;
+
+            if (_currentTimeP2 >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
+            {
+                GameObject t_note = ObjectPool.instance.noteQueueP2.Dequeue();
+                t_note.transform.position = _tfNoteAppearP2.position;
+                t_note.SetActive(true);
+                _timingManager.boxNoteListP2.Add(t_note); //노트 생성
+                _currentTimeP2 -= currentBeatList[bgmListindex] / bpm;
+            }
+        }
+
+        _currentTimeIn += Time.deltaTime;
+
+        if (_currentTimeIn >= currentBeatList[bgmListindex] / bpm) //일정 박자가 지나면
+        {
+            GameObject t_note = ObjectPool.instance.noteQueueIn.Dequeue();
+            t_note.transform.position = _tfNoteAppearIn.position;
+            t_note.SetActive(true);
+            _currentTimeIn -= currentBeatList[bgmListindex] / bpm;
+            bgmListindex++;
+            currentBeatList.Add(currentbeatAfterTimeOver);
         }
     }
 
@@ -89,6 +94,8 @@ public class NoteManager : MonoBehaviour
         currentBGM = BGMJson.instance.bgmJsonFiles[currentBGMindex].bgmName; //현재 곡의 이름 설정
         currentBeatList = BGMJson.instance.bgmJsonFiles[currentBGMindex].beatList; //현재 곡의 비트 리스트 설정
         bgmListindex = 0; //초기화
+        currentbeatAfterTimeOver = BGMJson.instance.bgmJsonFiles[currentBGMindex].beatAfterTimeOver;
+        currentBgmNameAfterTimeOver = BGMJson.instance.bgmJsonFiles[currentBGMindex].bgmNameAfterTimeOver;
     }
 
     private void OnTriggerExit2D(Collider2D collision) //노트가 화면 밖을 나가면 실행

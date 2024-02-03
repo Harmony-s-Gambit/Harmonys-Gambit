@@ -15,7 +15,7 @@ public class MissArea2 : MonoBehaviour
     {
         if (collision.CompareTag("NoteP1"))
         {
-            _timingManager.boxNoteListP2.Remove(collision.gameObject);
+            _timingManager.boxNoteListP1.Remove(collision.gameObject);
             StartCoroutine(collision.gameObject.GetComponent<Note>().FadeOutImage());
         }
     }
