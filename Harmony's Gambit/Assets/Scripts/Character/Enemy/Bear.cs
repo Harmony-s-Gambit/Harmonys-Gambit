@@ -178,6 +178,71 @@ public class Bear : Enemy
     }
     public void speicalAttack()
     {
+        int movingDistance = 0;
+        int[] movement = new int[2];
+        switch (dashDirection)
+        {
+            case DIRECTION.UP:
+                {
+                    movement[0] = 0;
+                    movement[1] = -1;
+                    break;
+                }
+            case DIRECTION.DOWN:
+                {
+                    movement[0] = 0;
+                    movement[1] = 1;
+                    break;
+                }
+            case DIRECTION.RIGHT:
+                {
+                    movement[0] = 1;
+                    movement[1] = 0;
+                    break;
+                }
+            case DIRECTION.LEFT:
+                {
+                    movement[0] = -1;
+                    movement[1] = 0;
+                    break;
+                }
+        }
+        GameObject movementPoint = GameObject.Find((x) + "_" + (y));
+        dashAttackRange.Push(movementPoint.GetComponent<GridSlotInfo>());
+        dashAttackRange.Push(GameObject.Find((x + movement[1]) + "_" + (y + movement[0])).GetComponent<GridSlotInfo>());
+        dashAttackRange.Push(GameObject.Find((x - movement[1]) + "_" + (y - movement[0])).GetComponent<GridSlotInfo>());
+        for (int i = 1; i < 7; i++)
+        {
+            movementPoint = GameObject.Find((x + movement[0] * i) + "_" + (y + movement[1] * i));
+            if(movementPoint.GetComponent<GridSlotInfo>().occupyingCharacter == null || movementPoint.GetComponent<GridSlotInfo>().blockType != BLOCKTYPE.WALL)
+            {
+                movingDistance = i;
+                dashAttackRange.Push(movementPoint.GetComponent<GridSlotInfo>());
+                dashAttackRange.Push(GameObject.Find((x + movement[1] + movement[0] * i) + "_" + (y + movement[0] + movement[1] * i)).GetComponent<GridSlotInfo>());
+                dashAttackRange.Push(GameObject.Find((x - movement[1] + movement[0] * i) + "_" + (y - movement[0] + movement[1] * i)).GetComponent<GridSlotInfo>());
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        while(dashAttackRange.Count != 0)
+        {
+            GridSlotInfo temp = dashAttackRange.Pop();
+            if(temp.occupyingCharacter.tag == "Player")
+            {
+                temp.occupyingCharacter.GetComponent<Player>().HP -= 1;
+            }
+        }
+
+        x = x + movingDistance * movement[0];
+        y = y + movingDistance * movement[1];
+        Move(GameObject.Find(x + "_" + y));
+        x = x + movingDistance * movement[0];
+        y = y + movingDistance * movement[1];
+
+
         dashCount = 0;
     }
 }
