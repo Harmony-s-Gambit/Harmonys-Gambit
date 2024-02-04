@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class ScoreTest : MonoBehaviour
 {
-    Text currentScoreText, plusScoreText;
+    Text currentScoreText, plusScoreText, totalScoreText;
     private int previousScore;
 
     void Start()
     {
         currentScoreText = GameObject.Find("CurrentScoreText").GetComponent<Text>();
         plusScoreText = GameObject.Find("PlusScoreText").GetComponent<Text>();
+        totalScoreText = GameObject.Find("TotalScoreText").GetComponent<Text>();
     }
 
     void Update()
@@ -23,6 +24,7 @@ public class ScoreTest : MonoBehaviour
                 plusScoreText.text = "+" + (ScoreManager.instance.currentScore - previousScore).ToString();
                 currentScoreText.text = ScoreManager.instance.currentScore.ToString();
                 previousScore = ScoreManager.instance.currentScore;
+                totalScoreText.text = ScoreManager.instance.totalScore.ToString();
             }
         }
         catch (System.Exception)

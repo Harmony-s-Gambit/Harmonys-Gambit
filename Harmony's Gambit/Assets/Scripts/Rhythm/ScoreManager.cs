@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     public double time = 0;
     public bool isTimeOver = false;
     public int totalScore = 0;
+    private int beatListCount = 0;
 
     //노트 점수
     private int[] noteScore = new int[] { 2, 1, 0, -1, -2, -3 }; // 차례대로 타임오버 이전 노트 2개 1개 0개, 타임 오버 이후 노트 2개 1개 0개 입력 시 얻는 점수
@@ -103,6 +104,7 @@ public class ScoreManager : MonoBehaviour
         time = NoteManager.instance.time;
         totalScore = 0;
         isTimeOver = false;
+        beatListCount = NoteManager.instance.currentBeatList.Count;
     }
 
     public void KillScore(int score)
@@ -195,7 +197,7 @@ public class ScoreManager : MonoBehaviour
     public void StageClearScore(int index)
     {
         currentScore += stageClearScore * (_gameManager.redPlayer.HP + _gameManager.bluePlayer.HP);
-        currentScore += (NoteManager.instance.currentBeatList.Count - twoNote - oneNote - zeroNote) * 2;
+        currentScore += (beatListCount - twoNote - oneNote - zeroNote) * 2;
 
         if (index == 0)
         {
