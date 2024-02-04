@@ -70,11 +70,13 @@ public class Player : Character
             beforeHP = HP;
         }
     }
+
     private void AfterDie()
     {
-        SceneManager.LoadScene("GameOver");
-        Destroy(GameObject.Find("Managers"));
-        Destroy(GameObject.Find("MainCanvas"));
+        //SceneManager.LoadScene("GameOver");
+        //Destroy(GameObject.Find("Managers"));
+        //Destroy(GameObject.Find("MainCanvas"));
+        ScoreManager.instance.StageClearScore(-1);
     }
 
     public override void SetXY(int px, int py)

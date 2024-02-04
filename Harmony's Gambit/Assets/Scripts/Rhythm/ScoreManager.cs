@@ -84,10 +84,6 @@ public class ScoreManager : MonoBehaviour
             //print(_gameManager.redPlayer.HP);
             //print(currentCombo);
             rhythm = false;
-            if (_playerManager.GameClear)
-            {
-                totalScore = currentScore;
-            }
         }
     }
 
@@ -196,12 +192,20 @@ public class ScoreManager : MonoBehaviour
 
     public void StageClearScore(int index)
     {
-        currentScore += stageClearScore * (_gameManager.redPlayer.HP + _gameManager.bluePlayer.HP);
-        currentScore += (beatListCount - twoNote - oneNote - zeroNote) * 2;
-
-        if (index == 0)
+        if (index != -1)
+        {
+            currentScore += stageClearScore * (_gameManager.redPlayer.HP + _gameManager.bluePlayer.HP);
+            currentScore += (beatListCount - twoNote - oneNote - zeroNote) * 2;
+        }
+        totalScore = currentScore;
+        
+        try
         {
             GameObject.Find("ScoreBoardCanvas").transform.GetChild(0).gameObject.SetActive(true); //스코어 보드 켜기
+        }
+        catch (System.Exception)
+        {
+
         }
     }
 
