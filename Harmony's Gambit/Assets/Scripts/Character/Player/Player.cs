@@ -34,6 +34,7 @@ public class Player : Character
     {
         if(HP <= 0)
         {
+            _gameManager.isGameStart = false;
             _playerManager.GameOver = true;
             ScoreManager.instance.StageFailScore();
             m_Animator.SetTrigger("die");

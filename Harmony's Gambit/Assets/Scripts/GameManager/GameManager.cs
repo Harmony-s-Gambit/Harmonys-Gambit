@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public bool isBlueValid = false;
     public bool isStunned = false;
     public bool rhythm = false;
+    public bool isGameStart = false;
 
     public bool isRedPlayerPlaying = false;
     public bool isBluePlayerPlaying = false;

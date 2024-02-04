@@ -100,8 +100,6 @@ public class MainUI : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        //panels[3].SetActive(true);
-
         StartCoroutine(GameStartSetting());
         panels[2].SetActive(false);
 
@@ -123,10 +121,13 @@ public class MainUI : MonoBehaviour
 
     IEnumerator GameStartSetting()
     {
+        _gameManager.isGameStart = true;
         _gameManager.isRedPlayerPlaying = true;
         _gameManager.isBluePlayerPlaying = true;
         _gameManager.whichDoorHasRedPlayer = -1;
         _gameManager.whichDoorHasBluePlayer = -1;
+        _playerManager.GameClear = false;
+        _playerManager.GameOver = false;
 
         yield return new WaitForSeconds(1f);
         NoteManager.instance.SetBGMValue("DiscoHeart");

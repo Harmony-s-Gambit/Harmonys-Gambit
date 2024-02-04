@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
+    private GameManager _gameManager;
+
     [SerializeField] Sound[] _sfx;
     [SerializeField] Sound[] _bgm;
 
@@ -23,13 +25,17 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         instance = this;
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
-        if (ScoreManager.instance.currentTime > ScoreManager.instance.time && !_bgmPlayer.isPlaying)
+        if (_gameManager.isGameStart)
         {
-            PlayBGM(NoteManager.instance.currentBgmNameAfterTimeOver);
+            if (ScoreManager.instance.currentTime > ScoreManager.instance.time && !_bgmPlayer.isPlaying)
+            {
+                PlayBGM(NoteManager.instance.currentBgmNameAfterTimeOver);
+            }
         }
     }
 

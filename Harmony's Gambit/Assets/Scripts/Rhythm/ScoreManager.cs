@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     private GameManager _gameManager;
+    private PlayerManager _playerManager;
 
     public static ScoreManager instance;
 
     public bool rhythm;
-    private int currentScore = 0;
+    public int currentScore = 0;
     public float currentTime = 0;
     public double time = 0;
     public bool isTimeOver = false;
+    public int totalScore = 0;
 
     //노트 점수
     private int[] noteScore = new int[] { 2, 1, 0, -1, -2, -3 }; // 차례대로 타임오버 이전 노트 2개 1개 0개, 타임 오버 이후 노트 2개 1개 0개 입력 시 얻는 점수
@@ -53,6 +55,7 @@ public class ScoreManager : MonoBehaviour
 
         instance = this;
         _gameManager = FindObjectOfType<GameManager>();
+        _playerManager = FindObjectOfType<PlayerManager>();
 
         comboEffect = GameObject.Find("combo_effect");
         combo100Effect = GameObject.Find("100combo_effect_0");
@@ -80,6 +83,10 @@ public class ScoreManager : MonoBehaviour
             //print(_gameManager.redPlayer.HP);
             //print(currentCombo);
             rhythm = false;
+            if (_playerManager.GameClear)
+            {
+                totalScore = currentScore;
+            }
         }
     }
 
@@ -94,6 +101,8 @@ public class ScoreManager : MonoBehaviour
         maximumCombo = 0;
         killedMob = 0;
         time = NoteManager.instance.time;
+        totalScore = 0;
+        isTimeOver = false;
     }
 
     public void KillScore(int score)

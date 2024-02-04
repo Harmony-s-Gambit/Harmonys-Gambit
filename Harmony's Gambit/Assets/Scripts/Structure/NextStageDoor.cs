@@ -58,6 +58,7 @@ public class NextStageDoor : Structure
                 _playerManager.GameClear = true;
                 AudioManager.instance.PlaySFX("Clear");
                 //SceneManager.LoadScene("Clear");
+                _gameManager.isGameStart = false;
                 break;
             case 1:
                 SceneManager.LoadScene("Clear");
