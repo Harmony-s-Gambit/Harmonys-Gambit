@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 class RankingData
 {
@@ -12,6 +14,9 @@ class RankingData
 
 public class ScoreBoardCanvas : MonoBehaviour
 {
+    public int totalScore;
+    public string rank;
+
     private void Start()
     {
         this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
@@ -55,7 +60,21 @@ public class ScoreBoardCanvas : MonoBehaviour
 
     public void SaveRanking()
     {
+        rankingData.name = GameObject.Find("NameInputField").GetComponent<InputField>().text;
+        rankingData.score = totalScore;
+        rankingData.rank = rank;
 
+        string jsonData = JsonUtility.ToJson(rankingData);
+        string filePath = Path.Combine(Application.dataPath, "Ranking", "ScoreData" + rankingData.name + ".txt");
+
+        var file = File.CreateText(filePath);
+        file.Close();
+
+        StreamWriter sw = new StreamWriter(filePath);
+
+        sw.WriteLine(jsonData);
+        sw.Flush();
+        sw.Close();
     }
 }
 

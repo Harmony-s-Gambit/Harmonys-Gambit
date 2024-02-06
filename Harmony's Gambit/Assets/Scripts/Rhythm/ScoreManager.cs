@@ -198,6 +198,10 @@ public class ScoreManager : MonoBehaviour
             currentScore += (beatListCount - twoNote - oneNote - zeroNote) * 2;
         }
         totalScore = currentScore;
+
+        GameObject scoreBoardCanvas = GameObject.Find("ScoreBoardCanvas");
+        scoreBoardCanvas.GetComponent<ScoreBoardCanvas>().totalScore = totalScore;
+        scoreBoardCanvas.GetComponent<ScoreBoardCanvas>().rank = WhatRank(totalScore);
         
         try
         {
@@ -212,5 +216,40 @@ public class ScoreManager : MonoBehaviour
     public void StageFailScore()
     {
         currentScore += stageFailScore;
+    }
+
+    private string WhatRank(int score)
+    {
+        int totalNoteScore = beatListCount * 2;
+        float scoreRatio = (float)score / totalNoteScore;
+
+        print(score);
+        print(totalNoteScore);
+        print(scoreRatio);
+
+        if (scoreRatio > 1f)
+        {
+            return "S";
+        }
+        else if (scoreRatio > 0.8f)
+        {
+            return "A";
+        }
+        else if (scoreRatio > 0.6f)
+        {
+            return "B";
+        }
+        else if (scoreRatio > 0.4f)
+        {
+            return "C";
+        }
+        else if (scoreRatio > 0.2f)
+        {
+            return "D";
+        }
+        else
+        {
+            return "F";
+        }
     }
 }
