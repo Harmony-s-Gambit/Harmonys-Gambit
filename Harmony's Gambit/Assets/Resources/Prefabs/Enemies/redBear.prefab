@@ -140,8 +140,10 @@ MonoBehaviour:
   character: {fileID: 0}
   currentBlock: {fileID: 0}
   isMovedThisTurn: 0
+  m_Animator: {fileID: 0}
   weapon: {fileID: 0}
   death: 0
+  target: {fileID: 0}
 --- !u!1 &2380615563963698492
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,8 +205,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1772097317
+  m_SortingOrder: 200
   m_TargetDisplay: 0
 --- !u!114 &7528654267163565660
 MonoBehaviour:

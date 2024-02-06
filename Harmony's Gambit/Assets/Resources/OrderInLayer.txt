@@ -1,0 +1,20 @@
+Sorting Layer: Default
+맵의 배경 -100
+아이템 0
+대부분의 구조물 0
+Door 100
+NextStageDoor 100
+
+Sorting Layer: Map
+바닥 -10
+위쪽벽 0
+레드플레이어 3~21
+블루플레이어 1~11
+아래쪽벽 100
+HealthBarCanvas 200
+시야를 관리하는 검은색 네모 300
+
+Sorting Layer: UI
+플레이어 정보 ui(맵 프리펩에 있는 캔버스의 이미지) -10
+MainCanvas: 0
+ScoreBoardCanvas: 10

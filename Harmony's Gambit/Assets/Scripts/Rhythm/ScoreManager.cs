@@ -223,9 +223,9 @@ public class ScoreManager : MonoBehaviour
         int totalNoteScore = beatListCount * 2;
         float scoreRatio = (float)score / totalNoteScore;
 
-        print(score);
-        print(totalNoteScore);
-        print(scoreRatio);
+        //print(score);
+        //print(totalNoteScore);
+        //print(scoreRatio);
 
         if (scoreRatio > 1f)
         {

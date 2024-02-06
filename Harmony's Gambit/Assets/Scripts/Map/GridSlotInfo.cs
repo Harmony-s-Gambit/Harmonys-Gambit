@@ -27,7 +27,7 @@ public class GridSlotInfo : MonoBehaviour
     private void Start()
     {
         spriteRen = this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        spriteRen.sortingOrder = 20;
+        spriteRen.sortingOrder = 300;
 
         _playerManager = FindObjectOfType<PlayerManager>();
     }
