@@ -60,6 +60,7 @@ public class MainUI : MonoBehaviour
     {
         AudioManager.instance.PlaySFX("Start");
         panels[0].SetActive(false);
+        panels[3].SetActive(true);
 
         StageInfo.instance.SetStageName("Stage1");
         SceneManager.LoadScene("Stage");
@@ -98,7 +99,10 @@ public class MainUI : MonoBehaviour
         _timingManager.SetStart();
         _missArea.SetStart();
 
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(0.5f);
+        yield return null;
+
+        panels[3].SetActive(false);
 
         StartCoroutine(GameStartSetting());
         panels[2].SetActive(false);
