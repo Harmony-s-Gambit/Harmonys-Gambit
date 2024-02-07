@@ -90,15 +90,15 @@ public class Enemy : Character
     {
         if (nextDest.GetComponent<GridSlotInfo>().y == currentBlock.GetComponent<GridSlotInfo>().y)
         {
-            m_Animator.Play("Move", -1, 0);
+            m_Animator.Play("Move", 0, 0);
         }
         else if (nextDest.GetComponent<GridSlotInfo>().y - currentBlock.GetComponent<GridSlotInfo>().y == 1)
         {
-            m_Animator.Play("Move2", -1, 0);
+            m_Animator.Play("Move2", 0, 0);
         }
         else
         {
-            m_Animator.Play("Move3", -1, 0);
+            m_Animator.Play("Move3", 0, 0);
         }
 
         isMovedThisTurn = true;
