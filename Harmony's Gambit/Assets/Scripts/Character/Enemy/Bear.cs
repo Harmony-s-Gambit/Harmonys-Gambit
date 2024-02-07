@@ -21,7 +21,7 @@ public class Bear : Enemy
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
         weapon.equiper = gameObject;
-        thisEnemy = target.GetComponent<Enemy>();
+        //thisEnemy = target.GetComponent<Enemy>();
 
         for(int i = 0; i < 3; i++)
         {

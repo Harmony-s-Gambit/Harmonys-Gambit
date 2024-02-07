@@ -88,7 +88,19 @@ public class Enemy : Character
 
     public override void Move(GameObject nextDest)
     {
-        m_Animator.SetTrigger("move");
+        if (nextDest.GetComponent<GridSlotInfo>().y == currentBlock.GetComponent<GridSlotInfo>().y)
+        {
+            m_Animator.Play("Move", -1, 0);
+        }
+        else if (nextDest.GetComponent<GridSlotInfo>().y - currentBlock.GetComponent<GridSlotInfo>().y == 1)
+        {
+            m_Animator.Play("Move2", -1, 0);
+        }
+        else
+        {
+            m_Animator.Play("Move3", -1, 0);
+        }
+
         isMovedThisTurn = true;
         currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
         nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
