@@ -207,5 +207,6 @@ public class Enemy : Character
         
     }
 
-    public void specialAttack() { }
+    public override void specialAttack() {
+    }
 }

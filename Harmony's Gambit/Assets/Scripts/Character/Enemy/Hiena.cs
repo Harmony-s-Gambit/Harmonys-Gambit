@@ -127,5 +127,8 @@ public class Hiena : Enemy
             target = GameObject.Find("bluePlayer(Clone)");
         }
     }
-
+    public void sepcialAttack()
+    {
+        Debug.Log("Hello");
+    }
 }
