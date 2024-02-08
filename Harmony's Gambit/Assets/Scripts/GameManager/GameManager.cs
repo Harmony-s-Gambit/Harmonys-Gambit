@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     public void SetStart()
     {
         _playerManager = FindObjectOfType<PlayerManager>();
+        ScoreManager.instance.TotalEnemyScore(enemies);
     }
 
 

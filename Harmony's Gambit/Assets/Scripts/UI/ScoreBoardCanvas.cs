@@ -69,6 +69,37 @@ public class ScoreBoardCanvas : MonoBehaviour
     public void TurnOnSaveRankingBoard()
     {
         this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        
+        if (rank == "SS")
+        {
+            this.gameObject.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = Resources.Load("Images/UI/SS", typeof(Sprite)) as Sprite;
+        }
+        else if (rank == "S")
+        {
+            this.gameObject.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = Resources.Load("Images/UI/S", typeof(Sprite)) as Sprite;
+        }
+        else if (rank == "A")
+        {
+            this.gameObject.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = Resources.Load("Images/UI/A", typeof(Sprite)) as Sprite;
+        }
+        else if (rank == "B")
+        {
+            this.gameObject.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = Resources.Load("Images/UI/B", typeof(Sprite)) as Sprite;
+        }
+        else if (rank == "C")
+        {
+            this.gameObject.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = Resources.Load("Images/UI/C", typeof(Sprite)) as Sprite;
+        }
+        else if (rank == "D")
+        {
+            this.gameObject.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = Resources.Load("Images/UI/D", typeof(Sprite)) as Sprite;
+        }
+        else
+        {
+            this.gameObject.transform.GetChild(2).GetChild(0).GetComponent<Image>().sprite = Resources.Load("Images/UI/F", typeof(Sprite)) as Sprite;
+        }
+
+        this.gameObject.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = totalScore.ToString();
     }
 
     public void TurnOffSaveRankingBoard()
@@ -93,6 +124,8 @@ public class ScoreBoardCanvas : MonoBehaviour
         sw.WriteLine(jsonData);
         sw.Flush();
         sw.Close();
+
+        LoadRanking();
     }
 
     //json 불러오기

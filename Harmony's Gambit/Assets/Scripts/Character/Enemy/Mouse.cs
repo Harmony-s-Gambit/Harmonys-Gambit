@@ -20,6 +20,6 @@ public class Mouse : Enemy
         weapon.Start();
         weapon.equiper = gameObject;
 
-        killScore = ScoreManager.instance.mouseScore;
+        killScore = ScoreManager.instance.purpleMouseScore2;
     }
 }

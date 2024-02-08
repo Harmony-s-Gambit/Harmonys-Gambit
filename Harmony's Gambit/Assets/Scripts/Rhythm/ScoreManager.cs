@@ -19,22 +19,23 @@ public class ScoreManager : MonoBehaviour
     private int beatListCount = 0;
 
     //노트 점수
-    private int[] noteScore = new int[] { 2, 1, 0, -1, -2, -3 }; // 차례대로 타임오버 이전 노트 2개 1개 0개, 타임 오버 이후 노트 2개 1개 0개 입력 시 얻는 점수
+    private int[] noteScore = new int[] { 2000, 1500, 0, -1000, -1500, -3000 }; // 차례대로 타임오버 이전 노트 2개 1개 0개, 타임 오버 이후 노트 2개 1개 0개 입력 시 얻는 점수
 
     //적 처치시 점수
-    public int mouseScore = 10;
-    public int hienaScore = 30;
+    private int totalKillScore = 0;
+    public int purpleMouseScore2 = 10000;
+    public int purpleHyenaScore = 20000;
 
     //콤보 점수
     private int currentCombo = 0; //현재 콤보
     private int comboUnit = 10; //점수를 줄 콤보의 단위
     private int maxCombo = 100; //콤보 점수 증가의 마지막 수, 이 숫자만큼의 콤보 시까지 점수가 증가함. 다음부터는 점수가 유지
-    private int maxComboScore = 10; //콤보로 주는 한 번의 점수의 최대치
+    private int maxComboScore = 1000; //콤보로 주는 한 번의 점수의 최대치
 
     //기타 점수
-    private int stageClearScore = 10; //스테이지 클리어 점수 배율
+    private int stageClearScore = 100; //스테이지 클리어 점수 배율
     private int stageFailScore = 0; //스테이지 실패 점수
-    private int timeOverScore = -10; //타임 오버 진입 시 점수
+    private int timeOverScore = 0; //타임 오버 진입 시 점수
     //클리어 시 나머지 노트에 대해 2점씩 점수 추가 필요
 
     //점수 기록
@@ -87,6 +88,41 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void TotalEnemyScore(List<GameObject> enemies)
+    {
+        totalKillScore = 0;
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].name.Contains("purpleMouse"))
+            {
+                totalKillScore += purpleMouseScore2;
+            }
+            else if (enemies[i].name.Contains("purpleHyena"))
+            {
+                totalKillScore += purpleHyenaScore;
+            }
+        }
+    }
+
+    public int TotalComboScore(int beatListCount)
+    {
+        int totalComboScore = 0;
+        int tmpComboScore = 1;
+
+        while (beatListCount > comboUnit)
+        {
+            beatListCount -= comboUnit;
+            totalComboScore += tmpComboScore * 100;
+            
+            if (tmpComboScore != 10)
+            {
+                tmpComboScore += 1;
+            }
+        }
+        //print(totalComboScore);
+        return totalComboScore;
+    }
+
     public void GameStartSetting()
     {
         currentScore = 0;
@@ -136,7 +172,7 @@ public class ScoreManager : MonoBehaviour
         if (currentCombo % comboUnit == 0 && currentCombo != 0 && currentCombo < maxCombo)
         {
             //print(currentCombo);
-            currentScore += currentCombo / comboUnit;
+            currentScore += currentCombo / comboUnit * 100;
 
             comboEffect.SetActive(false);
             comboEffect.SetActive(true);
@@ -195,7 +231,15 @@ public class ScoreManager : MonoBehaviour
         if (index != -1)
         {
             currentScore += stageClearScore * (_gameManager.redPlayer.HP + _gameManager.bluePlayer.HP);
-            currentScore += (beatListCount - twoNote - oneNote - zeroNote) * 2;
+            
+            if (!isTimeOver)
+            {
+                currentScore += (beatListCount - twoNote - oneNote - zeroNote) * noteScore[0];
+
+                float num = beatListCount - (beatListCount % 10) - twoNote - oneNote - zeroNote;
+                int numCeil = (int)(Mathf.Ceil(num / 10) * 10);
+                currentScore += numCeil * 100;
+            }
         }
         totalScore = currentScore;
 
@@ -207,10 +251,7 @@ public class ScoreManager : MonoBehaviour
         {
             GameObject.Find("ScoreBoardCanvas").transform.GetChild(0).gameObject.SetActive(true); //스코어 보드 켜기
         }
-        catch (System.Exception)
-        {
-
-        }
+        catch (System.Exception) { }
     }
 
     public void StageFailScore()
@@ -220,14 +261,13 @@ public class ScoreManager : MonoBehaviour
 
     private string WhatRank(int score)
     {
-        int totalNoteScore = beatListCount * 2;
-        float scoreRatio = (float)score / totalNoteScore;
+        float scoreRatio = (float)score / (beatListCount * noteScore[0] + totalKillScore);
 
-        //print(score);
-        //print(totalNoteScore);
-        //print(scoreRatio);
-
-        if (scoreRatio > 1f)
+        if (score >= (beatListCount * noteScore[0] + 800 + totalKillScore + TotalComboScore(beatListCount)))
+        {
+            return "SS";
+        }
+        else if (scoreRatio > 1f)
         {
             return "S";
         }
