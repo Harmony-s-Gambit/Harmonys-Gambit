@@ -28,10 +28,6 @@ public class ItemSpear : Item
         {
             GetSpear();
             Destroy(other.GetComponent<Fist>());
-            other.AddComponent<Spear>();
-            
-            Debug.Log("스피어 장착");
-
             // other.GetComponent<Spear>().playerWeapon = true;
         }
     }

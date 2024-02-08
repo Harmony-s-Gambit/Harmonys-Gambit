@@ -59,10 +59,10 @@ public class ItemManager : MonoBehaviour
 
         GameObject w1, w2;
         w1 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/Sweeper"));
-        w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/Spear"));
-        // w1.GetComponent<Item>().initPosition(11, 14);
-        w1.GetComponent<Item>().initPosition(9, 10);
-        w2.GetComponent<Item>().initPosition(6, 18);
+        // w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/Spear"));
+        w1.GetComponent<Item>().initPosition(10, 14);
+        // w1.GetComponent<Item>().initPosition(9, 10);
+        // w2.GetComponent<Item>().initPosition(6, 18);
 
 
         /*

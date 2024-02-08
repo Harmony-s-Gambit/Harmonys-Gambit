@@ -8,13 +8,14 @@ using UnityEngine.EventSystems;
 public class ItemSweeper : Item
 {
     GameObject sweeper;
+    Weapon playerWeapon;
     SpriteRenderer spriteRenderer;
     public void GetSweeper()
     {
         sweeper = GameObject.Find("bone_5/sweeper");
         spriteRenderer = sweeper.GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = true;
-        // animation 전환
+
         DestroyItem();
     }
 
@@ -25,7 +26,12 @@ public class ItemSweeper : Item
             GetSweeper();
             Debug.Log("스위퍼 장착");
             Destroy(other.GetComponent<Fist>());
-            other.AddComponent<Spear>();
+            other.AddComponent<Sweeper>();
+            playerWeapon = other.GetComponent<Sweeper>();
+            playerWeapon.playerWeapon = true;
+            //equiper?
+            // 공격 범위 적용
+            //aniamtion 전환
 
 
         }
