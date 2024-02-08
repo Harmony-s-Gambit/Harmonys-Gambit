@@ -242,14 +242,13 @@ public class ScoreManager : MonoBehaviour
             }
         }
         totalScore = currentScore;
-
-        GameObject scoreBoardCanvas = GameObject.Find("ScoreBoardCanvas");
-        scoreBoardCanvas.GetComponent<ScoreBoardCanvas>().totalScore = totalScore;
-        scoreBoardCanvas.GetComponent<ScoreBoardCanvas>().rank = WhatRank(totalScore);
         
         try
         {
-            GameObject.Find("ScoreBoardCanvas").transform.GetChild(0).gameObject.SetActive(true); //스코어 보드 켜기
+            GameObject scoreBoardCanvas = GameObject.Find("ScoreBoardCanvas");
+            scoreBoardCanvas.GetComponent<ScoreBoardCanvas>().totalScore = totalScore;
+            scoreBoardCanvas.GetComponent<ScoreBoardCanvas>().rank = WhatRank(totalScore);
+            scoreBoardCanvas.transform.GetChild(0).gameObject.SetActive(true); //스코어 보드 켜기
         }
         catch (System.Exception) { }
     }

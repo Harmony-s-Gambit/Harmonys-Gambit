@@ -93,13 +93,13 @@ public class MainUI : MonoBehaviour
             timer += Time.unscaledDeltaTime;
             progressBar.fillAmount = Mathf.Lerp(0f, 1f, timer);
             
-            if (timer < 1f)
+            if (timer < 0.99f)
             {
                 progressText.text = (Mathf.Round(timer * 100)).ToString() + "%";
             }
             else
             {
-                progressText.text = "100%";
+                progressText.text = "99%";
             }
         }
 
@@ -134,6 +134,11 @@ public class MainUI : MonoBehaviour
         _missArea.SetStart();
 
         yield return null;
+
+        progressBar.fillAmount = 1f;
+        progressText.text = "100%";
+
+        yield return new WaitForSeconds(0.1f);
 
         panels[3].SetActive(false);
 
