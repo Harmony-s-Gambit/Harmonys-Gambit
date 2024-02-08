@@ -13,7 +13,7 @@ public class Bear : Enemy
     int dashCount = 0;
     int dashChargeTurn = 0;
     Stack<GridSlotInfo> dashAttackRange = new Stack<GridSlotInfo>();
-    DIRECTION dashDirection = DIRECTION.DOWN;
+    public DIRECTION dashDirection = DIRECTION.DOWN;
     private bool dontMove = false;
     public override void Start()
     {
@@ -245,8 +245,7 @@ public class Bear : Enemy
             x = x + movingDistance * movement[0];
             y = y + movingDistance * movement[1];
             Move(GameObject.Find(x + "_" + y));
-            x = x + movingDistance * movement[0];
-            y = y + movingDistance * movement[1];
+
 
 
             dashCount = 0;

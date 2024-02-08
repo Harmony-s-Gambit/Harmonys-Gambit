@@ -86,25 +86,6 @@ public class GameManager : MonoBehaviour
         }
         if (rhythm)
         {
-            /*
-            GameObject curRed = GameObject.Find(redPlayer.x + "_" + redPlayer.y);
-            GameObject curBlue = GameObject.Find(bluePlayer.x + "_" + bluePlayer.y);
-            curRed.GetComponent<GridSlotInfo>().redDistance = 0;
-            curBlue.GetComponent<GridSlotInfo>().blueDistance = 0;
-            redDijSlots.Enqueue(curRed.GetComponent<GridSlotInfo>());
-            blueDijSlots.Enqueue(curBlue.GetComponent<GridSlotInfo>());
-            while (redDijSlots.Count != 0)
-            {
-                GridSlotInfo t = redDijSlots.Dequeue();
-                RedDistance(t.x, t.y);
-            }
-            while (blueDijSlots.Count != 0)
-            {
-                GridSlotInfo t = blueDijSlots.Dequeue();
-                BlueDistance(t.x, t.y);
-            }
-
-            */
             GridSlotInfo curRed = GameObject.Find(redPlayer.x + "_" + redPlayer.y).GetComponent<GridSlotInfo>();
             GridSlotInfo curBlue = GameObject.Find(bluePlayer.x + "_" + bluePlayer.y).GetComponent<GridSlotInfo>();
 
