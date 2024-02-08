@@ -60,6 +60,18 @@ public class MainUI : MonoBehaviour
         panels[0].SetActive(true);
     }
 
+    public void Main_CreditButton()
+    {
+        panels[0].SetActive(false);
+        panels[4].SetActive(true);
+    }
+
+    public void Credit_MainButton()
+    {
+        panels[4].SetActive(false);
+        panels[0].SetActive(true);
+    }
+
     public void GamePlay1Button() //게임 플레이 시 설정, 노트 생성 시작, 즉 게임 시작 버튼
     {
         AudioManager.instance.PlaySFX("Start");
