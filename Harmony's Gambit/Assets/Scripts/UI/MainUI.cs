@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainUI : MonoBehaviour
@@ -17,6 +18,9 @@ public class MainUI : MonoBehaviour
     private EnemyManager _enemyManager;
     private TimingManager _timingManager;
     private MissArea _missArea;
+
+    [SerializeField] Image progressBar;
+    [SerializeField] Text progressText;
 
     private void Awake()
     {
@@ -69,6 +73,24 @@ public class MainUI : MonoBehaviour
 
     IEnumerator MapDelay()
     {
+        float timer = 0f;
+
+        while (progressBar.fillAmount < 1f)
+        {
+            yield return null;
+            timer += Time.unscaledDeltaTime;
+            progressBar.fillAmount = Mathf.Lerp(0f, 1f, timer);
+            
+            if (timer < 1f)
+            {
+                progressText.text = (Mathf.Round(timer * 100)).ToString() + "%";
+            }
+            else
+            {
+                progressText.text = "100%";
+            }
+        }
+
         yield return null;
         Instantiate(Resources.Load("Map/" + StageInfo.instance.GetStageName()));
 
@@ -99,7 +121,6 @@ public class MainUI : MonoBehaviour
         _timingManager.SetStart();
         _missArea.SetStart();
 
-        //yield return new WaitForSeconds(0.5f);
         yield return null;
 
         panels[3].SetActive(false);
