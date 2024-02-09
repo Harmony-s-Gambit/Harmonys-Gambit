@@ -50,7 +50,6 @@ public class ScoreBoardCanvas : MonoBehaviour
 
     public void ScoreBoard_RankingBoard()
     {
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
 
         LoadRanking();
@@ -60,6 +59,41 @@ public class ScoreBoardCanvas : MonoBehaviour
     {
         this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+    }
+
+    public void TurnOnScoreBoard(int _totalScore, string _rank)
+    {
+        totalScore = _totalScore;
+        rank = _rank;
+
+        if (rank == "SS")
+        {
+            this.gameObject.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+        }
+        else if (rank == "S")
+        {
+            this.gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+        }
+        else if (rank == "A")
+        {
+            this.gameObject.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+        }
+        else if (rank == "B")
+        {
+            this.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+        }
+        else if (rank == "C")
+        {
+            this.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
+        }
+        else if (rank == "D")
+        {
+            this.gameObject.transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
+        }
+        else
+        {
+            this.gameObject.transform.GetChild(0).GetChild(6).gameObject.SetActive(true);
+        }
     }
 
     //json ¿˙¿Â

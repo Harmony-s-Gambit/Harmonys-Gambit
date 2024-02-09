@@ -245,10 +245,8 @@ public class ScoreManager : MonoBehaviour
         
         try
         {
-            GameObject scoreBoardCanvas = GameObject.Find("ScoreBoardCanvas");
-            scoreBoardCanvas.GetComponent<ScoreBoardCanvas>().totalScore = totalScore;
-            scoreBoardCanvas.GetComponent<ScoreBoardCanvas>().rank = WhatRank(totalScore);
-            scoreBoardCanvas.transform.GetChild(0).gameObject.SetActive(true); //스코어 보드 켜기
+            GameObject.Find("ScoreBoardCanvas").transform.GetChild(0).gameObject.SetActive(true); //스코어 보드 켜기
+            GameObject.Find("ScoreBoardCanvas").GetComponent<ScoreBoardCanvas>().TurnOnScoreBoard(totalScore, WhatRank(totalScore));
         }
         catch (System.Exception) { }
     }
