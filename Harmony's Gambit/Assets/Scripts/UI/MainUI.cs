@@ -29,10 +29,10 @@ public class MainUI : MonoBehaviour
 
     private void Start()
     {
-        //for (int i = 0; i < panels.Length; i++)
-        //{
-        //    panels[i].SetActive(false);
-        //}
+        for (int i = 0; i < panels.Length; i++)
+        {
+            panels[i].SetActive(false);
+        }
         panels[0].SetActive(true);
     }
 
@@ -142,9 +142,12 @@ public class MainUI : MonoBehaviour
 
         panels[3].SetActive(false);
 
+
+
         StartCoroutine(GameStartSetting());
         _gameManager.SetStart();
         panels[2].SetActive(false);
+        //panels[5].SetActive(true); //이퀄라이저 켜기
 
         GridSlotInfo[] slots = FindObjectsOfType<GridSlotInfo>();
         for (int i = 0; i < slots.Length; i++)
