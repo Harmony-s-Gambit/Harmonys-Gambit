@@ -106,9 +106,95 @@ public class GameManager : MonoBehaviour
                 }
                 if (isRedValid && isBlueValid)
                 {
+
+                    //플레이어 움직임 설정순서
+
+                    if(isRedPlayerPlaying && isBluePlayerPlaying)
+                    {
+                        redPlayer.weapon.targetEnemies(redPlayer.direction, redPlayer.x, redPlayer.y, COLOR.RED);
+                        bluePlayer.weapon.targetEnemies(bluePlayer.direction, bluePlayer.x, bluePlayer.y, COLOR.BLUE);
+                        if(redPlayer.weapon.Selector.Count != 0)
+                        {
+                            redPlayer.weapon.Attack = true;
+                            redPlayer.weapon.attackEnemies(1);
+                            redPlayer.weapon.ClearSelector();
+                            redPlayer.isMovedThisTurn = true;
+                        }
+
+                        if(bluePlayer.weapon.Selector.Count != 0)
+                        {
+                            bluePlayer.weapon.Attack = true;
+                            bluePlayer.weapon.attackEnemies(1);
+                            bluePlayer.weapon.ClearSelector();
+                            bluePlayer.isMovedThisTurn = true;
+                        }
+                    }
+                    else if(isRedPlayerPlaying)
+                    {
+                        redPlayer.weapon.targetEnemies(redPlayer.direction, redPlayer.x, redPlayer.y, COLOR.RED);
+                        if(redPlayer.weapon.Selector.Count != 0)
+                        {
+                            redPlayer.weapon.Attack = true;
+                            redPlayer.weapon.attackEnemies(1);
+                            redPlayer.weapon.ClearSelector();
+                            redPlayer.isMovedThisTurn = true;
+                        }
+                    }
+                    else if (isBluePlayerPlaying)
+                    {
+                        bluePlayer.weapon.targetEnemies(bluePlayer.direction, bluePlayer.x, bluePlayer.y, COLOR.BLUE);
+                        if (bluePlayer.weapon.Selector.Count != 0)
+                        {
+                            bluePlayer.weapon.Attack = true;
+                            bluePlayer.weapon.attackEnemies(1);
+                            bluePlayer.weapon.ClearSelector();
+                            bluePlayer.isMovedThisTurn = true;
+                        }
+                    }
+
+
+                    //공격 불가능시 이동범위 위치 찾기
+                    GameObject redDest, blueDest;
+                    redDest = redPlayer.GetNextDest();
+                    blueDest = bluePlayer.GetNextDest();
+
+                    if (!redPlayer.isMovedThisTurn && !bluePlayer.isMovedThisTurn)
+                    {
+                        if(redDest != blueDest) { 
+                        }
+                    }else if (!redPlayer.isMovedThisTurn)
+                    {
+
+                    }else if (!bluePlayer.isMovedThisTurn)
+                    {
+
+                    }
+                    
+
+                    // 이동 불가능 (충돌 등) 감지
+
+
+
+                    //이동 처리
+
+                    //적 움직임 설정 순서
+                    //공격범위 설정
+                    //공격 가능시 공격
+                    //공격 불가능시 이동범위 위치 찾기
+                    //이동 불가능 감지
+                    //이동 처리
+
+
+
+
                     isRedValid = false; isBlueValid = false;
                     GameObject redNextDest = redPlayer.GetNextDest();
                     GameObject blueNextDest = bluePlayer.GetNextDest();
+
+
+
+
+
                     if ((redNextDest == blueNextDest || (redNextDest == bluePlayer.currentBlock && blueNextDest == redPlayer.currentBlock)) && (isRedPlayerPlaying || isBluePlayerPlaying))
                     {
                         redPlayer.m_Animator.Play("crash", -1, 0);
