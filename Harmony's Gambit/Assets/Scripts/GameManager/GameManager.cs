@@ -106,102 +106,113 @@ public class GameManager : MonoBehaviour
                 }
                 if (isRedValid && isBlueValid)
                 {
-                    isRedValid = false; isBlueValid = false;
-                    GameObject redNextDest = redPlayer.GetNextDest();
-                    GameObject blueNextDest = bluePlayer.GetNextDest();
-                    if ((redNextDest == blueNextDest || (redNextDest == bluePlayer.currentBlock && blueNextDest == redPlayer.currentBlock)) && (isRedPlayerPlaying || isBluePlayerPlaying))
+
+                    //플레이어 움직임 설정순서
+
+                    if(isRedPlayerPlaying && isBluePlayerPlaying)
                     {
-                        redPlayer.m_Animator.Play("crash", -1, 0);
-                        bluePlayer.m_Animator.Play("crash", -1, 0);
-                        AudioManager.instance.PlaySFX("Crash");
-                        isStunned = true;
-                        if (redNextDest == blueNextDest)
+                        redPlayer.weapon.targetEnemies(redPlayer.direction, redPlayer.x, redPlayer.y, COLOR.RED);
+                        bluePlayer.weapon.targetEnemies(bluePlayer.direction, bluePlayer.x, bluePlayer.y, COLOR.BLUE);
+                        if(redPlayer.weapon.Selector.Count != 0)
                         {
-                            redPlayer.Crashed(redNextDest, redPlayer.transform.position);
-                            bluePlayer.Crashed(blueNextDest, bluePlayer.transform.position);
+                            redPlayer.weapon.Attack = true;
+                            redPlayer.weapon.attackEnemies(1);
+                            redPlayer.weapon.ClearSelector();
+                            redPlayer.isMovedThisTurn = true;
                         }
-                        redPlayer.isMovedThisTurn = true;
-                        bluePlayer.isMovedThisTurn = true;
-                    }
-                    else
-                    {
-                        List<GameObject> tempEnemies = new List<GameObject>();
-                        int k = 0;
-                        if (isRedPlayerPlaying && isBluePlayerPlaying)
+
+                        if(bluePlayer.weapon.Selector.Count != 0)
                         {
-                            k = 2;
+                            bluePlayer.weapon.Attack = true;
+                            bluePlayer.weapon.attackEnemies(1);
+                            bluePlayer.weapon.ClearSelector();
+                            bluePlayer.isMovedThisTurn = true;
+                        }
+                    }
+                    else if(isRedPlayerPlaying)
+                    {
+                        redPlayer.weapon.targetEnemies(redPlayer.direction, redPlayer.x, redPlayer.y, COLOR.RED);
+                        if(redPlayer.weapon.Selector.Count != 0)
+                        {
+                            redPlayer.weapon.Attack = true;
+                            redPlayer.weapon.attackEnemies(1);
+                            redPlayer.weapon.ClearSelector();
+                            redPlayer.isMovedThisTurn = true;
+                        }
+                    }
+                    else if (isBluePlayerPlaying)
+                    {
+                        bluePlayer.weapon.targetEnemies(bluePlayer.direction, bluePlayer.x, bluePlayer.y, COLOR.BLUE);
+                        if (bluePlayer.weapon.Selector.Count != 0)
+                        {
+                            bluePlayer.weapon.Attack = true;
+                            bluePlayer.weapon.attackEnemies(1);
+                            bluePlayer.weapon.ClearSelector();
+                            bluePlayer.isMovedThisTurn = true;
+                        }
+                    }
+
+
+                    //공격 불가능시 이동범위 위치 찾기
+                    GameObject redDest, blueDest;
+                    redDest = redPlayer.GetNextDest();
+                    blueDest = bluePlayer.GetNextDest();
+
+                    if (!redPlayer.isMovedThisTurn && !bluePlayer.isMovedThisTurn)
+                    {
+                        if(redDest != blueDest) {
+                            redPlayer.MoveManage();
+                            bluePlayer.MoveManage();
                         }
                         else
                         {
-                            k = 1;
+                            redPlayer.Crashed(redDest, redPlayer.transform.position);
+                            bluePlayer.Crashed(blueDest, bluePlayer.transform.position);
                         }
-                        for (int i = 0; i < k; i++)
-                        {
-                            Player tempPlayer;
-                            if (isRedPlayerPlaying && isBluePlayerPlaying)
-                            {
-                                tempPlayer = players[i].GetComponent<Player>();
-                            }
-                            else if (isRedPlayerPlaying)
-                            {
-                                tempPlayer = players[0].GetComponent<Player>();
-                            }
-                            else
-                            {
-                                tempPlayer = players[1].GetComponent<Player>();
-                            }
-
-                            tempEnemies.AddRange(tempPlayer.weapon.targetEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color));
-
-                            for (int j = 0; j < tempEnemies.Count; j++)
-                            {
-                                tempEnemies[j].GetComponent<Enemy>().MoveManage();
-                            }
-                            tempEnemies.Clear();
-
-                            tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
-                            if (tempPlayer.weapon.GetSelectorCount() > 0)
-                            {
-                                tempPlayer.m_Animator.Play("attack", -1, 0);
-                                AudioManager.instance.PlaySFX("PlayerAttackEnemy");
-
-                                tempPlayer.weapon.attackEnemies(1);
-                            }
-                            else
-                            {
-                                tempPlayer.MoveManage();
-                            }
-                            tempPlayer.weapon.ClearSelector();
-
-                        }
+                    }else if (!redPlayer.isMovedThisTurn)
+                    {
+                        redPlayer.MoveManage();
+                    }else if (!bluePlayer.isMovedThisTurn)
+                    {
+                        bluePlayer.MoveManage();
                     }
+
+
                 }
             }
 
-            //enemy move
+            //적 움직임 설정 순서
+
+            //공격범위 설정
+            //공격 가능시 공격
+
+
             foreach (GameObject enemy in enemies)
             {
-                Enemy currentEnemy = enemy.GetComponent<Enemy>();
-                if (currentEnemy.isMovedThisTurn)
+                Enemy tempEnemy = enemy.GetComponent<Enemy>();
+                tempEnemy.weapon.targetEnemies(tempEnemy.direction, tempEnemy.x, tempEnemy.y, COLOR.PURPLE);
+                if (tempEnemy.weapon.Selector.Count != 0)
                 {
-                    continue;
+                    tempEnemy.weapon.Attack = true;
+                    tempEnemy.weapon.attackEnemies(1);
+                    tempEnemy.isMovedThisTurn = true;
                 }
-                else
+                tempEnemy.weapon.ClearSelector();
+                if (!tempEnemy.isMovedThisTurn)
                 {
-                    currentEnemy.weapon.selectEnemies(currentEnemy.direction, currentEnemy.x, currentEnemy.y, currentEnemy.color);
-                    if (currentEnemy.weapon.GetSelectorCount() > 0)
-                    {
-                        currentEnemy.m_Animator.Play("Attack", -1 ,0);
-                        currentEnemy.weapon.attackEnemies(1);
-                    }
-                    //�̵��϶�
-                    else
-                    {
-                        currentEnemy.weapon.ClearSelector();
-                        currentEnemy.MoveManage();
-                    }
+                    tempEnemy.MoveManage();
                 }
             }
+
+            //공격 불가능시 이동범위 위치 찾기
+
+            
+
+            //이동 불가능 감지
+            //이동 처리
+
+            //enemy move
+
             foreach(GameObject enemy in enemies)
             {
                 enemy.GetComponent<Enemy>().specialAttack();

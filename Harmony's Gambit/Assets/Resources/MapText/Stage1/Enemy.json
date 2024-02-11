@@ -89,12 +89,6 @@
       "type": "MOUSE",
       "x": 28,
       "y": 8
-    },
-    {
-      "color": "PURPLE",
-      "type": "BEAR",
-      "x": 10,
-      "y": 10
     }
   ]
 }
