@@ -10,6 +10,7 @@ public class Hiena : Enemy
     Dictionary<GameObject, int> MovementRoute;
     public GameObject target;
     private bool dontMove = false;
+    private bool isSleep = true;
     public override void Start()
     {
         killScore = ScoreManager.instance.purpleHyenaScore;
@@ -60,6 +61,34 @@ public class Hiena : Enemy
 
     public override GameObject GetNextDest()
     {
+        if (isSleep)
+        {
+            if(target.GetComponent<Player>().color == COLOR.RED)
+            {
+                if (GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>().redDistance <= 4)
+                {
+                    isSleep = false;
+                }
+                else
+                {
+                    return GameObject.Find(x + "_" + y);
+                }
+
+            }
+            if (target.GetComponent<Player>().color == COLOR.BLUE)
+            {
+                if (GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>().blueDistance <= 4)
+                {
+                    isSleep = false;
+                }
+                else
+                {
+                    return GameObject.Find(x + "_" + y);
+                }
+
+            }
+        }
+
         if (dontMove)
         {
             dontMove = false;

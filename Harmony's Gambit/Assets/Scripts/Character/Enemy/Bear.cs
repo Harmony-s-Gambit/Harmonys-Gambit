@@ -12,6 +12,7 @@ public class Bear : Enemy
     Enemy thisEnemy;
     int dashCount = 0;
     int dashChargeTurn = 0;
+    bool dash = false;
     Stack<GridSlotInfo> dashAttackRange = new Stack<GridSlotInfo>();
     public DIRECTION dashDirection = DIRECTION.DOWN;
     private bool dontMove = false;
@@ -84,6 +85,7 @@ public class Bear : Enemy
                 }
                 dashChargeTurn = 2;
                 direction = DIRECTION.STAY;
+                dash = true;
                 return GameObject.Find(x + "_" + y);
                 }
             else if (target.GetComponent<Player>().y == this.y)
@@ -98,12 +100,12 @@ public class Bear : Enemy
                 }
                 dashChargeTurn = 2;
                 direction = DIRECTION.STAY;
+                dash = true;
                 return GameObject.Find(x + "_" + y);
             }
         }
-        if(dashChargeTurn != 0)
+        if(dash)
         {
-            Debug.Log(dashChargeTurn + "_" + "charging");
             direction = DIRECTION.STAY;
             dashChargeTurn--;
             return GameObject.Find(x + "_" + y);
@@ -162,18 +164,16 @@ public class Bear : Enemy
     {
         if (c == COLOR.RED)
         {
-            Debug.Log("Touched");
             target = GameObject.Find("redPlayer(Clone)");
         }
         else
         {
-            Debug.Log("Touched");
             target = GameObject.Find("bluePlayer(Clone)");
         }
     }
     public override void specialAttack()
     {
-        if (dashCount > 4 && dashChargeTurn <= 0)
+        if (dashChargeTurn <= 0 && dash)
         {
             int movingDistance = 0;
             int[] movement = new int[2];
@@ -205,9 +205,17 @@ public class Bear : Enemy
                     }
             }
             GameObject movementPoint = GameObject.Find((x) + "_" + (y));
+
             dashAttackRange.Push(movementPoint.GetComponent<GridSlotInfo>());
-            dashAttackRange.Push(GameObject.Find((x + movement[1]) + "_" + (y + movement[0])).GetComponent<GridSlotInfo>());
-            dashAttackRange.Push(GameObject.Find((x - movement[1]) + "_" + (y - movement[0])).GetComponent<GridSlotInfo>());
+            try
+            {
+                dashAttackRange.Push(GameObject.Find((x + movement[1]) + "_" + (y + movement[0])).GetComponent<GridSlotInfo>());
+            }catch(Exception e) { }
+            try
+            {
+                dashAttackRange.Push(GameObject.Find((x - movement[1]) + "_" + (y - movement[0])).GetComponent<GridSlotInfo>());
+            }catch(Exception e) { }
+
             for (int i = 1; i < 7; i++)
             {
                 movementPoint = GameObject.Find((x + movement[0] * i) + "_" + (y + movement[1] * i));
@@ -215,18 +223,37 @@ public class Bear : Enemy
                 {
                     movingDistance = i;
                     dashAttackRange.Push(movementPoint.GetComponent<GridSlotInfo>());
-                    dashAttackRange.Push(GameObject.Find((x + movement[1] + movement[0] * i) + "_" + (y + movement[0] + movement[1] * i)).GetComponent<GridSlotInfo>());
-                    dashAttackRange.Push(GameObject.Find((x - movement[1] + movement[0] * i) + "_" + (y - movement[0] + movement[1] * i)).GetComponent<GridSlotInfo>());
+                    try
+                    {
+                        dashAttackRange.Push(GameObject.Find((x + movement[1] + movement[0] * i) + "_" + (y + movement[0] + movement[1] * i)).GetComponent<GridSlotInfo>());
+                    }
+                    catch (Exception e) { }
+                    try
+                    {
+                        dashAttackRange.Push(GameObject.Find((x - movement[1] + movement[0] * i) + "_" + (y - movement[0] + movement[1] * i)).GetComponent<GridSlotInfo>());
+                    }
+                    catch (Exception e) { }
                 }
                 else
                 {
                     break;
                 }
             }
-            dashAttackRange.Push(GameObject.Find((x + movement[1] + movement[0] * (movingDistance + 1)) + "_" + (y + movement[0] + movement[1] * (movingDistance + 1))).GetComponent<GridSlotInfo>());
-            dashAttackRange.Push(GameObject.Find((x - movement[1] + movement[0] * (movingDistance + 1)) + "_" + (y + movement[0] - movement[1] * (movingDistance + 1))).GetComponent<GridSlotInfo>());
-            dashAttackRange.Push(GameObject.Find((x + movement[0] * (movingDistance + 1)) + "_" + (y + movement[1] * (movingDistance + 1))).GetComponent<GridSlotInfo>());
-
+            try
+            {
+                dashAttackRange.Push(GameObject.Find((x + movement[1] + movement[0] * (movingDistance + 1)) + "_" + (y + movement[0] + movement[1] * (movingDistance + 1))).GetComponent<GridSlotInfo>());
+            }
+            catch (Exception e) { }
+            try
+            {
+                dashAttackRange.Push(GameObject.Find((x - movement[1] + movement[0] * (movingDistance + 1)) + "_" + (y + movement[0] - movement[1] * (movingDistance + 1))).GetComponent<GridSlotInfo>());
+            }
+            catch (Exception e) { }
+            try
+            {
+                dashAttackRange.Push(GameObject.Find((x + movement[0] * (movingDistance + 1)) + "_" + (y + movement[1] * (movingDistance + 1))).GetComponent<GridSlotInfo>());
+            }
+            catch (Exception e) { }
 
             while (dashAttackRange.Count != 0)
             {
@@ -234,7 +261,7 @@ public class Bear : Enemy
                 Debug.Log("AttackRange" + " " + temp.x + "_" + temp.y);
                 try
                 {
-                    if (temp.occupyingCharacter.tag == "Player")
+                    if (temp.occupyingCharacter.tag == "Player" || temp.occupyingCharacter.tag == "Player2")
                     {
                         temp.occupyingCharacter.GetComponent<Player>().HP -= 1;
                     }
@@ -247,8 +274,9 @@ public class Bear : Enemy
             Move(GameObject.Find(x + "_" + y));
 
 
-
+            dash = false;
             dashCount = 0;
+            dashAttackRange.Clear();
         }
     }
 }
