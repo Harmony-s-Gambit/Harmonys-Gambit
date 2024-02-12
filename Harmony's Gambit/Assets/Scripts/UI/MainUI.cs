@@ -78,7 +78,7 @@ public class MainUI : MonoBehaviour
         panels[0].SetActive(false);
         panels[3].SetActive(true);
 
-        StageInfo.instance.SetStageName("Stage1");
+        StageInfo.instance.SetStageName("BossStage1");
         SceneManager.LoadScene("Stage");
         StartCoroutine(MapDelay());
     }
