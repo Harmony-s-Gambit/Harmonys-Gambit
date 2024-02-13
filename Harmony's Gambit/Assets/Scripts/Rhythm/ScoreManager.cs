@@ -246,7 +246,15 @@ public class ScoreManager : MonoBehaviour
         try
         {
             GameObject.Find("ScoreBoardCanvas").transform.GetChild(0).gameObject.SetActive(true); //스코어 보드 켜기
-            GameObject.Find("ScoreBoardCanvas").GetComponent<ScoreBoardCanvas>().TurnOnScoreBoard(totalScore, WhatRank(totalScore));
+            //GameObject.Find("ScoreBoardCanvas").GetComponent<ScoreBoardCanvas>().TurnOnScoreBoard(totalScore, WhatRank(totalScore));
+            if (_playerManager.GameOver)
+            {
+                GameObject.Find("ScoreBoardCanvas").GetComponent<ScoreBoardCanvas>().TurnOnScoreBoard(totalScore, WhatRank(totalScore), twoNote, oneNote, beatListCount - twoNote - oneNote, maximumCombo);
+            }
+            else
+            {
+                GameObject.Find("ScoreBoardCanvas").GetComponent<ScoreBoardCanvas>().TurnOnScoreBoard(totalScore, WhatRank(totalScore), beatListCount - oneNote - zeroNote, oneNote, zeroNote, maximumCombo);
+            }
         }
         catch (System.Exception) { }
     }

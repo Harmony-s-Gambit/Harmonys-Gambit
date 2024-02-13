@@ -12,6 +12,8 @@ public class Player : Character
     public bool takenDamage = false;
     private int beforeHP;
 
+    private bool onceDie = false;
+
     public override void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
@@ -76,7 +78,12 @@ public class Player : Character
         //SceneManager.LoadScene("GameOver");
         //Destroy(GameObject.Find("Managers"));
         //Destroy(GameObject.Find("MainCanvas"));
-        ScoreManager.instance.StageClearScore(-1);
+        
+        if (!onceDie)
+        {
+            onceDie = true;
+            ScoreManager.instance.StageClearScore(-1);
+        }
     }
 
     public override void SetXY(int px, int py)

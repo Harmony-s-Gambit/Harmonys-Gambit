@@ -19,6 +19,9 @@ public class ScoreBoardCanvas : MonoBehaviour
 {
     public int totalScore;
     public string rank;
+    public int twoNote, oneNote, zeroNote, maxCombo;
+
+    [SerializeField] private Text[] scoreTexts;
 
     private List<Text> scoreRankingNameTexts = new List<Text>();
     private List<Image> scoreRankingImages = new List<Image>();
@@ -61,10 +64,16 @@ public class ScoreBoardCanvas : MonoBehaviour
         this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
     }
 
-    public void TurnOnScoreBoard(int _totalScore, string _rank)
+    public void TurnOnScoreBoard(int _totalScore, string _rank, int _twoNote, int _oneNote, int _zeroNote, int _maxCombo)
     {
         totalScore = _totalScore;
         rank = _rank;
+
+        StartCoroutine(TextAnimation(scoreTexts[0], _twoNote));
+        StartCoroutine(TextAnimation(scoreTexts[1], _oneNote));
+        StartCoroutine(TextAnimation(scoreTexts[2], _zeroNote));
+        StartCoroutine(TextAnimation(scoreTexts[3], _maxCombo));
+        StartCoroutine(TextAnimation(scoreTexts[4], _totalScore));
 
         if (rank == "SS")
         {
@@ -93,6 +102,26 @@ public class ScoreBoardCanvas : MonoBehaviour
         else
         {
             this.gameObject.transform.GetChild(0).GetChild(6).gameObject.SetActive(true);
+        }
+    }
+
+    IEnumerator TextAnimation(Text txt, int num)
+    {
+        if (num < 1000)
+        {
+            for (int i = 0; i <= num; i++)
+            {
+                txt.text = i.ToString();
+                yield return null;
+            }
+        }
+        else
+        {
+            for (int i = 0; i <= num; i += 100)
+            {
+                txt.text = i.ToString();
+                yield return null;
+            }
         }
     }
 
