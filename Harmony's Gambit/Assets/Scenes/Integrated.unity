@@ -1740,6 +1740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreBoardText_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5396543526296217273, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7850,6 +7854,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreBoardText_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5396543526296217273, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10070,6 +10078,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027394223}
   m_CullTransparentMesh: 1
+--- !u!1 &1042804531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5396543526296217273, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
+  m_PrefabInstance: {fileID: 2099804318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1055227028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11910,6 +11923,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreBoardText_2
       objectReference: {fileID: 0}
+    - target: {fileID: 6537155725438884974, guid: e6a2437fdb4b59d44889009a5f200564, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11925,7 +11942,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4464404626174205901, guid: e6a2437fdb4b59d44889009a5f200564, type: 3}
   m_PrefabInstance: {fileID: 1232895725}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1440569008}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
@@ -15146,6 +15163,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434584118}
   m_CullTransparentMesh: 1
+--- !u!1 &1440569008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6537155725438884974, guid: e6a2437fdb4b59d44889009a5f200564, type: 3}
+  m_PrefabInstance: {fileID: 1232895725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1445238964
 GameObject:
   m_ObjectHideFlags: 0
@@ -15539,6 +15561,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5db3792ddb02a4c83cd23696e7cf1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1484864879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5396543526296217273, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
+  m_PrefabInstance: {fileID: 1874432815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1491781646
 GameObject:
   m_ObjectHideFlags: 0
@@ -16277,6 +16304,13 @@ MonoBehaviour:
   - {fileID: 2099804321}
   - {fileID: 1924148145}
   - {fileID: 1232895727}
+  scoreBoardThings:
+  - {fileID: 1540740399}
+  - {fileID: 1614566357}
+  - {fileID: 1600906846}
+  - {fileID: 1042804531}
+  - {fileID: 1484864879}
+  - {fileID: 1440569008}
 --- !u!1001 &1537746171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16405,7 +16439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1540740400
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17048,6 +17082,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 241690405625766725, guid: e6a2437fdb4b59d44889009a5f200564, type: 3}
   m_PrefabInstance: {fileID: 1589118913}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1600906846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5396543526296217273, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
+  m_PrefabInstance: {fileID: 107860082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1601008811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17157,6 +17196,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2138883056274401549, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
   m_PrefabInstance: {fileID: 1601008811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1614566357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5396543526296217273, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
+  m_PrefabInstance: {fileID: 751586628}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1614771053
 GameObject:
@@ -17581,7 +17625,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5273246546090242755, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
   m_PrefabInstance: {fileID: 107860082}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1600906846}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
@@ -18581,7 +18625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1832387803
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19052,6 +19096,10 @@ PrefabInstance:
     - target: {fileID: 5396543526296217273, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
       propertyPath: m_Name
       value: ScoreBoardText_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396543526296217273, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19798,7 +19846,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5273246546090242755, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
   m_PrefabInstance: {fileID: 1874432815}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1484864879}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
@@ -21019,7 +21067,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5273246546090242755, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
   m_PrefabInstance: {fileID: 751586628}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1614566357}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
@@ -21678,6 +21726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreBoardText_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5396543526296217273, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21693,7 +21745,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5273246546090242755, guid: 2d699ec919d3afe49a9c48405b7199fd, type: 3}
   m_PrefabInstance: {fileID: 2099804318}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1042804531}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}

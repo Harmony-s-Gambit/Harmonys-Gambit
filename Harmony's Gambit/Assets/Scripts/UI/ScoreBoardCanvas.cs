@@ -22,6 +22,7 @@ public class ScoreBoardCanvas : MonoBehaviour
     public int twoNote, oneNote, zeroNote, maxCombo;
 
     [SerializeField] private Text[] scoreTexts;
+    [SerializeField] private List<GameObject> scoreBoardThings = new List<GameObject>();
 
     private List<Text> scoreRankingNameTexts = new List<Text>();
     private List<Image> scoreRankingImages = new List<Image>();
@@ -68,13 +69,6 @@ public class ScoreBoardCanvas : MonoBehaviour
     {
         totalScore = _totalScore;
         rank = _rank;
-
-        StartCoroutine(TextAnimation(scoreTexts[0], _twoNote));
-        StartCoroutine(TextAnimation(scoreTexts[1], _oneNote));
-        StartCoroutine(TextAnimation(scoreTexts[2], _zeroNote));
-        StartCoroutine(TextAnimation(scoreTexts[3], _maxCombo));
-        StartCoroutine(TextAnimation(scoreTexts[4], _totalScore));
-
         if (rank == "SS")
         {
             this.gameObject.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
@@ -103,6 +97,17 @@ public class ScoreBoardCanvas : MonoBehaviour
         {
             this.gameObject.transform.GetChild(0).GetChild(6).gameObject.SetActive(true);
         }
+
+        for (int i = 0; i < scoreBoardThings.Count; i++)
+        {
+            scoreBoardThings[i].SetActive(true);
+        }
+
+        StartCoroutine(TextAnimation(scoreTexts[0], _twoNote));
+        StartCoroutine(TextAnimation(scoreTexts[1], _oneNote));
+        StartCoroutine(TextAnimation(scoreTexts[2], _zeroNote));
+        StartCoroutine(TextAnimation(scoreTexts[3], _maxCombo));
+        StartCoroutine(TextAnimation(scoreTexts[4], _totalScore));
     }
 
     IEnumerator TextAnimation(Text txt, int num)
@@ -117,11 +122,12 @@ public class ScoreBoardCanvas : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i <= num; i += 100)
+            for (int i = 0; i <= num; i += 500)
             {
                 txt.text = i.ToString();
                 yield return null;
             }
+            txt.text = num.ToString();
         }
     }
 

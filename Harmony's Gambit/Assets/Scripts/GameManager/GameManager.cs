@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
                             redPlayer.weapon.ClearSelector();
                             redPlayer.isMovedThisTurn = true;
                             redPlayer.m_Animator.Play("attack", -1, 0);
+                            AudioManager.instance.PlaySFX("PlayerAttackEnemy");
                         }
 
                         if (bluePlayer.weapon.Selector.Count != 0)
@@ -129,6 +130,7 @@ public class GameManager : MonoBehaviour
                             bluePlayer.weapon.ClearSelector();
                             bluePlayer.isMovedThisTurn = true;
                             bluePlayer.m_Animator.Play("attack", -1, 0);
+                            AudioManager.instance.PlaySFX("PlayerAttackEnemy");
                         }
                     }
                     else if(isRedPlayerPlaying)
@@ -184,6 +186,7 @@ public class GameManager : MonoBehaviour
                                 bluePlayer.Crashed(blueDest, bluePlayer.transform.position);
                                 bluePlayer.m_Animator.Play("crash", -1, 0);
 
+                                AudioManager.instance.PlaySFX("Crash");
                             }
                         }
                         else if (!redPlayer.isMovedThisTurn)

@@ -19,9 +19,10 @@ public class Enemy : Character
         m_Animator = GetComponent<Animator>();
 
         m_Animator.SetTrigger("idle");
+        //m_Animator.Play("Idle", 0, 0);
 
         beforeHP = HP;
-    }
+    } 
 
     // Update is called once per frame
     protected override void Update()
@@ -49,6 +50,11 @@ public class Enemy : Character
             m_Animator.SetTrigger("damage");
         }
         beforeHP = HP;
+
+        //if (gameObject.name.Contains("Hyena"))
+        //{
+        //    print(1);
+        //}
     }
 
     public override void SetXY(int px, int py)
