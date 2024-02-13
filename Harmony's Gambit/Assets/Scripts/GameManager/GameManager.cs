@@ -180,7 +180,20 @@ public class GameManager : MonoBehaviour
                             tempPlayer.weapon.selectEnemies(tempPlayer.direction, tempPlayer.x, tempPlayer.y, tempPlayer.color);
                             if (tempPlayer.weapon.GetSelectorCount() > 0)
                             {
-                                tempPlayer.m_Animator.Play("attack", -1, 0);
+                                // animator trigger, bool을 사용해야하지만 기존에 방식이 Play 강제
+                                // 발동이기 때문에 아래와 같이 작업함...
+                                // tempPlayer.weapon이 fist, sweeper, 등이 맞는지 확인하는 예외처리를 해야 하지만
+                                // 이번 데모에서는 redPlayer만 sweeper 공격 가능하기 때문에 아래와 같이 함
+                                if (tempPlayer.weapon.isFist)
+                                {
+                                    tempPlayer.m_Animator.Play("attack", -1, 0);
+                                }
+                                else
+                                {
+                                    tempPlayer.m_Animator.Play("attack_sweeper", -1, 0);
+                                    // animator에서 speed 2 해야한다
+                                    // attack length : 0.5, attack_sweeper, attack_spear length : 1 이기 때문
+                                }
                                 AudioManager.instance.PlaySFX("PlayerAttackEnemy");
 
                                 tempPlayer.weapon.attackEnemies(1);

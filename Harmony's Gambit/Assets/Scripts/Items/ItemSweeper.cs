@@ -24,14 +24,16 @@ public class ItemSweeper : Item
         if (other.CompareTag("Player") || other.CompareTag("Player2"))
         {
             GetSweeper();
-            Debug.Log("스위퍼 장착");
             Destroy(other.GetComponent<Fist>());
             other.AddComponent<Sweeper>();
             playerWeapon = other.GetComponent<Sweeper>();
             playerWeapon.playerWeapon = true;
-            //equiper?
+            playerWeapon.equiper = other.gameObject;
+            //weapon.equiper = gameObject; >>> why exist?
             // 공격 범위 적용
             //aniamtion 전환
+
+            // playerWeapon.Start();
 
 
         }

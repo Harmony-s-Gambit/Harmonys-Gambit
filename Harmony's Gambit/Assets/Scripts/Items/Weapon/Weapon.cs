@@ -14,7 +14,7 @@ public abstract class Weapon : MonoBehaviour
     protected GameObject inGridSlot;
     public abstract void Start();
     public abstract void selectEnemies(DIRECTION direction, int x, int y, COLOR color);
-
+    public bool isFist = true;
     public int GetSelectorCount()
     {
         return Selector.Count;
