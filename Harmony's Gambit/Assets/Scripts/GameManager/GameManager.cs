@@ -187,16 +187,18 @@ public class GameManager : MonoBehaviour
                                 if (tempPlayer.weapon.isFist)
                                 {
                                     tempPlayer.m_Animator.Play("attack", -1, 0);
+                                    tempPlayer.weapon.attackEnemies(1);
                                 }
                                 else
                                 {
                                     tempPlayer.m_Animator.Play("attack_sweeper", -1, 0);
                                     // animator에서 speed 2 해야한다
                                     // attack length : 0.5, attack_sweeper, attack_spear length : 1 이기 때문
+                                    tempPlayer.weapon.attackEnemies(1); // 데미지 조정 위해 올려둠
                                 }
                                 AudioManager.instance.PlaySFX("PlayerAttackEnemy");
 
-                                tempPlayer.weapon.attackEnemies(1);
+                                // tempPlayer.weapon.attackEnemies(1);
                             }
                             else
                             {
