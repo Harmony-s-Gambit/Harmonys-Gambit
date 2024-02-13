@@ -119,14 +119,16 @@ public class GameManager : MonoBehaviour
                             redPlayer.weapon.attackEnemies(1);
                             redPlayer.weapon.ClearSelector();
                             redPlayer.isMovedThisTurn = true;
+                            redPlayer.m_Animator.Play("attack", -1, 0);
                         }
 
-                        if(bluePlayer.weapon.Selector.Count != 0)
+                        if (bluePlayer.weapon.Selector.Count != 0)
                         {
                             bluePlayer.weapon.Attack = true;
                             bluePlayer.weapon.attackEnemies(1);
                             bluePlayer.weapon.ClearSelector();
                             bluePlayer.isMovedThisTurn = true;
+                            bluePlayer.m_Animator.Play("attack", -1, 0);
                         }
                     }
                     else if(isRedPlayerPlaying)
@@ -154,30 +156,52 @@ public class GameManager : MonoBehaviour
 
 
                     //공격 불가능시 이동범위 위치 찾기
-                    GameObject redDest, blueDest;
-                    redDest = redPlayer.GetNextDest();
-                    blueDest = bluePlayer.GetNextDest();
-
-                    if (!redPlayer.isMovedThisTurn && !bluePlayer.isMovedThisTurn)
+                    GameObject redDest= new GameObject();
+                    GameObject blueDest = new GameObject();
+                    if (isRedPlayerPlaying)
                     {
-                        if(redDest != blueDest) {
+                        redDest = redPlayer.GetNextDest();
+                    }
+                    if (isBluePlayerPlaying)
+                    {
+                        blueDest = bluePlayer.GetNextDest();
+                    }
+
+                    if(isBluePlayerPlaying && isBluePlayerPlaying)
+                    {
+                        if (!redPlayer.isMovedThisTurn && !bluePlayer.isMovedThisTurn)
+                        {
+                            if (redDest != blueDest)
+                            {
+                                redPlayer.MoveManage();
+                                bluePlayer.MoveManage();
+                            }
+                            else
+                            {
+                                redPlayer.Crashed(redDest, redPlayer.transform.position);
+                                redPlayer.m_Animator.Play("crash", -1, 0);
+
+                                bluePlayer.Crashed(blueDest, bluePlayer.transform.position);
+                                bluePlayer.m_Animator.Play("crash", -1, 0);
+
+                            }
+                        }
+                        else if (!redPlayer.isMovedThisTurn)
+                        {
                             redPlayer.MoveManage();
+                        }
+                        else if (!bluePlayer.isMovedThisTurn)
+                        {
                             bluePlayer.MoveManage();
                         }
-                        else
-                        {
-                            redPlayer.Crashed(redDest, redPlayer.transform.position);
-                            bluePlayer.Crashed(blueDest, bluePlayer.transform.position);
-                        }
-                    }else if (!redPlayer.isMovedThisTurn)
+                    }
+                    else if (isRedPlayerPlaying)
                     {
                         redPlayer.MoveManage();
-                    }else if (!bluePlayer.isMovedThisTurn)
+                    }else if (isBluePlayerPlaying)
                     {
                         bluePlayer.MoveManage();
                     }
-
-
                 }
             }
 

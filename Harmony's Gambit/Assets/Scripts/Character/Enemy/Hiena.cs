@@ -147,17 +147,14 @@ public class Hiena : Enemy
     public override void changeTarget(COLOR c) {
         if (c == COLOR.RED)
         {
-            Debug.Log("Touched");
             target = GameObject.Find("redPlayer(Clone)");
         }
         else
         {
-            Debug.Log("Touched");
             target = GameObject.Find("bluePlayer(Clone)");
         }
     }
     public void sepcialAttack()
     {
-        Debug.Log("Hello");
     }
 }
