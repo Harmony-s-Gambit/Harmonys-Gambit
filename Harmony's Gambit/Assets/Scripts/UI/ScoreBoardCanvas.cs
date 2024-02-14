@@ -24,12 +24,16 @@ public class ScoreBoardCanvas : MonoBehaviour
     [SerializeField] private Text[] scoreTexts;
     [SerializeField] private List<GameObject> scoreBoardThings = new List<GameObject>();
 
+    private MainUI _mainUI;
+
     private List<Text> scoreRankingNameTexts = new List<Text>();
     private List<Image> scoreRankingImages = new List<Image>();
     private List<Text> scoreRankingScoreTexts = new List<Text>();
 
     private void Start()
     {
+        _mainUI = FindObjectOfType<MainUI>();
+
         this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
@@ -55,6 +59,11 @@ public class ScoreBoardCanvas : MonoBehaviour
     public void ScoreBoard_RankingBoard()
     {
         this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+
+        if (GameObject.Find("PlayerManager").GetComponent<PlayerManager>().GameClear)
+        {
+            this.transform.GetChild(1).transform.GetChild(6).gameObject.SetActive(true);
+        } 
 
         LoadRanking();
     }
@@ -129,6 +138,24 @@ public class ScoreBoardCanvas : MonoBehaviour
             }
             txt.text = num.ToString();
         }
+    }
+
+    public void LoadingNextStageButton()
+    {
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+
+        if (StageInfo.instance.GetStageName() == "Stage1")
+        {
+            StageInfo.instance.SetStageName("BossStage1");
+        }
+
+        SceneManager.LoadScene("LoadingScene");
+        Destroy(GameObject.Find("Managers"));
+        Destroy(GameObject.Find("MainCanvas"));
+        Destroy(GameObject.Find("ScoreBoardCanvas"));
+        //GameOver_MainButton();
     }
 
     //json ¿˙¿Â
