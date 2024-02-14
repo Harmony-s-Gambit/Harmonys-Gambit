@@ -10,6 +10,12 @@ public class LoadingNextStage : MonoBehaviour
     {
         _mainUI = FindObjectOfType<MainUI>();
 
+        StartCoroutine(NextStageDelay());
+    }
+
+    IEnumerator NextStageDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
         _mainUI.NextStage(StageInfo.instance.GetStageName());
     }
 }
