@@ -83,7 +83,7 @@ public class Bear : Enemy
                 {
                     dashDirection = DIRECTION.UP;
                 }
-                dashChargeTurn = 2;
+                dashChargeTurn = 4;
                 direction = DIRECTION.STAY;
                 dash = true;
                 return GameObject.Find(x + "_" + y);
@@ -98,7 +98,7 @@ public class Bear : Enemy
                 {
                     dashDirection = DIRECTION.LEFT;
                 }
-                dashChargeTurn = 2;
+                dashChargeTurn = 4;
                 direction = DIRECTION.STAY;
                 dash = true;
                 return GameObject.Find(x + "_" + y);
