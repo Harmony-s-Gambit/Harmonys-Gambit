@@ -106,7 +106,7 @@ public class BGMJson : MonoBehaviour
                                                                  120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120 }; //162
         //bgmJsonFiles[discoHeart].beatList = new List<double>() { 120, 120, 120, 120 };
         bgmJsonFiles[discoHeart].beatAfterTimeOver = 60;
-        bgmJsonFiles[discoHeart].bgmNameAfterTimeOver = "BGM1";
+        bgmJsonFiles[discoHeart].bgmNameAfterTimeOver = "DiscoHeart";
         string jsondata = JsonUtility.ToJson(bgmJsonFiles[discoHeart]);
         bgmJsonFiles[discoHeart] = JsonUtility.FromJson<BGMJsonFile>(jsondata);
     }

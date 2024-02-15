@@ -138,7 +138,6 @@ public class MainUI : MonoBehaviour
         _structureManager.MakeStructure();
         _playerManager.MakePlayer();
         _enemyManager.MakeEnemy();
-
         
         _timingManager.SetStart();
         _missArea.SetStart();
@@ -157,11 +156,10 @@ public class MainUI : MonoBehaviour
         }
         catch (System.Exception) { }
 
-
         StartCoroutine(GameStartSetting());
         _gameManager.SetStart();
         panels[2].SetActive(false);
-        //panels[5].SetActive(true); //이퀄라이저 켜기
+        panels[5].SetActive(true); //이퀄라이저 켜기
 
         GridSlotInfo[] slots = FindObjectsOfType<GridSlotInfo>();
         for (int i = 0; i < slots.Length; i++)
