@@ -59,10 +59,15 @@ public class ScoreManager : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>();
         _playerManager = FindObjectOfType<PlayerManager>();
 
-        comboEffect = GameObject.Find("combo_effect");
-        combo100Effect = GameObject.Find("100combo_effect_0");
-        comboEffect.SetActive(false);
-        combo100Effect.SetActive(false);
+        
+        try
+        {
+            comboEffect = GameObject.Find("combo_effect");
+            combo100Effect = GameObject.Find("100combo_effect_0");
+            comboEffect.SetActive(false);
+            combo100Effect.SetActive(false);
+        }
+        catch (System.Exception) { }
     }
 
     private void Update()

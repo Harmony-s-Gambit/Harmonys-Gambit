@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource _bgmPlayer;
     [SerializeField] AudioSource[] _sfxPlayer;
 
+    private bool isPaused = false;
+
     private void Start()
     {
         instance = this;
@@ -35,6 +37,62 @@ public class AudioManager : MonoBehaviour
             if (ScoreManager.instance.currentTime > ScoreManager.instance.time && !_bgmPlayer.isPlaying)
             {
                 PlayBGM(NoteManager.instance.currentBgmNameAfterTimeOver);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_gameManager.isGameStart)
+            {
+                if (isPaused)
+                {
+                    _bgmPlayer.UnPause();
+                    FindObjectOfType<NoteManager>().SetIsPaused(false);
+                    FindObjectOfType<PlayerController>().SetIsPaused(false);
+
+                    Note[] tmp_1 = FindObjectsOfType<Note>();
+                    for (int i = 0; i < tmp_1.Length; i++)
+                    {
+                        tmp_1[i].SetNoteSpeed(500);
+                    }
+
+                    Note2[] tmp_2 = FindObjectsOfType<Note2>();
+                    for (int i = 0; i < tmp_2.Length; i++)
+                    {
+                        tmp_2[i].SetNoteSpeed(500);
+                    }
+
+                    NoteIn[] tmp_3 = FindObjectsOfType<NoteIn>();
+                    for (int i = 0; i < tmp_3.Length; i++)
+                    {
+                        tmp_3[i].SetNoteSpeed(500);
+                    }
+                }
+                else
+                {
+                    _bgmPlayer.Pause();
+                    FindObjectOfType<NoteManager>().SetIsPaused(true);
+                    FindObjectOfType<PlayerController>().SetIsPaused(true);
+
+                    Note[] tmp_1 = FindObjectsOfType<Note>();
+                    for (int i = 0; i < tmp_1.Length; i++)
+                    {
+                        tmp_1[i].SetNoteSpeed(0);
+                    }
+
+                    Note2[] tmp_2 = FindObjectsOfType<Note2>();
+                    for (int i = 0; i < tmp_2.Length; i++)
+                    {
+                        tmp_2[i].SetNoteSpeed(0);
+                    }
+
+                    NoteIn[] tmp_3 = FindObjectsOfType<NoteIn>();
+                    for (int i = 0; i < tmp_3.Length; i++)
+                    {
+                        tmp_3[i].SetNoteSpeed(0);
+                    }
+                }
+                isPaused = !isPaused;
             }
         }
     }

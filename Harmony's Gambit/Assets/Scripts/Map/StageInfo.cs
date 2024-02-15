@@ -6,7 +6,7 @@ public class StageInfo : MonoBehaviour
 {
     public static StageInfo instance;
 
-    private string StageName = "Stage1";
+    public string StageName = "Stage1";
 
     private void Start()
     {
@@ -15,6 +15,18 @@ public class StageInfo : MonoBehaviour
 
     private void Awake()
     {
+        var obj = FindObjectsOfType<StageInfo>();
+
+        //print(obj.Length);
+
+        if (obj.Length != 1)
+        {
+            
+        }
+        else
+        {
+            
+        }
         DontDestroyOnLoad(gameObject);
     }
 

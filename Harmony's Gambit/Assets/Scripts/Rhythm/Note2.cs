@@ -64,4 +64,9 @@ public class Note2 : MonoBehaviour
             yield return null;
         }
     }
+
+    public void SetNoteSpeed(int _speed) //±âº» 500
+    {
+        _noteSpeed = _speed;
+    }
 }

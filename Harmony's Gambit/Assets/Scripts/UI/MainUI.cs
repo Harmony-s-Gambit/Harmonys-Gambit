@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainUI : MonoBehaviour
 {
-    [SerializeField] GameObject[] panels;
+    [SerializeField] public GameObject[] panels;
     [SerializeField] GameObject[] buttons;
     private GameManager _gameManager;
     private SightManager _sightManager;
@@ -83,10 +83,20 @@ public class MainUI : MonoBehaviour
         StartCoroutine(MapDelay());
     }
 
+    public void NextStage(string _nextStage) //
+    {
+        AudioManager.instance.PlaySFX("Start");
+        panels[0].SetActive(false);
+        panels[3].SetActive(true);
+
+        SceneManager.LoadScene("Stage");
+        StartCoroutine(MapDelay());
+    }
+
     IEnumerator MapDelay()
     {
         float timer = 0f;
-
+        
         while (progressBar.fillAmount < 1f)
         {
             yield return null;
@@ -141,7 +151,11 @@ public class MainUI : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         panels[3].SetActive(false);
-
+        try
+        {
+            GameObject.Find("LoadingImage").SetActive(false);
+        }
+        catch (System.Exception) { }
 
 
         StartCoroutine(GameStartSetting());

@@ -229,4 +229,9 @@ public class Player : Character
     {
 
     }
+
+    private void OnDestroy()
+    {
+        _gameManager.players.Clear();
+    }
 }
