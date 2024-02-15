@@ -19,9 +19,10 @@ public class Bear : Enemy
     public override void Start()
     {
         base.Start();
+        gameObject.transform.FindChild("DashRoute").gameObject.SetActive(false);
         pattern = new DIRECTION[1];
         pattern[0] = DIRECTION.STAY;
-        //≥™¡ﬂø° 3x3(¿⁄Ω≈ ¡÷∫Ø¿∏∑Œ) ∞¯∞›«œ¥¬ π´±‚∏¶ ≥÷¿ª ∞Ã¥œ¥Ÿ. ø‰±‚¥Ÿ∞° ¿˚øÎ
+        //ÎÇòÏ§ëÏóê 3x3(ÏûêÏã† Ï£ºÎ≥ÄÏúºÎ°ú) Í≥µÍ≤©ÌïòÎäî Î¨¥Í∏∞Î•º ÎÑ£ÏùÑ Í≤ÅÎãàÎã§. ÏöîÍ∏∞Îã§Í∞Ä Ï†ÅÏö©
         weapon = gameObject.AddComponent<Fist>();
         weapon.Start();
         weapon.equiper = gameObject;
@@ -52,15 +53,16 @@ public class Bear : Enemy
 
     public override GameObject GetNextDest()
     {
+        
         if(barrier.Count != 0)
         {
             if(barrier.Peek() == COLOR.RED)
             {
-                target = GameObject.Find("redPlayer(Clone)");
+                target = GameObject.Find("bluePlayer(Clone)");
             }
             else
             {
-                target = GameObject.Find("bluePlayer(Clone)");
+                target = GameObject.Find("redPlayer(Clone)");
             }
         }
 
@@ -78,10 +80,24 @@ public class Bear : Enemy
                 if(target.GetComponent<Player>().y > this.y)
                 {
                     dashDirection = DIRECTION.DOWN;
+                    gameObject.transform.FindChild("DashRoute").gameObject.SetActive(true);
+                    Vector3 v = new Vector3();
+                    v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y -200; v.z = gameObject.transform.position.z;
+                    gameObject.transform.FindChild("DashRoute").position = v;
+                    Quaternion w = new Quaternion();
+                    w.x = 0; w.y = 0; w.z = 90;
+                    gameObject.transform.FindChild("DashRoute").transform.rotation = w;
                 }
                 else
                 {
                     dashDirection = DIRECTION.UP;
+                    gameObject.transform.FindChild("DashRoute").gameObject.SetActive(true);
+                    Vector3 v = new Vector3();
+                    v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y +200; v.z = gameObject.transform.position.z;
+                    gameObject.transform.FindChild("DashRoute").position = v;
+                    Quaternion w = new Quaternion();
+                    w.x = 0; w.y = 0; w.z = -90;
+                    gameObject.transform.FindChild("DashRoute").transform.rotation = w;
                 }
                 dashChargeTurn = 4;
                 direction = DIRECTION.STAY;
@@ -93,10 +109,24 @@ public class Bear : Enemy
                 if(target.GetComponent<Player>().x > this.x)
                 {
                     dashDirection = DIRECTION.RIGHT;
+                    gameObject.transform.FindChild("DashRoute").gameObject.SetActive(true);
+                    Vector3 v = new Vector3();
+                    v.x = gameObject.transform.position.x + 200; v.y = gameObject.transform.position.y; v.z = gameObject.transform.position.z;
+                    gameObject.transform.FindChild("DashRoute").position = v;
+                    Quaternion w = new Quaternion();
+                    w.x = 0; w.y = 0; w.z = 180;
+                    gameObject.transform.FindChild("DashRoute").transform.rotation = w;
                 }
                 else
                 {
                     dashDirection = DIRECTION.LEFT;
+                    gameObject.transform.FindChild("DashRoute").gameObject.SetActive(true);
+                    Vector3 v = new Vector3();
+                    v.x = gameObject.transform.position .x - 200; v.y = gameObject.transform.position.y; v.z = gameObject.transform.position.z;
+                    gameObject.transform.FindChild("DashRoute").position = v;
+                    Quaternion w = new Quaternion();
+                    w.x = 0; w.y = 0; w.z = 0;
+                    gameObject.transform.FindChild("DashRoute").transform.rotation = w;
                 }
                 dashChargeTurn = 4;
                 direction = DIRECTION.STAY;
@@ -204,7 +234,9 @@ public class Bear : Enemy
                         break;
                     }
             }
+
             GameObject movementPoint = GameObject.Find((x) + "_" + (y));
+            GameObject forThrifting = movementPoint;
 
             dashAttackRange.Push(movementPoint.GetComponent<GridSlotInfo>());
             try
@@ -271,12 +303,15 @@ public class Bear : Enemy
 
             x = x + movingDistance * movement[0];
             y = y + movingDistance * movement[1];
+
+
             Move(GameObject.Find(x + "_" + y));
 
 
             dash = false;
             dashCount = 0;
             dashAttackRange.Clear();
+            gameObject.transform.FindChild("DashRoute").gameObject.SetActive(false);
         }
     }
 }

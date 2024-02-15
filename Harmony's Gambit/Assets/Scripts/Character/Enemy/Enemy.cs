@@ -111,7 +111,10 @@ public class Enemy : Character
         currentBlock.GetComponent<GridSlotInfo>().occupyingCharacter = null;
         nextDest.GetComponent<GridSlotInfo>().occupyingCharacter = gameObject;
         currentBlock = nextDest;
+
         gameObject.transform.position = currentBlock.transform.position;
+
+
         switch (direction)
         {
             case DIRECTION.UP:
