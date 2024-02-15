@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private const int p1 = 1;
     private const int p2 = 2;
 
+    private bool isPaused = false;
+
     private void Start()
     {
         _timingManager = FindObjectOfType<TimingManager>();
@@ -18,44 +20,52 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (_gameManager.isBluePlayerPlaying)
+        if (!isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (_gameManager.isBluePlayerPlaying)
             {
-                _timingManager.CheckTiming(p2, "W");
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    _timingManager.CheckTiming(p2, "W");
+                }
+                else if (Input.GetKeyDown(KeyCode.A))
+                {
+                    _timingManager.CheckTiming(p2, "A");
+                }
+                else if (Input.GetKeyDown(KeyCode.S))
+                {
+                    _timingManager.CheckTiming(p2, "S");
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    _timingManager.CheckTiming(p2, "D");
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.A))
-            {
-                _timingManager.CheckTiming(p2, "A");
-            }
-            else if (Input.GetKeyDown(KeyCode.S))
-            {
-                _timingManager.CheckTiming(p2, "S");
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                _timingManager.CheckTiming(p2, "D");
-            }
-        }
 
-        if (_gameManager.isRedPlayerPlaying)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (_gameManager.isRedPlayerPlaying)
             {
-                _timingManager.CheckTiming(p1, "Up");
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                _timingManager.CheckTiming(p1, "Down");
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                _timingManager.CheckTiming(p1, "Right");
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                _timingManager.CheckTiming(p1, "Left");
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    _timingManager.CheckTiming(p1, "Up");
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    _timingManager.CheckTiming(p1, "Down");
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    _timingManager.CheckTiming(p1, "Right");
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    _timingManager.CheckTiming(p1, "Left");
+                }
             }
         }
+    }
+
+    public void SetIsPaused(bool _bool)
+    {
+        isPaused = _bool;
     }
 }

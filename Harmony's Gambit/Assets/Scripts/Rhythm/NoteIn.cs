@@ -17,4 +17,9 @@ public class NoteIn : MonoBehaviour
     {
         transform.localPosition += Vector3.right * _noteSpeed * Time.deltaTime;
     }
+
+    public void SetNoteSpeed(int _speed) //±âº» 500
+    {
+        _noteSpeed = _speed;
+    }
 }
