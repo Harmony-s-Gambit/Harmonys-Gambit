@@ -62,14 +62,26 @@ public class MainUI : MonoBehaviour
 
     public void Main_CreditButton()
     {
-        panels[0].SetActive(false);
+        //panels[0].SetActive(false);
         panels[4].SetActive(true);
     }
 
     public void Credit_MainButton()
     {
         panels[4].SetActive(false);
-        panels[0].SetActive(true);
+        //panels[0].SetActive(true);
+    }
+
+    public void Main_TestSettingButton()
+    {
+        //panels[0].SetActive(false);
+        panels[6].SetActive(true);
+    }
+
+    public void TestSetting_MainButton()
+    {
+        panels[6].SetActive(false);
+        //panels[0].SetActive(true);
     }
 
     public void GamePlay1Button() //게임 플레이 시 설정, 노트 생성 시작, 즉 게임 시작 버튼
@@ -79,6 +91,18 @@ public class MainUI : MonoBehaviour
         panels[3].SetActive(true);
 
         StageInfo.instance.SetStageName("Stage1");
+        SceneManager.LoadScene("Stage");
+        StartCoroutine(MapDelay());
+    }
+
+    public void TestPlayButton() //보스 스테이지 바로가기 버튼
+    {
+        panels[6].SetActive(false);
+        AudioManager.instance.PlaySFX("Start");
+        panels[0].SetActive(false);
+        panels[3].SetActive(true);
+
+        StageInfo.instance.SetStageName("BossStage1");
         SceneManager.LoadScene("Stage");
         StartCoroutine(MapDelay());
     }

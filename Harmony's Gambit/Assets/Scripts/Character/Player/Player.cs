@@ -24,6 +24,7 @@ public class Player : Character
         m_Animator = GetComponent<Animator>();
         m_Animator.SetTrigger("idle");
 
+        HP = 4;
         beforeHP = HP;
         
         weapon = gameObject.AddComponent<Fist>();

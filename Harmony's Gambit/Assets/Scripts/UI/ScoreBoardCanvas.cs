@@ -62,10 +62,16 @@ public class ScoreBoardCanvas : MonoBehaviour
 
         if (GameObject.Find("PlayerManager").GetComponent<PlayerManager>().GameClear)
         {
-            this.transform.GetChild(1).transform.GetChild(6).gameObject.SetActive(true);
-        } 
+            StartCoroutine(NextStageButtonDelay());
+        }
 
         LoadRanking();
+    }
+
+    IEnumerator NextStageButtonDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        this.transform.GetChild(1).transform.GetChild(6).gameObject.SetActive(true);
     }
 
     public void RankingBoard_ScoreBoard()

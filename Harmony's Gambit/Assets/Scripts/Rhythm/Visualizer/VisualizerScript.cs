@@ -22,12 +22,17 @@ public class VisualizerScript : MonoBehaviour
     [SerializeField]
     AudioSource m_audioSource;
 
+    private float coefficient = 10f;
+    private float previousVol = 0;
+
     void Start()
     {
         instance = this;
         _gameManager = FindObjectOfType<GameManager>();
 
         visualizerObjects = GetComponentsInChildren<VisualizerObjectScript>();
+
+        previousVol = m_audioSource.volume;
 
         //if (!audioClip)
         //{
@@ -40,10 +45,13 @@ public class VisualizerScript : MonoBehaviour
         //m_audioSource.volume = 0.1f;
         //m_audioSource.Play();
 
+        coefficient = 0.0015f * (m_audioSource.volume * 100 - 100) * (m_audioSource.volume * 100 - 100) + 1;
     }
 
     void Update()
     {
+        coefficient = 0.0015f * (m_audioSource.volume * 100 - 100) * (m_audioSource.volume * 100 - 100) + 1;
+
         if (_gameManager.isGameStart)
         {
             float[] spectrumData = m_audioSource.GetSpectrumData(visualizerSimples, 0, FFTWindow.Rectangular);
@@ -52,7 +60,7 @@ public class VisualizerScript : MonoBehaviour
             {
                 Vector2 newSize = visualizerObjects[i].GetComponent<RectTransform>().rect.size;
 
-                newSize.y = Mathf.Clamp(Mathf.Lerp(newSize.y, minHeight + (spectrumData[i] * (maxHeight - minHeight) * 0.5f) * (i + 1) * 10, updateSenstivity), minHeight, maxHeight);
+                newSize.y = Mathf.Clamp(Mathf.Lerp(newSize.y, minHeight + (spectrumData[i] * (maxHeight - minHeight) * 0.5f) * (i + 1) * coefficient, updateSenstivity), minHeight, maxHeight);
                 //newSize.y = Mathf.Clamp(Mathf.Lerp(newSize.y, minHeight + (spectrumData[i] * (maxHeight - minHeight) * 0.5f) * 100, updateSenstivity), minHeight, maxHeight);
                 visualizerObjects[i].GetComponent<RectTransform>().sizeDelta = newSize;
 
