@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2731280355551971715}
   m_Layer: 0
-  m_Name: Stage1
+  m_Name: Stage1_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6042,7 +6042,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 101
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.0011110902, y: 0, z: 0}
   m_MaxChunkCount: 16

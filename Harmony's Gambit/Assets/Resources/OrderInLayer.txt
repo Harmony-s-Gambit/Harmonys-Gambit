@@ -7,7 +7,7 @@ NextStageDoor 100
 
 Sorting Layer: Map
 바닥 -10
-위쪽벽 0
+위쪽벽 1
 레드플레이어 3~21
 블루플레이어 1~11
 아래쪽벽 100
