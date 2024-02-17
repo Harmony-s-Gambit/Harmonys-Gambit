@@ -207,6 +207,18 @@ public class MainUI : MonoBehaviour
         _sightManager.rhythm = true;
     }
 
+    private string GetNextStageName(string _stage)
+    {
+        if (_stage == "Stage1_1")
+        {
+            return "Stage1_1_" + Random.Range(1, 3).ToString(); //스테이지 추가 시 랜덤 수 변경 필요
+        }
+        else
+        {
+            return "";
+        }
+    }
+
     IEnumerator GameStartSetting()
     {
         _gameManager.isGameStart = true;
