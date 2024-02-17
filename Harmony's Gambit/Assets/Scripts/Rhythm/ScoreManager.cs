@@ -18,6 +18,11 @@ public class ScoreManager : MonoBehaviour
     public int totalScore = 0;
     private int beatListCount = 0;
 
+    //타이머
+    private Text timerText;
+    private bool isTimerStarted = false; //첫 노트 통과 시 타이머 시작
+    private double currentTimerTime = 0; //타이머의 시간
+
     //노트 점수
     private int[] noteScore = new int[] { 2000, 1500, 0, -1000, -1500, -3000 }; // 차례대로 타임오버 이전 노트 2개 1개 0개, 타임 오버 이후 노트 2개 1개 0개 입력 시 얻는 점수
 
@@ -66,6 +71,8 @@ public class ScoreManager : MonoBehaviour
             combo100Effect = GameObject.Find("100combo_effect_0");
             comboEffect.SetActive(false);
             combo100Effect.SetActive(false);
+
+            timerText = GameObject.Find("TimerText").GetComponent<Text>();
         }
         catch (System.Exception) { }
     }
@@ -90,6 +97,44 @@ public class ScoreManager : MonoBehaviour
             //print(_gameManager.redPlayer.HP);
             //print(currentCombo);
             rhythm = false;
+        }
+
+        if (isTimerStarted)
+        {
+            currentTimerTime -= Time.deltaTime;
+            timerText.text = WhatTImeInTimer(currentTimerTime);
+        }
+    }
+
+    public void SetIsTimerStarted(bool _bool)
+    {
+        isTimerStarted = _bool;
+    }
+
+    private string WhatTImeInTimer(double _time)
+    {
+        int min = 0;
+        
+        for (int i = 0; _time >= 60; i++)
+        {
+            if (_time >= 60d)
+            {
+                min++;
+                _time -= 60d;
+            }
+        }
+
+        if (_time < 0)
+        {
+            return "00:00";
+        }
+        else if (_time < 10)
+        {
+            return min.ToString() + ":0" + ((int)_time).ToString();
+        }
+        else
+        {
+            return min.ToString() + ":" + ((int)_time).ToString();
         }
     }
 
@@ -142,6 +187,8 @@ public class ScoreManager : MonoBehaviour
         totalScore = 0;
         isTimeOver = false;
         beatListCount = NoteManager.instance.currentBeatList.Count;
+        currentTimerTime = NoteManager.instance.time;
+        timerText.text = WhatTImeInTimer(currentTimerTime);
     }
 
     public void KillScore(int score)

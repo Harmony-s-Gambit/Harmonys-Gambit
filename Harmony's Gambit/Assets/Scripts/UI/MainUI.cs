@@ -173,16 +173,22 @@ public class MainUI : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
 
-        panels[3].SetActive(false);
+        panels[3].SetActive(false); 
+
         try
         {
             GameObject.Find("LoadingImage").SetActive(false);
         }
-        catch (System.Exception) { }
+        catch (System.Exception) { } //로딩 화면 끄기
+
+
+        //이부분
+
+        //게임 시작
 
         StartCoroutine(GameStartSetting());
         _gameManager.SetStart();
-        panels[2].SetActive(false);
+        //panels[2].SetActive(false);
         panels[5].SetActive(true); //이퀄라이저 켜기
 
         GridSlotInfo[] slots = FindObjectsOfType<GridSlotInfo>();

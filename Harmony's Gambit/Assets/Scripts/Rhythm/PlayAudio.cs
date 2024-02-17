@@ -29,6 +29,7 @@ public class PlayAudio : MonoBehaviour
                     {
                         AudioManager.instance.PlayBGM(NoteManager.instance.currentBGM);
                         _isMusiceStart = true;
+                        FindObjectOfType<ScoreManager>().SetIsTimerStarted(true);
                     }
                 }
             }
@@ -38,6 +39,7 @@ public class PlayAudio : MonoBehaviour
                 {
                     AudioManager.instance.PlayBGM(NoteManager.instance.currentBGM, NoteManager.instance.delay * -1);
                     _isMusiceStart = true;
+                    FindObjectOfType<ScoreManager>().SetIsTimerStarted(true);
                 }
             }
         }

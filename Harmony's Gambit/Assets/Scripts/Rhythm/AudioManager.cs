@@ -140,4 +140,9 @@ public class AudioManager : MonoBehaviour
         print("해당 이름의 효과음이 없습니다.");
         return;
     }
+
+    public void SetIsPaused(bool _bool)
+    {
+        isPaused = true;
+    }
 }
