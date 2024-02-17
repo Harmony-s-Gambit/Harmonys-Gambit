@@ -63,30 +63,37 @@ public class Hiena : Enemy
     {
         if (isSleep)
         {
-            if(target.GetComponent<Player>().color == COLOR.RED)
+            if(color == COLOR.PURPLE)
             {
-                if (GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>().redDistance <= 4)
+                if(GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>().redDistance <= 4)
                 {
+                    target = GameObject.Find("redPlayer(Clone)");
+                    isSleep = false;
+                }else if(GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>().blueDistance <= 4)
+                {
+                    target = GameObject.Find("bluePlayer(Clone)");
                     isSleep = false;
                 }
                 else
                 {
                     return GameObject.Find(x + "_" + y);
                 }
-
-            }
-            if (target.GetComponent<Player>().color == COLOR.BLUE)
+            }else if(color == COLOR.RED)
             {
-                if (GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>().blueDistance <= 4)
+                if(GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>().blueDistance <= 4 || GameObject.Find(x+"_"+y).GetComponent<GridSlotInfo>().redDistance <=4)
                 {
+                    target = GameObject.Find("bluePlayer(Clone)");
                     isSleep = false;
                 }
-                else
+            }else if(color == COLOR.BLUE)
+            {
+                if (GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>().blueDistance <= 4 || GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>().redDistance <= 4)
                 {
-                    return GameObject.Find(x + "_" + y);
+                    target = GameObject.Find("redPlayer(Clone)");
+                    isSleep = false;
                 }
-
             }
+
         }
 
         if (dontMove)

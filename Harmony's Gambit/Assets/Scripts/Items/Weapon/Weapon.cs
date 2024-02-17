@@ -94,9 +94,11 @@ public abstract class Weapon : MonoBehaviour
                     if(Selector[i].GetComponent<Enemy>().barrier.Count != 0)
                     {
                         Selector[i].GetComponent<Enemy>().barrier.Pop();
+                        Selector[i].GetComponent<Enemy>().isAttacked = true;
                     }
                     else {
                         Selector[i].GetComponent<Enemy>().HP -= damage;
+                        Selector[i].GetComponent<Enemy>().isAttacked = true;
                     }
                 }
                 else if (Selector[i].tag.Contains("Player") && !playerWeapon)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : Character
 {
     public bool death = false;
+    public bool isAttacked = false;
     protected DIRECTION[] pattern;
     protected int _directionIdx;
     protected int beforeHP;

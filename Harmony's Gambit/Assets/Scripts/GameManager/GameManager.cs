@@ -225,17 +225,27 @@ public class GameManager : MonoBehaviour
             foreach (GameObject enemy in enemies)
             {
                 Enemy tempEnemy = enemy.GetComponent<Enemy>();
-                tempEnemy.weapon.targetEnemies(tempEnemy.direction, tempEnemy.x, tempEnemy.y, COLOR.PURPLE);
-                if (tempEnemy.weapon.Selector.Count != 0)
+                if (tempEnemy.HP > 0)
                 {
-                    tempEnemy.weapon.Attack = true;
-                    tempEnemy.weapon.attackEnemies(1);
-                    tempEnemy.isMovedThisTurn = true;
-                }
-                tempEnemy.weapon.ClearSelector();
-                if (!tempEnemy.isMovedThisTurn)
-                {
-                    tempEnemy.MoveManage();
+                    tempEnemy.weapon.targetEnemies(tempEnemy.direction, tempEnemy.x, tempEnemy.y, COLOR.PURPLE);
+                    if (tempEnemy.weapon.Selector.Count != 0)
+                    {
+                        if (!tempEnemy.GetComponent<Enemy>().isAttacked)
+                        {
+                            tempEnemy.weapon.Attack = true;
+                            tempEnemy.weapon.attackEnemies(1);
+                            tempEnemy.isMovedThisTurn = true;
+                        }
+                        else
+                        {
+                            tempEnemy.GetComponent<Enemy>().isAttacked = false;
+                        }
+                    }
+                    tempEnemy.weapon.ClearSelector();
+                    if (!tempEnemy.isMovedThisTurn)
+                    {
+                        tempEnemy.MoveManage();
+                    }
                 }
             }
 
