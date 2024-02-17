@@ -68,8 +68,8 @@
       "color": "PURPLE",
       "type": "DOOR_NEXTSTAGE",
       "id": 0,
-      "x": 20,
-      "y": 0,
+      "x": 10,
+      "y": 10,
       "direction": 0
     }
   ]

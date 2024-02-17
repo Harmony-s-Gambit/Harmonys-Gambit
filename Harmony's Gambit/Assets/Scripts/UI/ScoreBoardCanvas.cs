@@ -152,7 +152,7 @@ public class ScoreBoardCanvas : MonoBehaviour
         this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
 
-        if (StageInfo.instance.GetStageName() == "Stage1")
+        if (StageInfo.instance.GetStageName().Contains("Stage1_1_"))
         {
             StageInfo.instance.SetStageName("BossStage1");
         }

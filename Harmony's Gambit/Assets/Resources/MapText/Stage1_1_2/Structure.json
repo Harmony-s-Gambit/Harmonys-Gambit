@@ -1,4 +1,76 @@
 {
   "structures": [
+{
+      "color": "PURPLE",
+      "type": "DOOR_SIMULTANEOUS",
+      "id": 1,
+      "x": 13,
+      "y": 11,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_1",
+      "id": 1,
+      "x": 12,
+      "y": 12,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_2",
+      "id": 1,
+      "x": 14,
+      "y": 12,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_3",
+      "id": 1,
+      "x": 14,
+      "y": 10,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "DOOR_SIMULTANEOUS",
+      "id": 2,
+      "x": 4,
+      "y": 6,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_1",
+      "id": 2,
+      "x": 3,
+      "y": 7,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_2",
+      "id": 2,
+      "x": 5,
+      "y": 7,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_3",
+      "id": 2,
+      "x": 5,
+      "y": 5,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "DOOR_NEXTSTAGE",
+      "id": 0,
+      "x": 5,
+      "y": 0,
+      "direction": 0
+    }
   ]
 }

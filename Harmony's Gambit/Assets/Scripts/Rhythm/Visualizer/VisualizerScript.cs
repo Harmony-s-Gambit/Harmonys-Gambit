@@ -19,11 +19,9 @@ public class VisualizerScript : MonoBehaviour
     public int visualizerSimples = 64;
 
     VisualizerObjectScript[] visualizerObjects;
-    [SerializeField]
-    AudioSource m_audioSource;
+    [SerializeField] AudioSource m_audioSource;
 
     private float coefficient = 10f;
-    private float previousVol = 0;
 
     void Start()
     {
@@ -31,8 +29,6 @@ public class VisualizerScript : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>();
 
         visualizerObjects = GetComponentsInChildren<VisualizerObjectScript>();
-
-        previousVol = m_audioSource.volume;
 
         //if (!audioClip)
         //{
