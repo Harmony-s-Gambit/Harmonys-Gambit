@@ -2,7 +2,7 @@ Sorting Layer: Default
 맵의 배경 -100
 아이템 0
 대부분의 구조물 0
-Door 100
+Door 0
 NextStageDoor 100
 
 Sorting Layer: Map
