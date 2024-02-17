@@ -200,10 +200,18 @@ public class GameManager : MonoBehaviour
                     }
                     else if (isRedPlayerPlaying)
                     {
-                        redPlayer.MoveManage();
-                    }else if (isBluePlayerPlaying)
+                        try
+                        {
+                            redPlayer.MoveManage();
+                        }catch(Exception e) { }
+                    }
+                    else if (isBluePlayerPlaying)
                     {
-                        bluePlayer.MoveManage();
+                            try
+                            {
+                                bluePlayer.MoveManage();
+                            }
+                            catch (Exception e) { }
                     }
                 }
             }

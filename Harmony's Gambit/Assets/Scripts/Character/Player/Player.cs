@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
+using System;
 
 public class Player : Character
 {
@@ -171,29 +172,43 @@ public class Player : Character
         {
             return false;
         }
-        GameObject nextDest = GetNextDest();
-        isMovedThisTurn = true;
-        GameObject whosOnDest = nextDest.GetComponent<GridSlotInfo>().occupyingCharacter;
-        if (nextDest.GetComponent<GridSlotInfo>().blockType == BLOCKTYPE.WALL)
+        try
         {
-            return false;
-        }
-        else if (whosOnDest == null)
-        {
-            Move(nextDest);
-            return true;
-        }
-        else
-        {
-            if (whosOnDest.GetComponent<Character>().MoveManage())
+            GameObject nextDest = GetNextDest();
+            isMovedThisTurn = true;
+            GameObject whosOnDest = new GameObject();
+            try
+            {
+                whosOnDest = nextDest.GetComponent<GridSlotInfo>().occupyingCharacter;
+            }
+            catch (Exception e)
+            {
+
+            }
+            if (nextDest.GetComponent<GridSlotInfo>().blockType == BLOCKTYPE.WALL)
+            {
+                return false;
+            }
+            else if (whosOnDest == null)
             {
                 Move(nextDest);
                 return true;
             }
             else
             {
-                return false;
+                if (whosOnDest.GetComponent<Character>().MoveManage())
+                {
+                    Move(nextDest);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+        }catch(Exception e)
+        {
+            return false;
         }
     }
 
