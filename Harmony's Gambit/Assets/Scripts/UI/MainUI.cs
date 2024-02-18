@@ -90,7 +90,7 @@ public class MainUI : MonoBehaviour
         panels[0].SetActive(false);
         panels[3].SetActive(true);
 
-        StageInfo.instance.SetStageName("Stage1_1_1");
+        StageInfo.instance.SetStageName(GetNextStageName("Stage1_1"));
         SceneManager.LoadScene("Stage");
         StartCoroutine(MapDelay());
     }
