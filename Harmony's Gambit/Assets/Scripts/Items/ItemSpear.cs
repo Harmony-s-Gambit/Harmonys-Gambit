@@ -24,6 +24,8 @@ public class ItemSpear : RedPlayerItem
             playerWeapon.playerWeapon = true;
             playerWeapon.equiper = other.gameObject;
             //weapon.equiper = gameObject; >>> why exist?
+
+            //PlayerPrefs.SetInt("hasSpear", 1);
         }
     }
 }

@@ -12,6 +12,8 @@ public class ItemManager : MonoBehaviour
 
     GameManager gm;
 
+    private string stageInfo;
+
     public class ItemStat
     {
         [JsonConverter(typeof(StringEnumConverter))]
@@ -55,15 +57,43 @@ public class ItemManager : MonoBehaviour
             gm.items.Add(temp);
         }
 
+
         // weapon generate seperately
+        stageInfo = FindObjectOfType<StageInfo>().GetStageName();
         GameObject w1;
         GameObject w2;
         GameObject w3;
-        GameObject w4;
-        GameObject w5;
+
         w1 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/sweeper"));
         w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/spear"));
         w3 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/collar"));
+        
+        if (stageInfo == "Stage1_1_1")
+        {
+            w1.GetComponent<Item>().initPosition(6, 18);
+            w2.GetComponent<Item>().initPosition(24, 9);
+            w3.GetComponent<Item>().initPosition(1, 10);
+
+        }
+        else if (stageInfo == "Stage1_1_2")
+        {
+            w1.GetComponent<Item>().initPosition(1, 9);
+            w2.GetComponent<Item>().initPosition(22, 9);
+            w3.GetComponent<Item>().initPosition(13, 3);
+        }
+        else if (stageInfo == "Stage1_1_3")
+        {
+            w1.GetComponent<Item>().initPosition(11, 17);
+            w2.GetComponent<Item>().initPosition(24, 14);
+            w3.GetComponent<Item>().initPosition(3, 11);
+        }
+        else // boss
+        {
+
+        }
+
+        // 스테이지 전환 시 보존 될 습득 아이템 저장데이터 초기화
+
 
         // w1.GetComponent<Item>().initPosition(10, 14);
         // w2.GetComponent<Item>().initPosition(11, 14);

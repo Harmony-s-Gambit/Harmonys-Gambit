@@ -26,6 +26,8 @@ public class ItemSweeper : RedPlayerItem
             playerWeapon.playerWeapon = true;
             playerWeapon.equiper = other.gameObject;
             //weapon.equiper = gameObject; >>> why exist?
+
+            //PlayerPrefs.SetInt("hasSweeper", 1);
         }
     }
 }

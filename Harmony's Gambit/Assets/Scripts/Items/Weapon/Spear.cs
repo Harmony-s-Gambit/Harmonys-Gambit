@@ -13,7 +13,7 @@ public class Spear : Weapon
         Range = new List<(int, int)>();
         Range.Add((1, 0));
         Range.Add((2, 0));
-        Range.Add((3, 0));
+        // Range.Add((3, 0));
     }
 
     private void OnEnable()

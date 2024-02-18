@@ -21,7 +21,7 @@ public class ItemCollar : Item
             playerWeapon.isCollar = true;
             // 데미지는 GM 에서 증가
 
-
+            //PlayerPrefs.SetInt("hasCollar", 1);
 
         }
     }
