@@ -119,8 +119,9 @@ public class GameManager : MonoBehaviour
                             redPlayer.weapon.attackEnemies(1);
                             redPlayer.weapon.ClearSelector();
                             redPlayer.isMovedThisTurn = true;
-                            if (redPlayer.weapon.isSweeper) // animation trigger, bool, 등이 존재하지만 GM에서 강제적으로 구현되어있어서 아래와 같이 작업함, 나중 무기 작업을 위해 다른 예외처리를 해야하지만 일단 redPlayer만 sweeper 획득 가능함으로 기획, attack_spear와attack_sweeper 애니메이션 spped 속성 변경 필수
+                            if (redPlayer.weapon.isSweeper)
                             {
+// animation trigger, bool, 등이 존재하지만 GM에서 강제적으로 구현되어있어서 아래와 같이 작업함, 나중 무기 작업을 위해 다른 예외처리를 해야하지만 일단 redPlayer만 sweeper 획득 가능함으로 기획, attack_spear와attack_sweeper 애니메이션 spped 속성 변경 필수
                                 redPlayer.m_Animator.Play("attack_sweeper", -1, 0);
                             }
                             else { redPlayer.m_Animator.Play("attack", -1, 0); }
@@ -130,7 +131,9 @@ public class GameManager : MonoBehaviour
                         if (bluePlayer.weapon.Selector.Count != 0)
                         {
                             bluePlayer.weapon.Attack = true;
-                            bluePlayer.weapon.attackEnemies(1);
+                            if (bluePlayer.weapon.isCollar) { bluePlayer.weapon.attackEnemies(2); }
+                            else { bluePlayer.weapon.attackEnemies(1); }
+                            //bluePlayer.weapon.attackEnemies(1);
                             bluePlayer.weapon.ClearSelector();
                             bluePlayer.isMovedThisTurn = true;
                             bluePlayer.m_Animator.Play("attack", -1, 0);

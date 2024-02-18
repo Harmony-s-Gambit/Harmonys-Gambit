@@ -9,7 +9,9 @@ public abstract class Weapon : MonoBehaviour
     public bool Attack = false;
     public bool playerWeapon = false;
 
+    // 무기들 보유 여부
     public bool isSweeper = false;
+    public bool isCollar = false;
 
     //Selector는 범위 tile GameObject를 잠시 받아두기도 하고 공격대상 GameObject를 받아두기도 합니다
     public List<GameObject> Selector = new List<GameObject>();
