@@ -319,7 +319,7 @@ public class ScoreManager : MonoBehaviour
     private string WhatRank(int score)
     {
         float scoreRatio = (float)score / (beatListCount * noteScore[0] + totalKillScore);
-
+        //print(beatListCount * noteScore[0] + 800 + totalKillScore + TotalComboScore(beatListCount));
         if (score >= (beatListCount * noteScore[0] + 800 + totalKillScore + TotalComboScore(beatListCount)))
         {
             return "SS";

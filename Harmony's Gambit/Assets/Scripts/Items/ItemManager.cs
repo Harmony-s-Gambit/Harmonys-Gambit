@@ -51,9 +51,17 @@ public class ItemManager : MonoBehaviour
         foreach (ItemStat item in itemData.items)
         {
             temp = Instantiate(ItemDict[item.type][item.color]);
-            temp.GetComponent<Item>().initPotion(item.x, item.y);
+            temp.GetComponent<Item>().initPosition(item.x, item.y);
             gm.items.Add(temp);
         }
+
+        // weapon generate seperately
+        GameObject w1;
+        // GameObject w2;
+        w1 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/sweeper"));
+        // w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/Spear"));
+        w1.GetComponent<Item>().initPosition(10, 14);
+
         /*
         E1 = (GameObject)Instantiate(Resources.Load("Prefabs/Enemies/purpleMouse"), EManager.transform);
         E2 = (GameObject)Instantiate(Resources.Load("Prefabs/Enemies/purpleMouse"));
