@@ -15,6 +15,9 @@ public class Player : Character
 
     private bool onceDie = false;
 
+    private bool isCollidedTimeOverField = false;
+    private float timeOverFieldTimer = 0;
+
     public override void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
@@ -72,6 +75,20 @@ public class Player : Character
                 m_Animator.Play("damage", -1, 0);
             }
             beforeHP = HP;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (isCollidedTimeOverField) //자기장에 닿았다면
+        {
+            timeOverFieldTimer += Time.deltaTime;
+
+            if (timeOverFieldTimer >= 3f)
+            {
+                HP--;
+                timeOverFieldTimer = 0;
+            }
         }
     }
 
@@ -249,5 +266,15 @@ public class Player : Character
     private void OnDestroy()
     {
         _gameManager.players.Clear();
+    }
+
+    public void SetIsCollidedTimeOverField(bool _bool)
+    {
+        isCollidedTimeOverField = _bool;
+
+        if (!_bool)
+        {
+            timeOverFieldTimer = 0;
+        }
     }
 }

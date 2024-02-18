@@ -15,6 +15,7 @@ HealthBarCanvas 200
 시야를 관리하는 검은색 네모 300
 
 Sorting Layer: UI
+자기장 -50
 플레이어 정보 ui(맵 프리펩에 있는 캔버스의 이미지) -10
 MainCanvas: 0
 ScoreBoardCanvas: 10
