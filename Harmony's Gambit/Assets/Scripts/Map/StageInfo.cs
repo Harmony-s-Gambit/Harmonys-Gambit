@@ -39,4 +39,9 @@ public class StageInfo : MonoBehaviour
     {
         return StageName;
     }
+
+    //private void Update()
+    //{
+    //    print(StageName);
+    //}
 }

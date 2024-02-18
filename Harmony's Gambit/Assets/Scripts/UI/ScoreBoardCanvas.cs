@@ -134,6 +134,7 @@ public class ScoreBoardCanvas : MonoBehaviour
                 txt.text = i.ToString();
                 yield return null;
             }
+            txt.text = num.ToString();
         }
         else
         {

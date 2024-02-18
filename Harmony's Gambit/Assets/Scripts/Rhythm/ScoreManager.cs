@@ -124,17 +124,28 @@ public class ScoreManager : MonoBehaviour
             }
         }
 
+        string minStr;
+
+        if (min < 10)
+        {
+            minStr = "0" + min.ToString();
+        }
+        else
+        {
+            minStr = min.ToString();
+        }
+
         if (_time < 0)
         {
             return "00:00";
         }
         else if (_time < 10)
         {
-            return min.ToString() + ":0" + ((int)_time).ToString();
+            return minStr + ":0" + ((int)_time).ToString();
         }
         else
         {
-            return min.ToString() + ":" + ((int)_time).ToString();
+            return minStr + ":" + ((int)_time).ToString();
         }
     }
 

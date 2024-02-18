@@ -21,6 +21,19 @@ public class HealthBarUI : MonoBehaviour
     
     void Update()
     {
+        if (transform.parent.transform.localScale.x < 0)
+        {
+            Vector3 tempScale = healthBarFilled.GetComponent<RectTransform>().localScale;
+            tempScale.x = -Mathf.Abs(tempScale.x);
+            healthBarFilled.GetComponent<RectTransform>().localScale = tempScale;
+        }
+        else
+        {
+            Vector3 tempScale = healthBarFilled.GetComponent<RectTransform>().localScale;
+            tempScale.x = Mathf.Abs(tempScale.x);
+            healthBarFilled.GetComponent<RectTransform>().localScale = tempScale;
+        }
+
         UpdateHPBar();
     }
 

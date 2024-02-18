@@ -4,7 +4,37 @@
       "color": "PURPLE",
       "type": "BEAR",
       "x": 8,
-      "y": 12
+      "y": 7
+    },
+    {
+      "color": "PURPLE",
+      "type": "HYENA",
+      "x": 1,
+      "y": 1
+    },
+    {
+      "color": "PURPLE",
+      "type": "HYENA",
+      "x": 2,
+      "y": 9
+    },
+    {
+      "color": "PURPLE",
+      "type": "HYENA",
+      "x": 8,
+      "y": 10
+    },
+    {
+      "color": "PURPLE",
+      "type": "HYENA",
+      "x": 14,
+      "y": 9
+    },
+    {
+      "color": "PURPLE",
+      "type": "HYENA",
+      "x": 15,
+      "y": 1
     }
   ]
 }
