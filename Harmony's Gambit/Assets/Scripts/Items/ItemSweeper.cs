@@ -15,7 +15,7 @@ public class ItemSweeper : Item
         sweeper = GameObject.Find("bone_5/sweeper");
         spriteRenderer = sweeper.GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = true;
-
+        
         DestroyItem();
     }
 

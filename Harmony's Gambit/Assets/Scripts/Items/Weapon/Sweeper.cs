@@ -5,6 +5,9 @@ using System;
 
 public class Sweeper : Weapon
 {
+    private Animator animator;
+    private Player player;
+
     public override void Start()
     {
         Range = new List<(int, int)>();
@@ -14,6 +17,11 @@ public class Sweeper : Weapon
         Range.Add((2, 0));
         Range.Add((2, 1));
         Range.Add((2, -1));
+
+        animator= GetComponent<Animator>();
+        player= GetComponent<Player>();
+        player.weapon = this;
+        isSweeper= true;
     }
 
     public override void selectEnemies(DIRECTION direction, int x, int y, COLOR color)
