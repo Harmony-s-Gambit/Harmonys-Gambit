@@ -241,7 +241,7 @@ public class ScoreBoardCanvas : MonoBehaviour
 
         if (StageInfo.instance.GetStageName().Contains("Stage1_1")) 
         {
-            for (int i = 1; i < 3; i++) //나중에 스테이지 인포에 각 스테이지가 몇 개 있는지 저장한 후 사용
+            for (int i = 1; i < 4; i++) //나중에 스테이지 인포에 각 스테이지가 몇 개 있는지 저장한 후 사용
             {
                 string filePath = Path.Combine(Application.dataPath, "Ranking", "Stage1_1_" + i.ToString());
 
