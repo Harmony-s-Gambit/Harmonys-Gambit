@@ -236,24 +236,52 @@ public class ScoreBoardCanvas : MonoBehaviour
     {
         //string filePath = Path.Combine(Application.dataPath, "Ranking", "Stage1"); //테스트용
         //this.gameObject.transform.GetChild(1).gameObject.SetActive(true); //테스트용
-        string filePath = Path.Combine(Application.dataPath, "Ranking", StageInfo.instance.GetStageName());
 
-        DirectoryInfo di = new DirectoryInfo(filePath);
-        
         List<RankingData> rankDatas = new List<RankingData>();
 
-        foreach (FileInfo file in di.GetFiles())
+        if (StageInfo.instance.GetStageName().Contains("Stage1_1")) 
         {
-            if (file.Name.Contains(".txt") && !file.Name.Contains(".meta"))
+            for (int i = 1; i < 3; i++) //나중에 스테이지 인포에 각 스테이지가 몇 개 있는지 저장한 후 사용
             {
-                string value = "";
-                StreamReader reader = new StreamReader(file.ToString());
-                value = reader.ReadToEnd();
-                reader.Close();
+                string filePath = Path.Combine(Application.dataPath, "Ranking", "Stage1_1_" + i.ToString());
 
-                rankDatas.Add(JsonConvert.DeserializeObject<RankingData>(value));
+                DirectoryInfo di = new DirectoryInfo(filePath);
 
-                //Debug.Log($"{rankData.name}, {rankData.score}, {rankData.rank}");
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    if (file.Name.Contains(".txt") && !file.Name.Contains(".meta"))
+                    {
+                        string value = "";
+                        StreamReader reader = new StreamReader(file.ToString());
+                        value = reader.ReadToEnd();
+                        reader.Close();
+
+                        rankDatas.Add(JsonConvert.DeserializeObject<RankingData>(value));
+
+                        //Debug.Log($"{rankData.name}, {rankData.score}, {rankData.rank}");
+                    }
+                }
+            }
+        }
+        else
+        {
+            string filePath = Path.Combine(Application.dataPath, "Ranking", StageInfo.instance.GetStageName());
+
+            DirectoryInfo di = new DirectoryInfo(filePath);
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                if (file.Name.Contains(".txt") && !file.Name.Contains(".meta"))
+                {
+                    string value = "";
+                    StreamReader reader = new StreamReader(file.ToString());
+                    value = reader.ReadToEnd();
+                    reader.Close();
+
+                    rankDatas.Add(JsonConvert.DeserializeObject<RankingData>(value));
+
+                    //Debug.Log($"{rankData.name}, {rankData.score}, {rankData.rank}");
+                }
             }
         }
 
