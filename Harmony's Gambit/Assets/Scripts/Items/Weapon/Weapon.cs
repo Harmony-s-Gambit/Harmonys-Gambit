@@ -8,6 +8,9 @@ public abstract class Weapon : MonoBehaviour
     protected List<(int, int)> Range;
     public bool Attack = false;
     public bool playerWeapon = false;
+
+    public bool isSweeper = false;
+
     //Selector는 범위 tile GameObject를 잠시 받아두기도 하고 공격대상 GameObject를 받아두기도 합니다
     public List<GameObject> Selector = new List<GameObject>();
     public GameObject equiper;

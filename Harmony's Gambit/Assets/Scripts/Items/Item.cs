@@ -14,8 +14,8 @@ public class Item : MonoBehaviour
     private GameObject gridItemInfo;
     // private GameObject gridCharactor;
 
-    private GameObject player1;
-    private GameObject player2;
+    // private GameObject player1;
+    // private GameObject player2;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class Item : MonoBehaviour
         //player2 = GameObject.FindGameObjectWithTag("Player2");
     }
 
-    public void initPotion(int px, int py)
+    public void initPosition(int px, int py)
     {
         x = px; y = py;
         itemBlock = GameObject.Find(x + "_" + y);
@@ -40,28 +40,19 @@ public class Item : MonoBehaviour
         gameObject.transform.position = itemBlock.transform.position;
     }
 
-    public void DestroyPotion()
+    public void DestroyItem()
     {
         Destroy(gameObject);
         gridItemInfo = null;
     }
-
+    /*
     public void UsePotion()
     {
-        if (gm.isRedPlayerPlaying)
-        {
-            player1 = GameObject.FindGameObjectWithTag("Player");
-            player1.GetComponent<Player>().HealthRocover();
-        }
-
-        if (gm.isBluePlayerPlaying)
-        {
-            player2 = GameObject.FindGameObjectWithTag("Player2");
-            player2.GetComponent<Player>().HealthRocover();
-        }
-
-        DestroyPotion();
-
+        player1 = GameObject.FindGameObjectWithTag("Player");
+        player2 = GameObject.FindGameObjectWithTag("Player2");
+        player1.GetComponent<Player>().HealthRocover();
+        player2.GetComponent<Player>().HealthRocover();
+        DestroyItem();
         // tag가 player1, 2 따로 있어서 따로 만듬
         // red, blue player가 프리팹으로 instantiate 되기 때문에 위의 작업을 이 스크립트에서 start(), onenable해도 안 된다...
     }
@@ -74,4 +65,5 @@ public class Item : MonoBehaviour
             UsePotion();
         }
     }
+    */
 }
