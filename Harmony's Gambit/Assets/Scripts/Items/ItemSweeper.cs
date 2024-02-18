@@ -21,7 +21,7 @@ public class ItemSweeper : Item
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Player2"))
+        if (other.CompareTag("Player2"))
         {
             GetSweeper();
             Destroy(other.GetComponent<Fist>());
@@ -30,12 +30,6 @@ public class ItemSweeper : Item
             playerWeapon.playerWeapon = true;
             playerWeapon.equiper = other.gameObject;
             //weapon.equiper = gameObject; >>> why exist?
-            // 공격 범위 적용
-            //aniamtion 전환
-
-            // playerWeapon.Start();
-
-
         }
     }
 }

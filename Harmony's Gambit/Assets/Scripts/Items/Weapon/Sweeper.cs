@@ -14,9 +14,9 @@ public class Sweeper : Weapon
         Range.Add((1, 0));
         Range.Add((1, 1));
         Range.Add((1, -1));
-        Range.Add((2, 0));
-        Range.Add((2, 1));
-        Range.Add((2, -1));
+        //Range.Add((2, 0));
+        //Range.Add((2, 1));
+        //Range.Add((2, -1));
 
         animator= GetComponent<Animator>();
         player= GetComponent<Player>();
