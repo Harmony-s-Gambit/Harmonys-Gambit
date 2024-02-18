@@ -12,16 +12,8 @@ public class ItemSweeper : RedPlayerItem
         if (other.CompareTag("Player")) // redPlayer
         {
             FindSR();
-
-            sweeperSR = sweeper.GetComponent<SpriteRenderer>();
-            spearSR = spear.GetComponent<SpriteRenderer>();
             DestroyFieldItem();
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            GetSweeper();
             Destroy(other.GetComponent<Fist>());
             Destroy(other.GetComponent<Spear>());
 

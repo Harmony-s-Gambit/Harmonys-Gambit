@@ -14,6 +14,7 @@ public class ItemSpear : RedPlayerItem
 
             Destroy(other.GetComponent<Fist>());
             Destroy(other.GetComponent<Sweeper>());
+
             other.AddComponent<Spear>();
 
             spearSR.enabled = true;
