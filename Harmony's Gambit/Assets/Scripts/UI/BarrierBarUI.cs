@@ -14,7 +14,7 @@ public class BarrierBarUI : MonoBehaviour
     void Start()
     {
         Stack<COLOR> tempStack = new Stack<COLOR>();
-        barrierOwner = this.gameObject.transform.parent.gameObject.transform.parent.gameObject;
+        barrierOwner = this.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject;
         barrierEnemy = barrierOwner.GetComponent<Enemy>();
         for (int i = barrierCount; i > 0; i--)
         {
