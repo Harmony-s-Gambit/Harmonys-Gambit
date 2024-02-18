@@ -18,6 +18,9 @@ public class ScoreManager : MonoBehaviour
     public int totalScore = 0;
     private int beatListCount = 0;
 
+    //게임 오버
+    private GameObject timeOverObj;
+
     //타이머
     private Text timerText;
     private bool isTimerStarted = false; //첫 노트 통과 시 타이머 시작
@@ -63,7 +66,6 @@ public class ScoreManager : MonoBehaviour
         instance = this;
         _gameManager = FindObjectOfType<GameManager>();
         _playerManager = FindObjectOfType<PlayerManager>();
-
         
         try
         {
@@ -73,8 +75,11 @@ public class ScoreManager : MonoBehaviour
             combo100Effect.SetActive(false);
 
             timerText = GameObject.Find("TimerText").GetComponent<Text>();
+            timeOverObj = GameObject.Find("JudgmentUI").transform.GetChild(6).gameObject;
         }
         catch (System.Exception) { }
+
+        
     }
 
     private void Update()
@@ -137,6 +142,7 @@ public class ScoreManager : MonoBehaviour
 
         if (_time < 0)
         {
+            timeOverObj.SetActive(true);
             return "00:00";
         }
         else if (_time < 10)

@@ -71,5 +71,7 @@ public class GridMaker : MonoBehaviour
         IManager.name = "ItemManager";
         GameObject ScManager = (GameObject)Instantiate(Resources.Load("Prefabs/Managers/ScoreManager"));
         IManager.name = "ScoreManager";
+        GameObject TManager = (GameObject)Instantiate(Resources.Load("Prefabs/Managers/TimeOverFieldManager"));
+        IManager.name = "TimeOverFieldManager";
     }
 }
