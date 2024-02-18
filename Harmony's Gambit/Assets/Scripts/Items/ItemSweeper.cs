@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class ItemSweeper : RedPlayerItem
 {
+    public UnityEvent onGetSweeper;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")) // redPlayer
@@ -28,6 +30,11 @@ public class ItemSweeper : RedPlayerItem
             //weapon.equiper = gameObject; >>> why exist?
 
             //PlayerPrefs.SetInt("hasSweeper", 1);
+            //PlayerPrefs.Save();
+
+            //SetPlayerPrefsValue("hasSweeper", 1);
+
+            onGetSweeper.Invoke();
         }
     }
 }

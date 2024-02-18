@@ -84,7 +84,7 @@ public class ItemManager : MonoBehaviour
         else if (stageInfo == "Stage1_1_3")
         {
             w1.GetComponent<Item>().initPosition(11, 17);
-            w2.GetComponent<Item>().initPosition(24, 14);
+            w2.GetComponent<Item>().initPosition(24, 13);
             w3.GetComponent<Item>().initPosition(3, 11);
         }
         else // boss

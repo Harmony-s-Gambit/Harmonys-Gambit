@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class ItemCollar : Item
 {
-    Weapon playerWeapon;
+    private Weapon playerWeapon;
+    [SerializeField] private GameObject collarUI;
+    private SpriteRenderer collarUISR;
 
     public void GetCollar()
     {
@@ -22,7 +24,9 @@ public class ItemCollar : Item
             // 데미지는 GM 에서 증가
 
             //PlayerPrefs.SetInt("hasCollar", 1);
+            //PlayerPrefs.Save();
 
+            //SetPlayerPrefsValue("hasCollar", 1);
         }
     }
 }
