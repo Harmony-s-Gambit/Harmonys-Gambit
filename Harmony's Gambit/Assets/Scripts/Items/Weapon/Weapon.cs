@@ -9,8 +9,9 @@ public abstract class Weapon : MonoBehaviour
     public bool Attack = false;
     public bool playerWeapon = false;
 
-    // 무기들 보유 여부
+    // 무기들 보유 여부_하나씩 추가하다보니 이런식으로 하게 되었다. 나중에 enum, 등의 방법으로 하는것이 좋을 것 같다.
     public bool isSweeper = false;
+    public bool isSpear = false;
     public bool isCollar = false;
 
     //Selector는 범위 tile GameObject를 잠시 받아두기도 하고 공격대상 GameObject를 받아두기도 합니다

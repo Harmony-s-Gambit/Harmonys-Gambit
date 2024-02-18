@@ -6,12 +6,22 @@ using System;
 
 public class Spear : Weapon
 {
+    private Player player;
+
     public override void Start()
     {
         Range = new List<(int, int)>();
         Range.Add((1, 0));
         Range.Add((2, 0));
         Range.Add((3, 0));
+    }
+
+    private void OnEnable()
+    {
+        player = GetComponent<Player>();
+        player.weapon = this;
+        isSweeper = false;
+        isSpear = true;
     }
 
     public override void selectEnemies(DIRECTION direction, int x, int y, COLOR color)

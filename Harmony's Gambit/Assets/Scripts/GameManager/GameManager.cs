@@ -124,6 +124,10 @@ public class GameManager : MonoBehaviour
 // animation trigger, bool, 등이 존재하지만 GM에서 강제적으로 구현되어있어서 아래와 같이 작업함, 나중 무기 작업을 위해 다른 예외처리를 해야하지만 일단 redPlayer만 sweeper 획득 가능함으로 기획, attack_spear와attack_sweeper 애니메이션 spped 속성 변경 필수
                                 redPlayer.m_Animator.Play("attack_sweeper", -1, 0);
                             }
+                            else if (redPlayer.weapon.isSpear)
+                            {
+                                redPlayer.m_Animator.Play("attack_spear", -1, 0);
+                            }
                             else { redPlayer.m_Animator.Play("attack", -1, 0); }
                             AudioManager.instance.PlaySFX("PlayerAttackEnemy");
                         }

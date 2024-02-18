@@ -40,7 +40,7 @@ public class Item : MonoBehaviour
         gameObject.transform.position = itemBlock.transform.position;
     }
 
-    public void DestroyItem()
+    public void DestroyFieldItem()
     {
         Destroy(gameObject);
         gridItemInfo = null;

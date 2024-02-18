@@ -9,7 +9,7 @@ public class ItemCollar : Item
 
     public void GetCollar()
     {
-        DestroyItem();
+        DestroyFieldItem();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

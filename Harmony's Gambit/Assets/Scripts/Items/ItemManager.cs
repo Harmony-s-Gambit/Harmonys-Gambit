@@ -57,10 +57,12 @@ public class ItemManager : MonoBehaviour
 
         // weapon generate seperately
         GameObject w1;
-        // GameObject w2;
+        GameObject w2;
         w1 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/sweeper"));
-        // w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/Spear"));
-        w1.GetComponent<Item>().initPosition(10, 14);
+        w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/spear"));
+        // w1.GetComponent<Item>().initPosition(10, 14);
+        // w2.GetComponent<Item>().initPosition(11, 14);
+
 
         /*
         E1 = (GameObject)Instantiate(Resources.Load("Prefabs/Enemies/purpleMouse"), EManager.transform);
