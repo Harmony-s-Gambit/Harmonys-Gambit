@@ -183,8 +183,8 @@ public class MainUI : MonoBehaviour
 
 
         //이부분
-
         //게임 시작
+        //
 
         StartCoroutine(GameStartSetting());
         _gameManager.SetStart();
