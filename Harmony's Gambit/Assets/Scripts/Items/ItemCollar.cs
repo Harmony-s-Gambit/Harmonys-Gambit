@@ -14,7 +14,7 @@ public class ItemCollar : Item
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player1"))
+        if (other.CompareTag("Player2"))
         {
             GetCollar();
             playerWeapon= other.GetComponent<Fist>();
