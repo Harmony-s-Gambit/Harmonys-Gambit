@@ -16,9 +16,16 @@ public class Bear : Enemy
     Stack<GridSlotInfo> dashAttackRange = new Stack<GridSlotInfo>();
     public DIRECTION dashDirection = DIRECTION.DOWN;
     private bool dontMove = false;
+
+    //곰이 죽었을 때 한 번만 실행하기 위한 변수
+    private bool onceDie = false;
+
     public override void Start()
     {
         base.Start();
+
+        killScore = ScoreManager.instance.purpleBearScore;
+
         gameObject.transform.Find("DashRoute").gameObject.SetActive(false);
         pattern = new DIRECTION[1];
         pattern[0] = DIRECTION.STAY;
@@ -49,6 +56,21 @@ public class Bear : Enemy
             target = GameObject.Find("bluePlayer(Clone)");
         }
 
+    }
+
+    private new void Update() //곰이 죽었을 때 실행하기 위한 업데이트, 더 좋게 수정가능하면 수정하셔도 됩니다.
+    {
+        if (HP < 1)
+        {
+            if (!onceDie)
+            {
+                onceDie = true;
+                ScoreManager.instance.StageClearScore(1);
+                FindObjectOfType<PlayerManager>().GameClear = true;
+                AudioManager.instance.PlaySFX("Clear");
+                FindObjectOfType<GameManager>().isGameStart = false;
+            }
+        }
     }
 
     public override GameObject GetNextDest()

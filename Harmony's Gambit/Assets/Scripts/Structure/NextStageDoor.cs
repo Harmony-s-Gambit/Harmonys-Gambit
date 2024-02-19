@@ -53,11 +53,9 @@ public class NextStageDoor : Structure
         switch (index)
         {
             case 0:
-                //SceneManager.LoadScene("BossStage1"); //스코어보드 보고, 버튼눌러서 다음 씬 이동
                 ScoreManager.instance.StageClearScore(nextStageDoorIndex);
                 _playerManager.GameClear = true;
                 AudioManager.instance.PlaySFX("Clear");
-                //SceneManager.LoadScene("Clear");
                 _gameManager.isGameStart = false;
                 break;
             case 1:

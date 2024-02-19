@@ -33,6 +33,7 @@ public class ScoreManager : MonoBehaviour
     private int totalKillScore = 0;
     public int purpleMouseScore2 = 10000;
     public int purpleHyenaScore = 20000;
+    public int purpleBearScore = 100000;
 
     //ÄÞº¸ Á¡¼ö
     private int currentCombo = 0; //ÇöÀç ÄÞº¸
@@ -167,6 +168,10 @@ public class ScoreManager : MonoBehaviour
             else if (enemies[i].name.Contains("purpleHyena"))
             {
                 totalKillScore += purpleHyenaScore;
+            }
+            else if (enemies[i].name.Contains("purpleBear"))
+            {
+                totalKillScore += purpleBearScore;
             }
         }
     }
