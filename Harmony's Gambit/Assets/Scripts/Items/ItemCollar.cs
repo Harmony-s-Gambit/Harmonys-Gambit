@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class ItemCollar : Item
 {
     private Weapon playerWeapon;
-    [SerializeField] private GameObject collarUI;
-    private SpriteRenderer collarUISR;
+
+    public UnityEvent onCollarGet;
 
     public void GetCollar()
     {
@@ -27,6 +29,8 @@ public class ItemCollar : Item
             //PlayerPrefs.Save();
 
             //SetPlayerPrefsValue("hasCollar", 1);
+
+            onCollarGet.Invoke();
         }
     }
 }

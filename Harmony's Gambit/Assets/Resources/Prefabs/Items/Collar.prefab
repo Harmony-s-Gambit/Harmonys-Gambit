@@ -148,6 +148,21 @@ MonoBehaviour:
   x: 0
   y: 0
   itemBlock: {fileID: 0}
+  onCollarGet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5087203104852495082, guid: 04c2a18863bacb1458a4020d2c11bd9e, type: 3}
+        m_TargetAssemblyTypeName: WeaponUIController, Assembly-CSharp
+        m_MethodName: equipCollar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!198 &-119866007611474487
 ParticleSystem:
   m_ObjectHideFlags: 0

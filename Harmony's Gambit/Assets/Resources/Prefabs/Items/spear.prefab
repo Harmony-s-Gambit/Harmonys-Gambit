@@ -151,7 +151,7 @@ MonoBehaviour:
   onGetSpear:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6944041035001715849, guid: 04c2a18863bacb1458a4020d2c11bd9e, type: 3}
+      - m_Target: {fileID: -5087203104852495082, guid: 04c2a18863bacb1458a4020d2c11bd9e, type: 3}
         m_TargetAssemblyTypeName: WeaponUIController, Assembly-CSharp
         m_MethodName: equipSpear
         m_Mode: 1

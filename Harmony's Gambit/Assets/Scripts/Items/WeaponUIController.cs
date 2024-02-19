@@ -4,38 +4,49 @@ using UnityEngine;
 
 public class WeaponUIController : MonoBehaviour
 {
+    /*
     [SerializeField] private GameObject weaponUI1; // sweeper
     [SerializeField] private GameObject weaponUI2; // spear
     [SerializeField] private GameObject weaponUI3; // collar
+    */
+    private GameObject weaponUI1; // sweeper
+    private GameObject weaponUI2; // spear
+    private GameObject weaponUI3; // collar
+
 
     private SpriteRenderer w1SR;
     private SpriteRenderer w2SR;
     private SpriteRenderer w3SR;
 
-    private Color beforeGet = new Color (0, 0, 0, 200f);
-    private Color afterGet = new Color(128f, 128f, 128f, 200f);
+    //private Color beforeGet = new Color (100, 100, 100, 200f);
+    private Color beforeGet = new Color(0, 0, 0, 0);
+    private Color afterGet = new Color(128f, 128f, 128f, 225f);
     private Color usingItem = new Color(255f, 255f, 255f, 255f);
+
+    [SerializeField] private Color testColor;
 
     private void Start()
     {
-        /*
-        w1SR= GetComponent<SpriteRenderer>();
-        w2SR= GetComponent<SpriteRenderer>();
-        w3SR= GetComponent<SpriteRenderer>();
+        weaponUI1 = GameObject.Find("sweeper_icon");
+        weaponUI2 = GameObject.Find("spear_icon");
+        weaponUI3 = GameObject.Find("collar_icon");
+        Debug.Log(weaponUI1);
+
+        w1SR = weaponUI1.GetComponent<SpriteRenderer>();
+        w2SR = weaponUI2.GetComponent<SpriteRenderer>();
+        w3SR = weaponUI3.GetComponent<SpriteRenderer>();
+
+        Debug.Log(w2SR);
 
         w1SR.color = beforeGet;
         w2SR.color = beforeGet;
         w3SR.color = beforeGet;
-        */
-        
     }
 
-    /*
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("1key");
             if (PlayerPrefs.HasKey("hasSweeper"))
             {
             equipSweeper();
@@ -49,10 +60,16 @@ public class WeaponUIController : MonoBehaviour
             }
         }
     }
-    */
+
 
     public void equipSweeper()
     {
+        // skip null test
+        weaponUI1 = GameObject.Find("sweeper_icon");
+        weaponUI2 = GameObject.Find("spear_icon");
+        w1SR = weaponUI1.GetComponent<SpriteRenderer>();
+        w2SR = weaponUI2.GetComponent<SpriteRenderer>();
+
         w1SR.color = usingItem;
         if (PlayerPrefs.HasKey("hasSpear"))
         {
@@ -61,10 +78,30 @@ public class WeaponUIController : MonoBehaviour
     }
     public void equipSpear()
     {
+        // skip null test
+        weaponUI1 = GameObject.Find("sweeper_icon");
+        weaponUI2 = GameObject.Find("spear_icon");
+        w1SR = weaponUI1.GetComponent<SpriteRenderer>();
+        w2SR = weaponUI2.GetComponent<SpriteRenderer>();
+
         w2SR.color = usingItem;
         if (PlayerPrefs.HasKey("hasSweeper"))
         {
             w1SR.color = afterGet;
+        }
+    }
+
+    public void equipCollar()
+    {
+        if (weaponUI3 == null)
+        {
+            weaponUI3 = GameObject.Find("collar_icon");
+            w3SR = weaponUI3.GetComponent<SpriteRenderer>();
+            w3SR.color = usingItem;
+        }
+        else
+        {
+        w3SR.color = usingItem;
         }
     }
 
@@ -76,7 +113,6 @@ public class WeaponUIController : MonoBehaviour
             w3SR.color = afterGet;
         }
     }
-
 
     /*
     private void OnEnable()

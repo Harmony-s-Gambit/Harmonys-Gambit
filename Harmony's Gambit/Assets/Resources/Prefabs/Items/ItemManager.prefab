@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8472459621514818475}
   - component: {fileID: 4985297361613889456}
-  - component: {fileID: 6944041035001715849}
+  - component: {fileID: -5087203104852495082}
   m_Layer: 0
   m_Name: ItemManager
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4985297361613889456
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc14a79306a3bd9449e8f421712bae69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6944041035001715849
+--- !u!114 &-5087203104852495082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
