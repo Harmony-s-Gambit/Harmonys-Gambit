@@ -138,7 +138,7 @@ public class Bear : Enemy
                     Quaternion w = new Quaternion();
                     w.x = 0; w.y = 0; w.z = 180;
                     gameObject.transform.Find("DashRoute").transform.rotation = w;
-                    v= new Vector3(0.1f, 0.1f, 1);
+                    v= new Vector3(1, 1, 1);
                     gameObject.transform.localScale = v;
                 }
                 else
@@ -151,7 +151,7 @@ public class Bear : Enemy
                     Quaternion w = new Quaternion();
                     w.x = 0; w.y = 0; w.z = 0;
                     gameObject.transform.Find("DashRoute").transform.rotation = w;
-                    v = new Vector3(-0.1f, 0.1f, 1);
+                    v = new Vector3(-1, 1, 1);
                     gameObject.transform.localScale = v;
                 }
                 dashChargeTurn = 4;
@@ -170,7 +170,7 @@ public class Bear : Enemy
         GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
         direction = DIRECTION.RIGHT;
         GridSlotInfo t = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
-        Vector3 v2 = new Vector3(0.1f, 0.1f, 1);
+        Vector3 v2 = new Vector3(1, 1, 1);
         gameObject.transform.localScale = v2;
 
         if (target.GetComponent<Player>().color == COLOR.BLUE)
@@ -179,7 +179,7 @@ public class Bear : Enemy
             {
                 g = t;
                 direction = DIRECTION.LEFT;
-                v2 = new Vector3(-0.1f, 0.1f, 1);
+                v2 = new Vector3(-1, 1, 1);
                 gameObject.transform.localScale = v2;
             }
             t = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
@@ -201,7 +201,7 @@ public class Bear : Enemy
             {
                 g = t;
                 direction = DIRECTION.LEFT;
-                v2 = new Vector3(-0.1f, 0.1f, 1);
+                v2 = new Vector3(-1, 0.1f, 1);
                 gameObject.transform.localScale = v2;
             }
             t = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
