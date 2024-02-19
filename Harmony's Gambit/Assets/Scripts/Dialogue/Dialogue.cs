@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Dialogue : MonoBehaviour
 {
+    public UnityEvent OnEndDialogueEvent;
+
     [SerializeField]
     private GameObject[] photos;
     private int currentIndex = 0;
@@ -27,7 +30,7 @@ public class Dialogue : MonoBehaviour
             else
             {
                 EndDialogue();
-                onDialogueEnd();
+                OnEndDialogueEvent.Invoke();
             }
         }
     }
@@ -55,13 +58,6 @@ public class Dialogue : MonoBehaviour
         //gameObject.SetActive(false);
         
         // MainUI에서 관리할 예정
-    }
-
-    public void onDialogueEnd()
-    {
-        ///
-        ///
-        ///
     }
 
 

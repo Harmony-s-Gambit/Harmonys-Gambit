@@ -22,6 +22,16 @@ public class MainUI : MonoBehaviour
     [SerializeField] Image progressBar;
     [SerializeField] Text progressText;
 
+    // 다이얼로그
+    public void fisrstDialogueEnd()
+    {
+        //
+    }
+    public void secondDialogueEnd()
+    {
+        //
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
