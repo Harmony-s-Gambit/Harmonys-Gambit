@@ -54,10 +54,12 @@ public class ScoreBoardCanvas : MonoBehaviour
         Destroy(GameObject.Find("Managers"));
         Destroy(GameObject.Find("MainCanvas"));
         Destroy(GameObject.Find("ScoreBoardCanvas"));
+        AudioManager.instance.PlaySFX("Window");
     }
 
     public void ScoreBoard_RankingBoard()
     {
+        AudioManager.instance.PlaySFX("Window");
         this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
         
         if (StageInfo.instance.GetStageName().Contains("Stage1_1_"))
@@ -79,6 +81,7 @@ public class ScoreBoardCanvas : MonoBehaviour
 
     public void RankingBoard_ScoreBoard()
     {
+        AudioManager.instance.PlaySFX("Window");
         this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
     }
@@ -174,6 +177,7 @@ public class ScoreBoardCanvas : MonoBehaviour
 
     public void TurnOnSaveRankingBoard()
     {
+        AudioManager.instance.PlaySFX("Window");
         this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
         
         if (rank == "SS")
@@ -210,11 +214,13 @@ public class ScoreBoardCanvas : MonoBehaviour
 
     public void TurnOffSaveRankingBoard()
     {
+        AudioManager.instance.PlaySFX("Window");
         this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
     }
 
     public void SaveRanking()
     {
+        AudioManager.instance.PlaySFX("Window");
         rankingData.name = GameObject.Find("NameInputField").GetComponent<InputField>().text;
         rankingData.score = totalScore;
         rankingData.rank = rank;

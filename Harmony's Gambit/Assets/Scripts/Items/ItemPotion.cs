@@ -35,6 +35,7 @@ public class potion : Item
         {
             // Debug.Log("포션 사용!");
             UsePotion();
+            AudioManager.instance.PlaySFX("Potion");
         }
     }
 }

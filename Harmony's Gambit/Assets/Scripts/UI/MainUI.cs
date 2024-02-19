@@ -78,52 +78,61 @@ public class MainUI : MonoBehaviour
     {
         panels[0].SetActive(false);
         panels[2].SetActive(true);
+        AudioManager.instance.PlaySFX("Window");
     }
 
     public void Main_OffsetSettingButton()
     {
         panels[0].SetActive(false);
         panels[1].SetActive(true);
+        AudioManager.instance.PlaySFX("Window");
     }
 
     public void OffsetSetting_MainButton()
     {
         panels[1].SetActive(false);
         panels[0].SetActive(true);
+        AudioManager.instance.PlaySFX("Window");
     }
 
     public void MapSelect_MainButton()
     {
         panels[2].SetActive(false);
         panels[0].SetActive(true);
+        AudioManager.instance.PlaySFX("Window");
     }
 
     public void Main_CreditButton()
     {
         //panels[0].SetActive(false);
         panels[4].SetActive(true);
+        AudioManager.instance.PlaySFX("Window");
     }
 
     public void Credit_MainButton()
     {
         panels[4].SetActive(false);
         //panels[0].SetActive(true);
+        AudioManager.instance.PlaySFX("Window");
     }
 
     public void Main_TestSettingButton()
     {
         //panels[0].SetActive(false);
         panels[6].SetActive(true);
+        AudioManager.instance.PlaySFX("Window");
     }
 
     public void TestSetting_MainButton()
     {
         panels[6].SetActive(false);
         //panels[0].SetActive(true);
+        AudioManager.instance.PlaySFX("Window");
     }
 
     public void GamePlay1Button() //게임 플레이 시 설정, 노트 생성 시작, 즉 게임 시작 버튼
     {
+        AudioManager.instance.StopBGM();
         AudioManager.instance.PlaySFX("Start");
         panels[0].SetActive(false);
         panels[3].SetActive(true);
@@ -136,6 +145,7 @@ public class MainUI : MonoBehaviour
 
     public void TestPlayButton() //보스 스테이지 바로가기 버튼
     {
+        AudioManager.instance.StopBGM();
         panels[6].SetActive(false);
         AudioManager.instance.PlaySFX("Start");
         panels[0].SetActive(false);
@@ -145,8 +155,10 @@ public class MainUI : MonoBehaviour
         SceneManager.LoadScene("Stage");
         StartCoroutine(MapDelay());
     }
+
     public void TestPlayButton2() //하드 스테이지 바로가기 버튼
     {
+        AudioManager.instance.StopBGM();
         panels[6].SetActive(false);
         AudioManager.instance.PlaySFX("Start");
         panels[0].SetActive(false);
@@ -290,7 +302,15 @@ public class MainUI : MonoBehaviour
         _playerManager.GameOver = false;
 
         yield return new WaitForSeconds(2f);
-        NoteManager.instance.SetBGMValue("DiscoHeart");
+        
+        if (!StageInfo.instance.GetStageName().Contains("Hard"))
+        {
+            NoteManager.instance.SetBGMValue("DiscoHeart");
+        }
+        else
+        {
+            NoteManager.instance.SetBGMValue("DiscoHeart2");
+        }
         ScoreManager.instance.GameStartSetting();
     }
 

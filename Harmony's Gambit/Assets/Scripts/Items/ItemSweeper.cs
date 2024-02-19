@@ -13,6 +13,8 @@ public class ItemSweeper : RedPlayerItem
     {
         if (other.CompareTag("Player")) // redPlayer
         {
+            AudioManager.instance.PlaySFX("GetWeapon");
+
             FindSR();
             DestroyFieldItem();
 
