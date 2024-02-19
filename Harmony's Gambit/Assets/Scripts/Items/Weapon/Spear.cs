@@ -28,44 +28,49 @@ public class Spear : Weapon
     {
         for (int i = 0; i < 3; i++)
         {
-            switch (direction)
-            {
-                case (int)DIRECTION.UP:
-                    inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y + Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                    break;
-                case DIRECTION.LEFT:
-                    inGridSlot = GameObject.Find((x - Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                    break;
-                case DIRECTION.RIGHT:
-                    inGridSlot = GameObject.Find((x + Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                    break;
-                case DIRECTION.DOWN:
-                    inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y - Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                    break;
-                case DIRECTION.STAY:
-                    Attack = false;
-                    break;
-            }
             try
             {
-                if (inGridSlot.tag == "Enemy")
+                switch (direction)
                 {
-                    if (inGridSlot.GetComponent<Enemy>().color == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().color == color)
+                    case (int)DIRECTION.UP:
+                        inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y + Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                        break;
+                    case DIRECTION.LEFT:
+                        inGridSlot = GameObject.Find((x - Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                        break;
+                    case DIRECTION.RIGHT:
+                        inGridSlot = GameObject.Find((x + Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                        break;
+                    case DIRECTION.DOWN:
+                        inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y - Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                        break;
+                    case DIRECTION.STAY:
+                        Attack = false;
+                        break;
+                }
+                try
+                {
+                    if (inGridSlot.tag == "Enemy")
                     {
-                        Selector.Add(inGridSlot);
-                        Attack = true;
+                        if (inGridSlot.GetComponent<Enemy>().color == COLOR.PURPLE || inGridSlot.GetComponent<Enemy>().color == color)
+                        {
+                            Selector.Add(inGridSlot);
+                            Attack = true;
+                        }
+                    }
+                    else
+                    {
+                        Attack = false;
                     }
                 }
-                else
+                catch (Exception)
                 {
+                    //Debug.Log(e);
                     Attack = false;
                 }
             }
-            catch (Exception)
-            {
-                //Debug.Log(e);
-                Attack = false;
-            }
+            catch(Exception e) { }
+
             if (Attack)
             {
                 break;
