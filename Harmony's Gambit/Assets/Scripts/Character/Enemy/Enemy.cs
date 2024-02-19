@@ -160,13 +160,7 @@ public class Enemy : Character
         }
         else
         {
-            if (whosOnDest.GetComponent<Character>().MoveManage())
-            {
-                Move(nextDest);
-                return true;
-            }
-            else
-            {
+            
                 if(direction == DIRECTION.STAY)
                 {
                     _directionIdx = (_directionIdx + 1) % pattern.Length;
@@ -174,7 +168,7 @@ public class Enemy : Character
                     specialDirection();
                 }
                 return false;
-            }
+            
         }
     }
     // 요 밑의 3가지는 각각의 enemy 타입에서 overriding 하는 것을 추천

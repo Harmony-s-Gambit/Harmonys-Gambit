@@ -26,7 +26,6 @@ public class Bear : Enemy
         
         killScore = ScoreManager.instance.purpleBearScore;
 
-        gameObject.transform.Find("DashRoute").gameObject.SetActive(false);
         pattern = new DIRECTION[1];
         pattern[0] = DIRECTION.STAY;
         //나중에 3x3(자신 주변으로) 공격하는 무기를 넣을 겁니다. 요기다가 적용
@@ -106,23 +105,13 @@ public class Bear : Enemy
 
                     dashDirection = DIRECTION.DOWN;
                     direction = DIRECTION.DOWN;
-                    gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
-                    Vector3 v = new Vector3();
-                    v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y +200; v.z = gameObject.transform.position.z;
-                    gameObject.transform.Find("DashRoute").position = v;
-                    gameObject.transform.Find("DashRoute").transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
-
+                    gameObject.transform.Find("DashRouteS").gameObject.SetActive(true);
                 }
                 else
                 {
                     dashDirection = DIRECTION.UP;
                     direction = DIRECTION.UP;
-                    gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
-                    Vector3 v = new Vector3();
-                    v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y -200; v.z = gameObject.transform.position.z;
-                    gameObject.transform.Find("DashRoute").position = v;
-                    gameObject.transform.Find("DashRoute").transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
-
+                    gameObject.transform.Find("DashRouteN").gameObject.SetActive(true);
                 }
                 dashChargeTurn = 4;
                 direction = DIRECTION.STAY;
@@ -136,25 +125,17 @@ public class Bear : Enemy
                 {
                     dashDirection = DIRECTION.RIGHT;
                     direction = DIRECTION.RIGHT;
-                    gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
-                    Vector3 v = new Vector3();
-                    v.x = gameObject.transform.position.x + 200; v.y = gameObject.transform.position.y; v.z = gameObject.transform.position.z;
-                    gameObject.transform.Find("DashRoute").position = v;
-                    gameObject.transform.Find("DashRoute").transform.rotation = Quaternion.Euler(new Vector3(0,0,180));
-                    v= new Vector3(1.5f, 1.5f, 1);
-                    gameObject.transform.localScale = v;
+                    gameObject.transform.Find("DashRouteE").gameObject.SetActive(true);
                 }
                 else
                 {
                     dashDirection = DIRECTION.LEFT;
                     direction = DIRECTION.LEFT;
-                    gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
-                    Vector3 v = new Vector3();
-                    v.x = gameObject.transform.position .x - 200; v.y = gameObject.transform.position.y; v.z = gameObject.transform.position.z;
-                    gameObject.transform.Find("DashRoute").position = v;
-                    gameObject.transform.Find("DashRoute").transform.rotation = Quaternion.Euler(new Vector3(0, 0, -180));
-                    v = new Vector3(-1.5f, 1.5f, 1);
-                    gameObject.transform.localScale = v;
+                    if(gameObject.transform.localScale.x > 0)
+                    {
+                        gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y);
+                    }
+                    gameObject.transform.Find("DashRouteW").gameObject.SetActive(true);
                 }
                 dashChargeTurn = 4;
                 direction = DIRECTION.STAY;
@@ -164,6 +145,10 @@ public class Bear : Enemy
         }
         if(dash)
         {
+            if (dashChargeTurn >0)
+            {
+                AudioManager.instance.PlaySFX("Start");
+            }
             direction = DIRECTION.STAY;
             dashChargeTurn--;
             return GameObject.Find(x + "_" + y);
@@ -248,24 +233,28 @@ public class Bear : Enemy
                     {
                         movement[0] = 0;
                         movement[1] = -1;
+                        gameObject.transform.Find("DashRouteN").gameObject.SetActive(false);
                         break;
                     }
                 case DIRECTION.DOWN:
                     {
                         movement[0] = 0;
                         movement[1] = 1;
+                        gameObject.transform.Find("DashRouteS").gameObject.SetActive(false);
                         break;
                     }
                 case DIRECTION.RIGHT:
                     {
                         movement[0] = 1;
                         movement[1] = 0;
+                        gameObject.transform.Find("DashRouteE").gameObject.SetActive(false);
                         break;
                     }
                 case DIRECTION.LEFT:
                     {
                         movement[0] = -1;
                         movement[1] = 0;
+                        gameObject.transform.Find("DashRouteW").gameObject.SetActive(false);
                         break;
                     }
             }
@@ -346,8 +335,9 @@ public class Bear : Enemy
             dash = false;
             dashCount = 0;
             dashAttackRange.Clear();
-            gameObject.transform.Find("DashRoute").gameObject.SetActive(false);
             m_Animator.Play("Pattern_Rush");
+            AudioManager.instance.PlaySFX("Rush");
+
         }
     }
 }

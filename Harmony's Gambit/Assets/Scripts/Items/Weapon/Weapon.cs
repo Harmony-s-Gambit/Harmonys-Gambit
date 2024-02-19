@@ -106,6 +106,7 @@ public abstract class Weapon : MonoBehaviour
                     if(Selector[i].GetComponent<Enemy>().barrier.Count != 0)
                     {
                         Selector[i].GetComponent<Enemy>().barrier.Pop();
+                        AudioManager.instance.PlaySFX("Barrier");
                         Selector[i].GetComponent<Enemy>().isAttacked = true;
                     }
                     else {
