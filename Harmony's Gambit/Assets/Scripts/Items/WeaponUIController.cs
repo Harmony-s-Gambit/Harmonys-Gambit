@@ -13,20 +13,21 @@ public class WeaponUIController : MonoBehaviour
     private GameObject weaponUI2; // spear
     private GameObject weaponUI3; // collar
 
+    public bool sweeperOn = false;
+    public bool spearOn = false;
 
     private SpriteRenderer w1SR;
     private SpriteRenderer w2SR;
     private SpriteRenderer w3SR;
 
-    //private Color beforeGet = new Color (100, 100, 100, 200f);
-    //private Color beforeGet = new Color(0, 0, 0, 0);
-    //private Color afterGet = new Color(128f, 128f, 128f, 225f);
-    //private Color usingItem = new Color(255f, 255f, 255f, 255f);
-
+    private Color beforeGet = new Color(0.7f, 0.7f, 0.7f, 0.2f);
+    private Color afterGet = new Color(1f, 1f, 1f, 0.7f);
+    private Color usingItem = new Color(1f, 1f, 1f, 1f);
+    /*
     [SerializeField] private Color beforeGet;
     [SerializeField] private Color afterGet;
     [SerializeField] private Color usingItem;
-
+    */
     private void Start()
     {
         weaponUI1 = GameObject.Find("sweeper_icon");
@@ -40,10 +41,15 @@ public class WeaponUIController : MonoBehaviour
         w1SR.color = beforeGet;
         w2SR.color = beforeGet;
         w3SR.color = beforeGet;
+
+        // stageInfo = FindObjectOfType<StageInfo>().GetStageName();
+        // BossStage1
+
     }
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (PlayerPrefs.HasKey("hasSweeper"))
@@ -58,7 +64,21 @@ public class WeaponUIController : MonoBehaviour
                 equipSpear();
             }
         }
+        */
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            switchRedPlayerWeapon();
+        }
     }
+
+    public void switchRedPlayerWeapon()
+    {
+        if (true)
+        {
+
+        }
+    }
+
 
 
     public void equipSweeper()
@@ -103,24 +123,6 @@ public class WeaponUIController : MonoBehaviour
         w3SR.color = usingItem;
         }
     }
-
-    public void equip()
-    {
-        // 빨강 플레이어 찾기
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
 
     public void EnterBoss()
     {

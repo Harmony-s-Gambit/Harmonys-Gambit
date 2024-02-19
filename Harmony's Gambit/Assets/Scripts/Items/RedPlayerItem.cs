@@ -22,4 +22,7 @@ public class RedPlayerItem : Item
         sweeperSR = sweeper.GetComponent<SpriteRenderer>();
         spearSR = spear.GetComponent<SpriteRenderer>();
     }
+
+
+
 }
