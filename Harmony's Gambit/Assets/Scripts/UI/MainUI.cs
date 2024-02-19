@@ -25,11 +25,39 @@ public class MainUI : MonoBehaviour
     // 다이얼로그
     public void fisrstDialogueEnd() // Dialogue_part1 끝날 시 발동
     {
-        //
+        GameObject.Find("DialogueCanvas").transform.GetChild(0).gameObject.SetActive(false);
+
+        StartCoroutine(GameStartSetting());
+        _gameManager.SetStart();
+        //panels[2].SetActive(false);
+        panels[5].SetActive(true); //이퀄라이저 켜기
+
+        GridSlotInfo[] slots = FindObjectsOfType<GridSlotInfo>();
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].UpdateSightType();
+        }
+
+        StartCoroutine(TestDelay());
+        
     }
     public void secondDialogueEnd() // Dialogue_part2 끝날 시 발동
     {
-        //
+        GameObject.Find("DialogueCanvas").transform.GetChild(1).gameObject.SetActive(false);
+        //GameObject.Find("MainCanvas").GetComponent<Canvas>().worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+        StartCoroutine(GameStartSetting());
+        _gameManager.SetStart();
+        //panels[2].SetActive(false);
+        panels[5].SetActive(true); //이퀄라이저 켜기
+
+        GridSlotInfo[] slots = FindObjectsOfType<GridSlotInfo>();
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].UpdateSightType();
+        }
+
+        StartCoroutine(TestDelay());
     }
 
     private void Awake()
@@ -203,23 +231,32 @@ public class MainUI : MonoBehaviour
         }
         catch (System.Exception) { } //로딩 화면 끄기
 
-
-        //이부분
-        //게임 시작
-        //
-
-        StartCoroutine(GameStartSetting());
-        _gameManager.SetStart();
-        //panels[2].SetActive(false);
-        panels[5].SetActive(true); //이퀄라이저 켜기
-
-        GridSlotInfo[] slots = FindObjectsOfType<GridSlotInfo>();
-        for (int i = 0; i < slots.Length; i++)
+        if (StageInfo.instance.GetStageName().Contains("Boss"))
         {
-            slots[i].UpdateSightType();
+            GameObject.Find("DialogueCanvas").transform.GetChild(1).gameObject.SetActive(true);
+            GameObject.Find("DialogueCanvas").GetComponent<Canvas>().worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        }
+        else if (StageInfo.instance.GetStageName().Contains("Hard"))
+        {
+            StartCoroutine(GameStartSetting());
+            _gameManager.SetStart();
+            //panels[2].SetActive(false);
+            panels[5].SetActive(true); //이퀄라이저 켜기
+
+            GridSlotInfo[] slots = FindObjectsOfType<GridSlotInfo>();
+            for (int i = 0; i < slots.Length; i++)
+            {
+                slots[i].UpdateSightType();
+            }
+
+            StartCoroutine(TestDelay());
+        }
+        else
+        {
+            GameObject.Find("DialogueCanvas").transform.GetChild(0).gameObject.SetActive(true);
+            GameObject.Find("DialogueCanvas").GetComponent<Canvas>().worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         }
 
-        StartCoroutine(TestDelay());
         _cameraMoving.FirstCam();
     }
 
@@ -243,6 +280,7 @@ public class MainUI : MonoBehaviour
 
     IEnumerator GameStartSetting()
     {
+        panels[7].SetActive(true);
         _gameManager.isGameStart = true;
         _gameManager.isRedPlayerPlaying = true;
         _gameManager.isBluePlayerPlaying = true;
@@ -251,7 +289,7 @@ public class MainUI : MonoBehaviour
         _playerManager.GameClear = false;
         _playerManager.GameOver = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         NoteManager.instance.SetBGMValue("DiscoHeart");
         ScoreManager.instance.GameStartSetting();
     }

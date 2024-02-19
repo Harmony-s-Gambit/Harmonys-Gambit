@@ -141,7 +141,7 @@ public class ScoreBoardCanvas : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i <= num; i += 500)
+            for (int i = 0; i <= num; i += 5000)
             {
                 txt.text = i.ToString();
                 yield return null;

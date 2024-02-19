@@ -46,6 +46,11 @@ public class NextStageDoor : Structure
                 }
             }
         }
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    ActiveNextStage(nextStageDoorIndex);
+        //}
     }
 
     private void ActiveNextStage(int index)

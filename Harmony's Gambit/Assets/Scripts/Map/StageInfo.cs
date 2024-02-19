@@ -15,18 +15,6 @@ public class StageInfo : MonoBehaviour
 
     private void Awake()
     {
-        var obj = FindObjectsOfType<StageInfo>();
-
-        //print(obj.Length);
-
-        if (obj.Length != 1)
-        {
-            
-        }
-        else
-        {
-            
-        }
         DontDestroyOnLoad(gameObject);
     }
 
@@ -44,4 +32,14 @@ public class StageInfo : MonoBehaviour
     //{
     //    print(StageName);
     //}
+
+    public void asdfjdsfa()
+    {
+        FindObjectOfType<MainUI>().secondDialogueEnd();
+    }
+
+    public void sdfaf()
+    {
+        FindObjectOfType<MainUI>().fisrstDialogueEnd();
+    }
 }
