@@ -22,7 +22,7 @@ public class TimeOverFieldManager : MonoBehaviour
         {
             try
             {
-                if (StageInfo.instance.GetStageName().Contains("Stage1_1"))
+                if (!StageInfo.instance.GetStageName().Contains("Boss"))
                 {
                     nextStageDoorObj = GameObject.Find("NextStageDoor(Clone)");
                 }

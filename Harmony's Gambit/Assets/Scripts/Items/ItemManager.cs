@@ -64,28 +64,45 @@ public class ItemManager : MonoBehaviour
         GameObject w2;
         GameObject w3;
 
-        w1 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/sweeper"));
-        w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/spear"));
-        w3 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/collar"));
-        
         if (stageInfo == "Stage1_1_1")
         {
+            w1 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/sweeper"));
+            w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/spear"));
+            w3 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/collar"));
+
             w1.GetComponent<Item>().initPosition(6, 18);
             w2.GetComponent<Item>().initPosition(24, 9);
             w3.GetComponent<Item>().initPosition(1, 10);
-
         }
         else if (stageInfo == "Stage1_1_2")
         {
+            w1 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/sweeper"));
+            w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/spear"));
+            w3 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/collar"));
+
             w1.GetComponent<Item>().initPosition(1, 9);
             w2.GetComponent<Item>().initPosition(22, 9);
             w3.GetComponent<Item>().initPosition(13, 3);
         }
         else if (stageInfo == "Stage1_1_3")
         {
+            w1 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/sweeper"));
+            w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/spear"));
+            w3 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/collar"));
+
             w1.GetComponent<Item>().initPosition(11, 17);
             w2.GetComponent<Item>().initPosition(24, 13);
             w3.GetComponent<Item>().initPosition(3, 11);
+        }
+        else if (stageInfo == "Stage1_Hard")
+        {
+            w1 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/sweeper"));
+            w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/spear"));
+            w3 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/collar"));
+
+            w1.GetComponent<Item>().initPosition(11, 3);
+            w2.GetComponent<Item>().initPosition(2, 14);
+            w3.GetComponent<Item>().initPosition(26, 10);
         }
         else // boss
         {

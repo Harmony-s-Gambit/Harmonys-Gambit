@@ -97,10 +97,13 @@ public class Bear : Enemy
 
         if (dashCount > 4 && dashChargeTurn <= 0)
         {
+            
             if(target.GetComponent<Player>().x == this.x)
                 {
-                if(target.GetComponent<Player>().y > this.y)
+                m_Animator.Play("Charge");
+                if (target.GetComponent<Player>().y > this.y)
                 {
+
                     dashDirection = DIRECTION.DOWN;
                     gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
                     Vector3 v = new Vector3();
@@ -128,7 +131,8 @@ public class Bear : Enemy
                 }
             else if (target.GetComponent<Player>().y == this.y)
                 {
-                if(target.GetComponent<Player>().x > this.x)
+                m_Animator.Play("Charge");
+                if (target.GetComponent<Player>().x > this.x)
                 {
                     dashDirection = DIRECTION.RIGHT;
                     gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
@@ -138,6 +142,8 @@ public class Bear : Enemy
                     Quaternion w = new Quaternion();
                     w.x = 0; w.y = 0; w.z = 180;
                     gameObject.transform.Find("DashRoute").transform.rotation = w;
+                    v= new Vector3(1, 1, 1);
+                    gameObject.transform.localScale = v;
                 }
                 else
                 {
@@ -149,6 +155,8 @@ public class Bear : Enemy
                     Quaternion w = new Quaternion();
                     w.x = 0; w.y = 0; w.z = 0;
                     gameObject.transform.Find("DashRoute").transform.rotation = w;
+                    v = new Vector3(-1, 1, 1);
+                    gameObject.transform.localScale = v;
                 }
                 dashChargeTurn = 4;
                 direction = DIRECTION.STAY;
@@ -166,13 +174,18 @@ public class Bear : Enemy
         GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
         direction = DIRECTION.RIGHT;
         GridSlotInfo t = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
+        Vector3 v2 = new Vector3(1, 1, 1);
+        gameObject.transform.localScale = v2;
 
         if (target.GetComponent<Player>().color == COLOR.BLUE)
         {
+            
             if (g.blueDistance > t.blueDistance)
             {
                 g = t;
                 direction = DIRECTION.LEFT;
+                v2 = new Vector3(-1, 1, 1);
+                gameObject.transform.localScale = v2;
             }
             t = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
             if (g.blueDistance > t.blueDistance)
@@ -193,6 +206,8 @@ public class Bear : Enemy
             {
                 g = t;
                 direction = DIRECTION.LEFT;
+                v2 = new Vector3(-1, 1, 1);
+                gameObject.transform.localScale = v2;
             }
             t = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
             if (g.redDistance > t.redDistance)
@@ -334,6 +349,7 @@ public class Bear : Enemy
             dashCount = 0;
             dashAttackRange.Clear();
             gameObject.transform.Find("DashRoute").gameObject.SetActive(false);
+            m_Animator.Play("Pattern_Rush");
         }
     }
 }

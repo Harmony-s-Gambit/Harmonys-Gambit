@@ -1,0 +1,108 @@
+{
+  "structures": [
+    {
+      "color": "PURPLE",
+      "type": "DOOR_SIMULTANEOUS",
+      "id": 1,
+      "x": 11,
+      "y": 12,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_1",
+      "id": 1,
+      "x": 10,
+      "y": 11,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_2",
+      "id": 1,
+      "x": 12,
+      "y": 11,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_3",
+      "id": 1,
+      "x": 12,
+      "y": 13,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "DOOR_SIMULTANEOUS",
+      "id": 2,
+      "x": 19,
+      "y": 12,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_1",
+      "id": 2,
+      "x": 18,
+      "y": 13,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_2",
+      "id": 2,
+      "x": 20,
+      "y": 13,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_3",
+      "id": 2,
+      "x": 20,
+      "y": 11,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "DOOR_SIMULTANEOUS",
+      "id": 3,
+      "x": 21,
+      "y": 3,
+      "direction": 1
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_1",
+      "id": 3,
+      "x": 20,
+      "y": 4,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_2",
+      "id": 3,
+      "x": 20,
+      "y": 2,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "BUTTON_SIMULTANEOUS_3",
+      "id": 3,
+      "x": 22,
+      "y": 4,
+      "direction": 0
+    },
+    {
+      "color": "PURPLE",
+      "type": "DOOR_NEXTSTAGE",
+      "id": 0,
+      "x": 23,
+      "y": 0,
+      "direction": 0
+    }
+  ]
+}
