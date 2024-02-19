@@ -148,6 +148,15 @@ public class Hiena : Enemy
             }
         }
         dontMove = true;
+        if(direction == DIRECTION.RIGHT)
+        {
+            Vector3 v = new Vector3(0.1f, 0.1f, 1);
+            gameObject.transform.localScale = v;
+        }else if(direction == DIRECTION.LEFT)
+        {
+            Vector3 v = new Vector3(-0.1f, 0.1f, 1);
+            gameObject.transform.localScale = v;
+        }
         return GameObject.Find(g.x + "_" + g.y);
     }
 
