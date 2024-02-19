@@ -100,9 +100,9 @@ public class ItemManager : MonoBehaviour
             w2 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/spear"));
             w3 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/collar"));
 
-            //w1.GetComponent<Item>().initPosition(11, 17);
-            //w2.GetComponent<Item>().initPosition(24, 13);
-            //w3.GetComponent<Item>().initPosition(3, 11);
+            w1.GetComponent<Item>().initPosition(11, 3);
+            w2.GetComponent<Item>().initPosition(2, 14);
+            w3.GetComponent<Item>().initPosition(26, 10);
         }
         else // boss
         {
