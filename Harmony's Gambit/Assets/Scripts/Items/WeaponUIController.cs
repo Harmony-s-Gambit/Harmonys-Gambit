@@ -30,13 +30,10 @@ public class WeaponUIController : MonoBehaviour
         weaponUI1 = GameObject.Find("sweeper_icon");
         weaponUI2 = GameObject.Find("spear_icon");
         weaponUI3 = GameObject.Find("collar_icon");
-        Debug.Log(weaponUI1);
 
         w1SR = weaponUI1.GetComponent<SpriteRenderer>();
         w2SR = weaponUI2.GetComponent<SpriteRenderer>();
         w3SR = weaponUI3.GetComponent<SpriteRenderer>();
-
-        Debug.Log(w2SR);
 
         w1SR.color = beforeGet;
         w2SR.color = beforeGet;
