@@ -26,6 +26,10 @@ public class TimeOverFieldManager : MonoBehaviour
                 {
                     nextStageDoorObj = GameObject.Find("NextStageDoor(Clone)");
                 }
+                else
+                {
+                    nextStageDoorObj = GameObject.Find("purpleBear(Clone)");
+                }
             }
             catch (System.Exception)
             {

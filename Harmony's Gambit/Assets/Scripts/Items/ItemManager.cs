@@ -91,7 +91,7 @@ public class ItemManager : MonoBehaviour
             w3 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/collar"));
 
             w1.GetComponent<Item>().initPosition(11, 17);
-            w2.GetComponent<Item>().initPosition(24, 13);
+            w2.GetComponent<Item>().initPosition(24, 12);
             w3.GetComponent<Item>().initPosition(3, 11);
         }
         else if (stageInfo == "Stage1_Hard")

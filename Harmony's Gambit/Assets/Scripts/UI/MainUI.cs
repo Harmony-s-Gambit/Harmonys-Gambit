@@ -130,6 +130,24 @@ public class MainUI : MonoBehaviour
         AudioManager.instance.PlaySFX("Window");
     }
 
+    public void WatchStroyButton()
+    {
+        AudioManager.instance.StopBGM();
+        GameObject.Find("DialogueCanvas").transform.GetChild(2).gameObject.SetActive(true);
+        GameObject.Find("DialogueCanvas").transform.GetChild(3).gameObject.SetActive(true);
+        AudioManager.instance.PlaySFX("Window");
+
+        StartCoroutine(TurnOffStory());
+    }
+
+    IEnumerator TurnOffStory()
+    {
+        yield return new WaitForSeconds(38f);
+        GameObject.Find("DialogueCanvas").transform.GetChild(2).gameObject.SetActive(false);
+        GameObject.Find("DialogueCanvas").transform.GetChild(3).gameObject.SetActive(false);
+        AudioManager.instance.PlayBGM("Lobby");
+    }
+
     public void GamePlay1Button() //게임 플레이 시 설정, 노트 생성 시작, 즉 게임 시작 버튼
     {
         AudioManager.instance.StopBGM();
