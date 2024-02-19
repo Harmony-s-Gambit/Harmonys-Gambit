@@ -29,7 +29,7 @@ public class Dialogue : MonoBehaviour
             }
             else
             {
-                EndDialogue();
+                // EndDialogue();
                 OnEndDialogueEvent.Invoke();
             }
         }
@@ -50,7 +50,7 @@ public class Dialogue : MonoBehaviour
 
         photos[index].SetActive(true);
     }
-
+    /*
     public void EndDialogue()
     {
         //this.enabled= false;
@@ -59,6 +59,7 @@ public class Dialogue : MonoBehaviour
         
         // MainUI에서 관리할 예정
     }
+    */
 
 
 }
