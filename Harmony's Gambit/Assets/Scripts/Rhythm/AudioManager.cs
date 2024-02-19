@@ -99,6 +99,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBGM(string p_bgmName, float delay = 0f)
     {
+        if (p_bgmName == "Lobby")
+        {
+            _bgmPlayer.loop = true;
+        }
+        else
+        {
+            _bgmPlayer.loop = false;
+        }
+
         for (int i = 0; i < _bgm.Length; i++)
         {
             if (p_bgmName == _bgm[i]._name)

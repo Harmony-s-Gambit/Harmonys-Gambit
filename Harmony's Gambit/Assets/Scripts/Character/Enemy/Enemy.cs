@@ -199,6 +199,7 @@ public class Enemy : Character
     {
         if (!killScoreOnce)
         {
+            AudioManager.instance.PlaySFX("EnemyDead");
             killScoreOnce = true;
             ScoreManager.instance.KillScore(killScore);
         }

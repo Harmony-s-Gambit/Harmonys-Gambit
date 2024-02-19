@@ -20,6 +20,8 @@ public class ItemCollar : Item
     {
         if (other.CompareTag("Player2"))
         {
+            AudioManager.instance.PlaySFX("GetWeapon");
+
             GetCollar();
             playerWeapon= other.GetComponent<Fist>();
             playerWeapon.isCollar = true;

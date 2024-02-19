@@ -14,6 +14,8 @@ public class ItemSpear : RedPlayerItem
     {
         if (other.CompareTag("Player")) // redPlayer
         {
+            AudioManager.instance.PlaySFX("GetWeapon");
+
             FindSR();
             DestroyFieldItem();
 

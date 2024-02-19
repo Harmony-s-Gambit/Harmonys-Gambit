@@ -9474,6 +9474,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 241690405625766725, guid: e6a2437fdb4b59d44889009a5f200564, type: 3}
   m_PrefabInstance: {fileID: 725375651}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &726343035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 726343036}
+  - component: {fileID: 726343037}
+  m_Layer: 0
+  m_Name: LobbySound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &726343036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726343035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.85633, y: 117.296104, z: 106.7995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &726343037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726343035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49b5d21ad2258f4eae44459cad9ec9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &727432111 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 241690405625766725, guid: e6a2437fdb4b59d44889009a5f200564, type: 3}
@@ -25648,7 +25692,7 @@ MonoBehaviour:
   - _name: PlayerAttackEnemy
     _clip: {fileID: 8300000, guid: 6650bcb29fcf45846baf3199f688a901, type: 3}
   - _name: DoorOpenButton
-    _clip: {fileID: 8300000, guid: 38d9a7667a4b8a2478be740a61483754, type: 3}
+    _clip: {fileID: 8300000, guid: ca69f67346e692d45979c3a67ce97d67, type: 3}
   - _name: DoorClose
     _clip: {fileID: 8300000, guid: ddadda6ec2605904f9f32838091e0f6d, type: 3}
   - _name: Perfect
@@ -25659,6 +25703,22 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: 22ca94461f303dd4a96f03e0bd3b3b70, type: 3}
   - _name: Clear
     _clip: {fileID: 8300000, guid: 959596e32b50ff948841fec2d1c6d1a8, type: 3}
+  - _name: EnemyAttackPlayer
+    _clip: {fileID: 8300000, guid: e1a28bef29f94e147b74c265316f7047, type: 3}
+  - _name: Barrier
+    _clip: {fileID: 8300000, guid: 97368f33b88ede94686c311c05dd0cee, type: 3}
+  - _name: EnemyDead
+    _clip: {fileID: 8300000, guid: df47d3a1ae201c54398f6382eb97bc6d, type: 3}
+  - _name: Potion
+    _clip: {fileID: 8300000, guid: f977325980963a3408f1b025a7bba32a, type: 3}
+  - _name: Rush
+    _clip: {fileID: 8300000, guid: 9097445a98607c94ca85eade1a937631, type: 3}
+  - _name: Sweeper
+    _clip: {fileID: 8300000, guid: 11f1e76362e0a104a902e65f28be18a9, type: 3}
+  - _name: GetWeapon
+    _clip: {fileID: 8300000, guid: 2e996c71895727e4b9de52552e72a2de, type: 3}
+  - _name: Window
+    _clip: {fileID: 8300000, guid: c5657ceeb9b52c64598849fc1c505c8c, type: 3}
   _bgm:
   - _name: BGM1
     _clip: {fileID: 8300000, guid: 09e9c6809218acb49a18f8be2bf6a381, type: 3}
@@ -25668,6 +25728,8 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: 8438b02e410efb4498c0f2783513b0ee, type: 3}
   - _name: DiscoHeart
     _clip: {fileID: 8300000, guid: 7814def806ac6a54dbaa970973ddae82, type: 3}
+  - _name: Lobby
+    _clip: {fileID: 8300000, guid: f8949faeb272952439ef6c278d26fe52, type: 3}
   _bgmPlayer: {fileID: 1198253969}
   _sfxPlayer:
   - {fileID: 1265284579}

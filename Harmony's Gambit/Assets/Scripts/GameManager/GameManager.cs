@@ -153,9 +153,16 @@ public class GameManager : MonoBehaviour
                             redPlayer.weapon.attackEnemies(1);
                             redPlayer.weapon.ClearSelector();
                             redPlayer.isMovedThisTurn = true;
-                            AudioManager.instance.PlaySFX("PlayerAttackEnemy");
+                            
+
+                            if (!redPlayer.weapon.isSweeper && !redPlayer.weapon.isSpear)
+                            {
+                                AudioManager.instance.PlaySFX("PlayerAttackEnemy");
+                            }
+
                             if (redPlayer.weapon.isSweeper)
                             {
+                                AudioManager.instance.PlaySFX("Sweeper");
                                 // animation trigger, bool, 등이 존재하지만 GM에서 강제적으로 구현되어있어서 아래와 같이 작업함, 나중 무기 작업을 위해 다른 예외처리를 해야하지만 일단 redPlayer만 sweeper 획득 가능함으로 기획, attack_spear와attack_sweeper 애니메이션 spped 속성 변경 필수
                                 redPlayer.m_Animator.Play("attack_sweeper", -1, 0);
                             }
@@ -258,6 +265,8 @@ public class GameManager : MonoBehaviour
                     {
                         if (!tempEnemy.GetComponent<Enemy>().isAttacked)
                         {
+                            AudioManager.instance.PlaySFX("EnemyAttackPlayer");
+                            enemy.GetComponent<Animator>().Play("Attack", -1, 0);
                             tempEnemy.weapon.Attack = true;
                             tempEnemy.weapon.attackEnemies(1);
                             tempEnemy.isMovedThisTurn = true;
