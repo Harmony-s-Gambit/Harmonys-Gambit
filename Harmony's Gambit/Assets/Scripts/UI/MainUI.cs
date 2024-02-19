@@ -22,6 +22,16 @@ public class MainUI : MonoBehaviour
     [SerializeField] Image progressBar;
     [SerializeField] Text progressText;
 
+    // 다이얼로그
+    public void fisrstDialogueEnd() // Dialogue_part1 끝날 시 발동
+    {
+        //
+    }
+    public void secondDialogueEnd() // Dialogue_part2 끝날 시 발동
+    {
+        //
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
