@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         }
         redPlayer = players[0].GetComponent<Player>();
         bluePlayer = players[1].GetComponent<Player>();
-        
+
         if (isRedPlayerPlaying || isBluePlayerPlaying)
         {
             if (!_playerManager.GameOver)
@@ -109,11 +109,11 @@ public class GameManager : MonoBehaviour
 
                     //플레이어 움직임 설정순서
 
-                    if(isRedPlayerPlaying && isBluePlayerPlaying)
+                    if (isRedPlayerPlaying && isBluePlayerPlaying)
                     {
                         redPlayer.weapon.targetEnemies(redPlayer.direction, redPlayer.x, redPlayer.y, COLOR.RED);
                         bluePlayer.weapon.targetEnemies(bluePlayer.direction, bluePlayer.x, bluePlayer.y, COLOR.BLUE);
-                        if(redPlayer.weapon.Selector.Count != 0)
+                        if (redPlayer.weapon.Selector.Count != 0)
                         {
                             redPlayer.weapon.Attack = true;
                             redPlayer.weapon.attackEnemies(1);
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
                             redPlayer.isMovedThisTurn = true;
                             if (redPlayer.weapon.isSweeper)
                             {
-// animation trigger, bool, 등이 존재하지만 GM에서 강제적으로 구현되어있어서 아래와 같이 작업함, 나중 무기 작업을 위해 다른 예외처리를 해야하지만 일단 redPlayer만 sweeper 획득 가능함으로 기획, attack_spear와attack_sweeper 애니메이션 spped 속성 변경 필수
+                                // animation trigger, bool, 등이 존재하지만 GM에서 강제적으로 구현되어있어서 아래와 같이 작업함, 나중 무기 작업을 위해 다른 예외처리를 해야하지만 일단 redPlayer만 sweeper 획득 가능함으로 기획, attack_spear와attack_sweeper 애니메이션 spped 속성 변경 필수
                                 redPlayer.m_Animator.Play("attack_sweeper", -1, 0);
                             }
                             else if (redPlayer.weapon.isSpear)
@@ -144,10 +144,10 @@ public class GameManager : MonoBehaviour
                             AudioManager.instance.PlaySFX("PlayerAttackEnemy");
                         }
                     }
-                    else if(isRedPlayerPlaying)
+                    else if (isRedPlayerPlaying)
                     {
                         redPlayer.weapon.targetEnemies(redPlayer.direction, redPlayer.x, redPlayer.y, COLOR.RED);
-                        if(redPlayer.weapon.Selector.Count != 0)
+                        if (redPlayer.weapon.Selector.Count != 0)
                         {
                             redPlayer.weapon.Attack = true;
                             redPlayer.weapon.attackEnemies(1);
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
 
 
                     //공격 불가능시 이동범위 위치 찾기
-                    GameObject redDest= new GameObject();
+                    GameObject redDest = new GameObject();
                     GameObject blueDest = new GameObject();
                     if (isRedPlayerPlaying)
                     {
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
                         blueDest = bluePlayer.GetNextDest();
                     }
 
-                    if(isBluePlayerPlaying && isBluePlayerPlaying)
+                    if (isBluePlayerPlaying && isBluePlayerPlaying)
                     {
                         if (!redPlayer.isMovedThisTurn && !bluePlayer.isMovedThisTurn)
                         {
@@ -214,15 +214,16 @@ public class GameManager : MonoBehaviour
                         try
                         {
                             redPlayer.MoveManage();
-                        }catch(Exception e) { }
+                        }
+                        catch (Exception e) { }
                     }
                     else if (isBluePlayerPlaying)
                     {
-                            try
-                            {
-                                bluePlayer.MoveManage();
-                            }
-                            catch (Exception e) { }
+                        try
+                        {
+                            bluePlayer.MoveManage();
+                        }
+                        catch (Exception e) { }
                     }
                 }
             }
@@ -232,7 +233,7 @@ public class GameManager : MonoBehaviour
             //공격범위 설정
             //공격 가능시 공격
 
-
+            
             foreach (GameObject enemy in enemies)
             {
                 Enemy tempEnemy = enemy.GetComponent<Enemy>();
@@ -262,14 +263,14 @@ public class GameManager : MonoBehaviour
 
             //공격 불가능시 이동범위 위치 찾기
 
-            
+
 
             //이동 불가능 감지
             //이동 처리
 
             //enemy move
 
-            foreach(GameObject enemy in enemies)
+            foreach (GameObject enemy in enemies)
             {
                 enemy.GetComponent<Enemy>().specialAttack();
             }
@@ -300,7 +301,7 @@ public class GameManager : MonoBehaviour
 
         redStart.redDistance = 0;
         blueStart.blueDistance = 0;
-        
+
         redCheck.Add(redStart, true);
         blueCheck.Add(blueStart, true);
         if (isRedPlayerPlaying)
@@ -335,7 +336,7 @@ public class GameManager : MonoBehaviour
             redDijSlots = n.dijSlot;
             redCheck = n.dijDic;
         }
-        while(blueDijSlots.Count != 0)
+        while (blueDijSlots.Count != 0)
         {
             dijSet n = BD(blueDijSlots, blueCheck);
             blueDijSlots = n.dijSlot;
@@ -371,7 +372,7 @@ public class GameManager : MonoBehaviour
                     if (!redCheck.ContainsKey(g))
                     {
                         redDij.Enqueue(g);
-                        if (GameObject.Find(x  + "_" + (y+1)).tag != "Wall") g.redDistance = temp.redDistance + 1;
+                        if (GameObject.Find(x + "_" + (y + 1)).tag != "Wall") g.redDistance = temp.redDistance + 1;
                     }
                 }
                 catch (Exception) { }
@@ -389,11 +390,11 @@ public class GameManager : MonoBehaviour
 
                 try
                 {
-                    GridSlotInfo g = GameObject.Find(x + "_" + (y-1)).GetComponent<GridSlotInfo>();
+                    GridSlotInfo g = GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>();
                     if (!redCheck.ContainsKey(g))
                     {
                         redDij.Enqueue(g);
-                        if (GameObject.Find(x  + "_" + (y-1)).tag != "Wall") g.redDistance = temp.redDistance + 1;
+                        if (GameObject.Find(x + "_" + (y - 1)).tag != "Wall") g.redDistance = temp.redDistance + 1;
                     }
                 }
                 catch (Exception) { }
@@ -404,7 +405,7 @@ public class GameManager : MonoBehaviour
         n.dijSlot = redDij;
         n.dijDic = redCheck;
         return n;
-        
+
     }
 
     public dijSet BD(Queue<GridSlotInfo> blueDij, Dictionary<GridSlotInfo, bool> blueCheck)
@@ -434,7 +435,7 @@ public class GameManager : MonoBehaviour
                     if (!blueCheck.ContainsKey(g))
                     {
                         blueDij.Enqueue(g);
-                        if (GameObject.Find(x + "_" + (y+1)).tag != "Wall") g.blueDistance = temp.blueDistance + 1;
+                        if (GameObject.Find(x + "_" + (y + 1)).tag != "Wall") g.blueDistance = temp.blueDistance + 1;
                     }
                 }
                 catch (Exception) { }
@@ -456,7 +457,7 @@ public class GameManager : MonoBehaviour
                     if (!blueCheck.ContainsKey(g))
                     {
                         blueDij.Enqueue(g);
-                        if (GameObject.Find(x+ "_" + (y-1)).tag != "Wall") g.blueDistance = temp.blueDistance + 1;
+                        if (GameObject.Find(x + "_" + (y - 1)).tag != "Wall") g.blueDistance = temp.blueDistance + 1;
                     }
                 }
                 catch (Exception) { }
@@ -472,241 +473,42 @@ public class GameManager : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //���� ������ ����
 
     //structure ������ �ߵ�
-     //Hiena Targeting AI proposal
-        public void resetCheck(int x, int y)
+    //Hiena Targeting AI proposal
+    public void resetCheck(int x, int y)
+    {
+        GridSlotInfo temp = GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>();
+        if (temp.redDistanceCheck || temp.blueDistanceCheck)
         {
-            GridSlotInfo temp = GameObject.Find(x + "_" + y).GetComponent<GridSlotInfo>();
-            if (temp.redDistanceCheck || temp.blueDistanceCheck)
+            temp.redDistance = 100000;
+            temp.blueDistance = 100000;
+            temp.redDistanceCheck = false;
+            temp.blueDistanceCheck = false;
+            try
             {
-                temp.redDistance = 100000;
-                temp.blueDistance = 100000;
-                temp.redDistanceCheck = false;
-                temp.blueDistanceCheck = false;
-                try
-                {
-                    resetCheck(x + 1, y);
-                }
-                catch (Exception) { }
-                try
-                {
-                    resetCheck(x - 1, y);
-                }
-                catch (Exception) { }
-                try
-                {
-                    resetCheck(x, y + 1);
-                }
-                catch (Exception) { }
-                try
-                {
-                    resetCheck(x, y - 1);
-                }
-                catch (Exception) { }
+                resetCheck(x + 1, y);
             }
+            catch (Exception) { }
+            try
+            {
+                resetCheck(x - 1, y);
+            }
+            catch (Exception) { }
+            try
+            {
+                resetCheck(x, y + 1);
+            }
+            catch (Exception) { }
+            try
+            {
+                resetCheck(x, y - 1);
+            }
+            catch (Exception) { }
         }
-    /*
-        public void RedDistance(int x, int y)
-        {
-            GameObject tempObject = GameObject.Find(x + "_" + y);
-            GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
-
-        if (temp.redDistanceCheck) return;
-        else {
-            temp.redDistanceCheck = true;
-            if (tempObject.tag != "Wall")
-            {
-                temp.redDistanceCheck = true;
-                try
-                {
-                    GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
-                    if (g.redDistance > temp.redDistance)
-                    {
-                        redDijSlots.Enqueue(g);
-                        g.redDistance = temp.redDistance + 1;
-                    }
-                }
-                catch (Exception e) { };
-
-                try
-                {
-                    GridSlotInfo g = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
-                    if (g.redDistance > temp.redDistance)
-                    {
-                        redDijSlots.Enqueue(g);
-                        g.redDistance = temp.redDistance + 1;
-                    }
-                }
-                catch (Exception e) { }
-                try
-                {
-                    GridSlotInfo g = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
-                    if (g.redDistance > temp.redDistance + 1)
-                    {
-                        redDijSlots.Enqueue(g);
-                        g.redDistance = temp.redDistance + 1;
-                    }
-                }
-                catch (Exception e) { }
-                try
-                {
-                    GridSlotInfo g = GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>();
-                    if (g.redDistance > temp.redDistance + 1)
-                    {
-                        redDijSlots.Enqueue(g);
-                        g.redDistance = temp.redDistance + 1;
-                    }
-                }catch(Exception e) { }
-            }
-        }
-    */
-        
-        /*if (!temp.redDistanceCheck)
-        {
-            if (tempObject.tag != "Wall")
-            {
-                temp.redDistanceCheck = true;
-                temp.redDistance = n;
-                try
-                {
-                    RedDistance(x + 1, y, n + 1);
-                }
-                catch (Exception e) { }
-                try
-                {
-                    RedDistance(x - 1, y, n + 1);
-                }
-                catch (Exception e) { }
-                try
-                {
-                    RedDistance(x, y + 1, n + 1);
-                }
-                catch (Exception e) { }
-                try
-                {
-                    RedDistance(x, y - 1, n + 1);
-                }
-                catch (Exception e) { }
-            }
-        }*/
-        }
-/*
-        public void BlueDistance(int x, int y)
-        {
-        
-        GameObject tempObject = GameObject.Find(x + "_" + y);
-        GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
-
-        if (temp.blueDistanceCheck) return;
-        else
-        {
-            temp.blueDistanceCheck = true;
-            if (tempObject.tag != "Wall")
-            {
-                temp.blueDistanceCheck = true;
-                try
-                {
-                    GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
-                    if (g.blueDistance > temp.blueDistance)
-                    {
-                        blueDijSlots.Enqueue(g);
-                        g.blueDistance = temp.blueDistance + 1;
-                    }
-                }
-                catch (Exception e) { };
-
-                try
-                {
-                    GridSlotInfo g = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
-                    if (g.blueDistance > temp.blueDistance)
-                    {
-                        blueDijSlots.Enqueue(g);
-                        g.blueDistance = temp.blueDistance + 1;
-                    }
-                }
-                catch (Exception e) { }
-                try
-                {
-                    GridSlotInfo g = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
-                    if (g.blueDistance > temp.blueDistance + 1)
-                    {
-                        redDijSlots.Enqueue(g);
-                        g.blueDistance = temp.blueDistance + 1;
-                    }
-                }
-                catch (Exception e) { }
-                try
-                {
-                    GridSlotInfo g = GameObject.Find(x + "_" + (y - 1)).GetComponent<GridSlotInfo>();
-                    if (g.blueDistance > temp.blueDistance + 1)
-                    {
-                        redDijSlots.Enqueue(g);
-                        g.blueDistance = temp.blueDistance + 1;
-                    }
-                }
-                catch (Exception e) { }
-            }
-        }*//*
-        GameObject tempObject = GameObject.Find(x + "_" + y);
-        GridSlotInfo temp = tempObject.GetComponent<GridSlotInfo>();
-        if (!temp.blueDistanceCheck)
-        {
-            if (tempObject.tag != "Wall")
-            {
-                temp.blueDistanceCheck = true;
-                temp.blueDistance = n;
-                try
-                {
-                    BlueDistance(x + 1, y, n + 1);
-                }
-                catch (Exception e) { }
-                try
-                {
-                    BlueDistance(x - 1, y, n + 1);
-                }
-                catch (Exception e) { }
-                try
-                {
-                    BlueDistance(x, y + 1, n + 1);
-                }
-                catch (Exception e) { }
-                try
-                {
-                    BlueDistance(x, y - 1, n + 1);
-                }
-                catch (Exception e) { }
-            }
-        }*/
+    }
+}
 
 
 
