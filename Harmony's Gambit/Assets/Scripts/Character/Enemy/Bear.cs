@@ -107,22 +107,20 @@ public class Bear : Enemy
                     dashDirection = DIRECTION.DOWN;
                     gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
                     Vector3 v = new Vector3();
-                    v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y -200; v.z = gameObject.transform.position.z;
+                    v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y +200; v.z = gameObject.transform.position.z;
                     gameObject.transform.Find("DashRoute").position = v;
-                    Quaternion w = new Quaternion();
-                    w.x = 0; w.y = 0; w.z = 90;
-                    gameObject.transform.Find("DashRoute").transform.rotation = w;
+                    gameObject.transform.Find("DashRoute").transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+
                 }
                 else
                 {
                     dashDirection = DIRECTION.UP;
                     gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
                     Vector3 v = new Vector3();
-                    v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y +200; v.z = gameObject.transform.position.z;
+                    v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y -200; v.z = gameObject.transform.position.z;
                     gameObject.transform.Find("DashRoute").position = v;
-                    Quaternion w = new Quaternion();
-                    w.x = 0; w.y = 0; w.z = -90;
-                    gameObject.transform.Find("DashRoute").transform.rotation = w;
+                    gameObject.transform.Find("DashRoute").transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+
                 }
                 dashChargeTurn = 4;
                 direction = DIRECTION.STAY;
@@ -139,9 +137,7 @@ public class Bear : Enemy
                     Vector3 v = new Vector3();
                     v.x = gameObject.transform.position.x + 200; v.y = gameObject.transform.position.y; v.z = gameObject.transform.position.z;
                     gameObject.transform.Find("DashRoute").position = v;
-                    Quaternion w = new Quaternion();
-                    w.x = 0; w.y = 0; w.z = 180;
-                    gameObject.transform.Find("DashRoute").transform.rotation = w;
+                    gameObject.transform.Find("DashRoute").transform.rotation = Quaternion.Euler(new Vector3(0,0,180));
                     v= new Vector3(1.5f, 1.5f, 1);
                     gameObject.transform.localScale = v;
                 }
@@ -152,9 +148,7 @@ public class Bear : Enemy
                     Vector3 v = new Vector3();
                     v.x = gameObject.transform.position .x - 200; v.y = gameObject.transform.position.y; v.z = gameObject.transform.position.z;
                     gameObject.transform.Find("DashRoute").position = v;
-                    Quaternion w = new Quaternion();
-                    w.x = 0; w.y = 0; w.z = 0;
-                    gameObject.transform.Find("DashRoute").transform.rotation = w;
+                    gameObject.transform.Find("DashRoute").transform.rotation = Quaternion.Euler(new Vector3(0, 0, -180));
                     v = new Vector3(-1.5f, 1.5f, 1);
                     gameObject.transform.localScale = v;
                 }
