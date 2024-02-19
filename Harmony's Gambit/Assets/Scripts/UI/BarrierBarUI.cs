@@ -42,15 +42,20 @@ public class BarrierBarUI : MonoBehaviour
     void Update()
     {
 
-        if(gameObject.transform.parent.transform.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<Enemy>().direction == DIRECTION.RIGHT)
+        if (transform.parent.transform.parent.transform.parent.localScale.x < 0)
         {
-            gameObject.transform.localScale = new Vector3(30, 30, 1);
-        }else if(gameObject.transform.parent.transform.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<Enemy>().direction == DIRECTION.LEFT)
+            Vector3 tempScale = gameObject.GetComponent<RectTransform>().localScale;
+            tempScale.x = -Mathf.Abs(tempScale.x);
+            gameObject.GetComponent<RectTransform>().localScale = tempScale;
+        }
+        else
         {
-            gameObject.transform.localScale = new Vector3(-30, 30, 1);
+            Vector3 tempScale = gameObject.GetComponent<RectTransform>().localScale;
+            tempScale.x = Mathf.Abs(tempScale.x);
+            gameObject.GetComponent<RectTransform>().localScale = tempScale;
         }
 
-        if(barrierEnemy.barrier.Count != 0)
+        if (barrierEnemy.barrier.Count != 0)
         {
             COLOR barrierColor = barrierEnemy.barrier.Peek();
             if(barrierColor == COLOR.RED)
