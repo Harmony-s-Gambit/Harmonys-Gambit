@@ -153,6 +153,8 @@ public class GameManager : MonoBehaviour
                             redPlayer.weapon.attackEnemies(1);
                             redPlayer.weapon.ClearSelector();
                             redPlayer.isMovedThisTurn = true;
+                            AudioManager.instance.PlaySFX("PlayerAttackEnemy");
+
                         }
                     }
                     else if (isBluePlayerPlaying)
@@ -164,6 +166,8 @@ public class GameManager : MonoBehaviour
                             bluePlayer.weapon.attackEnemies(1);
                             bluePlayer.weapon.ClearSelector();
                             bluePlayer.isMovedThisTurn = true;
+                            AudioManager.instance.PlaySFX("PlayerAttackEnemy");
+
                         }
                     }
 

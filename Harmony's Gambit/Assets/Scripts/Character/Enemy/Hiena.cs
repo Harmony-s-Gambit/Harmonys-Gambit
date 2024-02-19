@@ -106,6 +106,8 @@ public class Hiena : Enemy
         GridSlotInfo g = GameObject.Find((x + 1) + "_" + y).GetComponent<GridSlotInfo>();
         direction = DIRECTION.RIGHT;
         GridSlotInfo t = GameObject.Find((x - 1) + "_" + y).GetComponent<GridSlotInfo>();
+        Vector3 v = new Vector3(0.1f, 0.1f, 1);
+        gameObject.transform.localScale = v;
 
         if (target.GetComponent<Player>().color == COLOR.BLUE)
         {
@@ -113,6 +115,8 @@ public class Hiena : Enemy
             {
                 g = t;
                 direction = DIRECTION.LEFT;
+                v = new Vector3(-0.1f, 0.1f, 1);
+                gameObject.transform.localScale = v;
             }
             t = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
             if (g.blueDistance > t.blueDistance)
@@ -133,6 +137,8 @@ public class Hiena : Enemy
             {
                 g = t;
                 direction = DIRECTION.LEFT;
+                v = new Vector3(-0.1f, 0.1f, 1);
+                gameObject.transform.localScale = v;
             }
             t = GameObject.Find(x + "_" + (y + 1)).GetComponent<GridSlotInfo>();
             if (g.redDistance > t.redDistance)
@@ -148,15 +154,7 @@ public class Hiena : Enemy
             }
         }
         dontMove = true;
-        if(direction == DIRECTION.RIGHT)
-        {
-            Vector3 v = new Vector3(0.1f, 0.1f, 1);
-            gameObject.transform.localScale = v;
-        }else if(direction == DIRECTION.LEFT)
-        {
-            Vector3 v = new Vector3(-0.1f, 0.1f, 1);
-            gameObject.transform.localScale = v;
-        }
+
         return GameObject.Find(g.x + "_" + g.y);
     }
 
