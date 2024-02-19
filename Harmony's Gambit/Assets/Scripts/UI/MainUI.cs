@@ -302,7 +302,15 @@ public class MainUI : MonoBehaviour
         _playerManager.GameOver = false;
 
         yield return new WaitForSeconds(2f);
-        NoteManager.instance.SetBGMValue("DiscoHeart");
+        
+        if (!StageInfo.instance.GetStageName().Contains("Hard"))
+        {
+            NoteManager.instance.SetBGMValue("DiscoHeart");
+        }
+        else
+        {
+            NoteManager.instance.SetBGMValue("DiscoHeart2");
+        }
         ScoreManager.instance.GameStartSetting();
     }
 

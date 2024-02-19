@@ -17,11 +17,12 @@ public class BGMJsonFile
 public class BGMJson : MonoBehaviour
 {
     public static BGMJson instance;
-    public BGMJsonFile[] bgmJsonFiles = new BGMJsonFile[3]; //곡 추가할 때마다 인덱스 증가 필요
+    public BGMJsonFile[] bgmJsonFiles = new BGMJsonFile[4]; //곡 추가할 때마다 인덱스 증가 필요
 
     private const int bgm1 = 0; //곡 추가할 때마다 상수 추가 필요
     private const int offset = 1; //곡 추가할 때마다 상수 추가 필요
     private const int discoHeart = 2; //곡 추가할 때마다 상수 추가 필요
+    private const int discoHeart2 = 3; //곡 추가할 때마다 상수 추가 필요
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class BGMJson : MonoBehaviour
         MakeJson_BGM1(); //곡 추가할 때마다 함수 추가 필요
         MakeJson_Offset();
         MakeJson_DiscoHeart();
+        MakeJson_DiscoHeart2();
     }
 
     public int CurrentBGMindex(string bgmName)
@@ -52,6 +54,10 @@ public class BGMJson : MonoBehaviour
         else if (bgmName == "DiscoHeart")
         {
             return discoHeart;
+        }
+        else if (bgmName == "DiscoHeart2")
+        {
+            return discoHeart2;
         }
         else
         {
@@ -109,5 +115,30 @@ public class BGMJson : MonoBehaviour
         bgmJsonFiles[discoHeart].bgmNameAfterTimeOver = "DiscoHeart";
         string jsondata = JsonUtility.ToJson(bgmJsonFiles[discoHeart]);
         bgmJsonFiles[discoHeart] = JsonUtility.FromJson<BGMJsonFile>(jsondata);
+    }
+
+    private void MakeJson_DiscoHeart2()
+    {
+        bgmJsonFiles[discoHeart2].bgmName = "DiscoHeart2";
+        bgmJsonFiles[discoHeart2].bpm = 129d * 2;
+        bgmJsonFiles[discoHeart2].delay = 0f;
+        bgmJsonFiles[discoHeart2].time = 150f; //150
+        bgmJsonFiles[discoHeart2].beatList = new List<double>() { 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, //27
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+                                                                 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120}; //162
+        //bgmJsonFiles[discoHeart].beatList = new List<double>() { 120, 120, 120, 120 };
+        bgmJsonFiles[discoHeart2].beatAfterTimeOver = 30;
+        bgmJsonFiles[discoHeart2].bgmNameAfterTimeOver = "DiscoHeart2";
+        string jsondata = JsonUtility.ToJson(bgmJsonFiles[discoHeart2]);
+        bgmJsonFiles[discoHeart2] = JsonUtility.FromJson<BGMJsonFile>(jsondata);
     }
 }

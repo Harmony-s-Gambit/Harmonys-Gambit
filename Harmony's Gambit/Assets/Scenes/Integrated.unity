@@ -25730,6 +25730,8 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: 7814def806ac6a54dbaa970973ddae82, type: 3}
   - _name: Lobby
     _clip: {fileID: 8300000, guid: f8949faeb272952439ef6c278d26fe52, type: 3}
+  - _name: DiscoHeart2
+    _clip: {fileID: 8300000, guid: 7814def806ac6a54dbaa970973ddae82, type: 3}
   _bgmPlayer: {fileID: 1198253969}
   _sfxPlayer:
   - {fileID: 1265284579}
