@@ -101,6 +101,7 @@ public class MainUI : MonoBehaviour
         panels[3].SetActive(true);
 
         StageInfo.instance.SetStageName(GetNextStageName("Stage1_1"));
+        //StageInfo.instance.SetStageName("Stage1_Hard");
         SceneManager.LoadScene("Stage");
         StartCoroutine(MapDelay());
     }
@@ -113,6 +114,17 @@ public class MainUI : MonoBehaviour
         panels[3].SetActive(true);
 
         StageInfo.instance.SetStageName("BossStage1");
+        SceneManager.LoadScene("Stage");
+        StartCoroutine(MapDelay());
+    }
+    public void TestPlayButton2() //하드 스테이지 바로가기 버튼
+    {
+        panels[6].SetActive(false);
+        AudioManager.instance.PlaySFX("Start");
+        panels[0].SetActive(false);
+        panels[3].SetActive(true);
+
+        StageInfo.instance.SetStageName("Stage1_Hard");
         SceneManager.LoadScene("Stage");
         StartCoroutine(MapDelay());
     }
