@@ -131,6 +131,10 @@ public class Bear : Enemy
                 {
                     dashDirection = DIRECTION.LEFT;
                     direction = DIRECTION.LEFT;
+                    if(gameObject.transform.localScale.x > 0)
+                    {
+                        gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y);
+                    }
                     gameObject.transform.Find("DashRouteW").gameObject.SetActive(true);
                 }
                 dashChargeTurn = 4;
