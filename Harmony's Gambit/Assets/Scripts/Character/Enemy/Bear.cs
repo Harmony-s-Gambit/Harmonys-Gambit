@@ -141,6 +141,10 @@ public class Bear : Enemy
         }
         if(dash)
         {
+            if (dashChargeTurn >0)
+            {
+                AudioManager.instance.PlaySFX("Start");
+            }
             direction = DIRECTION.STAY;
             dashChargeTurn--;
             return GameObject.Find(x + "_" + y);
@@ -328,6 +332,8 @@ public class Bear : Enemy
             dashCount = 0;
             dashAttackRange.Clear();
             m_Animator.Play("Pattern_Rush");
+            AudioManager.instance.PlaySFX("Rush");
+
         }
     }
 }
