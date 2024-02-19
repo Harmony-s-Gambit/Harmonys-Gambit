@@ -19,11 +19,13 @@ public class WeaponUIController : MonoBehaviour
     private SpriteRenderer w3SR;
 
     //private Color beforeGet = new Color (100, 100, 100, 200f);
-    private Color beforeGet = new Color(0, 0, 0, 0);
-    private Color afterGet = new Color(128f, 128f, 128f, 225f);
-    private Color usingItem = new Color(255f, 255f, 255f, 255f);
+    //private Color beforeGet = new Color(0, 0, 0, 0);
+    //private Color afterGet = new Color(128f, 128f, 128f, 225f);
+    //private Color usingItem = new Color(255f, 255f, 255f, 255f);
 
-    [SerializeField] private Color testColor;
+    [SerializeField] private Color beforeGet;
+    [SerializeField] private Color afterGet;
+    [SerializeField] private Color usingItem;
 
     private void Start()
     {
@@ -101,6 +103,24 @@ public class WeaponUIController : MonoBehaviour
         w3SR.color = usingItem;
         }
     }
+
+    public void equip()
+    {
+        // 빨강 플레이어 찾기
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     public void EnterBoss()
     {
