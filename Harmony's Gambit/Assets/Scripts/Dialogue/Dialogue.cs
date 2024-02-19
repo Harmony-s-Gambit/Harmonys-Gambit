@@ -25,7 +25,7 @@ public class Dialogue : MonoBehaviour
             if (currentIndex < photos.Length)
             {
             showNextPhoto();
-            Debug.Log(photos.Length > currentIndex);
+            // Debug.Log(photos.Length > currentIndex);
             }
             else
             {

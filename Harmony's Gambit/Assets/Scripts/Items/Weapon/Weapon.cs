@@ -84,7 +84,7 @@ public abstract class Weapon : MonoBehaviour
                 }
                 else if (inGridSlot.tag.Contains("Player") && !playerWeapon)
                 {
-                    Debug.Log("Yahoo");
+                    // Debug.Log("Yahoo");
                     Selector.Add(inGridSlot);    
                 }
             }
