@@ -14,9 +14,9 @@ public class ItemSweeper : RedPlayerItem
         if (other.CompareTag("Player")) // redPlayer
         {
             AudioManager.instance.PlaySFX("GetWeapon");
-
-            FindSR();
             DestroyFieldItem();
+            /*
+            FindSR();
 
             Destroy(other.GetComponent<Fist>());
             Destroy(other.GetComponent<Spear>());
@@ -29,10 +29,12 @@ public class ItemSweeper : RedPlayerItem
             playerWeapon = other.GetComponent<Sweeper>();
             playerWeapon.playerWeapon = true;
             playerWeapon.equiper = other.gameObject;
+            */
+
             //weapon.equiper = gameObject; >>> why exist?
 
-            //PlayerPrefs.SetInt("hasSweeper", 1);
-            //PlayerPrefs.Save();
+            PlayerPrefs.SetInt("hasSweeper", 1);
+            PlayerPrefs.Save();
 
             //SetPlayerPrefsValue("hasSweeper", 1);
 

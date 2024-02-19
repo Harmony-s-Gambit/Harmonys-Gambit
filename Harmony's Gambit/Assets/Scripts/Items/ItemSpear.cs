@@ -4,10 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class ItemSpear : RedPlayerItem
 {
-
     public UnityEvent onGetSpear;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,9 +15,9 @@ public class ItemSpear : RedPlayerItem
         if (other.CompareTag("Player")) // redPlayer
         {
             AudioManager.instance.PlaySFX("GetWeapon");
-
-            FindSR();
             DestroyFieldItem();
+            /*
+            FindSR();
 
             Destroy(other.GetComponent<Fist>());
             Destroy(other.GetComponent<Sweeper>());
@@ -30,10 +30,12 @@ public class ItemSpear : RedPlayerItem
             playerWeapon = other.GetComponent<Spear>();
             playerWeapon.playerWeapon = true;
             playerWeapon.equiper = other.gameObject;
+            */
+
             //weapon.equiper = gameObject; >>> why exist?
 
-            //PlayerPrefs.SetInt("hasSpear", 1);
-            //PlayerPrefs.Save();
+            PlayerPrefs.SetInt("hasSpear", 1);
+            PlayerPrefs.Save();
 
             //SetPlayerPrefsValue("hasSpear", 1);
             onGetSpear.Invoke();
