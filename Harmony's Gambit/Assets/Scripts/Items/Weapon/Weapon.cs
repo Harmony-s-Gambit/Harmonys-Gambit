@@ -35,6 +35,7 @@ public abstract class Weapon : MonoBehaviour
         //Debug.Log(Range.Count);
         for(int i = 0; i < Range.Count; i++)
         {
+            inGridSlot = new GameObject();
             try
             {
                 switch (direction)
@@ -83,6 +84,7 @@ public abstract class Weapon : MonoBehaviour
                 }
                 else if (inGridSlot.tag.Contains("Player") && !playerWeapon)
                 {
+                    Debug.Log("Yahoo");
                     Selector.Add(inGridSlot);    
                 }
             }

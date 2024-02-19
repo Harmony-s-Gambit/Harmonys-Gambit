@@ -273,6 +273,7 @@ public class GameManager : MonoBehaviour
                         tempEnemy.MoveManage();
                     }
                 }
+                tempEnemy.weapon.ClearSelector();
             }
 
             //공격 불가능시 이동범위 위치 찾기
