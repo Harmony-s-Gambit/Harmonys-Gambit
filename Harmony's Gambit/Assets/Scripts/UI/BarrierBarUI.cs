@@ -41,6 +41,15 @@ public class BarrierBarUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(gameObject.transform.parent.transform.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<Enemy>().direction == DIRECTION.RIGHT)
+        {
+            gameObject.transform.localScale = new Vector3(30, 30, 1);
+        }else if(gameObject.transform.parent.transform.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<Enemy>().direction == DIRECTION.LEFT)
+        {
+            gameObject.transform.localScale = new Vector3(-30, 30, 1);
+        }
+
         if(barrierEnemy.barrier.Count != 0)
         {
             COLOR barrierColor = barrierEnemy.barrier.Peek();

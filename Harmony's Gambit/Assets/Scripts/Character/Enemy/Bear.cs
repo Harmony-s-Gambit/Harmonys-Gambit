@@ -23,7 +23,7 @@ public class Bear : Enemy
     public override void Start()
     {
         base.Start();
-
+        
         killScore = ScoreManager.instance.purpleBearScore;
 
         gameObject.transform.Find("DashRoute").gameObject.SetActive(false);
@@ -105,6 +105,7 @@ public class Bear : Enemy
                 {
 
                     dashDirection = DIRECTION.DOWN;
+                    direction = DIRECTION.DOWN;
                     gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
                     Vector3 v = new Vector3();
                     v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y +200; v.z = gameObject.transform.position.z;
@@ -115,6 +116,7 @@ public class Bear : Enemy
                 else
                 {
                     dashDirection = DIRECTION.UP;
+                    direction = DIRECTION.UP;
                     gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
                     Vector3 v = new Vector3();
                     v.x = gameObject.transform.position.x; v.y = gameObject.transform.position.y -200; v.z = gameObject.transform.position.z;
@@ -133,6 +135,7 @@ public class Bear : Enemy
                 if (target.GetComponent<Player>().x > this.x)
                 {
                     dashDirection = DIRECTION.RIGHT;
+                    direction = DIRECTION.RIGHT;
                     gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
                     Vector3 v = new Vector3();
                     v.x = gameObject.transform.position.x + 200; v.y = gameObject.transform.position.y; v.z = gameObject.transform.position.z;
@@ -144,6 +147,7 @@ public class Bear : Enemy
                 else
                 {
                     dashDirection = DIRECTION.LEFT;
+                    direction = DIRECTION.LEFT;
                     gameObject.transform.Find("DashRoute").gameObject.SetActive(true);
                     Vector3 v = new Vector3();
                     v.x = gameObject.transform.position .x - 200; v.y = gameObject.transform.position.y; v.z = gameObject.transform.position.z;
