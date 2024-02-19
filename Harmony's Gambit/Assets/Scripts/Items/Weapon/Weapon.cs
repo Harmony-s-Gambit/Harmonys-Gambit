@@ -35,23 +35,27 @@ public abstract class Weapon : MonoBehaviour
         //Debug.Log(Range.Count);
         for(int i = 0; i < Range.Count; i++)
         {
-            switch (direction)
+            try
             {
-                case DIRECTION.UP:
-                    inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y + Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                    break;
-                case DIRECTION.LEFT:
-                    inGridSlot = GameObject.Find((x - Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                    break;
-                case DIRECTION.RIGHT:
-                    inGridSlot = GameObject.Find((x + Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                    break;
-                case DIRECTION.DOWN:
-                    inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y - Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
-                    break;
-                case DIRECTION.STAY:
-                    break;
+                switch (direction)
+                {
+                    case DIRECTION.UP:
+                        inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y + Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                        break;
+                    case DIRECTION.LEFT:
+                        inGridSlot = GameObject.Find((x - Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                        break;
+                    case DIRECTION.RIGHT:
+                        inGridSlot = GameObject.Find((x + Range[i].Item1) + "_" + (y + Range[i].Item2)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                        break;
+                    case DIRECTION.DOWN:
+                        inGridSlot = GameObject.Find((x + Range[i].Item2) + "_" + (y - Range[i].Item1)).GetComponent<GridSlotInfo>().occupyingCharacter;
+                        break;
+                    case DIRECTION.STAY:
+                        break;
+                }
             }
+            catch (Exception e){ }
             try
             {
                 if (inGridSlot.tag == "Enemy" && playerWeapon)
