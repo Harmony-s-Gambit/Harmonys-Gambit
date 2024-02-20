@@ -103,7 +103,7 @@ public class BGMJson : MonoBehaviour
         bgmJsonFiles[discoHeart].bgmName = "DiscoHeart";
         bgmJsonFiles[discoHeart].bpm = 129d;
         bgmJsonFiles[discoHeart].delay = 0f;
-        bgmJsonFiles[discoHeart].time = 5f; //150
+        bgmJsonFiles[discoHeart].time = 150f; //150
         bgmJsonFiles[discoHeart].beatList = new List<double>() { 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, //27
                                                                  120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
                                                                  120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
