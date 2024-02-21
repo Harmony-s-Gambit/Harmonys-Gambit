@@ -199,6 +199,8 @@ public class MainUI : MonoBehaviour
 
     IEnumerator MapDelay()
     {
+        yield return null;
+        yield return null;
         float timer = 0f;
         
         while (progressBar.fillAmount < 1f)

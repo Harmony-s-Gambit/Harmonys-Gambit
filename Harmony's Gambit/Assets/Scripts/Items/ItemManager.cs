@@ -44,6 +44,8 @@ public class ItemManager : MonoBehaviour
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
+        print(stageInfo);
+
         // TextAsset enemyJson = Resources.Load("MapText/Stage1/Enemy") as TextAsset
         TextAsset itemJson = Resources.Load("MapText/" + StageInfo.instance.GetStageName() + "/Item") as TextAsset;
         // EnemyData enemyData = JsonConvert.DeserializeObject<EnemyData>(enemyJson.text);
@@ -59,7 +61,14 @@ public class ItemManager : MonoBehaviour
 
 
         // weapon generate seperately
-        stageInfo = FindObjectOfType<StageInfo>().GetStageName();
+        //stageInfo = FindObjectOfType<StageInfo>().GetStageName();
+
+        StageInfo[] tempStageName = FindObjectsOfType<StageInfo>();
+        stageInfo = tempStageName[tempStageName.Length - 1].GetStageName();
+
+        print(stageInfo);
+
+
         GameObject w1;
         GameObject w2;
         GameObject w3;
@@ -91,7 +100,7 @@ public class ItemManager : MonoBehaviour
             w3 = (GameObject)Instantiate(Resources.Load("Prefabs/Items/collar"));
 
             w1.GetComponent<Item>().initPosition(11, 17);
-            w2.GetComponent<Item>().initPosition(24, 12);
+            w2.GetComponent<Item>().initPosition(24, 11);
             w3.GetComponent<Item>().initPosition(3, 11);
         }
         else if (stageInfo == "Stage1_Hard")
